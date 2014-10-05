@@ -1,3 +1,5 @@
 # Ignoring virtualenv folder
 venv/
 .idea/
+*.pyc
+*.db
