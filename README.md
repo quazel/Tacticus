@@ -1,4 +1,4 @@
 Tacticus
 ========
 
-Server for KickBack
+Project Tacticus: Codename for KickBack.
