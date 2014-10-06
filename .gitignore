@@ -1,5 +1,9 @@
-# Ignoring virtualenv folder
+# Virtualenv folder
 venv/
+# Project files
 .idea/
+# Unnecessary local files
 *.pyc
 *.db
+# Mac
+.DS_Store
