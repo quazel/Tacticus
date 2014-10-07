@@ -1,5 +1,5 @@
-from Tacticus import app
-from flask import Flask, url_for, render_template
+from tacticus import app
+
 
 @app.route('/')
 def index():
