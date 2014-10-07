@@ -1,25 +1,24 @@
 package com.junipertech.kickback;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class Home extends Activity {
+public class Kickback_List extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_kickback__list);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.home, menu);
+        getMenuInflater().inflate(R.menu.kickback__list, menu);
         return true;
     }
 
@@ -34,11 +33,4 @@ public class Home extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-    public void kickback()
-    {
-        Intent intent = new Intent(this, Kickback_List.class);
-        startActivity(intent);
-    }
-
 }

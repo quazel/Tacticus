@@ -16,6 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Kickback_List"
+            android:label="@string/title_activity_kickback__list" >
+        </activity>
+        <activity
+            android:name=".Kickback_Schedule"
+            android:label="@string/title_activity_kickback__schedule" >
+        </activity>
     </application>
 
 </manifest>
