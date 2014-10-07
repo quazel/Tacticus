@@ -15,6 +15,8 @@
     <string name="Add_New_Kickback">Add</string>
     <string name="Remove_Kickback">Remove</string>
     <string name="search">Search</string>
+    <string name="add_friend">Add Friend</string>
+    <string name="remove_friend">Remove Friend</string>
 
     <color name="mint">#AFFFC7</color>
     <color name="green">#62FF91</color>

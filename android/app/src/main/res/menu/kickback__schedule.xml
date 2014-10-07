@@ -2,15 +2,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.junipertech.kickback.Kickback_Schedule" >
-    <item android:id="@+id/action_settings"
-        android:title="@string/action_settings"
-        android:showAsAction="never" />
+
     <item android:id="@+id/action_add"
         android:title="@string/Add_New_Kickback"
+        android:icon="@drawable/add"
         android:showAsAction="always"/>
     <item android:id="@+id/action_remove"
         android:title="@string/Remove_Kickback"
-        android:showAsAction="always"/>
+        android:icon="@drawable/remove"
+        android:showAsAction="always"
+        />
+    <item android:id="@+id/action_settings"
+        android:title="@string/action_settings"
+        android:icon="@drawable/settings"
+        android:showAsAction="always"
+        />
 
 
 </menu>

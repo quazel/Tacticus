@@ -1,8 +1,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.junipertech.kickback.Friends" >
-    <item android:id="@+id/action_settings"
-        android:title="@string/action_settings"
+    <item android:id="@+id/action_add_friend"
+        android:title="@string/add_friend"
         android:orderInCategory="100"
-        android:showAsAction="never" />
+        android:showAsAction="always"
+        android:icon="@drawable/add"/>
+
+    <item android:id="@+id/action_remove_friend"
+        android:title="@string/remove_friend"
+        android:orderInCategory="150"
+        android:showAsAction="always"
+        android:icon="@drawable/remove"/>
 </menu>
