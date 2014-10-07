@@ -8,8 +8,8 @@
     <string name="title_activity_kickback__schedule">Kickback_Schedule</string>
     <string name="Kickback">Kickback</string>
     <string name="My_Kickback_Schedule">My Kickback Schedule</string>
-    <string name="Friends">My Friends</string>
-    <string name="Schedule">My Schedule</string>
+    <string name="Friends">Friends</string>
+    <string name="Schedule">Schedule</string>
     <string name="Filter">Filter</string>
     <string name="Settings">Settings</string>
     <string name="Add_New_Kickback">Add</string>

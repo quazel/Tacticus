@@ -3,14 +3,14 @@
     tools:context=".Home" >
     <item android:id="@+id/action_my_friends"
         android:title="@string/Friends"
+        android:icon="@drawable/friends"
         android:showAsAction="always"/>
     <item android:id="@+id/action_schedule"
         android:title="@string/Schedule"
         android:showAsAction="always"/>
-    <item android:id="@+id/action_filter"
-        android:title="@string/Filter"
-        android:showAsAction="never"/>
     <item android:id="@+id/action_settings"
         android:title="@string/Settings"
-        android:showAsAction="never"/>
+        android:icon="@drawable/settings"
+        android:showAsAction="always"/>
+
 </menu>
