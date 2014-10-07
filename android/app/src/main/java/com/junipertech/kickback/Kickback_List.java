@@ -12,6 +12,7 @@ public class Kickback_List extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kickback__list);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
 

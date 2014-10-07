@@ -33,8 +33,19 @@ public class Home extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         switch(item.getItemId()) {
-            case R.id.action_add_friends:
-                Toast.makeText(this, "Pressed \"Add Friends\".", Toast.LENGTH_SHORT).show();
+            case R.id.action_my_friends:
+                Intent friendsIntent = new Intent(this, Friends.class);
+                startActivity(friendsIntent);
+                return true;
+            case R.id.action_schedule:
+                Intent scheduleIntent = new Intent(this, Kickback_Schedule.class);
+                startActivity(scheduleIntent);
+                return true;
+            case R.id.action_filter:
+
+                return true;
+            case R.id.action_settings:
+
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

@@ -1,9 +1,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".Home" >
-    <item android:id="@+id/action_add_friends"
-        android:title="Add Friends"
+    <item android:id="@+id/action_my_friends"
+        android:title="@string/Friends"
+        android:showAsAction="always"/>
+    <item android:id="@+id/action_schedule"
+        android:title="@string/Schedule"
         android:showAsAction="always"/>
     <item android:id="@+id/action_filter"
-        android:title="Filter"/>
+        android:title="@string/Filter"
+        android:showAsAction="never"/>
+    <item android:id="@+id/action_settings"
+        android:title="@string/Settings"
+        android:showAsAction="never"/>
 </menu>
