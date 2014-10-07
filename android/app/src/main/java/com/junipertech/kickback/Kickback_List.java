@@ -6,7 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class Kickback_List extends ActionBarActivity {
+public class Kickback_List extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

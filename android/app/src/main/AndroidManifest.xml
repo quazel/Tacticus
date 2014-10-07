@@ -18,11 +18,13 @@
         </activity>
         <activity
             android:name=".Kickback_List"
-            android:label="@string/title_activity_kickback__list" >
+            android:label="@string/title_activity_kickback__list"
+            android:parentActivityName=".Home">
         </activity>
         <activity
             android:name=".Kickback_Schedule"
-            android:label="@string/title_activity_kickback__schedule" >
+            android:label="@string/title_activity_kickback__schedule"
+            android:parentActivityName=".Home">
         </activity>
     </application>
 

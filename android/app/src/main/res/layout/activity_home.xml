@@ -11,10 +11,11 @@
     android:background="@color/mint"
     tools:context=".Home">
 
-    <Button
+    <ToggleButton
         android:id="@+id/kickbackButton"
         android:textStyle="bold|italic"
-        android:text="@string/Kickback"
+        android:textOn="@string/Kickback"
+        android:textOff="@string/Kickback"
         android:textColor="@color/darkGreen"
         android:textSize="47sp"
         android:layout_centerInParent="true"
@@ -22,14 +23,6 @@
         android:layout_height="70dp"
         android:background="@drawable/buttonshape" />
 
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:textStyle="bold|italic"
-        android:textColor="@color/darkGreen"
-        android:background="@drawable/buttonshape"
-        android:text="@string/My_Kickback_Schedule"
-        android:id="@+id/scheduleButton"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"/>
+
+
 </RelativeLayout>
