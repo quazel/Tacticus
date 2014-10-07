@@ -6,5 +6,12 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_kickback__list">Kickback_List</string>
     <string name="title_activity_kickback__schedule">Kickback_Schedule</string>
+    <string name="Kickback">Kickback</string>
+    <string name="My_Kickback_Schedule">My Kickback Schedule</string>
+
+    <color name="mint">#AFFFC7</color>
+    <color name="green">#62FF91</color>
+    <color name="darkGreen">#42AB61</color>
+    <color name="white">#FFFFFF</color>
 
 </resources>

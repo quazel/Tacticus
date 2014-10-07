@@ -1,3 +1,5 @@
+
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -6,24 +8,28 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="@color/mint"
     tools:context=".Home">
-    android:background="@color/gold">
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Kickback"
-        android:id="@+id/button"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="159dp" />
+        android:id="@+id/kickbackButton"
+        android:textStyle="bold|italic"
+        android:text="@string/Kickback"
+        android:textColor="@color/darkGreen"
+        android:textSize="47sp"
+        android:layout_centerInParent="true"
+        android:layout_width="270dp"
+        android:layout_height="70dp"
+        android:background="@drawable/buttonshape" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="My Kickback Schedule"
-        android:id="@+id/button2"
-        android:layout_below="@+id/button"
+        android:textStyle="bold|italic"
+        android:textColor="@color/darkGreen"
+        android:background="@drawable/buttonshape"
+        android:text="@string/My_Kickback_Schedule"
+        android:id="@+id/scheduleButton"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="87dp" />
+        android:layout_alignParentBottom="true"/>
 </RelativeLayout>
