@@ -13,7 +13,7 @@
 
     <ToggleButton
         android:id="@+id/kickbackButton"
-        android:textStyle="bold|italic"
+        android:textStyle="bold"
         android:textOn="@string/Kickback"
         android:textOff="@string/Kickback"
         android:textColor="@color/white"
