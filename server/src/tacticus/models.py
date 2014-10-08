@@ -1,4 +1,4 @@
-from sqlalchemy import Table, Column, Integer, String, ForeignKey
+from sqlalchemy import Table, Column, Integer, String, ForeignKey, DateTime
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy.ext.declarative import declarative_base
 from tacticus import db
@@ -21,6 +21,7 @@ class User(Base):
                             secondaryjoin=id==user_to_user.c.followed_id,
                             backref="followers",
                             lazy="dynamic")
+    kickbacks = relationship("Kickback", backref="user", lazy="dynamic")
 
     def __init__(self, name, phone_number):
         self.name = name
@@ -47,7 +48,30 @@ class User(Base):
     def serialize(self):
         return {
             "name": self.name,
-            "phone_number": self.phone_number
+            "phone_number": self.phone_number,
+            "kickbacks": [k.serialize() for k in self.kickbacks.all()]
+        }
+
+
+class Kickback(Base):
+    __tablename__ = "kickback"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    user_id = Column(Integer, ForeignKey("user.id"))
+    start = Column(DateTime(timezone=True))
+    end = Column(DateTime(timezone=True))
+
+    def __init__(self, user, start, end):
+        self.user_id = user.id
+        self.start = start
+        self.end = end
+
+    def __repr__(self):
+        return "<Kickback {0} From {1} Until {2}>".format(self.id, self.start, self.end)
+
+    def serialize(self):
+        return {
+            "from": self.start,
+            "until": self.end
         }
 
 Base.metadata.create_all(db.engine)

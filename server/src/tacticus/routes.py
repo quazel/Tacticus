@@ -8,7 +8,7 @@ session = db.session
 def index():
     return "Hello World!"
 
-@app.route('/api/<username>')
+@app.route('/user/<username>')
 def get_user(username):
     user = session.query(User).filter_by(name=username).first()
     if user:
