@@ -6,19 +6,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class Filter extends Activity {
+public class Settings extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_filter);
+        setContentView(R.layout.activity_settings);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.filter, menu);
+        getMenuInflater().inflate(R.menu.settings, menu);
         return true;
     }
 

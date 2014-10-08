@@ -7,7 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 
 public class Home extends Activity {
@@ -33,7 +35,8 @@ public class Home extends Activity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        switch(item.getItemId()) {
+        switch(item.getItemId())
+        {
             case R.id.action_my_friends:
                 Intent friendsIntent = new Intent(this, Friends.class);
                 startActivity(friendsIntent);
@@ -43,16 +46,31 @@ public class Home extends Activity {
                 startActivity(scheduleIntent);
                 return true;
             case R.id.action_settings:
+                Intent settingsIntent = new Intent(this, Settings.class);
+                startActivity(settingsIntent);
                 return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
-    public void kickback()
+    /*public void kickback()
     {
         Intent intent = new Intent(this, Kickback_List.class);
         startActivity(intent);
+    }*/
+
+    public void onToggleClicked(View view)
+    {
+        boolean on = ((ToggleButton) view).isChecked();
+
+        if(on)
+        {
+           // Intent kickbackIntent = new Intent(this, Kickback_List.class);
+            //startActivity(kickbackIntent);
+        }
+
     }
 
 }

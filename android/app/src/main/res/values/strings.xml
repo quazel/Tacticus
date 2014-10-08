@@ -7,6 +7,7 @@
     <string name="title_activity_kickback__list">Kickback_List</string>
     <string name="title_activity_kickback__schedule">Kickback_Schedule</string>
     <string name="Kickback">Kickback.</string>
+    <string name="Backkick">Backkick.</string>
     <string name="My_Kickback_Schedule">My Kickback Schedule</string>
     <string name="Friends">Friends</string>
     <string name="Schedule">Schedule</string>
@@ -19,12 +20,19 @@
     <string name="remove_friend">Remove Friend</string>
     <string name="confirm_selection">Confirm Selection</string>
 
+    <string name="account_info">Account Settings</string>
+    <string name="privacy_info">Privacy Settings</string>
+    <string name="advanced_info">Advanced Settings</string>
+    <string name="logout">Logout</string>
+
     <color name="mint">#AFFFC7</color>
     <color name="green">#62FF91</color>
     <color name="darkGreen">#42AB61</color>
     <color name="white">#FFFFFF</color>
+    <color name="lightGray">#C3C3C3</color>
 
     <string name="title_activity_my">MyActivity</string>
     <string name="title_activity_filter">Filter</string>
+    <string name="title_activity_settings">Settings</string>
 
 </resources>
