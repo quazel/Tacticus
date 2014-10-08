@@ -19,20 +19,26 @@
     <string name="add_friend">Add Friend</string>
     <string name="remove_friend">Remove Friend</string>
     <string name="confirm_selection">Confirm Selection</string>
-
     <string name="account_info">Account Settings</string>
     <string name="privacy_info">Privacy Settings</string>
     <string name="advanced_info">Advanced Settings</string>
     <string name="logout">Logout</string>
+    <string name="logout_confirmation">Are you sure you want to logout?</string>
+    <string name="confirm">Yes</string>
+    <string name="cancel">No</string>
 
     <color name="mint">#ff9fffa9</color>
     <color name="green">#62FF91</color>
     <color name="darkGreen">#ff42ab61</color>
     <color name="white">#FFFFFF</color>
     <color name="lightGray">#C3C3C3</color>
+    <color name="black">#000000</color>
 
     <string name="title_activity_my">MyActivity</string>
     <string name="title_activity_filter">Filter</string>
     <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_account__settings">Account_Settings</string>
+    <string name="title_activity_privacy__settings">Privacy_Settings</string>
+    <string name="title_activity_advanced__settings">Advanced_Settings</string>
 
 </resources>

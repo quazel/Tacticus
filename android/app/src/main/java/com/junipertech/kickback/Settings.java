@@ -1,9 +1,12 @@
 package com.junipertech.kickback;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
 public class Settings extends Activity {
@@ -33,5 +36,38 @@ public class Settings extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void account_info(View view)
+    {
+        Intent intent = new Intent(this, Account_Settings.class);
+        startActivity(intent);
+    }
+
+    public void privacy_info(View view)
+    {
+        Intent intent = new Intent(this, Privacy_Settings.class);
+        startActivity(intent);
+    }
+
+    public void advanced_info(View view)
+    {
+        Intent intent = new Intent(this, Advanced_Settings.class);
+        startActivity(intent);
+    }
+
+    public void logout(View view)
+    {
+        logoutDialog(this);
+    }
+
+    public void logoutDialog(Activity activity) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+
+
+        builder.setMessage("Are you sure you would like to logout?");
+        builder.setPositiveButton("Yes", null);
+        builder.setNegativeButton("No", null);
+        builder.show();
     }
 }

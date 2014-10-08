@@ -25,6 +25,7 @@
                 android:background="@drawable/full_width_selector"
                 android:text="@string/account_info"
                 android:layout_weight="1"
+                android:onClick="account_info"
                 android:gravity="left|center_vertical"
                 android:id="@+id/account_settings"/>
 
@@ -35,6 +36,7 @@
                 android:paddingRight="9sp"
                 android:background="@drawable/full_width_selector"
                 android:text="@string/privacy_info"
+                android:onClick="privacy_info"
                 android:id="@+id/privacy_settings"
                 android:gravity="left|center_vertical"
                 android:layout_weight="1"/>
@@ -47,6 +49,7 @@
                 android:background="@drawable/full_width_selector"
                 android:text="@string/advanced_info"
                 android:layout_weight="1"
+                android:onClick="advanced_info"
                 android:gravity="left|center_vertical"
                 android:id="@+id/advanced_settings"/>
 
@@ -58,6 +61,7 @@
                 android:background="@drawable/full_width_selector"
                 android:text="@string/logout"
                 android:layout_weight="1"
+                android:onClick="logout"
                 android:gravity="left|center_vertical"
                 android:id="@+id/logout" />
         </LinearLayout>
