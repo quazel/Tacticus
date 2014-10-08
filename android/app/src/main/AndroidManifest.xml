@@ -28,11 +28,13 @@
         </activity>
         <activity
             android:name=".Friends"
-            android:label="@string/Friends" >
+            android:label="@string/Friends"
+            android:parentActivityName=".Home">
         </activity>
         <activity
             android:name=".Filter"
-            android:label="@string/title_activity_filter" >
+            android:label="@string/title_activity_filter"
+            android:parentActivityName=".Friends">
         </activity>
     </application>
 
