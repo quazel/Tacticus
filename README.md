@@ -3,4 +3,4 @@ Tacticus
 
 Project Tacticus: Codename for KickBack.
 
-![Home](http://i.imgur.com/ApqCRRm.png)
+![Home](https://github.com/stevex86/Tacticus/blob/master/screenshots/home.png)
