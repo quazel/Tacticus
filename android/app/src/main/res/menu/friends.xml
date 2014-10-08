@@ -5,11 +5,11 @@
         android:title="@string/add_friend"
         android:orderInCategory="100"
         android:showAsAction="always"
-        android:icon="@drawable/add"/>
+        android:icon="@drawable/friends_add"/>
 
-    <item android:id="@+id/action_remove_friend"
-        android:title="@string/remove_friend"
+    <item android:id="@+id/action_search_friend"
+        android:title="@string/search"
         android:orderInCategory="150"
         android:showAsAction="always"
-        android:icon="@drawable/remove"/>
+        android:icon="@drawable/search"/>
 </menu>
