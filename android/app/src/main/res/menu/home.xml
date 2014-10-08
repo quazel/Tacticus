@@ -7,6 +7,7 @@
         android:showAsAction="always"/>
     <item android:id="@+id/action_schedule"
         android:title="@string/Schedule"
+        android:icon="@drawable/schedule"
         android:showAsAction="always"/>
     <item android:id="@+id/action_settings"
         android:title="@string/Settings"

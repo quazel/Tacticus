@@ -17,6 +17,7 @@
     <string name="search">Search</string>
     <string name="add_friend">Add Friend</string>
     <string name="remove_friend">Remove Friend</string>
+    <string name="confirm_selection">Confirm Selection</string>
 
     <color name="mint">#AFFFC7</color>
     <color name="green">#62FF91</color>
