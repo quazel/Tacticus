@@ -49,7 +49,8 @@ class User(Base):
         return {
             "name": self.name,
             "phone_number": self.phone_number,
-            "kickbacks": [k.serialize() for k in self.kickbacks.all()]
+            "kickbacks": [k.serialize() for k in self.kickbacks.all()],
+            "friends": [f.name for f in self.followed]
         }
 
 

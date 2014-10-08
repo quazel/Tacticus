@@ -15,8 +15,10 @@ u2 = User("sking", "4352293879")
 db.session.add(u)
 db.session.add(u2)
 db.session.commit()
+u.follow(u2)
 print u
 print u2
+db.session.commit()
 kb = Kickback(user=u, start=datetime.now(), end=datetime.now() + timedelta(hours=24))
 db.session.add(kb)
 db.session.commit()
