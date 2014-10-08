@@ -1,4 +1,5 @@
 <resources>
+
     <style name="MyTheme" parent="@android:style/Theme.Holo.Light">
         <item name="android:actionBarStyle">@style/MyTheme.ActionBar</item>
         <item name="android:actionMenuTextColor">@color/white</item>
