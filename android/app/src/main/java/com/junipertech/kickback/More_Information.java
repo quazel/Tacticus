@@ -2,9 +2,11 @@ package com.junipertech.kickback;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
 
 public class More_Information extends Activity {
@@ -14,6 +16,10 @@ public class More_Information extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_more__information);
         getActionBar().setDisplayHomeAsUpEnabled(true);
+
+        // formats phone number in account settings
+        String v = "v0.0.00.1"; //dummy variable
+        formatVersionButton(v);
     }
 
 
@@ -44,5 +50,20 @@ public class More_Information extends Activity {
     public void terms_of_use_btn(View view)
     {
 
+    }
+
+    public void version_btn(View view)
+    {
+
+    }
+
+    public void formatVersionButton(String s)
+    {
+        // formats phone number in account settings
+        Button geoButton = (Button) findViewById(R.id.account_advanced_geolocation);
+        String firstGeo = (String)geoButton.getText();
+
+        String nextGeo = "<br><font color='#c9c9c9'>"+s+"</font>";
+        geoButton.setText(Html.fromHtml(firstGeo + "\n" + "<small>" + nextGeo + "</small>"));;
     }
 }

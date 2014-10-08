@@ -38,6 +38,18 @@
             android:gravity="start|center_vertical"
             android:id="@+id/more_info_terms_of_use"/>
 
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="9sp"
+            android:paddingRight="9sp"
+            android:background="@drawable/full_width_selector"
+            android:text="Version"
+            android:onClick="version_btn"
+            android:layout_weight="1"
+            android:gravity="start|center_vertical"
+            android:id="@+id/more_info_version_info"/>
+
     </LinearLayout>
 
 </RelativeLayout>
