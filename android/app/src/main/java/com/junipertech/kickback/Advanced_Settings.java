@@ -4,9 +4,11 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
 
 public class Advanced_Settings extends Activity {
@@ -16,6 +18,10 @@ public class Advanced_Settings extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_advanced__settings);
         getActionBar().setDisplayHomeAsUpEnabled(true);
+
+        // formats phone number in account settings
+        String state = "enabled"; //dummy variable
+        formatGeolocationButton(state);
     }
 
 
@@ -23,6 +29,8 @@ public class Advanced_Settings extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.advanced__settings, menu);
+
+
         return true;
     }
 
@@ -62,5 +70,15 @@ public class Advanced_Settings extends Activity {
         builder.setPositiveButton("Enable", null);
         builder.setNegativeButton("Disable", null);
         builder.show();
+    }
+
+    public void formatGeolocationButton(String s)
+    {
+        // formats phone number in account settings
+        Button geoButton = (Button) findViewById(R.id.account_advanced_geolocation);
+        String firstGeo = (String)geoButton.getText();
+
+        String nextGeo = "<br><font color='#c9c9c9'>"+s+"</font>";
+        geoButton.setText(Html.fromHtml(firstGeo + "\n" + "<small>" + nextGeo + "</small>"));;
     }
 }
