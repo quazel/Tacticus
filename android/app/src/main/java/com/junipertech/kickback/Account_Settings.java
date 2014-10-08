@@ -3,10 +3,13 @@ package com.junipertech.kickback;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 
 public class Account_Settings extends Activity {
@@ -16,6 +19,17 @@ public class Account_Settings extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account__settings);
         getActionBar().setDisplayHomeAsUpEnabled(true);
+
+        // formats username in account settings
+
+        String username = "temp username"; //dummy variable
+        formatUsernameTextview(username);
+        // formats phone number in account settings
+        String number = "0-000-000-0000"; //dummy variable
+        formatPhoneNumberButton(number);
+        //formats email in account settings
+        String email = "dummyemail@temp.com"; //dummy variable
+        formatEmail(email);
     }
 
 
@@ -59,5 +73,29 @@ public class Account_Settings extends Activity {
         builder.setPositiveButton("Save", null);
         builder.setNegativeButton("Cancel", null);
         builder.show();
+    }
+
+    public void formatUsernameTextview(String s)
+    {
+        TextView user = (TextView) findViewById(R.id.account_settings_username);
+        String firstUser = (String)user.getText();
+        String nextUser = "<br><font color='#c9c9c9'>"+s+"</font>";
+        user.setText(Html.fromHtml(firstUser + "\n" + "<small>" + nextUser + "</small>"));
+    }
+
+    public void formatPhoneNumberButton(String s)
+    {
+        Button phoneNumber = (Button) findViewById(R.id.account_settings_phone_number);
+        String firstNumber = (String)phoneNumber.getText();
+        String nextNumber = "<br><font color='#c9c9c9'>"+s+"</font>";
+        phoneNumber.setText(Html.fromHtml(firstNumber + "\n"+"<small>"+nextNumber+"</small>"));
+    }
+
+    public void formatEmail(String s)
+    {
+        Button userEmail = (Button) findViewById(R.id.account_settings_email);
+        String firstEmail = (String)userEmail.getText();
+        String nextEmail = "<br><font color='#c9c9c9'>"+s+"</font>";
+        userEmail.setText(Html.fromHtml(firstEmail + "\n"+"<small>"+nextEmail+"</small>"));
     }
 }
