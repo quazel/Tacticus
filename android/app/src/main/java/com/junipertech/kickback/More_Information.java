@@ -60,10 +60,10 @@ public class More_Information extends Activity {
     public void formatVersionButton(String s)
     {
         // formats phone number in account settings
-        Button geoButton = (Button) findViewById(R.id.account_advanced_geolocation);
-        String firstGeo = (String)geoButton.getText();
+        Button more_info_btn = (Button) findViewById(R.id.more_info_version_info);
+        String firstVersion = (String)more_info_btn.getText();
 
-        String nextGeo = "<br><font color='#c9c9c9'>"+s+"</font>";
-        geoButton.setText(Html.fromHtml(firstGeo + "\n" + "<small>" + nextGeo + "</small>"));;
+        String nextVersion = "<br><font color='#c9c9c9'>"+s+"</font>";
+        more_info_btn.setText(Html.fromHtml(firstVersion + "\n" + "<small>" + nextVersion + "</small>"));;
     }
 }

@@ -63,7 +63,7 @@
                 android:layout_weight="1"
                 android:onClick="more_info_btn"
                 android:gravity="left|center_vertical"
-                android:id="@+id/more_info" />
+                android:id="@+id/more_info_btn" />
 
             <Button
                 android:layout_width="fill_parent"
