@@ -42,11 +42,7 @@ public class Home extends Activity {
                 Intent scheduleIntent = new Intent(this, Kickback_Schedule.class);
                 startActivity(scheduleIntent);
                 return true;
-            case R.id.action_filter:
-
-                return true;
             case R.id.action_settings:
-
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
