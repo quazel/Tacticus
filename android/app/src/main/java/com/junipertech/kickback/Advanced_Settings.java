@@ -1,9 +1,12 @@
 package com.junipertech.kickback;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
 public class Advanced_Settings extends Activity {
@@ -33,5 +36,31 @@ public class Advanced_Settings extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void notification_settings(View view)
+    {
+        // intent = new Intent(this, Notification_Settings.class);
+        //startActivity(intent);
+    }
+
+    public void geolocation_settings(View view)
+    {
+        geolocationDialog(this);
+    }
+    public void review_btn(View view)
+    {
+
+    }
+
+
+    public void geolocationDialog(Activity activity) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+
+
+        //builder.setMessage("Are you sure you would like to logout?");
+        builder.setPositiveButton("Enable", null);
+        builder.setNegativeButton("Disable", null);
+        builder.show();
     }
 }

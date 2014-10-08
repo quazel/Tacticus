@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
 public class Privacy_Settings extends Activity {
@@ -33,5 +34,20 @@ public class Privacy_Settings extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void filter_btn(View view)
+    {
+
+    }
+
+    public void block_btn(View view)
+    {
+
+    }
+
+    public void unblock_btn(View view)
+    {
+
     }
 }

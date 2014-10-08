@@ -2,10 +2,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="0dp"
-    android:paddingRight="0dp"
-    android:paddingTop="0dp"
-    android:paddingBottom="0dp"
+    android:paddingLeft="@dimen/list_activity_horizontal_margin"
+    android:paddingRight="@dimen/list_activity_horizontal_margin"
+    android:paddingTop="@dimen/list_activity_vertical_margin"
+    android:paddingBottom="@dimen/list_activity_vertical_margin"
     tools:context="com.junipertech.kickback.Account_Settings">
 
     <LinearLayout
@@ -14,7 +14,42 @@
         android:layout_height="fill_parent"
         android:weightSum="12">
 
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="9sp"
+            android:paddingRight="9sp"
+            android:background="@drawable/full_width_selector"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:text="Username"
+            android:layout_weight="1"
+            android:gravity="start|center_vertical"
+            android:id="@+id/account_settings_username"/>
 
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="9sp"
+            android:paddingRight="9sp"
+            android:background="@drawable/full_width_selector"
+            android:text="Phone Number"
+            android:onClick="mobile_number_btn"
+            android:layout_weight="1"
+            android:gravity="start|center_vertical"
+            android:id="@+id/account_settings_phone_number"/>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="9sp"
+            android:paddingRight="9sp"
+            android:background="@drawable/full_width_selector"
+            android:text="Email"
+            android:onClick="email_btn"
+            android:layout_weight="1"
+            android:gravity="start|center_vertical"
+            android:id="@+id/account_settings_email"/>
 
         </LinearLayout>
 

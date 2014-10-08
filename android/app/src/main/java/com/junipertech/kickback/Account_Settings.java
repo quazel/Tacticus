@@ -1,9 +1,12 @@
 package com.junipertech.kickback;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 
 
 public class Account_Settings extends Activity {
@@ -33,5 +36,28 @@ public class Account_Settings extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void mobile_number_btn(View view)
+    {
+
+    }
+
+    public void email_btn(View view)
+    {
+        emailDialog(this);
+    }
+
+    public void emailDialog(Activity activity) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+
+        builder.setTitle("Enter your email");
+
+        final EditText input = new EditText(this);
+        builder.setView(input);
+
+        builder.setPositiveButton("Save", null);
+        builder.setNegativeButton("Cancel", null);
+        builder.show();
     }
 }
