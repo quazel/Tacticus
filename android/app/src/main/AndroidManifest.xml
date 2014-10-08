@@ -39,16 +39,21 @@
         <activity
             android:name=".Account_Settings"
             android:label="@string/account_info"
-            android:parentActivityName=".Settings">
+            android:parentActivityName=".Settings" >
         </activity>
         <activity
             android:name=".Privacy_Settings"
             android:label="@string/privacy_info"
-            android:parentActivityName=".Settings">
+            android:parentActivityName=".Settings" >
         </activity>
         <activity
             android:name=".Advanced_Settings"
             android:label="@string/advanced_info"
+            android:parentActivityName=".Settings" >
+        </activity>
+        <activity
+            android:name=".More_Information"
+            android:label="@string/more_info"
             android:parentActivityName=".Settings">
         </activity>
     </application>

@@ -59,6 +59,18 @@
                 android:paddingLeft="9sp"
                 android:paddingRight="9sp"
                 android:background="@drawable/full_width_selector"
+                android:text="@string/more_info"
+                android:layout_weight="1"
+                android:onClick="more_info_btn"
+                android:gravity="left|center_vertical"
+                android:id="@+id/more_info" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="9sp"
+                android:paddingRight="9sp"
+                android:background="@drawable/full_width_selector"
                 android:text="@string/logout"
                 android:layout_weight="1"
                 android:onClick="logout"

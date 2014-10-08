@@ -56,6 +56,12 @@ public class Settings extends Activity {
         startActivity(intent);
     }
 
+    public void more_info_btn(View view)
+    {
+        Intent intent = new Intent(this, More_Information.class);
+        startActivity(intent);
+    }
+
     public void logout(View view)
     {
         logoutDialog(this);
