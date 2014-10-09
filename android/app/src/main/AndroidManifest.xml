@@ -27,7 +27,7 @@
             android:parentActivityName=".activities.Home" >
         </activity>
         <activity
-            android:name=".Friends"
+            android:name=".activities.Friends_Activity"
             android:label="@string/Friends"
             android:parentActivityName=".activities.Home" >
         </activity>

@@ -7,7 +7,7 @@
     android:paddingTop="@dimen/list_activity_horizontal_margin"
     android:paddingBottom="@dimen/list_activity_horizontal_margin"
     android:background="@color/white"
-    tools:context="com.junipertech.kickback.Friends">
+    tools:context="com.junipertech.kickback.activities.Friends_Activity">
 
     <ScrollView
         android:layout_width="fill_parent"

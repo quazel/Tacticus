@@ -1,7 +1,7 @@
 package com.junipertech.kickback.activities;
 
-import android.app.Activity;
 import android.app.ActionBar;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,8 +10,6 @@ import android.view.View;
 import android.widget.ToggleButton;
 
 import com.junipertech.kickback.R;
-import com.junipertech.kickback.activities.Kickback_Schedule;
-import com.junipertech.kickback.activities.Settings;
 
 
 public class Home extends Activity {
@@ -40,7 +38,7 @@ public class Home extends Activity {
         switch(item.getItemId())
         {
             case R.id.action_my_friends:
-                Intent friendsIntent = new Intent(this, Friends.class);
+                Intent friendsIntent = new Intent(this, Friends_Activity.class);
                 startActivity(friendsIntent);
                 return true;
             case R.id.action_schedule:
