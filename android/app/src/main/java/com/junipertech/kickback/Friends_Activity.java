@@ -9,7 +9,7 @@ import android.view.MenuItem;
 import java.util.ArrayList;
 
 
-public class Friends extends Activity {
+public class Friends_Activity extends Activity {
 
     ArrayList<String> friends;
     ArrayList<String> favorites;
@@ -19,6 +19,8 @@ public class Friends extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friends);
         getActionBar().setDisplayHomeAsUpEnabled(true);
+        addFavoritesToList();
+        addFriendsToList();
     }
 
 
@@ -45,5 +47,15 @@ public class Friends extends Activity {
                 return true;
         }
         return true;
+    }
+
+    public void addFriendsToList()
+    {
+
+    }
+
+    public void addFavoritesToList()
+    {
+
     }
 }
