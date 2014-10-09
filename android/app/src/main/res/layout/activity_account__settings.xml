@@ -7,7 +7,7 @@
     android:paddingTop="@dimen/list_activity_vertical_margin"
     android:paddingBottom="@dimen/list_activity_vertical_margin"
     android:background="@color/white"
-    tools:context="com.junipertech.kickback.Account_Settings">
+    tools:context="com.junipertech.kickback.activities.Account_Settings">
 
     <LinearLayout
         android:orientation="vertical"

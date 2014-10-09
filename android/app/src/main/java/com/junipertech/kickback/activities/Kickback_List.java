@@ -1,9 +1,11 @@
-package com.junipertech.kickback;
+package com.junipertech.kickback.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.junipertech.kickback.R;
 
 
 public class Kickback_List extends Activity {

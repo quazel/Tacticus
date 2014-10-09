@@ -1,10 +1,12 @@
-package com.junipertech.kickback;
+package com.junipertech.kickback.activities;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.junipertech.kickback.R;
 
 import java.util.ArrayList;
 

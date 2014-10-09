@@ -1,4 +1,4 @@
-package com.junipertech.kickback;
+package com.junipertech.kickback.models;
 
 import org.joda.time.DateTime;
 import org.joda.time.Period;

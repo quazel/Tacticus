@@ -1,4 +1,4 @@
-package com.junipertech.kickback;
+package com.junipertech.kickback.activities;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -7,6 +7,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.junipertech.kickback.R;
+import com.junipertech.kickback.activities.Account_Settings;
+import com.junipertech.kickback.activities.Advanced_Settings;
+import com.junipertech.kickback.activities.More_Information;
+import com.junipertech.kickback.activities.Privacy_Settings;
 
 
 public class Settings extends Activity {

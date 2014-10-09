@@ -1,4 +1,4 @@
-package com.junipertech.kickback;
+package com.junipertech.kickback.activities;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.junipertech.kickback.R;
 
 
 public class Account_Settings extends Activity {

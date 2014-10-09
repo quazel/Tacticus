@@ -1,6 +1,6 @@
-package com.junipertech.kickback;
+package com.junipertech.kickback.networking;
 
-import org.json.JSONObject;
+import com.junipertech.kickback.models.Friend;
 
 public class Fetch {
 

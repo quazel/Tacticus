@@ -1,4 +1,4 @@
-package com.junipertech.kickback;
+package com.junipertech.kickback.models;
 
 import java.util.ArrayList;
 

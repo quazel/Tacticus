@@ -1,18 +1,19 @@
-package com.junipertech.kickback;
+package com.junipertech.kickback.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
+
+import com.junipertech.kickback.R;
 
 
-public class Privacy_Settings extends Activity {
+public class Notification_Settings extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_privacy__settings);
+        setContentView(R.layout.activity_notification__settings);
         getActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
@@ -20,7 +21,7 @@ public class Privacy_Settings extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.privacy__settings, menu);
+        getMenuInflater().inflate(R.menu.notification__settings, menu);
         return true;
     }
 
@@ -34,20 +35,5 @@ public class Privacy_Settings extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    public void filter_btn(View view)
-    {
-
-    }
-
-    public void block_btn(View view)
-    {
-
-    }
-
-    public void unblock_btn(View view)
-    {
-
     }
 }
