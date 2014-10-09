@@ -76,6 +76,8 @@
                 android:onClick="logout"
                 android:gravity="left|center_vertical"
                 android:id="@+id/logout" />
+
+
         </LinearLayout>
 
 </RelativeLayout>

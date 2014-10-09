@@ -48,8 +48,8 @@ public class Advanced_Settings extends Activity {
 
     public void notification_settings(View view)
     {
-        // intent = new Intent(this, Notification_Settings.class);
-        //startActivity(intent);
+        Intent intent = new Intent(this, Notification_Settings.class);
+        startActivity(intent);
     }
 
     public void geolocation_settings(View view)

@@ -1,0 +1,109 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/list_activity_horizontal_margin"
+    android:paddingRight="@dimen/list_activity_horizontal_margin"
+    android:paddingTop="@dimen/list_activity_vertical_margin"
+    android:paddingBottom="@dimen/list_activity_vertical_margin"
+    tools:context="com.junipertech.kickback.Notification_Settings">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:weightSum="12">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="9sp"
+            android:paddingRight="9sp"
+            android:background="@drawable/title_label"
+            android:textColor="@color/darkGreen"
+            android:text="RECEIVE NOTIFICATIONS FROM:"
+            android:layout_weight="1"
+            android:maxLines="3"
+            android:lines="1"
+            android:gravity="start|center_vertical"
+            android:id="@+id/receive_notifications"/>
+
+        <RadioGroup
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:weightSum="3">
+
+
+
+        <RadioButton
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="9sp"
+            android:paddingRight="9sp"
+            android:background="@drawable/full_width_selector"
+            android:text="All Friends"
+            android:layout_weight="1"
+            android:gravity="left|center_vertical"
+            android:id="@+id/notifications_all_friends"/>
+        <RadioButton
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="9sp"
+            android:paddingRight="9sp"
+            android:background="@drawable/full_width_selector"
+            android:text="Favorites"
+            android:layout_weight="1"
+            android:gravity="left|center_vertical"
+            android:id="@+id/notifications_favorites"/>
+        <RadioButton
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="9sp"
+            android:paddingRight="9sp"
+            android:background="@drawable/full_width_selector"
+            android:text="Nobody"
+            android:layout_weight="1"
+            android:gravity="left|center_vertical"
+            android:id="@+id/notifications_nobody"/>
+
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="9sp"
+            android:paddingRight="9sp"
+            android:background="@drawable/title_label"
+            android:textColor="@color/darkGreen"
+            android:text="NOTIFICATION FEATURES:"
+            android:layout_weight="1"
+            android:maxLines="3"
+            android:lines="1"
+            android:gravity="start|center_vertical"
+            android:id="@+id/notification_features"/>
+
+        <CheckBox
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="9sp"
+            android:paddingRight="9sp"
+            android:background="@drawable/full_width_selector"
+            android:text="Vibrate"
+            android:layout_weight="1"
+            android:gravity="left|center_vertical"
+            android:id="@+id/notification_feature_vibrate"/>
+        <CheckBox
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="9sp"
+            android:paddingRight="9sp"
+            android:background="@drawable/full_width_selector"
+            android:text="LED Blinking"
+            android:layout_weight="1"
+            android:gravity="left|center_vertical"
+            android:id="@+id/notification_feature_led"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -54,7 +54,12 @@
         <activity
             android:name=".More_Information"
             android:label="@string/more_info"
-            android:parentActivityName=".Settings">
+            android:parentActivityName=".Settings" >
+        </activity>
+        <activity
+            android:name=".Notification_Settings"
+            android:label="@string/notification_settings"
+            android:parentActivityName=".Advanced_Settings" >
         </activity>
     </application>
 

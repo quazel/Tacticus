@@ -1,23 +1,17 @@
 package com.junipertech.kickback;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import java.util.ArrayList;
 
-
-public class Friends extends Activity {
-
-    ArrayList<String> friends;
-    ArrayList<String> favorites;
+public class Notification_Settings extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_friends);
+        setContentView(R.layout.activity_notification__settings);
         getActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
@@ -25,9 +19,7 @@ public class Friends extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.friends, menu);
-
-
+        getMenuInflater().inflate(R.menu.notification__settings, menu);
         return true;
     }
 
@@ -36,14 +28,10 @@ public class Friends extends Activity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        switch(item.getItemId()) {
-            case R.id.action_add_friend:
-
-                return true;
-            case R.id.action_search:
-
-                return true;
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            return true;
         }
-        return true;
+        return super.onOptionsItemSelected(item);
     }
 }

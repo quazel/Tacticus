@@ -27,6 +27,7 @@
     <string name="logout_confirmation">Are you sure you want to logout?</string>
     <string name="confirm">Yes</string>
     <string name="cancel">No</string>
+    <string name="notification_settings">Notification Settings</string>
 
     <color name="mint">#ff9fffa9</color>
     <color name="green">#62FF91</color>
@@ -42,5 +43,6 @@
     <string name="title_activity_privacy__settings">Privacy_Settings</string>
     <string name="title_activity_advanced__settings">Advanced_Settings</string>
     <string name="title_activity_more__information">More_Information</string>
+    <string name="title_activity_notification__settings">Notification_Settings</string>
 
 </resources>

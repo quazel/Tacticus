@@ -21,7 +21,7 @@
             android:paddingLeft="9sp"
             android:paddingRight="9sp"
             android:background="@drawable/full_width_selector"
-            android:text="Notification Settings"
+            android:text="@string/notification_settings"
             android:layout_weight="1"
             android:onClick="notification_settings"
             android:gravity="start|center_vertical"

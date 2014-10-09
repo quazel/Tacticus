@@ -19,6 +19,34 @@
             android:orientation="vertical"
             android:weightSum="12">
 
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="9sp"
+                android:paddingRight="9sp"
+                android:background="@drawable/title_label"
+                android:textColor="@color/darkGreen"
+                android:text="FAVORITES"
+                android:layout_weight="1"
+                android:maxLines="3"
+                android:lines="3"
+                android:gravity="start|center_vertical"
+                android:id="@+id/friends_favorites"/>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="9sp"
+                android:paddingRight="9sp"
+                android:background="@drawable/title_label"
+                android:textColor="@color/darkGreen"
+                android:text="FRIENDS"
+                android:layout_weight="1"
+                android:maxLines="3"
+                android:lines="3"
+                android:gravity="start|center_vertical"
+                android:id="@+id/friends_list_of_friends"/>
+
 
 
 
@@ -26,5 +54,7 @@
 
 
     </ScrollView>
+
+
 
 </RelativeLayout>
