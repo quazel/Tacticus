@@ -1,6 +1,7 @@
 package com.junipertech.kickback.models;
 
 import org.joda.time.DateTime;
+import org.joda.time.DateTimeFieldType;
 import org.joda.time.Period;
 
 public class Kickback {
@@ -32,4 +33,30 @@ public class Kickback {
         return period.getHours() > 1;
     }
 
+    public String toString() {
+        if (this.getStart().get(DateTimeFieldType.hourOfDay()) <= 12) {
+            if (this.getStop().get(DateTimeFieldType.hourOfDay()) < 12 ||
+                    this.getStop().get(DateTimeFieldType.hourOfDay()) == 24) {
+                return this.getStart().get(DateTimeFieldType.hourOfHalfday()) + ":" +
+                        this.getStart().get(DateTimeFieldType.minuteOfHour()) + "am" +
+                        " - " +
+                        this.getStop().get(DateTimeFieldType.hourOfHalfday()) + ":" +
+                        this.getStop().get(DateTimeFieldType.minuteOfHour())+"am";
+            }
+            return this.getStart().get(DateTimeFieldType.hourOfHalfday()) + ":" +
+                    this.getStart().get(DateTimeFieldType.minuteOfHour()) + "am" +
+                    " - " +
+                    this.getStop().get(DateTimeFieldType.hourOfHalfday()) + ":" +
+                    this.getStop().get(DateTimeFieldType.minuteOfHour())+"pm";
+        }
+        else {
+
+            return this.getStart().get(DateTimeFieldType.hourOfHalfday()) + ":" +
+                   this.getStart().get(DateTimeFieldType.minuteOfHour()) + "pm" +
+                   " - " +
+                   this.getStop().get(DateTimeFieldType.hourOfHalfday()) + ":" +
+                   this.getStop().get(DateTimeFieldType.minuteOfHour())+"pm";
+
+        }
+    }
 }
