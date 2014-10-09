@@ -33,17 +33,17 @@ public class Kickback_Schedule extends Activity {
 
         kickbacks = new ArrayList<Kickback>();
         kickbacks.add(new Kickback(new DateTime(2014,10,9,5,30,0,0),
-                                   new DateTime(2014,10,9,8,0,0,0)));
+                                   new DateTime(2014,10,9,8,0,0,0),"Tempe, AZ"));
         kickbacks.add(new Kickback(new DateTime(2014,10,10,6,30,0,0),
-                                   new DateTime(2014,10,10,9,0,0,0)));
+                                   new DateTime(2014,10,10,9,0,0,0),"Woodstock, VT"));
         kickbacks.add(new Kickback(new DateTime(2014,10,10,12,30,0,0),
-                                   new DateTime(2014,10,10,16,0,0,0)));
+                                   new DateTime(2014,10,10,16,0,0,0),"San Francisco, CA"));
         kickbacks.add(new Kickback(new DateTime(2014,10,13,5,30,0,0),
-                                   new DateTime(2014,10,13,8,0,0,0)));
+                                   new DateTime(2014,10,13,8,0,0,0),"New York City, NY"));
         kickbacks.add(new Kickback(new DateTime(2014,10,15,15,30,0,0),
-                                   new DateTime(2014,10,15,18,0,0,0)));
+                                   new DateTime(2014,10,15,18,0,0,0),"Boston, MA"));
         kickbacks.add(new Kickback(new DateTime(2014,10,20,18,30,0,0),
-                                   new DateTime(2014,10,20,22,0,0,0)));
+                                   new DateTime(2014,10,20,22,0,0,0),"Seattle, OR"));
 
 
         addKickbacks();
@@ -80,7 +80,7 @@ public class Kickback_Schedule extends Activity {
         for(int i = 0; i < kickbacks.size(); i++)
         {
             Button bt = new Button(this);
-            bt.setText(setLabel(kickbacks.get(i).toString()));
+            bt.setText(setLabel(kickbacks.get(i).toString(),kickbacks.get(i).getLocation()));
             bt.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT));
             bt.setBackgroundResource(R.drawable.full_width_selector);
@@ -177,9 +177,9 @@ public class Kickback_Schedule extends Activity {
         }
     }
 
-    public Spanned setLabel(String name)
+    public Spanned setLabel(String time, String loc)
     {
-        String location = "<br><font color='#c9c9c9'> location </font>";
-        return Html.fromHtml(name + "\n" + "<small>" + location + "</small>");
+        String location = "<br><font color='#c9c9c9'>"+loc+" </font>";
+        return Html.fromHtml(time + "\n" + "<small>" + location + "</small>");
     }
 }

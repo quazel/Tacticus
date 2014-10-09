@@ -31,6 +31,7 @@ public class My_Friends extends Activity {
         setContentView(R.layout.activity_my__friends);
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
+        //dummy arraylists for formatting purposes
         friends = new ArrayList<Friend>();
         favorites = new ArrayList<Friend>();
         kickback = new ArrayList<Kickback>();
@@ -41,12 +42,14 @@ public class My_Friends extends Activity {
         friends.add(new Friend("Kelly", "1-420-420-Blaze'em", kickback));
         friends.add(new Friend("JSON", "1-452-735-9384", kickback));
         friends.add(new Friend("Burgle", "1-746-412-9001", kickback));
+        friends.add(new Friend("Jeremy Adams", "1-480-390-7762", kickback));
 
         favorites.add(friends.get(2));
         favorites.add(friends.get(4));
         favorites.add(friends.get(0));
+        favorites.add(friends.get(6));
 
-
+        // methods to be adapted once there are real friends/favorites from server
         addFavoritesToList();
         addFriendsToList();
     }

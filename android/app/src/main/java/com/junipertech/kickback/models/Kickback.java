@@ -8,15 +8,19 @@ public class Kickback {
 
     private DateTime start;
     private DateTime stop;
+    // temp placeholder variable for actual location
+    private String location;
 
-    public Kickback(DateTime start, DateTime stop) {
+    public Kickback(DateTime start, DateTime stop, String location) {
         this.start = start;
         this.stop = stop;
+        this.location = location;
     }
 
     public Kickback(Kickback kickback) {
         this.start = kickback.start;
         this.stop = kickback.stop;
+        this.location = kickback.location;
     }
 
     public DateTime getStart() {
@@ -27,6 +31,8 @@ public class Kickback {
         return new Kickback(this).stop;
     }
 
+    public String getLocation() { return new Kickback(this).location; }
+
     public boolean overlaps(Kickback kickback) {
         DateTime now = DateTime.now();
         Period period = new Period(now, kickback.getStop());
@@ -34,28 +40,52 @@ public class Kickback {
     }
 
     public String toString() {
-        if (this.getStart().get(DateTimeFieldType.hourOfDay()) <= 12) {
-            if (this.getStop().get(DateTimeFieldType.hourOfDay()) < 12 ||
-                    this.getStop().get(DateTimeFieldType.hourOfDay()) == 24) {
+
+        String startMinutes = Integer.toString(this.getStart().getMinuteOfHour());
+        String stopMinutes = Integer.toString(this.getStop().getMinuteOfHour());
+
+        if(startMinutes.equals("0"))
+        {
+            startMinutes = "00";
+        }
+        if(stopMinutes.equals("0"))
+        {
+            stopMinutes = "00";
+        }
+
+        if (this.getStart().get(DateTimeFieldType.hourOfDay()) < 12||
+                this.getStart().get(DateTimeFieldType.hourOfDay()) == 24)
+        {
+            if (this.getStop().getHourOfDay() < 12 ||
+                    this.getStop().getHourOfDay() == 24)
+            {
                 return this.getStart().get(DateTimeFieldType.hourOfHalfday()) + ":" +
-                        this.getStart().get(DateTimeFieldType.minuteOfHour()) + "am" +
+                        startMinutes + "am" +
                         " - " +
                         this.getStop().get(DateTimeFieldType.hourOfHalfday()) + ":" +
-                        this.getStop().get(DateTimeFieldType.minuteOfHour())+"am";
+                        stopMinutes+"am";
             }
             return this.getStart().get(DateTimeFieldType.hourOfHalfday()) + ":" +
-                    this.getStart().get(DateTimeFieldType.minuteOfHour()) + "am" +
+                    startMinutes + "am" +
                     " - " +
                     this.getStop().get(DateTimeFieldType.hourOfHalfday()) + ":" +
-                    this.getStop().get(DateTimeFieldType.minuteOfHour())+"pm";
+                    stopMinutes+"pm";
         }
-        else {
-
+        else
+        {
+            if(this.getStart().getHourOfDay() == 12)
+            {
+                return "12:" +
+                        startMinutes + "pm" +
+                        " - " +
+                        this.getStop().get(DateTimeFieldType.hourOfHalfday()) + ":" +
+                        stopMinutes + "pm";
+            }
             return this.getStart().get(DateTimeFieldType.hourOfHalfday()) + ":" +
-                   this.getStart().get(DateTimeFieldType.minuteOfHour()) + "pm" +
-                   " - " +
-                   this.getStop().get(DateTimeFieldType.hourOfHalfday()) + ":" +
-                   this.getStop().get(DateTimeFieldType.minuteOfHour())+"pm";
+                    startMinutes + "pm" +
+                    " - " +
+                    this.getStop().get(DateTimeFieldType.hourOfHalfday()) + ":" +
+                    stopMinutes+"pm";
 
         }
     }
