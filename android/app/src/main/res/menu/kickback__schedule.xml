@@ -5,13 +5,7 @@
 
     <item android:id="@+id/action_add"
         android:title="@string/Add_New_Kickback"
-        android:icon="@drawable/add"
+        android:icon="@drawable/schedule_add"
         android:showAsAction="always"/>
-
-    <item android:id="@+id/action_remove"
-        android:title="@string/Remove_Kickback"
-        android:icon="@drawable/remove"
-        android:showAsAction="always"
-        />
 
 </menu>

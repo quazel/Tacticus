@@ -4,22 +4,31 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup.LayoutParams;
+import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.junipertech.kickback.R;
+import com.junipertech.kickback.models.Friend;
 
 import java.util.ArrayList;
 
 
 public class Friends_Activity extends Activity {
 
-    ArrayList<String> friends;
-    ArrayList<String> favorites;
+    ArrayList<Friend> friends;
+    ArrayList<Friend> favorites;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friends);
         getActionBar().setDisplayHomeAsUpEnabled(true);
+
+        friends = new ArrayList<Friend>();
+        favorites =new ArrayList<Friend>();
+
         addFavoritesToList();
         addFriendsToList();
     }
@@ -52,11 +61,28 @@ public class Friends_Activity extends Activity {
 
     public void addFriendsToList()
     {
+        LinearLayout layout = (LinearLayout) findViewById(R.id.friends_list);
 
+        for(int i = 0; i < friends.size(); i++)
+        {
+
+            Button bt = new Button(this);
+            bt.setText(friends.get(i).getName());
+            bt.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
+                    LayoutParams.WRAP_CONTENT));
+            bt.setBackgroundResource(R.drawable.full_width_selector);
+            layout.addView(bt);
+
+        }
     }
 
     public void addFavoritesToList()
     {
+        LinearLayout layout = (LinearLayout) findViewById(R.id.favorites_list);
 
+        for(int i = 0; i < favorites.size(); i++)
+        {
+
+        }
     }
 }

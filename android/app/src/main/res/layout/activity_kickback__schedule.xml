@@ -2,13 +2,346 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/list_activity_horizontal_margin"
+    android:paddingRight="@dimen/list_activity_horizontal_margin"
+    android:paddingTop="@dimen/list_activity_vertical_margin"
+    android:paddingBottom="@dimen/list_activity_vertical_margin"
     android:background="@color/white"
     tools:context="com.junipertech.kickback.activities.Kickback_Schedule">
 
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="12">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="9sp"
+                android:paddingRight="9sp"
+                android:background="@drawable/title_label"
+                android:textColor="@color/darkGreen"
+                android:text="TODAY, Oct. 8th"
+                android:layout_weight="1"
+                android:maxLines="3"
+                android:lines="3"
+                android:gravity="start|center_vertical"
+                android:id="@+id/schedule_1"/>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/list_1"
+                android:weightSum="12">
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="9sp"
+                    android:paddingRight="9sp"
+                    android:background="@drawable/full_width_selector"
+                    android:text="10am - 1pm"
+                    android:lines="3"
+                    android:layout_weight="1"
+                    android:onClick="account_info"
+                    android:gravity="left|center_vertical"
+                    android:id="@+id/kickback_1"/>
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="9sp"
+                    android:paddingRight="9sp"
+                    android:background="@drawable/full_width_selector"
+                    android:text="4pm - 8pm"
+                    android:lines="3"
+                    android:layout_weight="1"
+                    android:onClick="account_info"
+                    android:gravity="left|center_vertical"
+                    android:id="@+id/kickback_2"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="9sp"
+                android:paddingRight="9sp"
+                android:background="@drawable/title_label"
+                android:textColor="@color/darkGreen"
+                android:text="TOMORROW, Oct. 9th"
+                android:layout_weight="1"
+                android:maxLines="3"
+                android:lines="3"
+                android:gravity="start|center_vertical"
+                android:id="@+id/schedule_2"/>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/list_2"
+                android:weightSum="12">
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="9sp"
+                android:paddingRight="9sp"
+                android:background="@drawable/title_label"
+                android:textColor="@color/darkGreen"
+                android:text="FRIDAY, Oct. 10th"
+                android:layout_weight="1"
+                android:maxLines="3"
+                android:lines="3"
+                android:gravity="start|center_vertical"
+                android:id="@+id/schedule_3"/>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/list_3"
+                android:weightSum="12">
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="9sp"
+                android:paddingRight="9sp"
+                android:background="@drawable/title_label"
+                android:textColor="@color/darkGreen"
+                android:text="SATURDAY, Oct. 11th"
+                android:layout_weight="1"
+                android:maxLines="3"
+                android:lines="3"
+                android:gravity="start|center_vertical"
+                android:id="@+id/schedule_4"/>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/list_4"
+                android:weightSum="12">
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="9sp"
+                android:paddingRight="9sp"
+                android:background="@drawable/title_label"
+                android:textColor="@color/darkGreen"
+                android:text="SUNDAY, Oct. 12th"
+                android:layout_weight="1"
+                android:maxLines="3"
+                android:lines="3"
+                android:gravity="start|center_vertical"
+                android:id="@+id/schedule_5"/>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/list_5"
+                android:weightSum="12">
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="9sp"
+                android:paddingRight="9sp"
+                android:background="@drawable/title_label"
+                android:textColor="@color/darkGreen"
+                android:text="MONDAY, Oct. 13th"
+                android:layout_weight="1"
+                android:maxLines="3"
+                android:lines="3"
+                android:gravity="start|center_vertical"
+                android:id="@+id/schedule_6"/>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/list_6"
+                android:weightSum="12">
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="9sp"
+                android:paddingRight="9sp"
+                android:background="@drawable/title_label"
+                android:textColor="@color/darkGreen"
+                android:text="TUESDAY, Oct. 14th"
+                android:layout_weight="1"
+                android:maxLines="3"
+                android:lines="3"
+                android:gravity="start|center_vertical"
+                android:id="@+id/schedule_7"/>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/list_7"
+                android:weightSum="12">
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="9sp"
+                android:paddingRight="9sp"
+                android:background="@drawable/title_label"
+                android:textColor="@color/darkGreen"
+                android:text="WEDNESDAY, Oct. 15th"
+                android:layout_weight="1"
+                android:maxLines="3"
+                android:lines="3"
+                android:gravity="start|center_vertical"
+                android:id="@+id/schedule_8"/>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/list_8"
+                android:weightSum="12">
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="9sp"
+                android:paddingRight="9sp"
+                android:background="@drawable/title_label"
+                android:textColor="@color/darkGreen"
+                android:text="THURSDAY, Oct. 16th"
+                android:layout_weight="1"
+                android:maxLines="3"
+                android:lines="3"
+                android:gravity="start|center_vertical"
+                android:id="@+id/schedule_9"/>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/list_9"
+                android:weightSum="12">
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="9sp"
+                android:paddingRight="9sp"
+                android:background="@drawable/title_label"
+                android:textColor="@color/darkGreen"
+                android:text="FRIDAY, Oct. 17th"
+                android:layout_weight="1"
+                android:maxLines="3"
+                android:lines="3"
+                android:gravity="start|center_vertical"
+                android:id="@+id/schedule_10"/>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/list_10"
+                android:weightSum="12">
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="9sp"
+                android:paddingRight="9sp"
+                android:background="@drawable/title_label"
+                android:textColor="@color/darkGreen"
+                android:text="SATURDAY, Oct. 18th"
+                android:layout_weight="1"
+                android:maxLines="3"
+                android:lines="3"
+                android:gravity="start|center_vertical"
+                android:id="@+id/schedule_11"/>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/list_11"
+                android:weightSum="12">
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="9sp"
+                android:paddingRight="9sp"
+                android:background="@drawable/title_label"
+                android:textColor="@color/darkGreen"
+                android:text="SUNDAY, Oct. 19th"
+                android:layout_weight="1"
+                android:maxLines="3"
+                android:lines="3"
+                android:gravity="start|center_vertical"
+                android:id="@+id/schedule_12"/>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/list_12"
+                android:weightSum="12">
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="9sp"
+                android:paddingRight="9sp"
+                android:background="@drawable/title_label"
+                android:textColor="@color/darkGreen"
+                android:text="MONDAY, Oct. 20th"
+                android:layout_weight="1"
+                android:maxLines="3"
+                android:lines="3"
+                android:gravity="start|center_vertical"
+                android:id="@+id/schedule_13"/>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/list_13"
+                android:weightSum="12">
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="9sp"
+                android:paddingRight="9sp"
+                android:background="@drawable/title_label"
+                android:textColor="@color/darkGreen"
+                android:text="TUESDAY, Oct. 21st"
+                android:layout_weight="1"
+                android:maxLines="3"
+                android:lines="3"
+                android:gravity="start|center_vertical"
+                android:id="@+id/schedule_14"/>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/list_14"
+                android:weightSum="12">
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 
 </RelativeLayout>
