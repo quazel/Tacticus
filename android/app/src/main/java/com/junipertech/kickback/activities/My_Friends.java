@@ -1,6 +1,7 @@
 package com.junipertech.kickback.activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.Spanned;
@@ -71,7 +72,8 @@ public class My_Friends extends Activity {
         // as you specify a parent activity in AndroidManifest.xml.
         switch(item.getItemId()) {
             case R.id.action_add_friend:
-
+                Intent friendManagerIntent = new Intent(this, Friend_Manager.class);
+                startActivity(friendManagerIntent);
                 return true;
             case R.id.action_search:
 

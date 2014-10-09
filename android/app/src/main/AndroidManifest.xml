@@ -61,7 +61,12 @@
         <activity
             android:name=".activities.My_Friends"
             android:label="@string/Friends"
-            android:parentActivityName=".activities.Home">
+            android:parentActivityName=".activities.Home" >
+        </activity>
+        <activity
+            android:name=".activities.Friend_Manager"
+            android:label="@string/friend_manager"
+            android:parentActivityName=".activities.My_Friends">
         </activity>
     </application>
 
