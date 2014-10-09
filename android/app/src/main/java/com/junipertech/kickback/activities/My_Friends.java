@@ -19,7 +19,7 @@ import com.junipertech.kickback.models.Kickback;
 import java.util.ArrayList;
 
 
-public class Friends_Activity extends Activity {
+public class My_Friends extends Activity {
 
     ArrayList<Friend> friends;
     ArrayList<Friend> favorites;
@@ -28,7 +28,7 @@ public class Friends_Activity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_friends);
+        setContentView(R.layout.activity_my__friends);
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
         friends = new ArrayList<Friend>();
@@ -55,7 +55,7 @@ public class Friends_Activity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.friends, menu);
+        getMenuInflater().inflate(R.menu.my__friends, menu);
 
 
         return true;
@@ -73,8 +73,10 @@ public class Friends_Activity extends Activity {
             case R.id.action_search:
 
                 return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        return true;
     }
 
     public void addFriendsToList()
@@ -89,7 +91,7 @@ public class Friends_Activity extends Activity {
             bt.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
                     LayoutParams.WRAP_CONTENT));
             bt.setBackgroundResource(R.drawable.full_width_selector);
-            bt.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
+            bt.setGravity(Gravity.START | Gravity.CENTER_VERTICAL);
             bt.setLines(3);
             layout.addView(bt);
 
@@ -107,7 +109,7 @@ public class Friends_Activity extends Activity {
             bt.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
                     LayoutParams.WRAP_CONTENT));
             bt.setBackgroundResource(R.drawable.full_width_selector);
-            bt.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
+            bt.setGravity(Gravity.START | Gravity.CENTER_VERTICAL);
             bt.setLines(3);
             layout.addView(bt);
         }
@@ -116,6 +118,6 @@ public class Friends_Activity extends Activity {
     public Spanned setLabel(String name)
     {
         String username = "<br><font color='#c9c9c9'> username </font>";
-        return Html.fromHtml(name+"\n"+"<small>"+username+"</small>");
+        return Html.fromHtml(name + "\n" + "<small>" + username + "</small>");
     }
 }

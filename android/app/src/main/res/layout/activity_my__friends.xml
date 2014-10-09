@@ -7,7 +7,7 @@
     android:paddingTop="@dimen/list_activity_horizontal_margin"
     android:paddingBottom="@dimen/list_activity_horizontal_margin"
     android:background="@color/white"
-    tools:context="com.junipertech.kickback.activities.Friends_Activity">
+    tools:context="com.junipertech.kickback.activities.My_Friends">
 
     <ScrollView
         android:layout_width="fill_parent"
@@ -32,13 +32,13 @@
                 android:lines="3"
                 android:gravity="start|center_vertical"
                 android:id="@+id/friends_favorites"/>
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:id="@+id/favorites_list"
-            android:weightSum="12">
-        </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/favorites_list"
+                android:weightSum="12">
+            </LinearLayout>
 
             <TextView
                 android:layout_width="fill_parent"
@@ -53,13 +53,13 @@
                 android:lines="3"
                 android:gravity="start|center_vertical"
                 android:id="@+id/friends_list_of_friends"/>
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:id="@+id/friends_list"
-            android:weightSum="12">
-        </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/friends_list"
+                android:weightSum="12">
+            </LinearLayout>
 
 
 
@@ -71,3 +71,4 @@
 
 
 </RelativeLayout>
+

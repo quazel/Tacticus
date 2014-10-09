@@ -29,11 +29,6 @@
             android:parentActivityName=".activities.Home" >
         </activity>
         <activity
-            android:name=".activities.Friends_Activity"
-            android:label="@string/Friends"
-            android:parentActivityName=".activities.Home" >
-        </activity>
-        <activity
             android:name=".activities.Settings"
             android:label="@string/Settings"
             android:parentActivityName=".activities.Home" >
@@ -62,6 +57,11 @@
             android:name=".activities.Notification_Settings"
             android:label="@string/notification_settings"
             android:parentActivityName=".activities.Advanced_Settings" >
+        </activity>
+        <activity
+            android:name=".activities.My_Friends"
+            android:label="@string/Friends"
+            android:parentActivityName=".activities.Home">
         </activity>
     </application>
 
