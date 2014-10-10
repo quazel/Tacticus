@@ -1,13 +1,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.junipertech.kickback.activities.My_Friends" >
+    tools:context="com.junipertech.kickback.activities.MyFriends" >
 
     <item android:id="@+id/action_search_friend"
         android:title="@string/search"
         android:orderInCategory="50"
         android:showAsAction="always|collapseActionView"
         android:icon="@drawable/search"
-        android:actionLayout="@layout/search_layout"/>
+        android:actionLayout="@layout/search_bar"/>
 
     <item android:id="@+id/action_add_friend"
         android:title="@string/add_friend"

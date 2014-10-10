@@ -21,14 +21,14 @@ import org.joda.time.DateTimeFieldType;
 import java.util.ArrayList;
 
 
-public class Kickback_Schedule extends Activity {
+public class KickbacksSchedule extends Activity {
 
     ArrayList<Kickback> kickbacks;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_kickback__schedule);
+        setContentView(R.layout.activity_kickback_schedule);
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
         kickbacks = new ArrayList<Kickback>();
@@ -53,7 +53,7 @@ public class Kickback_Schedule extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.kickback__schedule, menu);
+        getMenuInflater().inflate(R.menu.kickback_schedule, menu);
         return true;
     }
 

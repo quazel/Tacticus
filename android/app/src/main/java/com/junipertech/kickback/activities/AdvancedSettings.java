@@ -13,12 +13,12 @@ import android.widget.Button;
 import com.junipertech.kickback.R;
 
 
-public class Advanced_Settings extends Activity {
+public class AdvancedSettings extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_advanced__settings);
+        setContentView(R.layout.activity_advanced_settings);
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
         // formats phone number in account settings
@@ -30,7 +30,7 @@ public class Advanced_Settings extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.advanced__settings, menu);
+        getMenuInflater().inflate(R.menu.advanced_settings, menu);
 
 
         return true;
@@ -50,7 +50,7 @@ public class Advanced_Settings extends Activity {
 
     public void notification_settings(View view)
     {
-        Intent intent = new Intent(this, Notification_Settings.class);
+        Intent intent = new Intent(this, NotificationSettings.class);
         startActivity(intent);
     }
 

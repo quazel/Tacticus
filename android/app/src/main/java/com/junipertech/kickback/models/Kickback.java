@@ -31,7 +31,9 @@ public class Kickback {
         return new Kickback(this).stop;
     }
 
-    public String getLocation() { return new Kickback(this).location; }
+    public String getLocation() {
+        return new Kickback(this).location;
+    }
 
     public boolean overlaps(Kickback kickback) {
         DateTime now = DateTime.now();
@@ -44,20 +46,18 @@ public class Kickback {
         String startMinutes = Integer.toString(this.getStart().getMinuteOfHour());
         String stopMinutes = Integer.toString(this.getStop().getMinuteOfHour());
 
-        if(startMinutes.equals("0"))
-        {
+        if(startMinutes.equals("0")) {
             startMinutes = "00";
         }
-        if(stopMinutes.equals("0"))
-        {
+        if(stopMinutes.equals("0")) {
             stopMinutes = "00";
         }
 
-        if (this.getStart().get(DateTimeFieldType.hourOfDay()) < 12||
-                this.getStart().get(DateTimeFieldType.hourOfDay()) == 24)
+        if (this.getStart().getHourOfDay() < 12 ||
+            this.getStart().getHourOfDay() == 24)
         {
             if (this.getStop().getHourOfDay() < 12 ||
-                    this.getStop().getHourOfDay() == 24)
+                this.getStop().getHourOfDay() == 24)
             {
                 return this.getStart().get(DateTimeFieldType.hourOfHalfday()) + ":" +
                         startMinutes + "am" +
@@ -73,7 +73,7 @@ public class Kickback {
         }
         else
         {
-            if(this.getStart().getHourOfDay() == 12)
+            if (this.getStart().getHourOfDay() == 12)
             {
                 return "12:" +
                         startMinutes + "pm" +

@@ -7,7 +7,7 @@
     android:paddingTop="@dimen/list_activity_vertical_margin"
     android:paddingBottom="@dimen/list_activity_vertical_margin"
     android:background="@color/white"
-    tools:context="com.junipertech.kickback.activities.Account_Settings">
+    tools:context="com.junipertech.kickback.activities.AdvancedSettings">
 
     <LinearLayout
         android:orientation="vertical"
@@ -15,19 +15,17 @@
         android:layout_height="fill_parent"
         android:weightSum="12">
 
-        <TextView
+        <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="9sp"
             android:paddingRight="9sp"
-            android:maxLines="3"
-            android:lines="2"
             android:background="@drawable/full_width_selector"
-            android:textSize="18dp"
-            android:text="Username "
+            android:text="@string/notification_settings"
             android:layout_weight="1"
+            android:onClick="notification_settings"
             android:gravity="start|center_vertical"
-            android:id="@+id/account_settings_username"/>
+            android:id="@+id/account_advanced_notification_settings"/>
 
         <Button
             android:layout_width="fill_parent"
@@ -36,25 +34,24 @@
             android:paddingRight="9sp"
             android:lines="2"
             android:background="@drawable/full_width_selector"
-            android:text="Phone Number"
-            android:onClick="mobile_number_btn"
+            android:text="Geolocation"
+            android:onClick="geolocation_settings"
             android:layout_weight="1"
             android:gravity="start|center_vertical"
-            android:id="@+id/account_settings_phone_number"/>
+            android:id="@+id/account_advanced_geolocation"/>
 
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="9sp"
             android:paddingRight="9sp"
-            android:lines="2"
             android:background="@drawable/full_width_selector"
-            android:text="Email"
-            android:onClick="email_btn"
+            android:text="Review This App"
+            android:onClick="review_btn"
             android:layout_weight="1"
             android:gravity="start|center_vertical"
-            android:id="@+id/account_settings_email"/>
+            android:id="@+id/account_advanced_review"/>
 
-        </LinearLayout>
+    </LinearLayout>
 
 </RelativeLayout>

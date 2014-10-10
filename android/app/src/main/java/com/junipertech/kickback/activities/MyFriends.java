@@ -9,7 +9,6 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup.LayoutParams;
-import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
@@ -20,7 +19,7 @@ import com.junipertech.kickback.models.Kickback;
 import java.util.ArrayList;
 
 
-public class My_Friends extends Activity {
+public class MyFriends extends Activity {
 
     ArrayList<Friend> friends;
     ArrayList<Friend> favorites;
@@ -29,7 +28,7 @@ public class My_Friends extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my__friends);
+        setContentView(R.layout.activity_my_friends);
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
         //dummy arraylists for formatting purposes
@@ -59,7 +58,7 @@ public class My_Friends extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.my__friends, menu);
+        getMenuInflater().inflate(R.menu.my_friends, menu);
 
 
         return true;
@@ -72,7 +71,7 @@ public class My_Friends extends Activity {
         // as you specify a parent activity in AndroidManifest.xml.
         switch(item.getItemId()) {
             case R.id.action_add_friend:
-                Intent friendManagerIntent = new Intent(this, Friend_Manager.class);
+                Intent friendManagerIntent = new Intent(this, FriendManager.class);
                 startActivity(friendManagerIntent);
                 return true;
             case R.id.action_search:

@@ -11,12 +11,12 @@ import android.widget.Button;
 import com.junipertech.kickback.R;
 
 
-public class More_Information extends Activity {
+public class MoreInformation extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_more__information);
+        setContentView(R.layout.activity_more_information);
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
         // formats phone number in account settings
@@ -28,7 +28,7 @@ public class More_Information extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.more__information, menu);
+        getMenuInflater().inflate(R.menu.more_information, menu);
         return true;
     }
 

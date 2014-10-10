@@ -3,23 +3,20 @@ package com.junipertech.kickback.activities;
 import java.util.Locale;
 
 import android.app.Activity;
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+
 import com.junipertech.kickback.R;
 
-public class Friend_Manager extends Activity {
+public class FriendManager extends Activity {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -39,7 +36,7 @@ public class Friend_Manager extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_friend__manager);
+        setContentView(R.layout.activity_friend_manager);
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
 
@@ -58,7 +55,7 @@ public class Friend_Manager extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.friend__manager, menu);
+        getMenuInflater().inflate(R.menu.friend_manager, menu);
         return true;
     }
 
@@ -140,7 +137,7 @@ public class Friend_Manager extends Activity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_friend__manager, container, false);
+            View rootView = inflater.inflate(R.layout.fragment_friend_manager, container, false);
             return rootView;
         }
     }

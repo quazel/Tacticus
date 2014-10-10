@@ -19,12 +19,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.Kickback_List"
+            android:name=".activities.KickbacksList"
             android:label="@string/Kickback"
             android:parentActivityName=".activities.Home" >
         </activity>
         <activity
-            android:name=".activities.Kickback_Schedule"
+            android:name=".activities.KickbacksSchedule"
             android:label="@string/Schedule"
             android:parentActivityName=".activities.Home" >
         </activity>
@@ -34,39 +34,39 @@
             android:parentActivityName=".activities.Home" >
         </activity>
         <activity
-            android:name=".activities.Account_Settings"
+            android:name=".activities.AccountSettings"
             android:label="@string/account_info"
             android:parentActivityName=".activities.Settings" >
         </activity>
         <activity
-            android:name=".activities.Privacy_Settings"
+            android:name=".activities.PrivacySettings"
             android:label="@string/privacy_info"
             android:parentActivityName=".activities.Settings" >
         </activity>
         <activity
-            android:name=".activities.Advanced_Settings"
+            android:name=".activities.AdvancedSettings"
             android:label="@string/advanced_info"
             android:parentActivityName=".activities.Settings" >
         </activity>
         <activity
-            android:name=".activities.More_Information"
+            android:name=".activities.MoreInformation"
             android:label="@string/more_info"
             android:parentActivityName=".activities.Settings" >
         </activity>
         <activity
-            android:name=".activities.Notification_Settings"
+            android:name=".activities.NotificationSettings"
             android:label="@string/notification_settings"
-            android:parentActivityName=".activities.Advanced_Settings" >
+            android:parentActivityName=".activities.AdvancedSettings" >
         </activity>
         <activity
-            android:name=".activities.My_Friends"
+            android:name=".activities.MyFriends"
             android:label="@string/Friends"
             android:parentActivityName=".activities.Home" >
         </activity>
         <activity
-            android:name=".activities.Friend_Manager"
+            android:name=".activities.FriendManager"
             android:label="@string/friend_manager"
-            android:parentActivityName=".activities.My_Friends">
+            android:parentActivityName=".activities.MyFriends">
         </activity>
     </application>
 

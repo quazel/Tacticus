@@ -9,10 +9,6 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.junipertech.kickback.R;
-import com.junipertech.kickback.activities.Account_Settings;
-import com.junipertech.kickback.activities.Advanced_Settings;
-import com.junipertech.kickback.activities.More_Information;
-import com.junipertech.kickback.activities.Privacy_Settings;
 
 
 public class Settings extends Activity {
@@ -46,25 +42,25 @@ public class Settings extends Activity {
 
     public void account_info(View view)
     {
-        Intent intent = new Intent(this, Account_Settings.class);
+        Intent intent = new Intent(this, AccountSettings.class);
         startActivity(intent);
     }
 
     public void privacy_info(View view)
     {
-        Intent intent = new Intent(this, Privacy_Settings.class);
+        Intent intent = new Intent(this, PrivacySettings.class);
         startActivity(intent);
     }
 
     public void advanced_info(View view)
     {
-        Intent intent = new Intent(this, Advanced_Settings.class);
+        Intent intent = new Intent(this, AdvancedSettings.class);
         startActivity(intent);
     }
 
     public void more_info_btn(View view)
     {
-        Intent intent = new Intent(this, More_Information.class);
+        Intent intent = new Intent(this, MoreInformation.class);
         startActivity(intent);
     }
 

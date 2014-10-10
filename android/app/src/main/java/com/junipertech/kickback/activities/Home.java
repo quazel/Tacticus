@@ -38,11 +38,11 @@ public class Home extends Activity {
         switch(item.getItemId())
         {
             case R.id.action_my_friends:
-                Intent friendsIntent = new Intent(this, My_Friends.class);
+                Intent friendsIntent = new Intent(this, MyFriends.class);
                 startActivity(friendsIntent);
                 return true;
             case R.id.action_schedule:
-                Intent scheduleIntent = new Intent(this, Kickback_Schedule.class);
+                Intent scheduleIntent = new Intent(this, KickbacksSchedule.class);
                 startActivity(scheduleIntent);
                 return true;
             case R.id.action_settings:

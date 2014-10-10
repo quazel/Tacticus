@@ -8,12 +8,12 @@ import android.view.MenuItem;
 import com.junipertech.kickback.R;
 
 
-public class Kickback_List extends Activity {
+public class NotificationSettings extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_kickback__list);
+        setContentView(R.layout.activity_notification_settings);
         getActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
@@ -21,7 +21,7 @@ public class Kickback_List extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.kickback__list, menu);
+        getMenuInflater().inflate(R.menu.notification_settings, menu);
         return true;
     }
 
