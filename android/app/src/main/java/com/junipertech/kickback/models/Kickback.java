@@ -57,7 +57,7 @@ public class Kickback {
         int startHour = this.getStart().getHourOfDay();
         int stopHour = this.getStop().getHourOfDay();
 
-        toReturn += this.getStart().get(DateTimeFieldType.halfdayOfDay()) +
+        toReturn += this.getStart().get(DateTimeFieldType.hourOfHalfday()) +
                     ":" + startMinutes;
 
         if (startHour < 12 || startHour == 24) {
@@ -67,7 +67,7 @@ public class Kickback {
             toReturn +=  "pm" + " - ";
         }
 
-        toReturn += this.getStop().get(DateTimeFieldType.halfdayOfDay()) +
+        toReturn += this.getStop().get(DateTimeFieldType.hourOfHalfday()) +
                     ":" + stopMinutes;
 
         if (stopHour < 12 || startHour == 24) {
