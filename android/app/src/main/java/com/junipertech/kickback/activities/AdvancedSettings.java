@@ -48,15 +48,16 @@ public class AdvancedSettings extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void notification_settings(View view) {
+    public void openNotificationSettings(View view) {
         Intent intent = new Intent(this, NotificationSettings.class);
         startActivity(intent);
     }
 
-    public void geolocation_settings(View view) {
+    public void onGeolocationPressed(View view) {
         geolocationDialog(this);
     }
-    public void review_btn(View view) {
+
+    public void onReviewPressed(View view) {
 
     }
 

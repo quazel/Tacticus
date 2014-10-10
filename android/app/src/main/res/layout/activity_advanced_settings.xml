@@ -23,7 +23,7 @@
             android:background="@drawable/full_width_selector"
             android:text="@string/notification_settings"
             android:layout_weight="1"
-            android:onClick="notification_settings"
+            android:onClick="openNotificationSettings"
             android:gravity="start|center_vertical"
             android:id="@+id/account_advanced_notification_settings"/>
 
@@ -35,7 +35,7 @@
             android:lines="2"
             android:background="@drawable/full_width_selector"
             android:text="Geolocation"
-            android:onClick="geolocation_settings"
+            android:onClick="onGeolocationPressed"
             android:layout_weight="1"
             android:gravity="start|center_vertical"
             android:id="@+id/account_advanced_geolocation"/>
@@ -47,7 +47,7 @@
             android:paddingRight="9dp"
             android:background="@drawable/full_width_selector"
             android:text="Review This App"
-            android:onClick="review_btn"
+            android:onClick="onReviewPressed"
             android:layout_weight="1"
             android:gravity="start|center_vertical"
             android:id="@+id/account_advanced_review"/>

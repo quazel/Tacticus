@@ -57,11 +57,11 @@ public class AccountSettings extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void mobile_number_btn(View view) {
+    public void onMobileNumberPressed(View view) {
 
     }
 
-    public void email_btn(View view) {
+    public void onEmailPressed(View view) {
         emailDialog(this);
     }
 
