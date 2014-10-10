@@ -2,6 +2,7 @@ package com.junipertech.kickback.activities;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.Menu;
@@ -68,14 +69,21 @@ public class AccountSettings extends Activity {
     public void emailDialog(Activity activity) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-
         builder.setTitle("Enter your email");
 
-        final EditText input = new EditText(this);
-        input.append(tempEmail);
-        builder.setView(input);
+        final View view = getLayoutInflater().inflate(R.layout.email_dialog, null);
 
-        builder.setPositiveButton("Save", null);
+        final EditText input = (EditText) view.findViewById(R.id.email_field);
+        input.append(tempEmail);
+
+        builder.setView(view);
+        builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                tempEmail = input.getText().toString();
+                formatEmail(tempEmail);
+            }
+        });
         builder.setNegativeButton("Cancel", null);
 
         AlertDialog emailAlert = builder.create();
@@ -100,7 +108,7 @@ public class AccountSettings extends Activity {
 
     public void formatEmail(String s) {
         Button userEmail = (Button) findViewById(R.id.account_settings_email);
-        String firstEmail = (String)userEmail.getText();
+        String firstEmail = "Email";
         String nextEmail = "<br><font color='#c9c9c9'>"+s+"</font>";
         userEmail.setText(Html.fromHtml(firstEmail + "\n"+"<small>"+nextEmail+"</small>"));
     }
