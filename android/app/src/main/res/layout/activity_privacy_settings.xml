@@ -22,7 +22,7 @@
             android:paddingRight="9sp"
             android:background="@drawable/full_width_selector"
             android:text="Filter"
-            android:onClick="filter_btn"
+            android:onClick="onFilterPressed"
             android:layout_weight="1"
             android:gravity="start|center_vertical"
             android:id="@+id/account_privacy_filter"/>
@@ -34,7 +34,7 @@
             android:paddingRight="9sp"
             android:background="@drawable/full_width_selector"
             android:text="Block Users"
-            android:onClick="block_btn"
+            android:onClick="onBlockPressed"
             android:layout_weight="1"
             android:gravity="start|center_vertical"
             android:id="@+id/account_privacy_block"/>
@@ -46,7 +46,7 @@
             android:paddingRight="9sp"
             android:background="@drawable/full_width_selector"
             android:text="Unblock Users"
-            android:onClick="unblock_btn"
+            android:onClick="onUnblockPressed"
             android:layout_weight="1"
             android:gravity="start|center_vertical"
             android:id="@+id/account_privacy_unblock"/>

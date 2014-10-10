@@ -40,32 +40,27 @@ public class Settings extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void account_info(View view)
-    {
+    public void openAccountSettings(View view) {
         Intent intent = new Intent(this, AccountSettings.class);
         startActivity(intent);
     }
 
-    public void privacy_info(View view)
-    {
+    public void openPrivacySettings(View view) {
         Intent intent = new Intent(this, PrivacySettings.class);
         startActivity(intent);
     }
 
-    public void advanced_info(View view)
-    {
+    public void openAdvancedSettings(View view) {
         Intent intent = new Intent(this, AdvancedSettings.class);
         startActivity(intent);
     }
 
-    public void more_info_btn(View view)
-    {
+    public void openMoreInfo(View view) {
         Intent intent = new Intent(this, MoreInformation.class);
         startActivity(intent);
     }
 
-    public void logout(View view)
-    {
+    public void logoutUser(View view) {
         logoutDialog(this);
     }
 

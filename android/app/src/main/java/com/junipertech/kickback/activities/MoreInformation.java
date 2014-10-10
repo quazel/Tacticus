@@ -44,23 +44,19 @@ public class MoreInformation extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void privacy_policy_btn(View view)
-    {
+    public void onPrivacyPressed(View view) {
 
     }
 
-    public void terms_of_use_btn(View view)
-    {
+    public void onTermsOfUsePressed(View view) {
 
     }
 
-    public void version_btn(View view)
-    {
+    public void onVersionPressed(View view) {
 
     }
 
-    public void formatVersionButton(String s)
-    {
+    public void formatVersionButton(String s) {
         // formats phone number in account settings
         Button more_info_btn = (Button) findViewById(R.id.more_info_version_info);
         String firstVersion = (String)more_info_btn.getText();

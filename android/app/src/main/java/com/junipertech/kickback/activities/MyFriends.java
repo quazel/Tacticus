@@ -83,12 +83,10 @@ public class MyFriends extends Activity {
         }
     }
 
-    public void addFriendsToList()
-    {
+    public void addFriendsToList() {
         LinearLayout layout = (LinearLayout) findViewById(R.id.friends_list);
 
-        for(int i = 0; i < friends.size(); i++)
-        {
+        for(int i = 0; i < friends.size(); i++) {
 
             Button bt = new Button(this);
             bt.setText(setLabel(friends.get(i).getName()));
@@ -102,12 +100,10 @@ public class MyFriends extends Activity {
         }
     }
 
-    public void addFavoritesToList()
-    {
+    public void addFavoritesToList() {
         LinearLayout layout = (LinearLayout) findViewById(R.id.favorites_list);
 
-        for(int i = 0; i < favorites.size(); i++)
-        {
+        for(int i = 0; i < favorites.size(); i++) {
             Button bt = new Button(this);
             bt.setText(setLabel(favorites.get(i).getName()));
             bt.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
@@ -119,8 +115,7 @@ public class MyFriends extends Activity {
         }
     }
 
-    public Spanned setLabel(String name)
-    {
+    public Spanned setLabel(String name) {
         String username = "<br><font color='#c9c9c9'> username </font>";
         return Html.fromHtml(name + "\n" + "<small>" + username + "</small>");
     }

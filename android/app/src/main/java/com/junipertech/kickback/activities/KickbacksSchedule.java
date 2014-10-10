@@ -72,13 +72,11 @@ public class KickbacksSchedule extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void addKickbacks()
-    {
+    public void addKickbacks() {
         //temp reference variable, needs to be replaced with current datetime
         DateTime reference = new DateTime(2014,10,9,2,30,0,0);
 
-        for(int i = 0; i < kickbacks.size(); i++)
-        {
+        for(int i = 0; i < kickbacks.size(); i++) {
             Button bt = new Button(this);
             bt.setText(setLabel(kickbacks.get(i).toString(),kickbacks.get(i).getLocation()));
             bt.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT,
@@ -177,8 +175,7 @@ public class KickbacksSchedule extends Activity {
         }
     }
 
-    public Spanned setLabel(String time, String loc)
-    {
+    public Spanned setLabel(String time, String loc) {
         String location = "<br><font color='#c9c9c9'>"+loc+" </font>";
         return Html.fromHtml(time + "\n" + "<small>" + location + "</small>");
     }

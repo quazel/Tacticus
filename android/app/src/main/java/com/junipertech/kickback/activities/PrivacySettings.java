@@ -38,18 +38,15 @@ public class PrivacySettings extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void filter_btn(View view)
-    {
+    public void onFilterPressed(View view) {
 
     }
 
-    public void block_btn(View view)
-    {
+    public void onBlockPressed(View view) {
 
     }
 
-    public void unblock_btn(View view)
-    {
+    public void onUnblockPressed(View view) {
 
     }
 }

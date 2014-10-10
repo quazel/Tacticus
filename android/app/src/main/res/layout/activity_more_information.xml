@@ -22,7 +22,7 @@
             android:paddingRight="9sp"
             android:background="@drawable/full_width_selector"
             android:text="Privacy Policy"
-            android:onClick="privacy_policy_btn"
+            android:onClick="onPrivacyPressed"
             android:layout_weight="1"
             android:gravity="start|center_vertical"
             android:id="@+id/more_info_privacy_policy"/>
@@ -33,7 +33,7 @@
             android:paddingRight="9sp"
             android:background="@drawable/full_width_selector"
             android:text="Terms of Use"
-            android:onClick="terms_of_use_btn"
+            android:onClick="onTermsOfUsePressed"
             android:layout_weight="1"
             android:gravity="start|center_vertical"
             android:id="@+id/more_info_terms_of_use"/>
@@ -45,7 +45,7 @@
             android:paddingRight="9sp"
             android:background="@drawable/full_width_selector"
             android:text="Version"
-            android:onClick="version_btn"
+            android:onClick="onVersionPressed"
             android:layout_weight="1"
             android:gravity="start|center_vertical"
             android:id="@+id/more_info_version_info"/>

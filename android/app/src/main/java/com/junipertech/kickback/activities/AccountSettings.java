@@ -54,13 +54,11 @@ public class AccountSettings extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void mobile_number_btn(View view)
-    {
+    public void mobile_number_btn(View view) {
 
     }
 
-    public void email_btn(View view)
-    {
+    public void email_btn(View view) {
         emailDialog(this);
     }
 
@@ -77,24 +75,21 @@ public class AccountSettings extends Activity {
         builder.show();
     }
 
-    public void formatUsernameTextview(String s)
-    {
+    public void formatUsernameTextview(String s) {
         TextView user = (TextView) findViewById(R.id.account_settings_username);
         String firstUser = (String)user.getText();
         String nextUser = "<br><font color='#c9c9c9'>"+s+"</font>";
         user.setText(Html.fromHtml(firstUser + "\n" + "<small>" + nextUser + "</small>"));
     }
 
-    public void formatPhoneNumberButton(String s)
-    {
+    public void formatPhoneNumberButton(String s) {
         Button phoneNumber = (Button) findViewById(R.id.account_settings_phone_number);
         String firstNumber = (String)phoneNumber.getText();
         String nextNumber = "<br><font color='#c9c9c9'>"+s+"</font>";
         phoneNumber.setText(Html.fromHtml(firstNumber + "\n"+"<small>"+nextNumber+"</small>"));
     }
 
-    public void formatEmail(String s)
-    {
+    public void formatEmail(String s) {
         Button userEmail = (Button) findViewById(R.id.account_settings_email);
         String firstEmail = (String)userEmail.getText();
         String nextEmail = "<br><font color='#c9c9c9'>"+s+"</font>";

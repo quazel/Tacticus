@@ -61,12 +61,11 @@ public class Home extends Activity {
         startActivity(intent);
     }*/
 
-    public void onToggleClicked(View view)
-    {
+    public void onToggleClicked(View view) {
+
         boolean on = ((ToggleButton) view).isChecked();
 
-        if(on)
-        {
+        if(on) {
            // Intent kickbackIntent = new Intent(this, Kickback_List.class);
             //startActivity(kickbackIntent);
         }

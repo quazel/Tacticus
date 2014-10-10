@@ -68,7 +68,7 @@ public class AdvancedSettings extends Activity {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 
 
-        //builder.setMessage("Are you sure you would like to logout?");
+        //builder.setMessage("Are you sure you would like to logoutUser?");
         builder.setPositiveButton("Enable", null);
         builder.setNegativeButton("Disable", null);
         builder.show();
