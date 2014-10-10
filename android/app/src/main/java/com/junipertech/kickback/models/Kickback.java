@@ -55,7 +55,7 @@ public class Kickback {
 
         String toReturn = "";
         int startHour = this.getStart().getHourOfDay();
-        int stopHour = this.getStart().getHourOfDay();
+        int stopHour = this.getStop().getHourOfDay();
 
         toReturn += this.getStart().get(DateTimeFieldType.halfdayOfDay()) +
                     ":" + startMinutes;
