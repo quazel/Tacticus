@@ -21,6 +21,32 @@
             android:paddingLeft="9dp"
             android:paddingRight="9dp"
             android:background="@drawable/full_width_selector"
+            android:text="Version"
+            android:onClick="onVersionPressed"
+            android:layout_weight="1"
+            android:gravity="start|center_vertical"
+            android:id="@+id/more_info_version_info"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="9dp"
+            android:paddingRight="9dp"
+            android:background="@drawable/title_label"
+            android:textColor="@color/darkGreen"
+            android:text="LEGAL"
+            android:layout_weight="1"
+            android:maxLines="3"
+            android:lines="2"
+            android:gravity="start|center_vertical"
+            android:id="@+id/legal_label"/>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="9dp"
+            android:paddingRight="9dp"
+            android:background="@drawable/full_width_selector"
             android:text="Privacy Policy"
             android:onClick="onPrivacyPressed"
             android:layout_weight="1"
@@ -32,23 +58,11 @@
             android:paddingLeft="9dp"
             android:paddingRight="9dp"
             android:background="@drawable/full_width_selector"
-            android:text="Terms of Use"
+            android:text="Terms of Service"
             android:onClick="onTermsOfUsePressed"
             android:layout_weight="1"
             android:gravity="start|center_vertical"
             android:id="@+id/more_info_terms_of_use"/>
-
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="9dp"
-            android:paddingRight="9dp"
-            android:background="@drawable/full_width_selector"
-            android:text="Version"
-            android:onClick="onVersionPressed"
-            android:layout_weight="1"
-            android:gravity="start|center_vertical"
-            android:id="@+id/more_info_version_info"/>
 
     </LinearLayout>
 
