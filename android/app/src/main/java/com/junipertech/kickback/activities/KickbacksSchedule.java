@@ -14,9 +14,9 @@ import android.widget.LinearLayout;
 
 import com.junipertech.kickback.R;
 import com.junipertech.kickback.models.Kickback;
+import com.junipertech.kickback.util.Util;
 
 import org.joda.time.DateTime;
-import org.joda.time.DateTimeFieldType;
 import org.joda.time.Days;
 
 import java.util.ArrayList;
@@ -97,15 +97,23 @@ public class KickbacksSchedule extends Activity {
 
         for(int i = 0; i < kickbacks.size(); i++) {
             Button bt = new Button(this);
-            bt.setText(setLabel(kickbacks.get(i).toString(),kickbacks.get(i).getLocation()));
+            bt.setText(setLabel(kickbacks.get(i).getTimeRange(),kickbacks.get(i).getLocation()));
             bt.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT));
             bt.setBackgroundResource(R.drawable.full_width_selector);
             bt.setGravity(Gravity.START | Gravity.CENTER_VERTICAL);
             bt.setLines(3);
+            int padding = Util.dpToPixels(getResources(), 9);
+            bt.setPadding(padding, 0, padding, 0);
 
-            layouts.get(Days.daysBetween(reference.toLocalDate(),
-                        kickbacks.get(i).getStart().toLocalDate()).getDays()).addView(bt);
+            try {
+                layouts.get(Days.daysBetween(reference.toLocalDate(),
+                        kickbacks.get(i).getStart().toLocalDate()).getDays())
+                        .addView(bt);
+            }
+            catch (ArrayIndexOutOfBoundsException e) {
+
+            }
         }
     }
 

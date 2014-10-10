@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import com.junipertech.kickback.R;
 import com.junipertech.kickback.models.Friend;
 import com.junipertech.kickback.models.Kickback;
+import com.junipertech.kickback.util.Util;
 
 import java.util.ArrayList;
 
@@ -97,7 +98,10 @@ public class MyFriends extends Activity {
             bt.setBackgroundResource(R.drawable.full_width_selector);
             bt.setGravity(Gravity.START | Gravity.CENTER_VERTICAL);
             bt.setLines(3);
+            int padding = Util.dpToPixels(getResources(), 9);
+            bt.setPadding(padding, 0, padding, 0);
             layout.addView(bt);
+
 
         }
     }
@@ -113,6 +117,8 @@ public class MyFriends extends Activity {
             bt.setBackgroundResource(R.drawable.full_width_selector);
             bt.setGravity(Gravity.START | Gravity.CENTER_VERTICAL);
             bt.setLines(3);
+            int padding = Util.dpToPixels(getResources(), 9);
+            bt.setPadding(padding, 0, padding, 0);
             layout.addView(bt);
         }
     }
