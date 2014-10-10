@@ -74,7 +74,7 @@ public class KickbacksSchedule extends Activity {
 
     public void addKickbacks() {
         //temp reference variable, needs to be replaced with current datetime
-        DateTime reference = new DateTime(2014,10,9,2,30,0,0);
+        DateTime reference = DateTime.now();
 
         for(int i = 0; i < kickbacks.size(); i++) {
             Button bt = new Button(this);
