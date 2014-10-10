@@ -18,8 +18,8 @@
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="9sp"
-            android:paddingRight="9sp"
+            android:paddingLeft="9dp"
+            android:paddingRight="9dp"
             android:background="@drawable/full_width_selector"
             android:text="Privacy Policy"
             android:onClick="onPrivacyPressed"
@@ -29,8 +29,8 @@
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="9sp"
-            android:paddingRight="9sp"
+            android:paddingLeft="9dp"
+            android:paddingRight="9dp"
             android:background="@drawable/full_width_selector"
             android:text="Terms of Use"
             android:onClick="onTermsOfUsePressed"
@@ -41,8 +41,8 @@
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="9sp"
-            android:paddingRight="9sp"
+            android:paddingLeft="9dp"
+            android:paddingRight="9dp"
             android:background="@drawable/full_width_selector"
             android:text="Version"
             android:onClick="onVersionPressed"

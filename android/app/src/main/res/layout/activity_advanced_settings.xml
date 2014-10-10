@@ -18,8 +18,8 @@
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="9sp"
-            android:paddingRight="9sp"
+            android:paddingLeft="9dp"
+            android:paddingRight="9dp"
             android:background="@drawable/full_width_selector"
             android:text="@string/notification_settings"
             android:layout_weight="1"
@@ -30,8 +30,8 @@
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="9sp"
-            android:paddingRight="9sp"
+            android:paddingLeft="9dp"
+            android:paddingRight="9dp"
             android:lines="2"
             android:background="@drawable/full_width_selector"
             android:text="Geolocation"
@@ -43,8 +43,8 @@
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="9sp"
-            android:paddingRight="9sp"
+            android:paddingLeft="9dp"
+            android:paddingRight="9dp"
             android:background="@drawable/full_width_selector"
             android:text="Review This App"
             android:onClick="review_btn"

@@ -64,9 +64,15 @@
             android:parentActivityName=".activities.Home" >
         </activity>
         <activity
-            android:name=".activities.FriendManager"
-            android:label="@string/friend_manager"
-            android:parentActivityName=".activities.MyFriends">
+            android:name=".activities.SplashScreen"
+            android:label="@string/title_activity_splash_screen"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>>
         </activity>
     </application>
 

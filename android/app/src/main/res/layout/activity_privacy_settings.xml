@@ -18,8 +18,8 @@
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="9sp"
-            android:paddingRight="9sp"
+            android:paddingLeft="9dp"
+            android:paddingRight="9dp"
             android:background="@drawable/full_width_selector"
             android:text="Filter"
             android:onClick="onFilterPressed"
@@ -30,8 +30,8 @@
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="9sp"
-            android:paddingRight="9sp"
+            android:paddingLeft="9dp"
+            android:paddingRight="9dp"
             android:background="@drawable/full_width_selector"
             android:text="Block Users"
             android:onClick="onBlockPressed"
@@ -42,8 +42,8 @@
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="9sp"
-            android:paddingRight="9sp"
+            android:paddingLeft="9dp"
+            android:paddingRight="9dp"
             android:background="@drawable/full_width_selector"
             android:text="Unblock Users"
             android:onClick="onUnblockPressed"
