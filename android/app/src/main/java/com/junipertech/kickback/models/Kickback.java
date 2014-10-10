@@ -42,7 +42,7 @@ public class Kickback {
     }
 
 
-    public String toString() {
+    public String getTimeRange() {
         String startMinutes = Integer.toString(this.getStart().getMinuteOfHour());
         String stopMinutes = Integer.toString(this.getStop().getMinuteOfHour());
 
@@ -57,18 +57,24 @@ public class Kickback {
         int startHour = this.getStart().getHourOfDay();
         int stopHour = this.getStop().getHourOfDay();
 
-        toReturn += this.getStart().get(DateTimeFieldType.hourOfHalfday()) +
-                    ":" + startMinutes;
+        int hour = this.getStart().get(DateTimeFieldType.hourOfHalfday());
+        if (hour == 0) {
+            hour += 1;
+        }
+        toReturn += hour + ":" + startMinutes;
 
         if (startHour < 12 || startHour == 24) {
-            toReturn+= "am" + " - ";
+            toReturn+= "am - ";
         }
         else {
-            toReturn +=  "pm" + " - ";
+            toReturn +=  "pm - ";
         }
 
-        toReturn += this.getStop().get(DateTimeFieldType.hourOfHalfday()) +
-                    ":" + stopMinutes;
+        hour = this.getStop().get(DateTimeFieldType.hourOfHalfday());
+        if (hour == 0) {
+            hour += 1;
+        }
+        toReturn += hour + ":" + stopMinutes;
 
         if (stopHour < 12 || startHour == 24) {
             toReturn += "am";
@@ -81,10 +87,10 @@ public class Kickback {
     }
 
     /*
-    public String toString() {
+    public String getTimeRange() {
 
-        String startMinutes = Integer.toString(this.getStart().getMinuteOfHour());
-        String stopMinutes = Integer.toString(this.getStop().getMinuteOfHour());
+        String startMinutes = Integer.getTimeRange(this.getStart().getMinuteOfHour());
+        String stopMinutes = Integer.getTimeRange(this.getStop().getMinuteOfHour());
 
         if(startMinutes.equals("0")) {
             startMinutes = "00";
