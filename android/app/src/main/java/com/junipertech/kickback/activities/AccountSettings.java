@@ -18,6 +18,8 @@ import com.junipertech.kickback.models.*;
 
 public class AccountSettings extends Activity {
 
+    private String tempEmail;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,15 +27,14 @@ public class AccountSettings extends Activity {
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
         // formats username in account settings
-
         String username = "temp username"; //dummy variable
         formatUsernameTextview(username);
         // formats phone number in account settings
         String number = "0-000-000-0000"; //dummy variable
         formatPhoneNumberButton(number);
         //formats email in account settings
-        String email = "dummyemail@temp.com"; //dummy variable
-        formatEmail(email);
+        tempEmail = "burgle@burgle.com";//dummy variable
+        formatEmail(tempEmail);
     }
 
 
@@ -71,7 +72,7 @@ public class AccountSettings extends Activity {
         builder.setTitle("Enter your email");
 
         final EditText input = new EditText(this);
-        input.setText(User.getEmail());
+        input.append(tempEmail);
         builder.setView(input);
 
         builder.setPositiveButton("Save", null);
