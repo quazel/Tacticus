@@ -41,6 +41,43 @@ public class Kickback {
         return period.getHours() > 1;
     }
 
+
+    public String toString() {
+        String startMinutes = Integer.toString(this.getStart().getMinuteOfHour());
+        String stopMinutes = Integer.toString(this.getStop().getMinuteOfHour());
+
+        if (startMinutes.equals("0")) {
+            startMinutes = "00";
+        }
+        if (stopMinutes.equals("0")) {
+            stopMinutes = "00";
+        }
+
+        String toReturn = "";
+        int startHour = this.getStart().getHourOfDay();
+        int stopHour = this.getStart().getHourOfDay();
+        if (startHour < 12 || startHour == 24) {
+            toReturn += this.getStart().get(DateTimeFieldType.halfdayOfDay()) +
+                        ":" + startMinutes + "am" + " - ";
+        }
+        else {
+            toReturn += this.getStart().get(DateTimeFieldType.halfdayOfDay()) +
+                        ":" + startMinutes + "pm" + " - ";
+        }
+
+        if (stopHour < 12 || startHour == 24) {
+            toReturn += this.getStop().get(DateTimeFieldType.halfdayOfDay()) +
+                        ":" + stopMinutes + "am";
+        }
+        else {
+            toReturn += this.getStop().get(DateTimeFieldType.halfdayOfDay()) +
+                        ":" + stopMinutes + "pm";
+        }
+
+        return toReturn;
+    }
+
+    /*
     public String toString() {
 
         String startMinutes = Integer.toString(this.getStart().getMinuteOfHour());
@@ -88,5 +125,5 @@ public class Kickback {
                     stopMinutes+"pm";
 
         }
-    }
+    }*/
 }
