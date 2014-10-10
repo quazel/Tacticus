@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 
 import com.junipertech.kickback.R;
 import com.junipertech.kickback.models.Kickback;
+import com.junipertech.kickback.util.Util;
 
 import org.joda.time.DateTime;
 import org.joda.time.Days;
@@ -102,6 +103,8 @@ public class KickbacksSchedule extends Activity {
             bt.setBackgroundResource(R.drawable.full_width_selector);
             bt.setGravity(Gravity.START | Gravity.CENTER_VERTICAL);
             bt.setLines(3);
+            int padding = Util.dpToPixels(getResources(), 9);
+            bt.setPadding(padding, 0, padding, 0);
 
             try {
                 layouts.get(Days.daysBetween(reference.toLocalDate(),
