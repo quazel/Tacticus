@@ -22,8 +22,8 @@
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="9sp"
-                android:paddingRight="9sp"
+                android:paddingLeft="9dp"
+                android:paddingRight="9dp"
                 android:background="@drawable/title_label"
                 android:textColor="@color/darkGreen"
                 android:text="FAVORITES"
@@ -43,8 +43,8 @@
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="9sp"
-                android:paddingRight="9sp"
+                android:paddingLeft="9dp"
+                android:paddingRight="9dp"
                 android:background="@drawable/title_label"
                 android:textColor="@color/darkGreen"
                 android:text="FRIENDS"
