@@ -7,11 +7,13 @@ import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.junipertech.kickback.R;
+import com.junipertech.kickback.models.*;
 
 
 public class AccountSettings extends Activity {
@@ -63,16 +65,22 @@ public class AccountSettings extends Activity {
     }
 
     public void emailDialog(Activity activity) {
+
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 
         builder.setTitle("Enter your email");
 
         final EditText input = new EditText(this);
+        input.setText(User.getEmail());
         builder.setView(input);
 
         builder.setPositiveButton("Save", null);
         builder.setNegativeButton("Cancel", null);
-        builder.show();
+
+        AlertDialog emailAlert = builder.create();
+        emailAlert.getWindow().setSoftInputMode(
+                WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+        emailAlert.show();
     }
 
     public void formatUsernameTextview(String s) {
