@@ -71,14 +71,9 @@ public class MyFriends extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         switch(item.getItemId()) {
-            /*
             case R.id.action_add_friend:
-                Intent friendManagerIntent = new Intent(this, FriendManager.class);
-                startActivity(friendManagerIntent);
-                return true;
-            */
-            case R.id.action_search:
-
+                Intent addFriendsIntent = new Intent(this, AddFriend.class);
+                startActivity(addFriendsIntent);
                 return true;
 
             default:

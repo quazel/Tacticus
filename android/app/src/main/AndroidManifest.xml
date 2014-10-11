@@ -78,12 +78,22 @@
         <activity
             android:name=".activities.TermsOfService"
             android:label="@string/title_activity_terms_of_service"
-            android:parentActivityName=".activities.MoreInformation">
+            android:parentActivityName=".activities.MoreInformation" >
         </activity>
         <activity
             android:name=".activities.PrivacyPolicy"
             android:label="@string/title_activity_privacy_policy"
-            android:parentActivityName=".activities.MoreInformation">
+            android:parentActivityName=".activities.MoreInformation" >
+        </activity>
+        <activity
+            android:name=".activities.AddKickback"
+            android:label="@string/title_activity_add_kickback"
+            android:parentActivityName=".activities.KickbacksSchedule" >
+        </activity>
+        <activity
+            android:name=".activities.AddFriend"
+            android:label="@string/title_activity_add_friend"
+            android:parentActivityName=".activities.MyFriends">
         </activity>
     </application>
 
