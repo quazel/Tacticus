@@ -43,6 +43,7 @@
             android:paddingRight="9dp"
             android:background="@drawable/full_width_selector"
             android:text="All Friends"
+            android:button="@drawable/custom_checkbox"
             android:layout_weight="1"
             android:gravity="left|center_vertical"
             android:id="@+id/notifications_all_friends"/>
@@ -53,6 +54,7 @@
             android:paddingRight="9dp"
             android:background="@drawable/full_width_selector"
             android:text="Favorites"
+            android:button="@drawable/custom_checkbox"
             android:layout_weight="1"
             android:gravity="left|center_vertical"
             android:id="@+id/notifications_favorites"/>
@@ -63,6 +65,7 @@
             android:paddingRight="9dp"
             android:background="@drawable/full_width_selector"
             android:text="Nobody"
+            android:button="@drawable/custom_checkbox"
             android:layout_weight="1"
             android:gravity="left|center_vertical"
             android:id="@+id/notifications_nobody"/>
@@ -90,6 +93,7 @@
             android:paddingRight="9dp"
             android:background="@drawable/full_width_selector"
             android:text="Vibrate"
+            android:button="@drawable/custom_checkbox"
             android:layout_weight="1"
             android:gravity="left|center_vertical"
             android:id="@+id/notification_feature_vibrate"/>
@@ -100,6 +104,7 @@
             android:paddingRight="9dp"
             android:background="@drawable/full_width_selector"
             android:text="LED Blinking"
+            android:button="@drawable/custom_checkbox"
             android:layout_weight="1"
             android:gravity="left|center_vertical"
             android:id="@+id/notification_feature_led"/>
