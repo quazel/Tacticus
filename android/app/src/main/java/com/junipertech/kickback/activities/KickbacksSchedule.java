@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 
 import com.junipertech.kickback.R;
 import com.junipertech.kickback.models.Kickback;
+import com.junipertech.kickback.util.Globals;
 import com.junipertech.kickback.util.Util;
 
 import org.joda.time.DateTime;
@@ -24,7 +25,7 @@ import java.util.ArrayList;
 
 public class KickbacksSchedule extends Activity {
 
-    ArrayList<Kickback> kickbacks;
+    ArrayList<Kickback> kickbacks = Globals.kickbacks;
     ArrayList<LinearLayout> layouts;
 
     @Override
@@ -50,20 +51,8 @@ public class KickbacksSchedule extends Activity {
         layouts.add((LinearLayout) findViewById(R.id.list_13));
         layouts.add((LinearLayout) findViewById(R.id.list_14));
 
-        kickbacks = new ArrayList<Kickback>();
-        kickbacks.add(new Kickback(new DateTime(2014,10,9,5,30,0,0),
-                                   new DateTime(2014,10,9,8,0,0,0),"Tempe, AZ"));
-        kickbacks.add(new Kickback(new DateTime(2014,10,10,6,30,0,0),
-                                   new DateTime(2014,10,10,9,0,0,0),"Woodstock, VT"));
-        kickbacks.add(new Kickback(new DateTime(2014,10,10,12,30,0,0),
-                                   new DateTime(2014,10,10,16,0,0,0),"San Francisco, CA"));
-        kickbacks.add(new Kickback(new DateTime(2014,10,13,5,30,0,0),
-                                   new DateTime(2014,10,13,8,0,0,0),"New York City, NY"));
-        kickbacks.add(new Kickback(new DateTime(2014,10,15,15,30,0,0),
-                                   new DateTime(2014,10,15,18,0,0,0),"Boston, MA"));
-        kickbacks.add(new Kickback(new DateTime(2014,10,20,18,30,0,0),
-                                   new DateTime(2014,10,20,22,0,0,0),"Seattle, OR"));
-
+        if (kickbacks.size() == 0)
+            Globals.initKickbacks();
 
         addKickbacks();
     }

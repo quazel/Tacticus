@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import com.junipertech.kickback.R;
 import com.junipertech.kickback.models.Friend;
 import com.junipertech.kickback.models.Kickback;
+import com.junipertech.kickback.util.Globals;
 import com.junipertech.kickback.util.Util;
 
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ import java.util.ArrayList;
 
 public class MyFriends extends Activity {
 
-    ArrayList<Friend> friends;
+    ArrayList<Friend> friends = Globals.friends;
     ArrayList<Friend> favorites;
     ArrayList<Kickback> kickback;
 
@@ -33,17 +34,11 @@ public class MyFriends extends Activity {
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
         //dummy arraylists for formatting purposes
-        friends = new ArrayList<Friend>();
         favorites = new ArrayList<Friend>();
         kickback = new ArrayList<Kickback>();
 
-        friends.add(new Friend("Bob", "1-911-911-9119", kickback));
-        friends.add(new Friend("Jim", "1-802-457-9834", kickback));
-        friends.add(new Friend("Nathan Fegard", "1-603-667-7830", kickback));
-        friends.add(new Friend("Kelly", "1-420-420-Blaze'em", kickback));
-        friends.add(new Friend("JSON", "1-452-735-9384", kickback));
-        friends.add(new Friend("Burgle", "1-746-412-9001", kickback));
-        friends.add(new Friend("Jeremy Adams", "1-480-390-7762", kickback));
+        if(friends.size() == 0)
+            Globals.initFriends();
 
         favorites.add(friends.get(2));
         favorites.add(friends.get(4));

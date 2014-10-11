@@ -15,6 +15,7 @@ import com.junipertech.kickback.R;
 import com.junipertech.kickback.models.Friend;
 import com.junipertech.kickback.models.Kickback;
 import com.junipertech.kickback.util.Util;
+import com.junipertech.kickback.util.Globals;
 
 import java.util.ArrayList;
 
@@ -24,7 +25,7 @@ public class KickbacksList extends Activity {
     ArrayList<Friend> activeKickbacks;
     ArrayList<Friend> activeFavorites;
     ArrayList<Friend> favorites;
-    ArrayList<Kickback> kickback; //filler empty kickback NO INFO
+    ArrayList<Kickback> kickback = Globals.kickbacks; //filler empty kickback NO INFO
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,6 @@ public class KickbacksList extends Activity {
         activeKickbacks = new ArrayList<Friend>();
         activeFavorites = new ArrayList<Friend>();
         favorites = new ArrayList<Friend>();
-        kickback = new ArrayList<Kickback>();
 
         //Dummy Info
         activeKickbacks.add(new Friend("Steven Smith", "555-888-1234", kickback));
