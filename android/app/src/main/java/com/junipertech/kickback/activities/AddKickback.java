@@ -128,7 +128,7 @@ public class AddKickback extends Activity {
 
         int iHours = Integer.parseInt(startTimeHours.getSelectedItem().toString());
         if(!start_am){
-            iHours++;
+            iHours+=12;
         }
         int iMinutes = Integer.parseInt(startTimeMinutes.getSelectedItem().toString());
 
@@ -146,7 +146,7 @@ public class AddKickback extends Activity {
 
         int iHours = Integer.parseInt(endTimeHours.getSelectedItem().toString());
         if(!end_am){
-            iHours++;
+            iHours+=12;
         }
         int iMinutes = Integer.parseInt(endTimeMinutes.getSelectedItem().toString());
 
