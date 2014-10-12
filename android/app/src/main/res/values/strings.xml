@@ -43,6 +43,8 @@
     <string name="title_activity_privacy_policy">Privacy Policy</string>
     <string name="title_activity_add_kickback">Add New Kickback</string>
     <string name="title_activity_add_friend">Find Friends</string>
+    <string name="title_tab_add_friend">Add Friends</string>
+    <string name="title_tab_friend_requests">Friend Requests</string>
 
 
 
