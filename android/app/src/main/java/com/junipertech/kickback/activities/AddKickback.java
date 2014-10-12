@@ -97,32 +97,14 @@ public class AddKickback extends Activity {
     }
 
     private void setYearSpinner(){
-        DateTime dt = new DateTime();
-        String thisYear = Integer.toString(dt.getYear());
-        String nextYear = Integer.toString(dt.getYear()+1);
+        DateTime currentTime = new DateTime();
+        String thisYear = Integer.toString(currentTime.getYear());
+        String nextYear = Integer.toString(currentTime.getYear()+1);
         final String[] yearChoices = {thisYear,nextYear};
         ArrayAdapter<String> yearAdapt = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, yearChoices);
         yearAdapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         year.setAdapter(yearAdapt);
     }
-    /*
-    private int monthToInt(String convertMonth){
-        if(convertMonth.equals("January")){ return 1;}
-        if(convertMonth.equals("Febuary")){ return 2;}
-        if(convertMonth.equals("March")){ return 3;}
-        if(convertMonth.equals("April")){ return 4;}
-        if(convertMonth.equals("May")){ return 5;}
-        if(convertMonth.equals("June")){ return 6;}
-        if(convertMonth.equals("July")){ return 7;}
-        if(convertMonth.equals("August")){ return 8;}
-        if(convertMonth.equals("September")){ return 9;}
-        if(convertMonth.equals("October")){ return 10;}
-        if(convertMonth.equals("Novermber")){ return 11;}
-        if(convertMonth.equals("December")){ return 12;}
-        return -1; //Sentinel Value for bogus input
-    }
-    */
-
 
     public void endTimeToggle(View view) {
         end_am = !((ToggleButton) view).isChecked();
