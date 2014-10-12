@@ -19,8 +19,6 @@ import com.junipertech.kickback.models.Kickback;
 
 import org.joda.time.DateTime;
 
-import java.util.ArrayList;
-
 public class AddKickback extends Activity {
     //private ArrayList<String> days;
     //private ArrayList<String> months;
@@ -79,8 +77,23 @@ public class AddKickback extends Activity {
     }
 
     private void setDaySpinner(){
+
         int iMonth = month.getSelectedItemPosition()+1;
-        //TODO This method will set the day spinner variables
+        int iYear = Integer.parseInt(year.getSelectedItem().toString());
+
+
+        DateTime dt = new DateTime(iYear,iMonth,1,1,0);
+        int monthDays = dt.dayOfMonth().getMaximumValue();
+
+
+
+        String[] dayChoices = new String[monthDays];
+        for(int i = 0; i<monthDays; i++){
+            dayChoices[i] = Integer.toString(i+1); //There has to be a better way of doing this
+        }
+        ArrayAdapter<String> dayAdapt = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, dayChoices);
+        dayAdapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        day.setAdapter(dayAdapt);
     }
 
     private void setYearSpinner(){
