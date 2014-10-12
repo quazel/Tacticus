@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.junipertech.kickback.R;
 import com.junipertech.kickback.models.*;
+import com.junipertech.kickback.util.Globals;
 
 
 public class AccountSettings extends Activity {
@@ -34,8 +35,7 @@ public class AccountSettings extends Activity {
         String number = "0-000-000-0000"; //dummy variable
         formatPhoneNumberButton(number);
         //formats email in account settings
-        tempEmail = "burgle@burgle.com";//dummy variable
-        formatEmail(tempEmail);
+        formatEmail(Globals.theUser.getEmail());
     }
 
 
@@ -74,14 +74,14 @@ public class AccountSettings extends Activity {
         final View view = getLayoutInflater().inflate(R.layout.email_dialog, null);
 
         final EditText input = (EditText) view.findViewById(R.id.email_field);
-        input.append(tempEmail);
+        input.append(Globals.theUser.getEmail());
 
         builder.setView(view);
         builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                tempEmail = input.getText().toString();
-                formatEmail(tempEmail);
+                Globals.theUser.setEmail(input.getText().toString());
+                formatEmail(Globals.theUser.getEmail());
             }
         });
         builder.setNegativeButton("Cancel", null);
