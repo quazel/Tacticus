@@ -20,10 +20,9 @@ import com.junipertech.kickback.models.Kickback;
 import org.joda.time.DateTime;
 
 public class AddKickback extends Activity {
-    //private ArrayList<String> days;
-    //private ArrayList<String> months;
     Spinner month, day, year;
     String[] dayChoices;
+    DateTime currentTime;
 
     private boolean start_am;
     private boolean end_am;
@@ -38,7 +37,7 @@ public class AddKickback extends Activity {
         day = (Spinner)findViewById(R.id.day_input);
         year = (Spinner)findViewById(R.id.year_input);
 
-        DateTime currentTime = new DateTime();
+        currentTime = new DateTime();
         month.setSelection(currentTime.getMonthOfYear()-1);
 
         setYearSpinner();
@@ -92,12 +91,10 @@ public class AddKickback extends Activity {
         for(int i = 0; i<monthDays; i++){
             dayChoices[i] = Integer.toString(i+1); //There has to be a better way of doing this
         }
-        DateTime currentTime = new DateTime();
         day.setSelection(currentTime.getDayOfMonth()-2); //Why the heck is this 2?
     }
 
     private void setYearSpinner(){
-        DateTime currentTime = new DateTime();
         String thisYear = Integer.toString(currentTime.getYear());
         String nextYear = Integer.toString(currentTime.getYear()+1);
         final String[] yearChoices = {thisYear,nextYear};
