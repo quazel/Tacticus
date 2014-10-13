@@ -42,7 +42,7 @@
         android:textColor="@color/white"
         android:textSize="30sp"
         android:id="@+id/buttonSignIn"
-        android:onClick="SignInPressed"
+        android:onClick="signInPressed"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 

@@ -19,10 +19,10 @@
         android:background="@drawable/button_shape"
         android:textColor="@color/white"
         android:textSize="30sp"
-        android:id="@+id/buttonSignIn"
+        android:id="@+id/buttonChooseSignIn"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:onClick="SignInPressed"/>
+        android:onClick="onSignInPressed"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -34,7 +34,7 @@
         android:paddingTop="20dp"
         android:paddingBottom="20dp"
         android:id="@+id/textViewOr"
-        android:layout_below="@+id/buttonSignIn"
+        android:layout_below="@+id/buttonChooseSignIn"
         android:layout_centerHorizontal="true" />
 
     <Button
@@ -45,8 +45,8 @@
         android:textStyle="bold"
         android:textColor="@color/white"
         android:background="@drawable/button_shape"
-        android:id="@+id/buttonSignUp"
+        android:id="@+id/buttonChooseSignUp"
         android:layout_below="@+id/textViewOr"
         android:layout_centerHorizontal="true"
-        android:onClick="SignUpPressed"/>
+        android:onClick="onSignUpPressed"/>
 </RelativeLayout>
