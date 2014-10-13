@@ -23,11 +23,10 @@ public class AddKickback extends Activity {
     //private ArrayList<String> days;
     //private ArrayList<String> months;
     Spinner month, day, year;
-
+    String[] dayChoices;
 
     private boolean start_am;
     private boolean end_am;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,22 +38,29 @@ public class AddKickback extends Activity {
         day = (Spinner)findViewById(R.id.day_input);
         year = (Spinner)findViewById(R.id.year_input);
 
-        month.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                setDaySpinner(); //Load Day Spinner on month change
-            }
-
-            public void onNothingSelected(AdapterView<?> adapterView) {
-                return;
-            }
-        });
-
+        DateTime currentTime = new DateTime();
+        month.setSelection(currentTime.getMonthOfYear()-1);
 
         setYearSpinner();
 
+        //setDaySpinner
+        updateDaySpinner();
+        ArrayAdapter<String> dayAdapt = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, dayChoices);
+        dayAdapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        day.setAdapter(dayAdapt);
+
+        month.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                updateDaySpinner(); //Load Day Spinner on month change
+            }
+
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                //Do Nothing
+            }
+        });
+
         start_am = true;
         end_am = true;
-
 
     }
 
@@ -76,24 +82,18 @@ public class AddKickback extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void setDaySpinner(){
-
+    private void updateDaySpinner(){
         int iMonth = month.getSelectedItemPosition()+1;
         int iYear = Integer.parseInt(year.getSelectedItem().toString());
-
-
         DateTime dt = new DateTime(iYear,iMonth,1,1,0);
         int monthDays = dt.dayOfMonth().getMaximumValue();
 
-
-
-        String[] dayChoices = new String[monthDays];
+        dayChoices = new String[monthDays];
         for(int i = 0; i<monthDays; i++){
             dayChoices[i] = Integer.toString(i+1); //There has to be a better way of doing this
         }
-        ArrayAdapter<String> dayAdapt = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, dayChoices);
-        dayAdapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        day.setAdapter(dayAdapt);
+        DateTime currentTime = new DateTime();
+        day.setSelection(currentTime.getDayOfMonth()-2); //Why the heck is this 2?
     }
 
     private void setYearSpinner(){
