@@ -52,13 +52,14 @@ public class MyFriends_ListView extends Activity {
         ListView friendsListView = (ListView)findViewById(R.id.friends_list);
         ListView favoritesListView = (ListView)findViewById(R.id.favorites_list);
 
-        final ArrayAdapter<Friend> friendsAdapter = new ArrayAdapter<Friend>(this, R.layout.list_item, R.id.friend_thing, friends);
+        ArrayAdapter<Friend> friendsAdapter = new ArrayAdapter<Friend>(this, R.layout.list_item, R.id.friend_thing, friends);
         ArrayAdapter<Friend> favoritesAdapter = new ArrayAdapter<Friend>(this, R.layout.list_item, R.id.friend_thing, favorites);
 
         EditText searchInput = (EditText)findViewById(R.id.txt_search); //Find the EditText that will take input from the user
 
         friendsListView.setAdapter(friendsAdapter);
         favoritesListView.setAdapter(favoritesAdapter);
+
         setListViewHeightBasedOnChildren(friendsListView);
         setListViewHeightBasedOnChildren(favoritesListView);
 
