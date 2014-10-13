@@ -10,13 +10,18 @@
         android:label="@string/title_activity_home"
         android:theme="@style/MyTheme" >
         <activity
-            android:name=".activities.Home"
-            android:label="@string/Kickback" >
+            android:name=".activities.SplashScreen"
+            android:label="@string/title_activity_splash_screen"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.Home"
+            android:label="@string/Kickback" >
         </activity>
         <activity
             android:name=".activities.KickbacksList"
@@ -62,18 +67,6 @@
             android:name=".activities.MyFriends"
             android:label="@string/title_activity_my_friends"
             android:parentActivityName=".activities.Home" >
-        </activity>
-        <activity
-            android:name=".activities.SplashScreen"
-            android:label="@string/title_activity_splash_screen"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
->
         </activity>
         <activity
             android:name=".activities.TermsOfService"

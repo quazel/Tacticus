@@ -7,14 +7,7 @@
     android:paddingTop="@dimen/list_activity_vertical_margin"
     android:paddingBottom="@dimen/list_activity_vertical_margin"
     android:theme="@android:style/Theme.NoTitleBar"
+    android:background="@drawable/splashscreen"
     tools:context="com.junipertech.kickback.activities.SplashScreen">
-
-    <ImageView
-        android:id="@+id/imgLogo"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_centerInParent="true"
-        android:background="@drawable/splashscreen" />
-
 
 </RelativeLayout>
