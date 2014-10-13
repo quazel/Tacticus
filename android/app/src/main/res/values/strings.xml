@@ -19,6 +19,8 @@
     <string name="cancel">No</string>
     <string name="friend_manager">Make New Friends</string>
     <string name="notification_settings">Notification Settings</string>
+    <string name="create_account">Create Account</string>
+    <string name="or"><u>OR</u></string>
 
     <string name="title_activity_kickback_list">Fellow Kickbackers</string>
     <string name="title_activity_kickback_schedule">Schedule</string>
