@@ -71,6 +71,14 @@ public class SplashScreen extends Activity {
         setContentView(R.layout.activity_splash_screen_sign_in);
     }
 
+    public void cancelSignInPressed(View v){
+        setContentView(R.layout.activity_splash_screen_initialize);
+    }
+
+    public void cancelSignUpPressed(View v){
+        setContentView(R.layout.activity_splash_screen_initialize);
+    }
+
     public void signInPressed(View v){
         Intent intent = new Intent(this, Home.class);
         startActivity(intent);
