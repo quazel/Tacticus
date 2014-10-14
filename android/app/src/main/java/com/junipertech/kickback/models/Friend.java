@@ -22,9 +22,4 @@ public class Friend {
         return phoneNumber;
     }
 
-    @Override
-    public String toString(){
-        return name;
-    }
-
 }

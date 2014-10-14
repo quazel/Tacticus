@@ -18,8 +18,7 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:orientation="vertical"
-            android:weightSum="26">
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="fill_parent"
@@ -28,8 +27,7 @@
                 android:paddingRight="9dp"
                 android:background="@drawable/title_label"
                 android:textColor="@color/darkGreen"
-                android:text="FAVORITES"
-                android:layout_weight="1"
+                android:text="@string/friendlist_favorites"
                 android:maxLines="3"
                 android:lines="3"
                 android:gravity="start|center_vertical"
@@ -40,8 +38,7 @@
                 android:divider="@null"
                 android:dividerHeight="0dp"
                 android:orientation="vertical"
-                android:id="@+id/favorites_list"
-                android:layout_weight="12">
+                android:id="@+id/favorites_list">
             </ListView>
 
             <TextView
@@ -51,8 +48,7 @@
                 android:paddingRight="9dp"
                 android:background="@drawable/title_label"
                 android:textColor="@color/darkGreen"
-                android:text="FRIENDS"
-                android:layout_weight="1"
+                android:text="@string/friendlist_friend"
                 android:maxLines="3"
                 android:lines="3"
                 android:gravity="start|center_vertical"
@@ -63,8 +59,7 @@
                 android:divider="@null"
                 android:dividerHeight="0dp"
                 android:orientation="vertical"
-                android:id="@+id/friends_list"
-                android:layout_weight="12">
+                android:id="@+id/friends_list">
             </ListView>
 
 

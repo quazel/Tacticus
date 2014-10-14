@@ -3,10 +3,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:background="@drawable/full_width_selector">
 
-    <TextView android:id="@+id/friend_thing"
-        android:background="@drawable/full_width_selector"
+    <TextView android:id="@+id/name_thing"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="9dip"/>
+    <TextView android:id="@+id/phonenumber_thing"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:padding="9dip"/>
