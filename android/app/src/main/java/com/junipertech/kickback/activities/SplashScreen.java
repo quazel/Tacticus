@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
 import com.junipertech.kickback.R;
 
 public class SplashScreen extends Activity {
@@ -35,6 +37,7 @@ public class SplashScreen extends Activity {
                 @Override
                 public void run() {
                     setContentView(R.layout.activity_splash_screen_login);
+
                 }
             }, SPLASH_TIME_OUT);
         }
@@ -58,5 +61,25 @@ public class SplashScreen extends Activity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+     //attempts at using button navigation
+
+
+    public void cancelSignUpPressed(View v){
+        setContentView(R.layout.activity_splash_screen_sign_in);
+    }
+
+    public void signInPressed(View v){
+        Intent intent = new Intent(this, Home.class);
+        startActivity(intent);
+    }
+
+    public void toSignUpPressed(View v){
+        setContentView(R.layout.activity_splash_screen_sign_up);
+    }
+
+    public void signUpPressed(View v){
+        Intent intent = new Intent(this, Home.class);
+        startActivity(intent);
     }
 }

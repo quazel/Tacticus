@@ -2,6 +2,8 @@ package com.junipertech.kickback.activities;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.junipertech.kickback.R;
+import com.junipertech.kickback.util.Globals;
 
 
 public class Settings extends Activity {
@@ -65,11 +68,19 @@ public class Settings extends Activity {
     }
 
     public void logoutDialog(Activity activity) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        AlertDialog.Builder builder = new AlertDialog.Builder(Settings.this);
 
 
         builder.setMessage("Are you sure you would like to logout?");
-        builder.setPositiveButton("Yes", null);
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Context context = Settings.this;
+                Intent intent = new Intent(context, SplashScreen.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                context.startActivity(intent);
+            }
+        });
         builder.setNegativeButton("No", null);
         builder.show();
     }
