@@ -55,13 +55,13 @@
         <Button
             android:layout_width="125dp"
             android:layout_height="60dp"
-            android:text="Cancel"
+            android:text="Sign Up"
             android:layout_weight="1"
             android:background="@drawable/full_width_selector"
             android:textColor="@color/darkGreen"
             android:textSize="30sp"
             android:id="@+id/buttonCancelSignIn"
-            android:onClick="cancelSignInPressed"/>
+            android:onClick="toSignUpPressed"/>
 
     </LinearLayout>
 

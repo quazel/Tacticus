@@ -36,7 +36,7 @@ public class SplashScreen extends Activity {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    setContentView(R.layout.activity_splash_screen_initialize);
+                    setContentView(R.layout.activity_splash_screen_sign_in);
                 }
             }, SPLASH_TIME_OUT);
         }
@@ -63,25 +63,18 @@ public class SplashScreen extends Activity {
     }
      //attempts at using button navigation
 
-    public void onSignUpPressed(View v){
-        setContentView(R.layout.activity_splash_screen_sign_up);
-    }
-
-    public void onSignInPressed(View v){
-        setContentView(R.layout.activity_splash_screen_sign_in);
-    }
-
-    public void cancelSignInPressed(View v){
-        setContentView(R.layout.activity_splash_screen_initialize);
-    }
 
     public void cancelSignUpPressed(View v){
-        setContentView(R.layout.activity_splash_screen_initialize);
+        setContentView(R.layout.activity_splash_screen_sign_in);
     }
 
     public void signInPressed(View v){
         Intent intent = new Intent(this, Home.class);
         startActivity(intent);
+    }
+
+    public void toSignUpPressed(View v){
+        setContentView(R.layout.activity_splash_screen_sign_up);
     }
 
     public void signUpPressed(View v){
