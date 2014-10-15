@@ -1,9 +1,0 @@
-socket.io
-    Node.js webserver
-    Bidirectional
-    Easy to make administrative web interface
-    Event driven
-Bare C# sockets
-    Fast, fast, fast
-    C# is cool
-    Not sure that sockets in C# are good, but they are asynchronous
