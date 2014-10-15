@@ -36,7 +36,8 @@ public class SplashScreen extends Activity {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    setContentView(R.layout.activity_splash_screen_sign_in);
+                    setContentView(R.layout.activity_splash_screen_login);
+
                 }
             }, SPLASH_TIME_OUT);
         }

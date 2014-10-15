@@ -69,6 +69,11 @@
             android:parentActivityName=".activities.Home" >
         </activity>
         <activity
+            android:name=".activities.MyFriends_ListView"
+            android:label="@string/title_activity_my_friends"
+            android:parentActivityName=".activities.Home" >
+        </activity>
+        <activity
             android:name=".activities.TermsOfService"
             android:label="@string/title_activity_terms_of_service"
             android:parentActivityName=".activities.MoreInformation" >
