@@ -1,4 +1,4 @@
-package com.juniper.kickback.activities;
+package com.junipertech.kickback.activities;
 
 import android.app.Activity;
 import android.content.Context;
@@ -15,7 +15,7 @@ import android.widget.ToggleButton;
 import android.view.View;
 
 import com.junipertech.kickback.R;
-import com.juniper.kickback.models.Kickback;
+import com.junipertech.kickback.models.Kickback;
 
 import org.joda.time.DateTime;
 

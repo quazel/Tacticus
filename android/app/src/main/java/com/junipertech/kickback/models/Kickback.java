@@ -1,4 +1,4 @@
-package com.juniper.kickback.models;
+package com.junipertech.kickback.models;
 
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeFieldType;

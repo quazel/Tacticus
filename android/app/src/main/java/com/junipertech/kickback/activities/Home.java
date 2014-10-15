@@ -1,4 +1,4 @@
-package com.juniper.kickback.activities;
+package com.junipertech.kickback.activities;
 
 import android.app.ActionBar;
 import android.app.Activity;

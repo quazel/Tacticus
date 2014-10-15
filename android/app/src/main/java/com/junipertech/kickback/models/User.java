@@ -1,4 +1,4 @@
-package com.juniper.kickback.models;
+package com.junipertech.kickback.models;
 
 public class User {
 

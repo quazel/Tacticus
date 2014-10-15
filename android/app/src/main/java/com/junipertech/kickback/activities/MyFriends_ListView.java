@@ -1,8 +1,10 @@
-package com.juniper.kickback.activities;
+package com.junipertech.kickback.activities;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,12 +14,13 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.junipertech.kickback.R;
-import com.juniper.kickback.adapter.ListViewAdapter;
-import com.juniper.kickback.models.Friend;
-import com.juniper.kickback.models.Kickback;
-import com.juniper.kickback.util.Globals;
+import com.junipertech.kickback.adapter.ListViewAdapter;
+import com.junipertech.kickback.models.Friend;
+import com.junipertech.kickback.models.Kickback;
+import com.junipertech.kickback.util.Globals;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Created by Daniel on 10/13/2014.

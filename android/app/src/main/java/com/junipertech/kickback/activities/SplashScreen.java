@@ -1,4 +1,4 @@
-package com.juniper.kickback.activities;
+package com.junipertech.kickback.activities;
 
 import android.app.Activity;
 import android.content.Intent;

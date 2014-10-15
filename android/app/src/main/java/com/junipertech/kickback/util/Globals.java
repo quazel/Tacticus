@@ -1,8 +1,8 @@
-package com.juniper.kickback.util;
+package com.junipertech.kickback.util;
 
-import com.juniper.kickback.models.Friend;
-import com.juniper.kickback.models.Kickback;
-import com.juniper.kickback.models.User;
+import com.junipertech.kickback.models.Friend;
+import com.junipertech.kickback.models.Kickback;
+import com.junipertech.kickback.models.User;
 
 import org.joda.time.DateTime;
 

@@ -10,7 +10,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:theme="@android:style/Theme.NoTitleBar"
     android:background="@color/white"
-    tools:context="com.juniper.kickback.activities.SplashScreen">
+    tools:context="com.junipertech.kickback.activities.SplashScreen">
 
     <EditText
         android:layout_width="fill_parent"
