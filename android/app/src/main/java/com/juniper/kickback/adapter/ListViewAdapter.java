@@ -1,4 +1,4 @@
-package com.junipertech.kickback.adapter;
+package com.juniper.kickback.adapter;
 
 import android.content.Context;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.junipertech.kickback.R;
-import com.junipertech.kickback.models.Friend;
+import com.juniper.kickback.models.Friend;
 
 /**
  * Created by Daniel on 10/13/2014.

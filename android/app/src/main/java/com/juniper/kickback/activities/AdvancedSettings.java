@@ -1,4 +1,4 @@
-package com.junipertech.kickback.activities;
+package com.juniper.kickback.activities;
 
 import android.app.Activity;
 import android.app.AlertDialog;

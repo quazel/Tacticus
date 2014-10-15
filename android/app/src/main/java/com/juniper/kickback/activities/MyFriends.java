@@ -1,4 +1,4 @@
-package com.junipertech.kickback.activities;
+package com.juniper.kickback.activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,10 +13,10 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.junipertech.kickback.R;
-import com.junipertech.kickback.models.Friend;
-import com.junipertech.kickback.models.Kickback;
-import com.junipertech.kickback.util.Globals;
-import com.junipertech.kickback.util.Util;
+import com.juniper.kickback.models.Friend;
+import com.juniper.kickback.models.Kickback;
+import com.juniper.kickback.util.Globals;
+import com.juniper.kickback.util.Util;
 
 import java.util.ArrayList;
 

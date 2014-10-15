@@ -10,7 +10,7 @@
         android:label="@string/title_activity_home"
         android:theme="@style/MyTheme" >
         <activity
-            android:name=".activities.SplashScreen"
+            android:name="com.juniper.kickback.activities.SplashScreen"
             android:label="@string/title_activity_splash_screen"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar" >
@@ -20,78 +20,78 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.Home"
+            android:name="com.juniper.kickback.activities.Home"
             android:label="@string/Kickback" >
         </activity>
         <activity
-            android:name=".activities.KickbacksList"
+            android:name="com.juniper.kickback.activities.KickbacksList"
             android:label="@string/title_activity_kickback_list"
-            android:parentActivityName=".activities.Home" >
+            android:parentActivityName="com.juniper.kickback.activities.Home" >
         </activity>
         <activity
-            android:name=".activities.KickbacksSchedule"
+            android:name="com.juniper.kickback.activities.KickbacksSchedule"
             android:label="@string/title_activity_kickback_schedule"
-            android:parentActivityName=".activities.Home" >
+            android:parentActivityName="com.juniper.kickback.activities.Home" >
         </activity>
         <activity
-            android:name=".activities.Settings"
+            android:name="com.juniper.kickback.activities.Settings"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".activities.Home" >
+            android:parentActivityName="com.juniper.kickback.activities.Home" >
         </activity>
         <activity
-            android:name=".activities.AccountSettings"
+            android:name="com.juniper.kickback.activities.AccountSettings"
             android:label="@string/title_activity_account_settings"
-            android:parentActivityName=".activities.Settings" >
+            android:parentActivityName="com.juniper.kickback.activities.Settings" >
         </activity>
         <activity
-            android:name=".activities.PrivacySettings"
+            android:name="com.juniper.kickback.activities.PrivacySettings"
             android:label="@string/title_activity_privacy_settings"
-            android:parentActivityName=".activities.Settings" >
+            android:parentActivityName="com.juniper.kickback.activities.Settings" >
         </activity>
         <activity
-            android:name=".activities.AdvancedSettings"
+            android:name="com.juniper.kickback.activities.AdvancedSettings"
             android:label="@string/title_activity_advanced_settings"
-            android:parentActivityName=".activities.Settings" >
+            android:parentActivityName="com.juniper.kickback.activities.Settings" >
         </activity>
         <activity
-            android:name=".activities.MoreInformation"
+            android:name="com.juniper.kickback.activities.MoreInformation"
             android:label="@string/title_activity_more_information"
-            android:parentActivityName=".activities.Settings" >
+            android:parentActivityName="com.juniper.kickback.activities.Settings" >
         </activity>
         <activity
-            android:name=".activities.NotificationSettings"
+            android:name="com.juniper.kickback.activities.NotificationSettings"
             android:label="@string/title_activity_notification_settings"
-            android:parentActivityName=".activities.AdvancedSettings" >
+            android:parentActivityName="com.juniper.kickback.activities.AdvancedSettings" >
         </activity>
         <activity
-            android:name=".activities.MyFriends"
+            android:name="com.juniper.kickback.activities.MyFriends"
             android:label="@string/title_activity_my_friends"
-            android:parentActivityName=".activities.Home" >
+            android:parentActivityName="com.juniper.kickback.activities.Home" >
         </activity>
         <activity
-            android:name=".activities.MyFriends_ListView"
+            android:name="com.juniper.kickback.activities.MyFriends_ListView"
             android:label="@string/title_activity_my_friends"
-            android:parentActivityName=".activities.Home" >
+            android:parentActivityName="com.juniper.kickback.activities.Home" >
         </activity>
         <activity
-            android:name=".activities.TermsOfService"
+            android:name="com.juniper.kickback.activities.TermsOfService"
             android:label="@string/title_activity_terms_of_service"
-            android:parentActivityName=".activities.MoreInformation" >
+            android:parentActivityName="com.juniper.kickback.activities.MoreInformation" >
         </activity>
         <activity
-            android:name=".activities.PrivacyPolicy"
+            android:name="com.juniper.kickback.activities.PrivacyPolicy"
             android:label="@string/title_activity_privacy_policy"
-            android:parentActivityName=".activities.MoreInformation" >
+            android:parentActivityName="com.juniper.kickback.activities.MoreInformation" >
         </activity>
         <activity
-            android:name=".activities.AddKickback"
+            android:name="com.juniper.kickback.activities.AddKickback"
             android:label="@string/title_activity_add_kickback"
-            android:parentActivityName=".activities.KickbacksSchedule" >
+            android:parentActivityName="com.juniper.kickback.activities.KickbacksSchedule" >
         </activity>
         <activity
-            android:name=".activities.AddFriend"
+            android:name="com.juniper.kickback.activities.AddFriend"
             android:label="@string/title_activity_add_friend"
-            android:parentActivityName=".activities.MyFriends">
+            android:parentActivityName="com.juniper.kickback.activities.MyFriends">
         </activity>
     </application>
 

@@ -1,17 +1,19 @@
-package com.junipertech.kickback.activities;
+package com.juniper.kickback.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
 import com.junipertech.kickback.R;
 
-public class TermsOfService extends Activity {
+
+public class NotificationSettings extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_terms_of_service);
+        setContentView(R.layout.activity_notification_settings);
         getActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
@@ -19,7 +21,7 @@ public class TermsOfService extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.terms_of, menu);
+        getMenuInflater().inflate(R.menu.notification_settings, menu);
         return true;
     }
 

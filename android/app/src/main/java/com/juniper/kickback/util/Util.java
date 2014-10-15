@@ -1,4 +1,4 @@
-package com.junipertech.kickback.util;
+package com.juniper.kickback.util;
 
 import android.content.res.Resources;
 
