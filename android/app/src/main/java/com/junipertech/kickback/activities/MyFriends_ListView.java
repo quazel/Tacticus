@@ -66,9 +66,11 @@ public class MyFriends_ListView extends Activity {
         friendsAdapter = new ListViewAdapter(this, friends);
         favoritesAdapter = new ListViewAdapter(this, favorites);
 
-        friendsListView.setAdapter(friendsAdapter); //NOTE 2
-        favoritesListView.setAdapter(favoritesAdapter); //NOTE 2
+        friendsListView.setAdapter(friendsAdapter);
+        favoritesListView.setAdapter(favoritesAdapter);
 
+        setListViewHeightBasedOnChildren(friendsListView);
+        setListViewHeightBasedOnChildren(favoritesListView);
     }
 
 
@@ -78,37 +80,7 @@ public class MyFriends_ListView extends Activity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.my_friends, menu);
 
-
-        searchInput = (EditText)findViewById(R.id.txt_search); //TODO PROBLEM HERE NOT GRABBING, NULL POINTER
-
-        setListViewHeightBasedOnChildren(friendsListView); //TODO REMOVE THESE AFTER FIX
-        setListViewHeightBasedOnChildren(favoritesListView); //TODO REMOVE THESE AFTER FIX
-
-        /*
-        searchInput.addTextChangedListener(new TextWatcher() {
-
-            @Override
-            public void afterTextChanged(Editable arg0) {
-                String text = searchInput.getText().toString().toLowerCase(Locale.getDefault()); //TODO FIX SEARCH INPUT SO WE CAN CALL STUFF ON IT
-                friendsAdapter.filter(text);
-                favoritesAdapter.filter(text);
-                setListViewHeightBasedOnChildren(friendsListView);
-                setListViewHeightBasedOnChildren(favoritesListView);
-            }
-
-            @Override
-            public void beforeTextChanged(CharSequence arg0, int arg1,
-                                          int arg2, int arg3) {
-                // TODO Auto-generated method stub
-            }
-
-            @Override
-            public void onTextChanged(CharSequence arg0, int arg1, int arg2,
-                                      int arg3) {
-                // TODO Auto-generated method stub
-            }
-        });
-        */
+        initSearchHack(menu); //Horrible Hack
 
         return true;
     }
@@ -123,6 +95,7 @@ public class MyFriends_ListView extends Activity {
                 Intent addFriendsIntent = new Intent(this, AddFriend.class);
                 startActivity(addFriendsIntent);
                 return true;
+            //TODO Lets autofocus the edit text when they click on the search button
 
             default:
                 return super.onOptionsItemSelected(item);
@@ -150,6 +123,37 @@ public class MyFriends_ListView extends Activity {
         params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() ));
         listView.setLayoutParams(params);
         listView.requestLayout();
+    }
+
+    private void initSearchHack(Menu menu){
+        MenuItem searchMenuItem = menu.findItem(R.id.action_search_friend);
+        searchMenuItem.expandActionView();
+        searchInput = (EditText)findViewById(R.id.txt_search);
+        searchMenuItem.collapseActionView();
+
+        searchInput.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void afterTextChanged(Editable arg0) {
+                String text = searchInput.getText().toString().toLowerCase(Locale.getDefault()); //TODO FIX SEARCH INPUT SO WE CAN CALL STUFF ON IT
+                friendsAdapter.filter(text);
+                favoritesAdapter.filter(text);
+                setListViewHeightBasedOnChildren(friendsListView);
+                setListViewHeightBasedOnChildren(favoritesListView);
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence arg0, int arg1,
+                                          int arg2, int arg3) {
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void onTextChanged(CharSequence arg0, int arg1, int arg2,
+                                      int arg3) {
+                // TODO Auto-generated method stub
+            }
+        });
     }
 
 }
