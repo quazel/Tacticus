@@ -56,7 +56,7 @@ public class AddFriend extends FragmentActivity implements ActionBar.TabListener
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.my_friends, menu);
+        getMenuInflater().inflate(R.menu.add_friend, menu);
         return true;
     }
 
