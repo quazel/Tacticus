@@ -3,52 +3,76 @@ package com.junipertech.kickback.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Html;
-import android.text.Spanned;
-import android.view.Gravity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.Button;
-import android.widget.LinearLayout;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 
 import com.junipertech.kickback.R;
+import com.junipertech.kickback.adapter.ListViewAdapter;
 import com.junipertech.kickback.models.Friend;
 import com.junipertech.kickback.models.Kickback;
 import com.junipertech.kickback.util.Globals;
-import com.junipertech.kickback.util.Util;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
-
+/**
+ * Created by Daniel on 10/13/2014.
+ */
 public class MyFriends extends Activity {
-
     ArrayList<Friend> friends = Globals.friends;
     ArrayList<Friend> favorites;
     ArrayList<Kickback> kickback;
 
+    //What am I doing
+    ListView friendsListView;
+    ListView favoritesListView;
+
+    ListViewAdapter friendsAdapter;
+    ListViewAdapter favoritesAdapter;
+
+    EditText searchInput;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_friends);
+        setContentView(R.layout.activity_my_friends_listview);
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
         //dummy arraylists for formatting purposes
         favorites = new ArrayList<Friend>();
         kickback = new ArrayList<Kickback>();
 
-        if(friends.size() == 0)
+        if(friends.size() == 0) {
             Globals.initFriends();
+
+        }
 
         favorites.add(friends.get(2));
         favorites.add(friends.get(4));
         favorites.add(friends.get(0));
         favorites.add(friends.get(6));
 
-        // methods to be adapted once there are real friends/favorites from server
-        addFavoritesToList();
-        addFriendsToList();
+        //Get the list views for friends and favorites
+        friendsListView = (ListView)findViewById(R.id.friends_list);
+        favoritesListView = (ListView)findViewById(R.id.favorites_list);
+
+        friendsAdapter = new ListViewAdapter(this, friends);
+        favoritesAdapter = new ListViewAdapter(this, favorites);
+
+        friendsListView.setAdapter(friendsAdapter);
+        favoritesListView.setAdapter(favoritesAdapter);
+
+        setListViewHeightBasedOnChildren(friendsListView);
+        setListViewHeightBasedOnChildren(favoritesListView);
     }
+
 
 
     @Override
@@ -56,6 +80,7 @@ public class MyFriends extends Activity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.my_friends, menu);
 
+        initSearchHack(menu);
 
         return true;
     }
@@ -70,51 +95,65 @@ public class MyFriends extends Activity {
                 Intent addFriendsIntent = new Intent(this, AddFriend.class);
                 startActivity(addFriendsIntent);
                 return true;
+            //TODO Lets autofocus the edit text when they click on the search button
 
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
-    public void addFriendsToList() {
-        LinearLayout layout = (LinearLayout) findViewById(R.id.friends_list);
+    //http://stackoverflow.com/questions/18367522/android-list-view-inside-a-scroll-view
+    public static void setListViewHeightBasedOnChildren(ListView listView) {
+        ListAdapter listAdapter = listView.getAdapter();
+        if (listAdapter == null)
+            return;
 
-        for(int i = 0; i < friends.size(); i++) {
+        int desiredWidth = View.MeasureSpec.makeMeasureSpec(listView.getWidth(), View.MeasureSpec.UNSPECIFIED);
+        int totalHeight = 0;
+        View view = null;
+        for (int i = 0; i < listAdapter.getCount(); i++) {
+            view = listAdapter.getView(i, view, listView);
+            if (i == 0)
+                view.setLayoutParams(new ViewGroup.LayoutParams(desiredWidth, ViewGroup.LayoutParams.WRAP_CONTENT));
 
-            Button bt = new Button(this);
-            bt.setText(setLabel(friends.get(i).getName()));
-            bt.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
-                    LayoutParams.WRAP_CONTENT));
-            bt.setBackgroundResource(R.drawable.full_width_selector);
-            bt.setGravity(Gravity.START | Gravity.CENTER_VERTICAL);
-            bt.setLines(3);
-            int padding = Util.dpToPixels(getResources(), 9);
-            bt.setPadding(padding, 0, padding, 0);
-            layout.addView(bt);
-
-
+            view.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED);
+            totalHeight += view.getMeasuredHeight();
         }
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+        params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() ));
+        listView.setLayoutParams(params);
+        listView.requestLayout();
     }
 
-    public void addFavoritesToList() {
-        LinearLayout layout = (LinearLayout) findViewById(R.id.favorites_list);
+    private void initSearchHack(Menu menu){
+        MenuItem searchMenuItem = menu.findItem(R.id.action_search_friend);
+        searchMenuItem.expandActionView();
+        searchInput = (EditText)findViewById(R.id.txt_search);
+        searchMenuItem.collapseActionView();
 
-        for(int i = 0; i < favorites.size(); i++) {
-            Button bt = new Button(this);
-            bt.setText(setLabel(favorites.get(i).getName()));
-            bt.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
-                    LayoutParams.WRAP_CONTENT));
-            bt.setBackgroundResource(R.drawable.full_width_selector);
-            bt.setGravity(Gravity.START | Gravity.CENTER_VERTICAL);
-            bt.setLines(3);
-            int padding = Util.dpToPixels(getResources(), 9);
-            bt.setPadding(padding, 0, padding, 0);
-            layout.addView(bt);
-        }
+        searchInput.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void afterTextChanged(Editable arg0) {
+                String text = searchInput.getText().toString().toLowerCase(Locale.getDefault()); //TODO FIX SEARCH INPUT SO WE CAN CALL STUFF ON IT
+                friendsAdapter.filter(text);
+                favoritesAdapter.filter(text);
+                setListViewHeightBasedOnChildren(friendsListView);
+                setListViewHeightBasedOnChildren(favoritesListView);
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence arg0, int arg1,
+                                          int arg2, int arg3) {
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void onTextChanged(CharSequence arg0, int arg1, int arg2,
+                                      int arg3) {
+                // TODO Auto-generated method stub
+            }
+        });
     }
 
-    public Spanned setLabel(String name) {
-        String username = "<br><font color='#c9c9c9'> username </font>";
-        return Html.fromHtml(name + "\n" + "<small>" + username + "</small>");
-    }
 }
