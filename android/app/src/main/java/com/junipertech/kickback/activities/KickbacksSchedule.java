@@ -113,6 +113,8 @@ public class KickbacksSchedule extends Activity {
 
     public void createDateFormatters(){
         DateTimeFormatter st = new DateTimeFormatterBuilder()
+                .appendDayOfWeekText()
+                .appendLiteral(", ")
                 .appendMonthOfYearText()
                 .appendLiteral(" ")
                 .appendDayOfMonth(2)
@@ -120,6 +122,8 @@ public class KickbacksSchedule extends Activity {
                 .toFormatter();
 
         DateTimeFormatter nd = new DateTimeFormatterBuilder()
+                .appendDayOfWeekText()
+                .appendLiteral(", ")
                 .appendMonthOfYearText()
                 .appendLiteral(" ")
                 .appendDayOfMonth(2)
@@ -127,6 +131,8 @@ public class KickbacksSchedule extends Activity {
                 .toFormatter();
 
         DateTimeFormatter rd = new DateTimeFormatterBuilder()
+                .appendDayOfWeekText()
+                .appendLiteral(", ")
                 .appendMonthOfYearText()
                 .appendLiteral(" ")
                 .appendDayOfMonth(2)
@@ -134,6 +140,8 @@ public class KickbacksSchedule extends Activity {
                 .toFormatter();
 
         DateTimeFormatter th = new DateTimeFormatterBuilder()
+                .appendDayOfWeekText()
+                .appendLiteral(", ")
                 .appendMonthOfYearText()
                 .appendLiteral(", ")
                 .appendDayOfMonth(2)
