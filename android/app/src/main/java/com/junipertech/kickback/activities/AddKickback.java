@@ -16,6 +16,7 @@ import android.view.View;
 
 import com.junipertech.kickback.R;
 import com.junipertech.kickback.models.Kickback;
+import com.junipertech.kickback.util.Globals;
 
 import org.joda.time.DateTime;
 
@@ -153,6 +154,7 @@ public class AddKickback extends Activity {
         DateTime end = getEnd();
         if(end.isAfter(start)){
             Kickback creationKickback = new Kickback(start,end,location);
+            Globals.addKickback(creationKickback);
             //TODO ACTUALLY CREATE THE KICKBACK RIGHT NOW WE ARE TROWING KICKBACK AWAY
 
             Context context = getApplicationContext();

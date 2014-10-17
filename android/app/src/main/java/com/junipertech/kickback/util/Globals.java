@@ -40,4 +40,9 @@ public class Globals {
         friends.add(new Friend("Jeremy Adams", "1-480-390-7762", kickback));
     }
 
+    public static void addKickback(Kickback k)
+    {
+        kickbacks.add(k);
+    }
+
 }
