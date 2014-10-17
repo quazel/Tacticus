@@ -42,7 +42,7 @@ public class MyFriends extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_friends_listview);
+        setContentView(R.layout.activity_my_friends);
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
         //dummy arraylists for formatting purposes
@@ -51,7 +51,6 @@ public class MyFriends extends Activity {
 
         if(friends.size() == 0) {
             Globals.initFriends();
-
         }
 
         favorites.add(friends.get(2));

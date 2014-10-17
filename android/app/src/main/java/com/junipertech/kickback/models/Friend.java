@@ -7,6 +7,7 @@ public class Friend {
     private String name;
     private String phoneNumber;
     private ArrayList<Kickback> kickbacks;
+    private String username = "Username"; //Constant for now
 
     public Friend(String name, String phoneNumber, ArrayList<Kickback> kickbacks) {
         this.name = name;
@@ -22,4 +23,7 @@ public class Friend {
         return phoneNumber;
     }
 
+    public String getUsername(){
+        return username;
+    }
 }

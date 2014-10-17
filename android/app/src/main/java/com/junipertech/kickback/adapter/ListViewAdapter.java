@@ -35,7 +35,8 @@ public class ListViewAdapter extends BaseAdapter{
 
     public class ViewHolder {
         TextView name;
-        TextView phoneNumber;
+        TextView username;
+        //TextView phoneNumber;
     }
 
     @Override
@@ -60,17 +61,18 @@ public class ListViewAdapter extends BaseAdapter{
             view = inflater.inflate(R.layout.list_item, null);
             // Locate the TextViews in listview_item.xml
             holder.name = (TextView) view.findViewById(R.id.name_thing);
-            holder.phoneNumber = (TextView) view.findViewById(R.id.phonenumber_thing);
+            holder.username = (TextView) view.findViewById(R.id.username_thing);
+            //holder.phoneNumber = (TextView) view.findViewById(R.id.phonenumber_thing);
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
         }
         // Set the results into TextViews
         holder.name.setText(listFriendList.get(position).getName());
-        holder.phoneNumber.setText(listFriendList.get(position).getPhoneNumber());
+        holder.username.setText(listFriendList.get(position).getUsername());
+        //holder.phoneNumber.setText(listFriendList.get(position).getPhoneNumber());
 
-        //Note 1 DO NOT DELETE!
-        //Note 1 DO NOT DELETE!
+        //On Click Listener Code Goes Here TODO
 
         return view;
     }
