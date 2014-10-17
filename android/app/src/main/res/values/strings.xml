@@ -2,7 +2,7 @@
 <resources>
 
     <string name="Kickback">Kickback.</string>
-    <string name="Backkick">Backkick.</string>
+    <string name="Backkick">Stop.</string>
     <string name="Friends">My Friends</string>
     <string name="Schedule">Schedule</string>
     <string name="Settings">Settings</string>
