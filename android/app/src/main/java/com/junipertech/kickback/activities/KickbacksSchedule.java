@@ -2,6 +2,7 @@ package com.junipertech.kickback.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.Spanned;
@@ -11,6 +12,7 @@ import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.junipertech.kickback.R;
 import com.junipertech.kickback.models.Kickback;
@@ -19,6 +21,8 @@ import com.junipertech.kickback.util.Util;
 
 import org.joda.time.DateTime;
 import org.joda.time.Days;
+import org.joda.time.format.DateTimeFormatter;
+import org.joda.time.format.DateTimeFormatterBuilder;
 
 import java.util.ArrayList;
 
@@ -27,6 +31,11 @@ public class KickbacksSchedule extends Activity {
 
     ArrayList<Kickback> kickbacks = Globals.kickbacks;
     ArrayList<LinearLayout> layouts;
+    ArrayList<TextView> textViews;
+    DateTimeFormatter st;
+    DateTimeFormatter nd;
+    DateTimeFormatter rd;
+    DateTimeFormatter th;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,21 +44,12 @@ public class KickbacksSchedule extends Activity {
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
         layouts = new ArrayList<LinearLayout>();
+        textViews = new ArrayList<TextView>();
 
-        layouts.add((LinearLayout) findViewById(R.id.list_1));
-        layouts.add((LinearLayout) findViewById(R.id.list_2));
-        layouts.add((LinearLayout) findViewById(R.id.list_3));
-        layouts.add((LinearLayout) findViewById(R.id.list_4));
-        layouts.add((LinearLayout) findViewById(R.id.list_5));
-        layouts.add((LinearLayout) findViewById(R.id.list_6));
-        layouts.add((LinearLayout) findViewById(R.id.list_7));
-        layouts.add((LinearLayout) findViewById(R.id.list_8));
-        layouts.add((LinearLayout) findViewById(R.id.list_9));
-        layouts.add((LinearLayout) findViewById(R.id.list_10));
-        layouts.add((LinearLayout) findViewById(R.id.list_11));
-        layouts.add((LinearLayout) findViewById(R.id.list_12));
-        layouts.add((LinearLayout) findViewById(R.id.list_13));
-        layouts.add((LinearLayout) findViewById(R.id.list_14));
+        createArrayOfTitles();
+        createDateFormatters();
+        setTitles();
+        createArrayOfLists();
 
         if (kickbacks.size() == 0)
             Globals.initKickbacks();
@@ -110,4 +110,64 @@ public class KickbacksSchedule extends Activity {
         String location = "<br><font color='#c9c9c9'>"+loc+" </font>";
         return Html.fromHtml(time + "\n" + "<small>" + location + "</small>");
     }
+
+    public void createDateFormatters(){
+        DateTimeFormatter st = new DateTimeFormatterBuilder()
+                .appendMonthOfYearText()
+                .appendLiteral(" ")
+                .appendDayOfMonth(2)
+                .appendLiteral("st")
+                .toFormatter();
+
+        DateTimeFormatter nd = new DateTimeFormatterBuilder()
+                .appendMonthOfYearText()
+                .appendLiteral(" ")
+                .appendDayOfMonth(2)
+                .appendLiteral("nd")
+                .toFormatter();
+
+        DateTimeFormatter rd = new DateTimeFormatterBuilder()
+                .appendMonthOfYearText()
+                .appendLiteral(" ")
+                .appendDayOfMonth(2)
+                .appendLiteral("rd")
+                .toFormatter();
+
+        DateTimeFormatter th = new DateTimeFormatterBuilder()
+                .appendMonthOfYearText()
+                .appendLiteral(", ")
+                .appendDayOfMonth(2)
+                .appendLiteral("th")
+                .toFormatter();
+    }
+
+    public void setTitles() {
+        //in progress (will eventually make titles dynamic)
+
+        /*for (int i = 0;i<14;i++) {
+            textViews.get(i).setText();
+        }*/
+    }
+
+    public void createArrayOfTitles() {
+        Resources r = getResources();
+        String name = getPackageName();
+
+        for(int i = 0; i < 14; i++) {
+            //this goes through every title id and adds it to an array
+            this.textViews.add((TextView) findViewById(r.getIdentifier("schedule_" + i, "id", name)));
+        }
+    }
+
+    public void createArrayOfLists() {
+        Resources r = getResources();
+        String name = getPackageName();
+
+        for(int i = 0; i < 14; i++) {
+            //this goes through every linearlayout id and adds it to an array
+            this.layouts.add((LinearLayout) findViewById(r.getIdentifier("list_" + i, "id", name)));
+        }
+
+    }
+
 }
