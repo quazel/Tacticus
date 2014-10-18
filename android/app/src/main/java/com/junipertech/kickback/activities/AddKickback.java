@@ -92,7 +92,7 @@ public class AddKickback extends Activity {
         for(int i = 0; i<monthDays; i++){
             dayChoices[i] = Integer.toString(i+1); //There has to be a better way of doing this
         }
-        day.setSelection(currentTime.getDayOfMonth()-2); //Why the heck is this 2?
+        day.setSelection(currentTime.getDayOfMonth()-1);
     }
 
     private void setYearSpinner(){
