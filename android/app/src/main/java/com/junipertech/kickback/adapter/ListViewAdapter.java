@@ -100,7 +100,7 @@ public class ListViewAdapter extends BaseAdapter{
         {
             for (Friend fl : arraylist)
             {
-                if (fl.getName().toLowerCase(Locale.getDefault()).contains(charText))
+                if (fl.getName().toLowerCase(Locale.getDefault()).contains(charText)||fl.getUsername().toLowerCase(Locale.getDefault()).contains(charText))
                 {
                     listFriendList.add(fl);
                 }
