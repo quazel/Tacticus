@@ -30,8 +30,7 @@
                 android:text="@string/friendlist_favorites"
                 android:maxLines="3"
                 android:lines="3"
-                android:gravity="start|center_vertical"
-                android:id="@+id/friends_favorites"/>
+                android:gravity="start|center_vertical"/>
             <ListView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -49,10 +48,8 @@
                 android:background="@drawable/title_label"
                 android:textColor="@color/darkGreen"
                 android:text="@string/friendlist_friend"
-                android:maxLines="3"
                 android:lines="3"
-                android:gravity="start|center_vertical"
-                android:id="@+id/friends_list_of_friends"/>
+                android:gravity="start|center_vertical"/>
             <ListView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
