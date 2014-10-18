@@ -134,7 +134,7 @@ public class MyFriends extends Activity {
 
             @Override
             public void afterTextChanged(Editable arg0) {
-                String text = searchInput.getText().toString().toLowerCase(Locale.getDefault()); //TODO FIX SEARCH INPUT SO WE CAN CALL STUFF ON IT
+                String text = searchInput.getText().toString().toLowerCase(Locale.getDefault());
                 friendsAdapter.filter(text);
                 favoritesAdapter.filter(text);
                 setListViewHeightBasedOnChildren(friendsListView);

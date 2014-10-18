@@ -2,9 +2,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.junipertech.kickback.activities.KickbacksList" >
 
-    <item android:id="@+id/action_search"
+    <item android:id="@+id/action_search_friend"
         android:title="@string/search"
-        android:showAsAction="always"
+        android:showAsAction="always|collapseActionView"
         android:icon="@drawable/search"
         android:actionLayout="@layout/search_bar"/>
+
 </menu>

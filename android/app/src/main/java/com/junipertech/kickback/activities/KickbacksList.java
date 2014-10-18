@@ -2,22 +2,30 @@ package com.junipertech.kickback.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.Html;
 import android.text.Spanned;
+import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 
 import com.junipertech.kickback.R;
+import com.junipertech.kickback.adapter.ListViewAdapter;
 import com.junipertech.kickback.models.Friend;
 import com.junipertech.kickback.models.Kickback;
 import com.junipertech.kickback.util.Util;
 import com.junipertech.kickback.util.Globals;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 
 public class KickbacksList extends Activity {
@@ -26,6 +34,15 @@ public class KickbacksList extends Activity {
     ArrayList<Friend> activeFavorites;
     ArrayList<Friend> favorites;
     ArrayList<Kickback> kickback = Globals.kickbacks; //filler empty kickback NO INFO
+
+    //What am I doing
+    ListView friendsListView;
+    ListView favoritesListView;
+
+    ListViewAdapter friendsAdapter;
+    ListViewAdapter favoritesAdapter;
+
+    EditText searchInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,17 +67,23 @@ public class KickbacksList extends Activity {
         favorites.add(activeKickbacks.get(0));
         favorites.add(activeKickbacks.get(1));
         favorites.add(activeKickbacks.get(2));
-        activeFavorites.add(activeKickbacks.get(0));
+        favorites.add(activeKickbacks.get(3));
 
         setActiveFavorites(); //Compares the people on the friends list to those who are online
 
+        //Get the list views for friends and favorites
+        friendsListView = (ListView)findViewById(R.id.friends_list);
+        favoritesListView = (ListView)findViewById(R.id.favorites_list);
 
-        // methods to be adapted once there are real friends/favorites from server
+        friendsAdapter = new ListViewAdapter(this, activeKickbacks);
+        favoritesAdapter = new ListViewAdapter(this, activeFavorites);
 
-        //I created the addToList method because the only difference between addin the favorites and others is simply which Layout and ArrayList used
-        //Also in the future if we allow users to make categories this would make adding them cleaner
-        addToList(activeFavorites,(LinearLayout) findViewById(R.id.friends_list));
-        addToList(activeKickbacks,(LinearLayout) findViewById(R.id.friends_list));
+        friendsListView.setAdapter(friendsAdapter);
+        favoritesListView.setAdapter(favoritesAdapter);
+
+        setListViewHeightBasedOnChildren(friendsListView);
+        setListViewHeightBasedOnChildren(favoritesListView);
+
     }
 
 
@@ -68,6 +91,9 @@ public class KickbacksList extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.kickback_list, menu);
+
+        initSearchHack(menu);
+
         return true;
     }
 
@@ -83,25 +109,6 @@ public class KickbacksList extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void addToList(ArrayList<Friend> people, LinearLayout layout) {
-
-        for(int i = 0; i < people.size(); i++) {
-            Button bt = new Button(this);
-            bt.setText(setLabel(people.get(i).getName()));
-            bt.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT));
-            bt.setBackgroundResource(R.drawable.full_width_selector);
-            bt.setGravity(Gravity.START | Gravity.CENTER_VERTICAL);
-            bt.setLines(3);
-            int padding = Util.dpToPixels(getResources(), 9);
-            bt.setPadding(padding, 0, padding, 0);
-            layout.addView(bt);
-        }
-    }
-    public Spanned setLabel(String name) {
-        String username = "<br><font color='#c9c9c9'> username </font>";
-        return Html.fromHtml(name + "\n" + "<small>" + username + "</small>");
-    }
 
     public void setActiveFavorites() {
 
@@ -111,5 +118,59 @@ public class KickbacksList extends Activity {
             }
         }
 
+    }
+
+    //http://stackoverflow.com/questions/18367522/android-list-view-inside-a-scroll-view
+    public static void setListViewHeightBasedOnChildren(ListView listView) {
+        ListAdapter listAdapter = listView.getAdapter();
+        if (listAdapter == null)
+            return;
+
+        int desiredWidth = View.MeasureSpec.makeMeasureSpec(listView.getWidth(), View.MeasureSpec.UNSPECIFIED);
+        int totalHeight = 0;
+        View view = null;
+        for (int i = 0; i < listAdapter.getCount(); i++) {
+            view = listAdapter.getView(i, view, listView);
+            if (i == 0)
+                view.setLayoutParams(new ViewGroup.LayoutParams(desiredWidth, ViewGroup.LayoutParams.WRAP_CONTENT));
+
+            view.measure(desiredWidth, View.MeasureSpec.UNSPECIFIED);
+            totalHeight += view.getMeasuredHeight();
+        }
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+        params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() ));
+        listView.setLayoutParams(params);
+        listView.requestLayout();
+    }
+
+    private void initSearchHack(Menu menu){
+        MenuItem searchMenuItem = menu.findItem(R.id.action_search_friend);
+        searchMenuItem.expandActionView();
+        searchInput = (EditText)findViewById(R.id.txt_search);
+        searchMenuItem.collapseActionView();
+
+        searchInput.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void afterTextChanged(Editable arg0) {
+                String text = searchInput.getText().toString().toLowerCase(Locale.getDefault());
+                friendsAdapter.filter(text);
+                favoritesAdapter.filter(text);
+                setListViewHeightBasedOnChildren(friendsListView);
+                setListViewHeightBasedOnChildren(favoritesListView);
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence arg0, int arg1,
+                                          int arg2, int arg3) {
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void onTextChanged(CharSequence arg0, int arg1, int arg2,
+                                      int arg3) {
+                // TODO Auto-generated method stub
+            }
+        });
     }
 }
