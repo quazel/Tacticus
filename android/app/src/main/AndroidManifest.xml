@@ -65,11 +65,7 @@
         </activity>
         <activity
             android:name=".activities.MyFriends"
-            android:label="@string/title_activity_my_friends"
-            android:parentActivityName=".activities.Home" >
-        </activity>
-        <activity
-            android:name=".activities.MyFriends_ListView"
+            android:launchMode="singleTop"
             android:label="@string/title_activity_my_friends"
             android:parentActivityName=".activities.Home" >
         </activity>
