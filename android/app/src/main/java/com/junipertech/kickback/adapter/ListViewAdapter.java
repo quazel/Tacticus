@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,7 +73,18 @@ public class ListViewAdapter extends BaseAdapter{
         holder.username.setText(listFriendList.get(position).getUsername());
         //holder.phoneNumber.setText(listFriendList.get(position).getPhoneNumber());
 
-        //On Click Listener Code Goes Here TODO
+        // Listen for ListView Item Click
+        view.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                //Intent intent = new Intent(mContext, INSERT CLASS NAME HERE.class);
+                //intent.putExtra("name",(listFriendList.get(position).getName()));
+                //intent.putExtra("username",(listFriendList.get(position).getUsername()));
+                //intent.putExtra("phoneNumber",(listFriendList.get(position).getPhoneNumber()));
+                //mContext.startActivity(intent);
+            }
+        });
 
         return view;
     }
