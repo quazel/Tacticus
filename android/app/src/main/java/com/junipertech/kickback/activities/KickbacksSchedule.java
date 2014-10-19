@@ -112,7 +112,7 @@ public class KickbacksSchedule extends Activity {
     }
 
     public void createDateFormatters(){
-        DateTimeFormatter st = new DateTimeFormatterBuilder()
+        st = new DateTimeFormatterBuilder()
                 .appendDayOfWeekText()
                 .appendLiteral(", ")
                 .appendMonthOfYearText()
@@ -121,7 +121,7 @@ public class KickbacksSchedule extends Activity {
                 .appendLiteral("st")
                 .toFormatter();
 
-        DateTimeFormatter nd = new DateTimeFormatterBuilder()
+        nd = new DateTimeFormatterBuilder()
                 .appendDayOfWeekText()
                 .appendLiteral(", ")
                 .appendMonthOfYearText()
@@ -130,7 +130,7 @@ public class KickbacksSchedule extends Activity {
                 .appendLiteral("nd")
                 .toFormatter();
 
-        DateTimeFormatter rd = new DateTimeFormatterBuilder()
+        rd = new DateTimeFormatterBuilder()
                 .appendDayOfWeekText()
                 .appendLiteral(", ")
                 .appendMonthOfYearText()
@@ -139,29 +139,43 @@ public class KickbacksSchedule extends Activity {
                 .appendLiteral("rd")
                 .toFormatter();
 
-        DateTimeFormatter th = new DateTimeFormatterBuilder()
+        th = new DateTimeFormatterBuilder()
                 .appendDayOfWeekText()
                 .appendLiteral(", ")
                 .appendMonthOfYearText()
-                .appendLiteral(", ")
+                .appendLiteral(" ")
                 .appendDayOfMonth(2)
                 .appendLiteral("th")
                 .toFormatter();
     }
 
     public void setTitles() {
-        //in progress (will eventually make titles dynamic)
-
-        /*for (int i = 0;i<14;i++) {
-            textViews.get(i).setText();
-        }*/
+        for (int i = 0; i < 14; i++) {
+            DateTime day = DateTime.now().plusDays(i);
+            int j = day.getDayOfMonth() % 10;
+            String formatted;
+            switch (j) {
+                case 1:
+                    formatted = day.toString(st);
+                    break;
+                case 2:
+                    formatted = day.toString(nd);
+                    break;
+                case 3:
+                    formatted = day.toString(rd);
+                    break;
+                default:
+                    formatted = day.toString(th);
+            }
+            textViews.get(i).setText(formatted);
+        }
     }
 
     public void createArrayOfTitles() {
         Resources r = getResources();
         String name = getPackageName();
 
-        for(int i = 0; i < 14; i++) {
+        for(int i = 1; i < 15; i++) {
             //this goes through every title id and adds it to an array
             this.textViews.add((TextView) findViewById(r.getIdentifier("schedule_" + i, "id", name)));
         }
@@ -171,7 +185,7 @@ public class KickbacksSchedule extends Activity {
         Resources r = getResources();
         String name = getPackageName();
 
-        for(int i = 0; i < 14; i++) {
+        for(int i = 1; i < 15; i++) {
             //this goes through every linearlayout id and adds it to an array
             this.layouts.add((LinearLayout) findViewById(r.getIdentifier("list_" + i, "id", name)));
         }

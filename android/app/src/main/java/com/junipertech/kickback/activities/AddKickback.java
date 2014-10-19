@@ -152,6 +152,11 @@ public class AddKickback extends Activity {
         String location = locationInfo.getText().toString();
         DateTime start = getStart();
         DateTime end = getEnd();
+
+        if(end.getHourOfDay() == 0 || end.getHourOfDay() == 24) {
+            end = end.plusDays(1);
+        }
+
         if(end.isAfter(start)){
             Kickback creationKickback = new Kickback(start,end,location);
             Globals.addKickback(creationKickback);
@@ -166,7 +171,7 @@ public class AddKickback extends Activity {
             Intent intent = new Intent(this, KickbacksSchedule.class);
             startActivity(intent);
             finish(); //Prevents user from coming back to this activity after submission
-        }else{
+        } else {
             Context context = getApplicationContext();
             CharSequence text = "The end time is not after the start time! Please try again!";
             int duration = Toast.LENGTH_SHORT;
