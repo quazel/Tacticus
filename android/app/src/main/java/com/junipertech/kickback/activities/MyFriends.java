@@ -22,9 +22,7 @@ import com.junipertech.kickback.util.Globals;
 import java.util.ArrayList;
 import java.util.Locale;
 
-/**
- * Created by Daniel on 10/13/2014.
- */
+
 public class MyFriends extends Activity {
     ArrayList<Friend> friends = Globals.friends;
     ArrayList<Friend> favorites;
