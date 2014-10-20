@@ -29,7 +29,9 @@
                 android:textColor="@color/darkGreen"
                 android:text="@string/friendlist_favorites"
                 android:maxLines="3"
-                android:lines="3"
+                android:lines="2"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
                 android:gravity="start|center_vertical"/>
             <ListView
                 android:layout_width="fill_parent"
@@ -48,7 +50,9 @@
                 android:background="@drawable/title_label"
                 android:textColor="@color/darkGreen"
                 android:text="@string/friendlist_friend"
-                android:lines="3"
+                android:lines="2"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
                 android:gravity="start|center_vertical"/>
             <ListView
                 android:layout_width="fill_parent"

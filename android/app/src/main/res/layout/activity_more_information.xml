@@ -34,10 +34,10 @@
             android:paddingRight="9dp"
             android:background="@drawable/title_label"
             android:textColor="@color/darkGreen"
-            android:text="LEGAL"
+            android:text="LEGAL:"
             android:layout_weight="1"
             android:maxLines="3"
-            android:lines="2"
+            android:lines="1"
             android:gravity="start|center_vertical"
             android:id="@+id/legal_label"/>
 

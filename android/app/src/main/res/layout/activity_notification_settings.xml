@@ -25,6 +25,8 @@
             android:layout_weight="1"
             android:maxLines="3"
             android:lines="1"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
             android:gravity="start|center_vertical"
             android:id="@+id/receive_notifications"/>
 
@@ -83,6 +85,8 @@
             android:layout_weight="1"
             android:maxLines="3"
             android:lines="1"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
             android:gravity="start|center_vertical"
             android:id="@+id/notification_features"/>
 
