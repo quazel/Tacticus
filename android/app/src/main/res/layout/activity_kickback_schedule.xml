@@ -26,10 +26,11 @@
                 android:paddingRight="9dp"
                 android:background="@drawable/title_label"
                 android:textColor="@color/darkGreen"
-                android:text="TODAY, Oct. 8th"
                 android:layout_weight="1"
                 android:maxLines="3"
-                android:lines="3"
+                android:lines="2"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
                 android:gravity="start|center_vertical"
                 android:id="@+id/schedule_1"/>
             <LinearLayout
@@ -47,10 +48,11 @@
                 android:paddingRight="9dp"
                 android:background="@drawable/title_label"
                 android:textColor="@color/darkGreen"
-                android:text="TOMORROW, Oct. 9th"
                 android:layout_weight="1"
                 android:maxLines="3"
-                android:lines="3"
+                android:lines="2"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
                 android:gravity="start|center_vertical"
                 android:id="@+id/schedule_2"/>
             <LinearLayout
@@ -68,10 +70,11 @@
                 android:paddingRight="9dp"
                 android:background="@drawable/title_label"
                 android:textColor="@color/darkGreen"
-                android:text="FRIDAY, Oct. 10th"
                 android:layout_weight="1"
                 android:maxLines="3"
-                android:lines="3"
+                android:lines="2"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
                 android:gravity="start|center_vertical"
                 android:id="@+id/schedule_3"/>
             <LinearLayout
@@ -89,10 +92,11 @@
                 android:paddingRight="9dp"
                 android:background="@drawable/title_label"
                 android:textColor="@color/darkGreen"
-                android:text="SATURDAY, Oct. 11th"
                 android:layout_weight="1"
                 android:maxLines="3"
-                android:lines="3"
+                android:lines="2"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
                 android:gravity="start|center_vertical"
                 android:id="@+id/schedule_4"/>
             <LinearLayout
@@ -110,10 +114,11 @@
                 android:paddingRight="9dp"
                 android:background="@drawable/title_label"
                 android:textColor="@color/darkGreen"
-                android:text="SUNDAY, Oct. 12th"
                 android:layout_weight="1"
                 android:maxLines="3"
-                android:lines="3"
+                android:lines="2"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
                 android:gravity="start|center_vertical"
                 android:id="@+id/schedule_5"/>
             <LinearLayout
@@ -131,10 +136,11 @@
                 android:paddingRight="9dp"
                 android:background="@drawable/title_label"
                 android:textColor="@color/darkGreen"
-                android:text="MONDAY, Oct. 13th"
                 android:layout_weight="1"
                 android:maxLines="3"
-                android:lines="3"
+                android:lines="2"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
                 android:gravity="start|center_vertical"
                 android:id="@+id/schedule_6"/>
             <LinearLayout
@@ -152,10 +158,11 @@
                 android:paddingRight="9dp"
                 android:background="@drawable/title_label"
                 android:textColor="@color/darkGreen"
-                android:text="TUESDAY, Oct. 14th"
                 android:layout_weight="1"
                 android:maxLines="3"
-                android:lines="3"
+                android:lines="2"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
                 android:gravity="start|center_vertical"
                 android:id="@+id/schedule_7"/>
             <LinearLayout
@@ -173,10 +180,11 @@
                 android:paddingRight="9dp"
                 android:background="@drawable/title_label"
                 android:textColor="@color/darkGreen"
-                android:text="WEDNESDAY, Oct. 15th"
                 android:layout_weight="1"
                 android:maxLines="3"
-                android:lines="3"
+                android:lines="2"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
                 android:gravity="start|center_vertical"
                 android:id="@+id/schedule_8"/>
             <LinearLayout
@@ -194,10 +202,11 @@
                 android:paddingRight="9dp"
                 android:background="@drawable/title_label"
                 android:textColor="@color/darkGreen"
-                android:text="THURSDAY, Oct. 16th"
                 android:layout_weight="1"
                 android:maxLines="3"
-                android:lines="3"
+                android:lines="2"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
                 android:gravity="start|center_vertical"
                 android:id="@+id/schedule_9"/>
             <LinearLayout
@@ -215,10 +224,11 @@
                 android:paddingRight="9dp"
                 android:background="@drawable/title_label"
                 android:textColor="@color/darkGreen"
-                android:text="FRIDAY, Oct. 17th"
                 android:layout_weight="1"
                 android:maxLines="3"
-                android:lines="3"
+                android:lines="2"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
                 android:gravity="start|center_vertical"
                 android:id="@+id/schedule_10"/>
             <LinearLayout
@@ -236,10 +246,11 @@
                 android:paddingRight="9dp"
                 android:background="@drawable/title_label"
                 android:textColor="@color/darkGreen"
-                android:text="SATURDAY, Oct. 18th"
                 android:layout_weight="1"
                 android:maxLines="3"
-                android:lines="3"
+                android:lines="2"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
                 android:gravity="start|center_vertical"
                 android:id="@+id/schedule_11"/>
             <LinearLayout
@@ -257,10 +268,11 @@
                 android:paddingRight="9dp"
                 android:background="@drawable/title_label"
                 android:textColor="@color/darkGreen"
-                android:text="SUNDAY, Oct. 19th"
                 android:layout_weight="1"
                 android:maxLines="3"
-                android:lines="3"
+                android:lines="2"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
                 android:gravity="start|center_vertical"
                 android:id="@+id/schedule_12"/>
             <LinearLayout
@@ -278,10 +290,12 @@
                 android:paddingRight="9dp"
                 android:background="@drawable/title_label"
                 android:textColor="@color/darkGreen"
-                android:text="MONDAY, Oct. 20th"
                 android:layout_weight="1"
                 android:maxLines="3"
-                android:lines="3"
+                android:lines="2"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
+
                 android:gravity="start|center_vertical"
                 android:id="@+id/schedule_13"/>
             <LinearLayout
@@ -299,10 +313,11 @@
                 android:paddingRight="9dp"
                 android:background="@drawable/title_label"
                 android:textColor="@color/darkGreen"
-                android:text="TUESDAY, Oct. 21st"
                 android:layout_weight="1"
                 android:maxLines="3"
-                android:lines="3"
+                android:lines="2"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
                 android:gravity="start|center_vertical"
                 android:id="@+id/schedule_14"/>
             <LinearLayout
