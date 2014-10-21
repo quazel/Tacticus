@@ -49,4 +49,8 @@ public class Globals {
         theUser = new User(username, "somedude@email.com", "0-000-0000");
     }
 
+    public static void createUser(String username, String email, String password){
+        theUser = new User(username, email, "0-000-000-0000");
+    }
+
 }

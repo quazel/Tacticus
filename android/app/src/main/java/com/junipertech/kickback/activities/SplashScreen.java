@@ -95,6 +95,39 @@ public class SplashScreen extends Activity {
     }
 
     public void signUpPressed(View v){
+
+        EditText usernameField = (EditText) findViewById(R.id.editTextDesiredUsername);
+        EditText emailField = (EditText) findViewById(R.id.editTextEmail);
+        EditText passwordField = (EditText) findViewById(R.id.editTextDesiredPassword);
+        EditText confirmPasswordField = (EditText) findViewById(R.id.editTextConfirmDesiredPassword);
+        String username = usernameField.getText().toString();
+        String email = emailField.getText().toString();
+        String password = passwordField.getText().toString();
+        String confirmPassword = confirmPasswordField.getText().toString();
+        if (username.equals("") || password.equals("")) {
+            Toast.makeText(this, "Please enter desired username and password.", Toast.LENGTH_SHORT).show();
+        }
+        else if(confirmPassword.equals("")){
+            Toast.makeText(this, "Please confirm password.", Toast.LENGTH_SHORT).show();
+        }
+        else if(!username.matches("^[a-zA-Z0-9_]+$")) {
+            Toast.makeText(this, "Usernames may only contain letters, numbers, and underscores (_).", Toast.LENGTH_SHORT).show();
+        }
+        else if(!email.matches("^[a-zA-Z0-9_@.]+$")){
+            Toast.makeText(this, "Please enter a valid email address.", Toast.LENGTH_SHORT).show();
+        }
+        else if(password.length() < 6 || password.length() > 20){
+            Toast.makeText(this, "Passwords must be between 6 and 20 character in length.", Toast.LENGTH_SHORT).show();
+        }
+        else if(!password.equals(confirmPassword)){
+            Toast.makeText(this, "Entered passwords are not the same.", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Globals.loginUser(usernameField.getText().toString(), passwordField.getText().toString());
+            Intent intent = new Intent(this, Home.class);
+            startActivity(intent);
+        }
+
         Intent intent = new Intent(this, Home.class);
         startActivity(intent);
     }
