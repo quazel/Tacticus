@@ -113,7 +113,7 @@ public class SplashScreen extends Activity {
         else if(!username.matches("^[a-zA-Z0-9_]+$")) {
             Toast.makeText(this, "Usernames may only contain letters, numbers, and underscores (_).", Toast.LENGTH_SHORT).show();
         }
-        else if(!email.matches("^[a-zA-Z0-9_@.]+$")){
+        else if(!email.matches("^[a-zA-Z0-9_\\-+%\\.]+@[a-zA-Z0-9\\-\\.]+\\.[a-zA-Z\\.]{2,6}$")){
             Toast.makeText(this, "Please enter a valid email address.", Toast.LENGTH_SHORT).show();
         }
         else if(password.length() < 6 || password.length() > 20){
