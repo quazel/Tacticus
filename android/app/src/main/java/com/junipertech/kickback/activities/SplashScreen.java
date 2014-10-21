@@ -75,13 +75,18 @@ public class SplashScreen extends Activity {
     public void signInPressed(View v){
         EditText usernameField = (EditText) findViewById(R.id.editTextUsername);
         EditText passwordField = (EditText) findViewById(R.id.editTextPassword);
-        if (usernameField != null && passwordField != null) {
+        String username = usernameField.getText().toString();
+        String password = passwordField.getText().toString();
+        if (username.equals("") || password.equals("")) {
+            Toast.makeText(this, "Please enter your username and password.", Toast.LENGTH_SHORT).show();
+        }
+        else if(!username.matches("^[a-zA-Z0-9_]+$")) {
+            Toast.makeText(this, "Usernames may only contain letters, numbers, and underscores (_).", Toast.LENGTH_SHORT).show();
+        }
+        else {
             Globals.loginUser(usernameField.getText().toString(), passwordField.getText().toString());
             Intent intent = new Intent(this, Home.class);
             startActivity(intent);
-        }
-        else {
-            Toast.makeText(this, "Please enter your username and password.", Toast.LENGTH_SHORT).show();
         }
     }
 
