@@ -29,13 +29,14 @@ public class AccountSettings extends Activity {
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
         // formats username in account settings
-        String username = "temp username"; //dummy variable
+        String username = Globals.theUser.getUsername(); //dummy variable
         formatUsernameTextview(username);
         // formats phone number in account settings
-        String number = "0-000-000-0000"; //dummy variable
+        String number = Globals.theUser.getPhoneNumber(); //dummy variable
         formatPhoneNumberButton(number);
         //formats email in account settings
-        formatEmail(Globals.theUser.getEmail());
+        String email = Globals.theUser.getEmail();
+        formatEmail(email);
     }
 
 

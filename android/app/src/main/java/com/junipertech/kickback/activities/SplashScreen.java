@@ -8,8 +8,11 @@ import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.junipertech.kickback.R;
+import com.junipertech.kickback.util.Globals;
 
 public class SplashScreen extends Activity {
 
@@ -70,8 +73,16 @@ public class SplashScreen extends Activity {
     }
 
     public void signInPressed(View v){
-        Intent intent = new Intent(this, Home.class);
-        startActivity(intent);
+        EditText usernameField = (EditText) findViewById(R.id.editTextUsername);
+        EditText passwordField = (EditText) findViewById(R.id.editTextPassword);
+        if (usernameField != null && passwordField != null) {
+            Globals.loginUser(usernameField.getText().toString(), passwordField.getText().toString());
+            Intent intent = new Intent(this, Home.class);
+            startActivity(intent);
+        }
+        else {
+            Toast.makeText(this, "Please enter your username and password.", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void toSignUpPressed(View v){
