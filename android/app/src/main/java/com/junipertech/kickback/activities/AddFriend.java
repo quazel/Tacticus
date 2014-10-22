@@ -29,8 +29,8 @@ public class AddFriend extends TabActivity {
         //Creates TabHost
         TabHost tabHost = getTabHost();
 
-        TabHost.TabSpec tab1 = tabHost.newTabSpec("Add Friends");
-        TabHost.TabSpec tab2 = tabHost.newTabSpec("Friend Requests");
+        TabHost.TabSpec tab1 = tabHost.newTabSpec("add friends");
+        TabHost.TabSpec tab2 = tabHost.newTabSpec("friend requests");
 
         // Set the Tab name and Activity
         // that will be opened when particular Tab will be selected
