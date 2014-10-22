@@ -52,7 +52,6 @@ public class KickbacksSchedule extends Activity {
         createArrayOfLists();
 
         if (kickbacks.size() == 0)
-            Globals.initKickbacks();
 
         addKickbacks();
     }

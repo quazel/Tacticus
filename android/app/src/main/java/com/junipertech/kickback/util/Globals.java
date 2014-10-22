@@ -14,20 +14,7 @@ public class Globals {
     public static ArrayList<Kickback> kickbacks = new ArrayList<Kickback>();
     public static User theUser;
 
-    public static void initKickbacks() {
-        kickbacks.add(new Kickback(new DateTime(2014,10,9,5,30,0,0),
-                new DateTime(2014,10,9,8,0,0,0),"Tempe, AZ"));
-        kickbacks.add(new Kickback(new DateTime(2014,10,10,6,30,0,0),
-                new DateTime(2014,10,10,9,0,0,0),"Woodstock, VT"));
-        kickbacks.add(new Kickback(new DateTime(2014,10,10,12,30,0,0),
-                new DateTime(2014,10,10,16,0,0,0),"San Francisco, CA"));
-        kickbacks.add(new Kickback(new DateTime(2014,10,13,5,30,0,0),
-                new DateTime(2014,10,13,8,0,0,0),"New York City, NY"));
-        kickbacks.add(new Kickback(new DateTime(2014,10,15,15,30,0,0),
-                new DateTime(2014,10,15,18,0,0,0),"Boston, MA"));
-        kickbacks.add(new Kickback(new DateTime(2014,10,20,18,30,0,0),
-                new DateTime(2014,10,20,22,0,0,0),"Seattle, OR"));
-    }
+
 
     public static void initFriends() {
         ArrayList<Kickback> kickback = new ArrayList<Kickback>();

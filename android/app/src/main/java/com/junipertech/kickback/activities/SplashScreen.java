@@ -123,7 +123,7 @@ public class SplashScreen extends Activity {
             Toast.makeText(this, "Entered passwords are not the same.", Toast.LENGTH_SHORT).show();
         }
         else {
-            Globals.loginUser(usernameField.getText().toString(), passwordField.getText().toString());
+            Globals.createUser(usernameField.getText().toString(),emailField.getText().toString(), passwordField.getText().toString());
             Intent intent = new Intent(this, Home.class);
             startActivity(intent);
         }
