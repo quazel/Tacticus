@@ -21,7 +21,6 @@
     <string name="notification_settings">Notification Settings</string>
     <string name="create_account">Create Account</string>
     <string name="or"><u>OR</u></string>
-
     <string name="title_activity_kickback_list">Fellow Kickbackers</string>
     <string name="title_activity_kickback_schedule">Schedule</string>
     <string name="title_activity_home">Kickback.</string>
@@ -39,7 +38,6 @@
     <string name="title_activity_add_friend">Find Friends</string>
     <string name="title_tab_add_friend">ADD FRIENDS</string>
     <string name="title_tab_friend_requests">FRIEND REQUESTS</string>
-
     <string name="colon">:</string>
     <string name="am">am</string>
     <string name="pm">pm</string>
@@ -50,8 +48,8 @@
     <string name="add_kickback_activity_location">Location</string>
     <string name="add_kickback_activity_submit">Add</string>
     <string name="add_kickback_activity_cancel">Cancel</string>
-
     <string name="hours">Hours</string>
+
     <string-array name="hours">
         <item>1</item>
         <item>2</item>
@@ -66,7 +64,9 @@
         <item>11</item>
         <item>12</item>
     </string-array>
+
     <string name="minutes">Minutes</string>
+
     <string-array name="minutes">
         <item>00</item>
         <item>15</item>
@@ -75,6 +75,7 @@
     </string-array>
 
     <string name="month">Month</string>
+
     <string-array name="months">
         <item>January</item>
         <item>Febuary</item>
@@ -91,20 +92,14 @@
     </string-array>
 
     <string name="day">Day</string>
+
     <string-array name="day">
         <item>1</item>
     </string-array>
 
     <string name="year">Year</string>
-
     <string name="friendlist_favorites">FAVORITES</string>
     <string name="friendlist_friend">FRIENDS</string>
-
-
-
-
-
-
     <string name="large_sample_text">Phasellus mollis justo vel lectus tincidunt, at efficitur mi volutpat. Etiam eleifend diam ac erat bibendum, aliquet porttitor lacus dictum. Morbi bibendum lectus lectus, vel hendrerit est interdum ac. Mauris et eros sagittis, faucibus nisi sit amet, volutpat nulla. Sed vitae lobortis neque. Nunc quis tempus erat, ut sagittis leo. Ut rutrum tortor rhoncus luctus consectetur. Maecenas quis odio laoreet, scelerisque ex efficitur, auctor quam. Proin mollis elementum sapien.
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed hendrerit, urna efficitur posuere luctus, arcu felis pharetra erat, vitae fermentum quam quam sed nibh. Proin pharetra nibh imperdiet, scelerisque sapien vitae, auctor lorem. Sed rutrum malesuada mi eget posuere. Phasellus dui massa, porttitor et mi quis, porta lacinia ex. Etiam dapibus enim dolor, ac imperdiet augue pellentesque ac. Donec urna mauris, volutpat nec vehicula non, pharetra non nunc.
@@ -114,6 +109,9 @@ Nulla euismod malesuada dolor quis mollis. Aliquam erat volutpat. Aliquam eu vul
 Quisque placerat feugiat lectus, ac lobortis felis sodales vitae. Sed convallis ultricies arcu in commodo. Duis vel est in odio rutrum varius. Phasellus rutrum ornare congue. Duis eget aliquam tellus. Praesent sed nibh aliquet dolor lobortis lacinia. Vivamus cursus arcu ut ante varius, a sagittis nibh aliquam. Donec eu tortor molestie, porta nunc feugiat, fermentum justo. Nam dignissim bibendum porta. Ut et dolor malesuada, maximus felis sit amet, facilisis eros. Duis efficitur euismod justo, nec pellentesque lacus accumsan nec. Phasellus tempus scelerisque malesuada. Curabitur est diam, laoreet quis rutrum accumsan, dignissim at sapien. Nullam commodo, mauris vel eleifend finibus, eros nulla condimentum libero, ac mollis purus ligula in felis. Duis venenatis tempus dui in malesuada.
 
 Donec porta odio a ex sagittis tempus. Etiam blandit diam a elit blandit consectetur. Aliquam eget ultrices leo. Suspendisse potenti. Curabitur sollicitudin magna elit, vitae finibus libero consectetur ut. Duis efficitur nisl vel felis porta interdum. Nullam ultrices nunc magna, vel condimentum ligula ullamcorper quis. In vestibulum, arcu sit amet ullamcorper consequat, nisl eros cursus est, aliquam fringilla felis ipsum facilisis magna. Suspendisse pharetra risus ac mollis finibus. Vestibulum lobortis sem enim, eget pellentesque ipsum convallis a. Duis molestie augue sit amet pretium placerat. Curabitur in dolor et est sagittis tincidunt eu venenatis tortor. In sapien orci, tempor non nisl dignissim, bibendum luctus velit. Fusce vitae tellus erat. Nulla semper luctus elit. Nulla hendrerit laoreet consectetur.</string>
-
+    <string name="title_activity_add_friend_from_contacts">AddFriendFromContacts</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_friend_requests">FriendRequests</string>
 
 </resources>

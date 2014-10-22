@@ -26,6 +26,7 @@ public class AccountSettings extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_settings);
+
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
         // formats username in account settings
