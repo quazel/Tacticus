@@ -22,11 +22,17 @@ import org.joda.time.DateTime;
 
 public class AddKickback extends Activity {
     Spinner month, day, year;
+
     String[] dayChoices;
+    String[] monthChoices;
+
     DateTime currentTime;
+    DateTime inTwoWeeks;
 
     private boolean start_am;
     private boolean end_am;
+
+    EditText locationInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,33 +40,26 @@ public class AddKickback extends Activity {
         setContentView(R.layout.activity_add_kickback);
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
-        month = (Spinner)findViewById(R.id.months_input);
-        day = (Spinner)findViewById(R.id.day_input);
-        year = (Spinner)findViewById(R.id.year_input);
+        month = (Spinner) findViewById(R.id.months_input);
+        day = (Spinner) findViewById(R.id.day_input);
+        year = (Spinner) findViewById(R.id.year_input);
 
-        currentTime = new DateTime();
-        month.setSelection(currentTime.getMonthOfYear()-1);
-
-        setYearSpinner();
-
-        //setDaySpinner
-        updateDaySpinner();
-        ArrayAdapter<String> dayAdapt = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, dayChoices);
-        dayAdapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        day.setAdapter(dayAdapt);
-
-        month.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                updateDaySpinner(); //Load Day Spinner on month change
-            }
-
-            public void onNothingSelected(AdapterView<?> adapterView) {
-                //Do Nothing
-            }
-        });
+        locationInput = (EditText) findViewById(R.id.activity_location);
 
         start_am = true;
         end_am = true;
+
+        currentTime = new DateTime();
+        inTwoWeeks = currentTime;
+        inTwoWeeks = inTwoWeeks.plusDays(14);
+
+        setYearSpinner();
+        setMonthSpinner();
+        setDaySpinner();
+
+        //TODO Update spinners properly
+
+        setSpinnerListeners();
 
     }
 
@@ -82,7 +81,39 @@ public class AddKickback extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void updateDaySpinner(){
+    private void setYearSpinner() { //COMPLETE
+        String[] yearChoice;
+        if (currentTime.year() != inTwoWeeks.year()) {
+            yearChoice = new String[2];
+            yearChoice[0] = Integer.toString(currentTime.getYear());
+            yearChoice[1] = Integer.toString(inTwoWeeks.getYear());
+        } else {
+            yearChoice = new String[1];
+            yearChoice[0] = Integer.toString(currentTime.getYear());
+        }
+
+        ArrayAdapter<String> yearAdapt = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, yearChoice);
+        yearAdapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        year.setAdapter(yearAdapt);
+    }
+
+    private void setMonthSpinner() { //COMPLETE
+        ArrayAdapter<String> monthAdapt = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, monthChoices);
+        monthAdapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        year.setAdapter(monthAdapt);
+    }
+
+    private void setDaySpinner() { //COMPLETE
+        ArrayAdapter<String> dayAdapt = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, dayChoices);
+        dayAdapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        day.setAdapter(dayAdapt);
+    }
+
+
+
+    private void updateDaySpinner(){ //TODO REWORK SO THAT DAYS ARE ONLY WITHIN THE CURRENT DATE AND TWO WEEKS OUT. Based on month spinner listener
+
+        /*
         int iMonth = month.getSelectedItemPosition()+1;
         int iYear = Integer.parseInt(year.getSelectedItem().toString());
         DateTime dt = new DateTime(iYear,iMonth,1,1,0);
@@ -93,25 +124,25 @@ public class AddKickback extends Activity {
             dayChoices[i] = Integer.toString(i+1); //There has to be a better way of doing this
         }
         day.setSelection(currentTime.getDayOfMonth()-1);
+        */
     }
 
-    private void setYearSpinner(){
-        String thisYear = Integer.toString(currentTime.getYear());
-        String nextYear = Integer.toString(currentTime.getYear()+1);
-        final String[] yearChoices = {thisYear,nextYear};
-        ArrayAdapter<String> yearAdapt = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, yearChoices);
-        yearAdapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        year.setAdapter(yearAdapt);
+    private void updateMonthSpinner(){ //Given the year and the current/two weeks date what months can be loaded into the spinner
+        //TODO THIS
+
+        updateDaySpinner();
     }
 
-    public void endTimeToggle(View view) {
+    public void endTimeToggle(View view) { // COMPLETE
         end_am = !((ToggleButton) view).isChecked();
     }
-    public void startTimeToggle(View view) {
+    public void startTimeToggle(View view) { //COMPLETE
         start_am = !((ToggleButton) view).isChecked();
     }
 
-    private DateTime getStart(){
+    private DateTime getStart(){ //TODO DOUBLE CHECK THESE WITH NEW IMPLEMENTATION
+
+        /*
         Spinner startTimeHours =(Spinner)findViewById(R.id.start_time_hours);
         Spinner startTimeMinutes =(Spinner)findViewById(R.id.start_time_minutes);
 
@@ -126,12 +157,12 @@ public class AddKickback extends Activity {
         int iMinutes = Integer.parseInt(startTimeMinutes.getSelectedItem().toString());
 
         return new DateTime(iYear,iMonth,iDay,iHours,iMinutes);
+        */
     }
-    private DateTime getEnd(){
+    private DateTime getEnd(){ //TODO DOUBLE CHECK THESE WITH NEW IMPLEMENTATION
+        /*
         Spinner endTimeHours =(Spinner)findViewById(R.id.end_time_hours);
         Spinner endTimeMinutes =(Spinner)findViewById(R.id.end_time_minutes);
-        Spinner startTimeHours =(Spinner)findViewById(R.id.start_time_hours);
-        Spinner startTimeMinutes =(Spinner)findViewById(R.id.start_time_minutes);
 
         int iMonth = month.getSelectedItemPosition()+1;
         int iDay = Integer.parseInt(day.getSelectedItem().toString());
@@ -144,12 +175,12 @@ public class AddKickback extends Activity {
         int iMinutes = Integer.parseInt(endTimeMinutes.getSelectedItem().toString());
 
         return new DateTime(iYear,iMonth,iDay,iHours,iMinutes);
+        */
     }
 
     public void addNewKickback(View view){
 
-        EditText locationInfo = (EditText) findViewById(R.id.activity_location);
-        String location = locationInfo.getText().toString();
+        String location = locationInput.getText().toString();
         DateTime start = getStart();
         DateTime end = getEnd();
 
@@ -157,7 +188,7 @@ public class AddKickback extends Activity {
             end = end.plusDays(1);
         }
 
-        if(end.isAfter(start)){
+        if(end.isAfter(start)){ //TODO ADD MORE CHECKS FOR STUFF LIKE IF WE ARE TRYING TO ADD KICKBACKS WITH CONFLICTING DURATIONS
             Kickback creationKickback = new Kickback(start,end,location);
             Globals.addKickback(creationKickback);
             //TODO ACTUALLY CREATE THE KICKBACK RIGHT NOW WE ARE TROWING KICKBACK AWAY
@@ -184,6 +215,29 @@ public class AddKickback extends Activity {
     public void cancelKickback(View view){
         Intent intent = new Intent(this, KickbacksSchedule.class);
         startActivity(intent);
+    }
+
+    public void setSpinnerListeners(){
+        month.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                updateDaySpinner(); //Load Day Spinner on month change
+            }
+
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                //Do Nothing
+            }
+        });
+
+        year.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                updateMonthSpinner(); //Load month spinner on year change
+            }
+
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                //Do Nothing
+            }
+        });
+
     }
 
 }
