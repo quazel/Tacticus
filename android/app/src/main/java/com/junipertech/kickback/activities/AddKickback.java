@@ -33,6 +33,9 @@ public class AddKickback extends Activity {
     private boolean start_am;
     private boolean end_am;
 
+    ArrayAdapter<String> monthAdapt;
+    ArrayAdapter<String> dayAdapt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,18 +53,6 @@ public class AddKickback extends Activity {
         end_am = true;
 
         setupSpinners();
-        //setSpinnerListeners();
-
-
-
-        //updateDaySpinner();
-        //ArrayAdapter<String> dayAdapt = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, dayChoices);
-        //dayAdapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        //day.setAdapter(dayAdapt);
-
-
-
-
 
     }
 
@@ -126,6 +117,10 @@ public class AddKickback extends Activity {
             }
         }
 
+        dayAdapt = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, dayChoices);
+        dayAdapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        day.setAdapter(dayAdapt);
+
     }
 
     private void updateMonthSpinner(){
@@ -163,15 +158,12 @@ public class AddKickback extends Activity {
         //Now setup the month spinner
         //TODO ACCOUNT FOR YEAR ROLLOVER
         updateMonthSpinner();
-        ArrayAdapter<String> monthAdapt = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, monthChoices);
+        monthAdapt = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, monthChoices);
         monthAdapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         month.setAdapter(monthAdapt);
 
         //Finally setup the day spinner
         updateDaySpinner();
-        ArrayAdapter<String> dayAdapt = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, dayChoices);
-        dayAdapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        day.setAdapter(dayAdapt);
 
         //Afterwards set the spinner listeners
         setSpinnerListeners();
@@ -182,6 +174,7 @@ public class AddKickback extends Activity {
         month.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 updateDaySpinner(); //Load Day Spinner on month change
+
             }
 
             public void onNothingSelected(AdapterView<?> adapterView) {
