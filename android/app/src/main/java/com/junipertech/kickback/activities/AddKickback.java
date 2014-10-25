@@ -262,9 +262,9 @@ public class AddKickback extends Activity {
 
         if(end.isAfter(start)){
             boolean thereAreNoKickbackConflicts = true;
-            for(int i = 0; i<otherKickbacks.length;i++){
+            //for(int i = 0; i<otherKickbacks.length;i++){
                 //CHECK CONFLICTS HERE
-            }
+            //}
 
 
             if(thereAreNoKickbackConflicts){
