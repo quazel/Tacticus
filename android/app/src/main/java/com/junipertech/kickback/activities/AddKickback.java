@@ -21,6 +21,8 @@ import com.junipertech.kickback.util.Globals;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 
+import java.util.ArrayList;
+
 public class AddKickback extends Activity {
     Spinner month, day, year;
 
@@ -35,6 +37,8 @@ public class AddKickback extends Activity {
 
     ArrayAdapter<String> monthAdapt;
     ArrayAdapter<String> dayAdapt;
+
+    Kickback[] otherKickbacks; //TODO VARIABLE THAT STORES THE OTHER KICKBACKS WE WANT TO COMPARE OURS TO
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +79,7 @@ public class AddKickback extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void updateDaySpinner(){ //TODO MAKE THIS WORK
+    private void updateDaySpinner(){
         int selectedMonth = Integer.parseInt(month.getSelectedItem().toString());
 
         int currentDay = currentTime.getDayOfMonth();
@@ -257,7 +261,13 @@ public class AddKickback extends Activity {
         }
 
         if(end.isAfter(start)){
-            if(true){ //TODO CHECK KICKBACK OVERLAP HERE
+            boolean thereAreNoKickbackConflicts = true;
+            for(int i = 0; i<otherKickbacks.length;i++){
+                //CHECK CONFLICTS HERE
+            }
+
+
+            if(thereAreNoKickbackConflicts){
                 Kickback creationKickback = new Kickback(start,end,location);
                 Globals.addKickback(creationKickback);
                 //TODO ACTUALLY CREATE THE KICKBACK RIGHT NOW WE ARE TROWING KICKBACK AWAY
@@ -295,11 +305,3 @@ public class AddKickback extends Activity {
     }
 
 }
- 
-/*
-Context context = getApplicationContext();
-CharSequence text = "TEXT";
-int duration = Toast.LENGTH_SHORT;
-Toast toast = Toast.makeText(context, text, duration);
-toast.show();
-*/
