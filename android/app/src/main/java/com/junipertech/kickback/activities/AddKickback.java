@@ -50,12 +50,6 @@ public class AddKickback extends Activity {
         currentTime = new DateTime();
         inTwoWeeks = currentTime.plusDays(13); //ONLY ADDING 13 Because it is inclusive to current day
 
-        Context context = getApplicationContext();
-        CharSequence text = inTwoWeeks.getMonthOfYear()+" "+inTwoWeeks.getYear();
-        int duration = Toast.LENGTH_SHORT;
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
-
         start_am = true;
         end_am = true;
 
@@ -162,9 +156,6 @@ public class AddKickback extends Activity {
 
     private void setupSpinners(){
         //First setup the year spinner
-        //String currentYear = Integer.toString(currentTime.getYear());
-        //String soonYear = Integer.toString(inTwoWeeks.getYear());
-
         int currentYear = currentTime.getYear();
         int soonYear = inTwoWeeks.getYear();
 
@@ -183,7 +174,6 @@ public class AddKickback extends Activity {
         year.setAdapter(yearAdapt);
 
         //Now setup the month spinner
-        //TODO ACCOUNT FOR YEAR ROLLOVER
         updateMonthSpinner();
 
         //Finally setup the day spinner
@@ -223,10 +213,36 @@ public class AddKickback extends Activity {
     }
 
     private DateTime getStart(){
-        return new DateTime();
+        Spinner startTimeHours =(Spinner)findViewById(R.id.start_time_hours);
+        Spinner startTimeMinutes =(Spinner)findViewById(R.id.start_time_minutes);
+
+        int monthSelected = Integer.parseInt(month.getSelectedItem().toString());
+        int daySelected = Integer.parseInt(day.getSelectedItem().toString());
+        int yearSelected = Integer.parseInt(year.getSelectedItem().toString());
+
+        int hourSelected = Integer.parseInt(startTimeHours.getSelectedItem().toString());
+        if(!start_am){
+            hourSelected+=12;
+        }
+        int minuteSelected = Integer.parseInt(startTimeMinutes.getSelectedItem().toString());
+
+        return new DateTime(yearSelected,monthSelected,daySelected,hourSelected,minuteSelected);
     }
     private DateTime getEnd(){
-        return new DateTime();
+        Spinner endTimeHours =(Spinner)findViewById(R.id.end_time_hours);
+        Spinner endTimeMinutes =(Spinner)findViewById(R.id.end_time_minutes);
+
+        int monthSelected = Integer.parseInt(month.getSelectedItem().toString());
+        int daySelected = Integer.parseInt(day.getSelectedItem().toString());
+        int yearSelected = Integer.parseInt(year.getSelectedItem().toString());
+
+        int hourSelected = Integer.parseInt(endTimeHours.getSelectedItem().toString());
+        if(!start_am){
+            hourSelected+=12;
+        }
+        int minuteSelected = Integer.parseInt(endTimeMinutes.getSelectedItem().toString());
+
+        return new DateTime(yearSelected,monthSelected,daySelected,hourSelected,minuteSelected);
     }
 
     public void addNewKickback(View view){
