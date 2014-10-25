@@ -237,7 +237,7 @@ public class AddKickback extends Activity {
         int yearSelected = Integer.parseInt(year.getSelectedItem().toString());
 
         int hourSelected = Integer.parseInt(endTimeHours.getSelectedItem().toString());
-        if(!start_am){
+        if(!end_am){
             hourSelected+=12;
         }
         int minuteSelected = Integer.parseInt(endTimeMinutes.getSelectedItem().toString());
@@ -256,8 +256,35 @@ public class AddKickback extends Activity {
             end = end.plusDays(1);
         }
 
-        //Check if it is a valid kickback
-        //Start is before end time
+        if(end.isAfter(start)){
+            if(true){ //TODO CHECK KICKBACK OVERLAP HERE
+                Kickback creationKickback = new Kickback(start,end,location);
+                Globals.addKickback(creationKickback);
+                //TODO ACTUALLY CREATE THE KICKBACK RIGHT NOW WE ARE TROWING KICKBACK AWAY
+
+                Context context = getApplicationContext();
+                CharSequence text = "Kickback added!";
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+
+                Intent intent = new Intent(this, KickbacksSchedule.class);
+                startActivity(intent);
+                finish(); //Prevents user from coming back to this activity after submission
+            }else{
+                Context context = getApplicationContext();
+                CharSequence text = "The kickback being created conflicts with another";
+                int duration = Toast.LENGTH_LONG;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+            }
+        }else{
+            Context context = getApplicationContext();
+            CharSequence text = "The end time is before the start!";
+            int duration = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
         //No overlap with other kickbacks
 
     }
