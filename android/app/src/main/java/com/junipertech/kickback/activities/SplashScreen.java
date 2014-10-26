@@ -23,6 +23,7 @@ public class SplashScreen extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
         SharedPreferences prefs = getSharedPreferences("KickbackPreferences", 0);
+        Globals.readContacts(getContentResolver());
 
         if(prefs.contains("username")) {
             new Handler().postDelayed(new Runnable() {
