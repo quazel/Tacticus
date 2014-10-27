@@ -52,6 +52,7 @@ public class MyFriends extends Activity {
         }
 
         favorites.add(friends.get(2));
+        favorites.add(friends.get(3));
         favorites.add(friends.get(4));
         favorites.add(friends.get(0));
         favorites.add(friends.get(6));

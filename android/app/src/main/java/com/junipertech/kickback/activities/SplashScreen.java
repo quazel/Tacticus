@@ -23,6 +23,7 @@ public class SplashScreen extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
         SharedPreferences prefs = getSharedPreferences("KickbackPreferences", 0);
+        Globals.readContacts(getContentResolver());
 
         if(prefs.contains("username")) {
             new Handler().postDelayed(new Runnable() {
@@ -117,7 +118,10 @@ public class SplashScreen extends Activity {
             Toast.makeText(this, "Please enter a valid email address.", Toast.LENGTH_SHORT).show();
         }
         else if(password.length() < 6 || password.length() > 20){
-            Toast.makeText(this, "Passwords must be between 6 and 20 character in length.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Passwords must be between 6 and 20 characters in length.", Toast.LENGTH_SHORT).show();
+        }
+        else if(!password.matches("^[a-zA-Z0-9_\\-!@#$%^&*]+$")) {
+            Toast.makeText(this, "Passwords may only contain letters, numbers, and special characters (!@#$%^&*-_).", Toast.LENGTH_SHORT).show();
         }
         else if(!password.equals(confirmPassword)){
             Toast.makeText(this, "Entered passwords are not the same.", Toast.LENGTH_SHORT).show();

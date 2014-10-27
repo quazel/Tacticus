@@ -234,7 +234,6 @@ public class AddKickback extends Activity {
             if(thereAreNoKickbackConflicts){
                 Kickback creationKickback = new Kickback(start,end,location);
                 Globals.addKickback(creationKickback);
-                //TODO ACTUALLY CREATE THE KICKBACK RIGHT NOW WE ARE TROWING KICKBACK AWAY
 
                 Context context = getApplicationContext();
                 CharSequence text = "Kickback added!";
