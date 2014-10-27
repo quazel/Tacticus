@@ -79,7 +79,7 @@ public class AddKickback extends Activity {
     }
 
     private void updateDaySpinner(){
-        int selectedMonth = Integer.parseInt(month.getSelectedItem().toString());
+        int selectedMonth = monthToInteger(month.getSelectedItem().toString());
 
         int currentDay = currentTime.getDayOfMonth();
         int soonDay = inTwoWeeks.getDayOfMonth();
@@ -133,20 +133,20 @@ public class AddKickback extends Activity {
 
         if(currentMonth == soonMonth){ //If the years are the same
             monthChoices = new String[1];
-            monthChoices[0] = Integer.toString(currentMonth);
+            monthChoices[0] = currentTime.monthOfYear().getAsText();
             //Todo Set spinner unchangeable
         }else{
             int yearSelected = Integer.parseInt(year.getSelectedItem().toString());
             if(yearSelected == currentTime.getYear() && yearSelected == inTwoWeeks.getYear()){
                 monthChoices = new String[2];
-                monthChoices[0] = Integer.toString(currentMonth);
-                monthChoices[1] = Integer.toString(soonMonth);
+                monthChoices[0] = currentTime.monthOfYear().getAsText();
+                monthChoices[1] = inTwoWeeks.monthOfYear().getAsText();
             }else{
                 monthChoices = new String[1];
                 if(yearSelected == currentTime.getYear()){
-                    monthChoices[0] = Integer.toString(currentMonth);
+                    monthChoices[0] = currentTime.monthOfYear().getAsText();
                 }else{ //Its the two weeks time
-                    monthChoices[0] = Integer.toString(soonMonth);
+                    monthChoices[0] = inTwoWeeks.monthOfYear().getAsText();
                 }
             }
 
@@ -219,7 +219,7 @@ public class AddKickback extends Activity {
         Spinner startTimeHours =(Spinner)findViewById(R.id.start_time_hours);
         Spinner startTimeMinutes =(Spinner)findViewById(R.id.start_time_minutes);
 
-        int monthSelected = Integer.parseInt(month.getSelectedItem().toString());
+        int monthSelected = monthToInteger(month.getSelectedItem().toString());
         int daySelected = Integer.parseInt(day.getSelectedItem().toString());
         int yearSelected = Integer.parseInt(year.getSelectedItem().toString());
 
@@ -235,7 +235,7 @@ public class AddKickback extends Activity {
         Spinner endTimeHours =(Spinner)findViewById(R.id.end_time_hours);
         Spinner endTimeMinutes =(Spinner)findViewById(R.id.end_time_minutes);
 
-        int monthSelected = Integer.parseInt(month.getSelectedItem().toString());
+        int monthSelected = monthToInteger(month.getSelectedItem().toString());
         int daySelected = Integer.parseInt(day.getSelectedItem().toString());
         int yearSelected = Integer.parseInt(year.getSelectedItem().toString());
 
