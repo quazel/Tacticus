@@ -48,7 +48,6 @@ public class AddKickback extends Activity {
 
         month = (Spinner)findViewById(R.id.months_input);
         day = (Spinner)findViewById(R.id.day_input);
-        year = (Spinner)findViewById(R.id.year_input);
 
         currentTime = new DateTime();
         inTwoWeeks = currentTime.plusDays(13); //ONLY ADDING 13 Because it is inclusive to current day
@@ -131,25 +130,14 @@ public class AddKickback extends Activity {
         int currentMonth = currentTime.getMonthOfYear();
         int soonMonth = inTwoWeeks.getMonthOfYear();
 
-        if(currentMonth == soonMonth){ //If the years are the same
+        if(currentMonth == soonMonth){ //If the months are the same
             monthChoices = new String[1];
             monthChoices[0] = currentTime.monthOfYear().getAsText();
             //Todo Set spinner unchangeable
         }else{
-            int yearSelected = Integer.parseInt(year.getSelectedItem().toString());
-            if(yearSelected == currentTime.getYear() && yearSelected == inTwoWeeks.getYear()){
-                monthChoices = new String[2];
-                monthChoices[0] = currentTime.monthOfYear().getAsText();
-                monthChoices[1] = inTwoWeeks.monthOfYear().getAsText();
-            }else{
-                monthChoices = new String[1];
-                if(yearSelected == currentTime.getYear()){
-                    monthChoices[0] = currentTime.monthOfYear().getAsText();
-                }else{ //Its the two weeks time
-                    monthChoices[0] = inTwoWeeks.monthOfYear().getAsText();
-                }
-            }
-
+            monthChoices = new String[2];
+            monthChoices[0] = currentTime.monthOfYear().getAsText();
+            monthChoices[1] = inTwoWeeks.monthOfYear().getAsText();
         }
 
         monthAdapt = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, monthChoices);
@@ -158,23 +146,7 @@ public class AddKickback extends Activity {
     }
 
     private void setupSpinners(){
-        //First setup the year spinner
-        int currentYear = currentTime.getYear();
-        int soonYear = inTwoWeeks.getYear();
-
-        String[] yearChoices;
-        if(currentYear == soonYear){ //If the years are the same
-            yearChoices = new String[1];
-            yearChoices[0] = Integer.toString(currentYear);
-            //Todo Set spinner unchangeable
-        }else{
-            yearChoices = new String[2];
-            yearChoices[0] = Integer.toString(currentYear);
-            yearChoices[1] = Integer.toString(soonYear);
-        }
-        ArrayAdapter<String> yearAdapt = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, yearChoices);
-        yearAdapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        year.setAdapter(yearAdapt);
+        //No more Year Spinner
 
         //Now setup the month spinner
         updateMonthSpinner();
@@ -197,15 +169,6 @@ public class AddKickback extends Activity {
                 //Do Nothing
             }
         });
-        year.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                updateMonthSpinner(); //Load Day Spinner on month change
-            }
-
-            public void onNothingSelected(AdapterView<?> adapterView) {
-                //Do Nothing
-            }
-        });
     }
 
     public void endTimeToggle(View view) {
@@ -221,7 +184,7 @@ public class AddKickback extends Activity {
 
         int monthSelected = monthToInteger(month.getSelectedItem().toString());
         int daySelected = Integer.parseInt(day.getSelectedItem().toString());
-        int yearSelected = Integer.parseInt(year.getSelectedItem().toString());
+        int yearSelected = getYearSelected(monthSelected);
 
         int hourSelected = Integer.parseInt(startTimeHours.getSelectedItem().toString());
         if(!start_am){
@@ -237,7 +200,7 @@ public class AddKickback extends Activity {
 
         int monthSelected = monthToInteger(month.getSelectedItem().toString());
         int daySelected = Integer.parseInt(day.getSelectedItem().toString());
-        int yearSelected = Integer.parseInt(year.getSelectedItem().toString());
+        int yearSelected = getYearSelected(monthSelected);
 
         int hourSelected = Integer.parseInt(endTimeHours.getSelectedItem().toString());
         if(!end_am){
@@ -331,4 +294,13 @@ public class AddKickback extends Activity {
             return 12;
         }
     }
+
+    private int getYearSelected(int selectedMonth){
+        if(selectedMonth == currentTime.getMonthOfYear()){
+            return currentTime.getYear();
+        }else{
+            return inTwoWeeks.getYear();
+        }
+    }
+
 }
