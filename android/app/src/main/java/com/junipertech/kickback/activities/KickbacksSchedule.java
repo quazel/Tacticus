@@ -116,16 +116,18 @@ public class KickbacksSchedule extends Activity {
                 .appendLiteral(", ")
                 .appendMonthOfYearText()
                 .appendLiteral(" ")
-                .appendDayOfMonth(2)
+                .appendDayOfMonth(1)
                 .appendLiteral("st")
+
                 .toFormatter();
+
 
         nd = new DateTimeFormatterBuilder()
                 .appendDayOfWeekText()
                 .appendLiteral(", ")
                 .appendMonthOfYearText()
                 .appendLiteral(" ")
-                .appendDayOfMonth(2)
+                .appendDayOfMonth(1)
                 .appendLiteral("nd")
                 .toFormatter();
 
@@ -134,7 +136,7 @@ public class KickbacksSchedule extends Activity {
                 .appendLiteral(", ")
                 .appendMonthOfYearText()
                 .appendLiteral(" ")
-                .appendDayOfMonth(2)
+                .appendDayOfMonth(1)
                 .appendLiteral("rd")
                 .toFormatter();
 
@@ -143,7 +145,7 @@ public class KickbacksSchedule extends Activity {
                 .appendLiteral(", ")
                 .appendMonthOfYearText()
                 .appendLiteral(" ")
-                .appendDayOfMonth(2)
+                .appendDayOfMonth(1)
                 .appendLiteral("th")
                 .toFormatter();
     }
