@@ -38,7 +38,7 @@ public class AddKickback extends Activity {
     ArrayAdapter<String> monthAdapt;
     ArrayAdapter<String> dayAdapt;
 
-    Kickback[] otherKickbacks; //TODO VARIABLE THAT STORES THE OTHER KICKBACKS WE WANT TO COMPARE OURS TO
+    ArrayList<Kickback> otherKickbacks = Globals.kickbacks; //TODO VARIABLE THAT STORES THE OTHER KICKBACKS WE WANT TO COMPARE OURS TO
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +50,6 @@ public class AddKickback extends Activity {
         day = (Spinner)findViewById(R.id.day_input);
         year = (Spinner)findViewById(R.id.year_input);
 
-        //currentTime = new DateTime(2014,12,25,2,2); REMOVE FOR END OF YEAR ROLLOVER TESTING ONLY
         currentTime = new DateTime();
         inTwoWeeks = currentTime.plusDays(13); //ONLY ADDING 13 Because it is inclusive to current day
 
@@ -262,9 +261,11 @@ public class AddKickback extends Activity {
 
         if(end.isAfter(start)){
             boolean thereAreNoKickbackConflicts = true;
-            //for(int i = 0; i<otherKickbacks.length;i++){
-                //CHECK CONFLICTS HERE
-            //}
+            for(int i = 0; i<otherKickbacks.size();i++){
+                if(otherKickbacks.get(i).getStart().isAfter(start) && otherKickbacks.get(i).getStart().isBefore(end) || otherKickbacks.get(i).getStop().isAfter(start) && otherKickbacks.get(i).getStop().isBefore(end)){
+                    thereAreNoKickbackConflicts = false;
+                }
+            }
 
 
             if(thereAreNoKickbackConflicts){
@@ -295,7 +296,6 @@ public class AddKickback extends Activity {
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
         }
-        //No overlap with other kickbacks
 
     }
 
