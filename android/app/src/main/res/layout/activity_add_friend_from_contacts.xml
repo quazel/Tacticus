@@ -1,19 +1,68 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:scrollbarThumbVertical="@drawable/scrollbar_green_vertical"
     android:paddingLeft="@dimen/list_activity_horizontal_margin"
     android:paddingRight="@dimen/list_activity_horizontal_margin"
     android:paddingTop="@dimen/list_activity_vertical_margin"
     android:paddingBottom="@dimen/list_activity_vertical_margin"
     android:theme="@android:style/Theme.NoTitleBar"
-    tools:context="com.junipertech.kickback.activities.AddFriendFromContacts">
+    tools:context="com.junipertech.kickback.activities.AddFriendFromContacts"
+    >
 
-    <TextView
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:text="sgaggadfgadfg"/>
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="9dp"
+            android:paddingRight="9dp"
+            android:background="@drawable/title_label"
+            android:textColor="@color/darkGreen"
+            android:text="ADD FRIENDS FROM CONTACTS"
+            android:maxLines="3"
+            android:lines="2"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:gravity="start|center_vertical"/>
+        <ListView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:orientation="vertical"
+            android:id="@+id/friends_from_contacts">
+        </ListView>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="9dp"
+            android:paddingRight="9dp"
+            android:background="@drawable/title_label"
+            android:textColor="@color/darkGreen"
+            android:text="INVITE FRIENDS TO KICKBACK"
+            android:lines="2"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:gravity="start|center_vertical"/>
+        <ListView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:orientation="vertical"
+            android:id="@+id/invite_friends">
+        </ListView>
+
+    </LinearLayout>
+</ScrollView>
 
 
 
-</RelativeLayout>
