@@ -304,4 +304,31 @@ public class AddKickback extends Activity {
         startActivity(intent);
     }
 
+    private int monthToInteger(String month){
+        if (month.toLowerCase().compareTo("january") == 0) {
+            return 1;
+        }else if(month.toLowerCase().compareTo("february") == 0) {
+            return 2;
+        }else if(month.toLowerCase().compareTo("march") == 0) {
+            return 3;
+        }else if(month.toLowerCase().compareTo("april") == 0) {
+            return 4;
+        }else if(month.toLowerCase().compareTo("may") == 0) {
+            return 5;
+        }else if(month.toLowerCase().compareTo("june") == 0) {
+            return 6;
+        }else if(month.toLowerCase().compareTo("july") == 0) {
+            return 7;
+        }else if(month.toLowerCase().compareTo("august") == 0) {
+            return 8;
+        }else if(month.toLowerCase().compareTo("september") == 0) {
+            return 9;
+        }else if(month.toLowerCase().compareTo("october") == 0) {
+            return 10;
+        }else if(month.toLowerCase().compareTo("november") == 0) {
+            return 11;
+        }else{
+            return 12;
+        }
+    }
 }
