@@ -5,4 +5,6 @@
 
     <dimen name="list_activity_horizontal_margin">0dp</dimen>
     <dimen name="list_activity_vertical_margin">0dp</dimen>
+
+    <dimen name="space_height">4dp</dimen>
 </resources>

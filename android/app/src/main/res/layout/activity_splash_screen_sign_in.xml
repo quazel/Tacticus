@@ -23,6 +23,11 @@
         android:inputType="text"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
+    <Space
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/space_height"
+        android:layout_below="@+id/editTextUsername"
+        android:id="@+id/space_1"/>
 
     <EditText
         android:layout_width="fill_parent"
@@ -33,7 +38,7 @@
         android:paddingRight="12dp"
         android:hint="Password"
         android:inputType="textPassword"
-        android:layout_below="@+id/editTextUsername"
+        android:layout_below="@+id/space_1"
         android:layout_centerHorizontal="true" />
 
     <LinearLayout

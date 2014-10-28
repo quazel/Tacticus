@@ -21,7 +21,13 @@ public class Home extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        //ugly hack
+        if(!Globals.isOnline) {
+            setContentView(R.layout.activity_home);
+        }
+        else if (Globals.isOnline) {
+            setContentView(R.layout.activity_home_online);
+        }
         ActionBar actionbar = getActionBar();
         theButton =(Button)findViewById(R.id.kickbackButton);
     }
@@ -71,7 +77,7 @@ public class Home extends Activity {
         }
         else if(!Globals.isOnline) {
             Globals.goOnline();
-            setContentView(R.layout.activity_splash_screen_sign_in);
+            setContentView(R.layout.activity_home_online);
             theButton.setText("test text");
         }
     }
