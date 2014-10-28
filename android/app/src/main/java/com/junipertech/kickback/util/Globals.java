@@ -19,6 +19,7 @@ public class Globals {
     public static ArrayList<Kickback> kickbacks = new ArrayList<Kickback>();
     public static ArrayList<Person> contacts = new ArrayList<Person>();
     public static User theUser;
+    public static boolean isOnline = false;
 
 
     public static void initFriends() {
@@ -35,6 +36,14 @@ public class Globals {
 
     public static void addKickback(Kickback k) {
         kickbacks.add(k);
+    }
+
+    public static void goOnline() {
+        isOnline = true;
+    }
+
+    public static void goOffline() {
+        isOnline = false;
     }
 
     public static void loginUser(String username, String password) {

@@ -91,8 +91,8 @@
             android:background="@drawable/full_width_selector"
             android:textColor="@color/darkGreen"
             android:textSize="30sp"
-            android:id="@+id/buttonSignIn"
-            android:onClick="signInPressed"/>
+            android:id="@+id/goOffline"
+            android:onClick="onBusyPressed"/>
 
 
     </LinearLayout>

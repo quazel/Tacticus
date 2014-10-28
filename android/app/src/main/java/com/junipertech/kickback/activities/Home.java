@@ -7,19 +7,23 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ToggleButton;
 
 import com.junipertech.kickback.R;
+import com.junipertech.kickback.util.Globals;
 
 
 public class Home extends Activity {
+
+    private Button theButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ActionBar actionbar = getActionBar();
-
+        theButton =(Button)findViewById(R.id.kickbackButton);
     }
 
 
@@ -61,15 +65,19 @@ public class Home extends Activity {
         startActivity(intent);
     }*/
 
-    public void onToggleClicked(View view) {
-
-        boolean on = ((ToggleButton) view).isChecked();
-
-        if(on) {
-           // Intent kickbackIntent = new Intent(this, Kickback_List.class);
-            //startActivity(kickbackIntent);
+    public void onKickbackPressed(View view) {
+        if(Globals.isOnline) {
+            setContentView(R.layout.activity_home_online);
         }
-
+        else if(!Globals.isOnline) {
+            Globals.goOnline();
+            setContentView(R.layout.activity_splash_screen_sign_in);
+            theButton.setText("test text");
+        }
     }
 
+    public void onBusyPressed(View view) {
+        Globals.goOffline();
+        setContentView(R.layout.activity_home);
+    }
 }
