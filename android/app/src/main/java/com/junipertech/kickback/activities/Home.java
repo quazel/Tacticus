@@ -8,7 +8,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ToggleButton;
 
 import com.junipertech.kickback.R;
 import com.junipertech.kickback.util.Globals;
@@ -21,12 +20,11 @@ public class Home extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //ugly hack
-        if(!Globals.isOnline) {
-            setContentView(R.layout.activity_home);
-        }
-        else if (Globals.isOnline) {
+        if (Globals.isOnline) {
             setContentView(R.layout.activity_home_online);
+        }
+        else {
+            setContentView(R.layout.activity_home);
         }
         ActionBar actionbar = getActionBar();
         theButton =(Button)findViewById(R.id.kickbackButton);
