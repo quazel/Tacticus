@@ -70,14 +70,10 @@ public class Home extends Activity {
     }*/
 
     public void onKickbackPressed(View view) {
-        if(Globals.isOnline) {
-            setContentView(R.layout.activity_home_online);
-        }
-        else if(!Globals.isOnline) {
+
             Globals.goOnline();
             setContentView(R.layout.activity_home_online);
-            theButton.setText("test text");
-        }
+
     }
 
     public void onBusyPressed(View view) {
