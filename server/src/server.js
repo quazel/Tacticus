@@ -1,16 +1,15 @@
-var app = require('express')();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+var net = require('net');
 
-app.get('/', function(req, res){
-    res.sendFile(__dirname + '/index.html');
-});
-
-app.get('/burgle', function(req, res) {
-
-});
-
-io.on('connection', function(socket){
-    console.log('a user connected');
-});
-
+net.createServer(function (socket) {
+    console.log('A user connected.');
+    socket.write('Welcome, user!\r\n');
+    socket.on('data', function (data) {
+        console.log('got "data"', data);
+    });
+    socket.on('end', function (data) {
+        console.log('Shucks. A user ended the connection.');
+    });
+    socket.on('close', function () {
+        console.log('Uh oh. Looks like the user disconnected.');
+    });
+}).listen(8000);
