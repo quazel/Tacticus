@@ -13,7 +13,7 @@ public class ClientHandler {
         int port;
         if(address.length == 0 || address.length > 2) {
             hostname = "stevex86.com";
-            port = 8080;
+            port = 8000;
         }
         else {
             hostname = address[0];
