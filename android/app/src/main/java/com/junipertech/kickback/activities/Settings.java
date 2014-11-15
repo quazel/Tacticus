@@ -43,6 +43,11 @@ public class Settings extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void notificationSettingsPressed(View view) {
+        Intent notificationIntent = new Intent(this, NotificationSettings.class);
+        startActivity(notificationIntent);
+    }
+
     public void logoutUser(View view) {
         logoutDialog(this);
     }

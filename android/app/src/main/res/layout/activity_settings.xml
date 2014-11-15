@@ -151,6 +151,7 @@
                     android:text="Notification Settings"
                     android:textSize="16sp"
                     android:gravity="left|center_vertical"
+                    android:onClick="notificationSettingsPressed"
                     android:id="@+id/notification_settings" />
 
                 <Button
