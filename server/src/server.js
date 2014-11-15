@@ -5,7 +5,8 @@ net.createServer(function (socket) {
     console.log('A user connected.');
     socket.write('Welcome, user!\r\n');
     socket.on('data', function (data) {
-        console.log('got "data"', data);
+        var message = data.toString("utf8");
+        console.log('got "message"', message);
     });
     socket.on('end', function (data) {
         console.log('Shucks. A user ended the connection.');
