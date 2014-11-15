@@ -10,74 +10,258 @@
     tools:context="com.junipertech.kickback.activities.Settings">
 
 
-        <LinearLayout
-            android:orientation="vertical"
+        <ScrollView
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:weightSum="12">
+            android:layout_height="fill_parent">
 
-
-            <Button
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="9dp"
-                android:paddingRight="9dp"
-                android:background="@drawable/full_width_selector"
-                android:text="@string/account_info"
-                android:layout_weight="1"
-                android:onClick="openAccountSettings"
-                android:gravity="left|center_vertical"
-                android:id="@+id/account_settings"/>
-
-            <Button
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="9dp"
-                android:paddingRight="9dp"
-                android:background="@drawable/full_width_selector"
-                android:text="@string/privacy_info"
-                android:onClick="openPrivacySettings"
-                android:id="@+id/privacy_settings"
-                android:gravity="left|center_vertical"
-                android:layout_weight="1"/>
-
-            <Button
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="9dp"
-                android:paddingRight="9dp"
-                android:background="@drawable/full_width_selector"
-                android:text="@string/advanced_info"
-                android:layout_weight="1"
-                android:onClick="openAdvancedSettings"
-                android:gravity="left|center_vertical"
-                android:id="@+id/advanced_settings"/>
-
-            <Button
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="9dp"
-                android:paddingRight="9dp"
-                android:background="@drawable/full_width_selector"
-                android:text="@string/more_info"
-                android:layout_weight="1"
-                android:onClick="openMoreInfo"
-                android:gravity="left|center_vertical"
-                android:id="@+id/more_info_btn" />
-
-            <Button
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="9dp"
-                android:paddingRight="9dp"
-                android:background="@drawable/full_width_selector"
-                android:text="@string/logout"
-                android:layout_weight="1"
-                android:onClick="logoutUser"
-                android:gravity="left|center_vertical"
-                android:id="@+id/logout" />
+                android:layout_height="fill_parent">
 
 
-        </LinearLayout>
+                <TextView
+
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="9dp"
+                    android:paddingRight="9dp"
+                    android:background="@drawable/title_label"
+                    android:textColor="@color/darkGreen"
+                    android:text="MANAGE ACCOUNT"
+                    android:textStyle="bold"
+                    android:maxLines="3"
+                    android:lines="2"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:gravity="start|center_vertical"/>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/list_item_height"
+                    android:paddingLeft="9dp"
+                    android:paddingRight="9dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/full_width_button"
+                    android:text="Username"
+                    android:textSize="16sp"
+                    android:gravity="left|center_vertical"
+                    android:id="@+id/username" />
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/list_item_height"
+                    android:paddingLeft="9dp"
+                    android:paddingRight="9dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/full_width_selector"
+                    android:text="Phone Number"
+                    android:textSize="16sp"
+                    android:gravity="left|center_vertical"
+                    android:id="@+id/phonenumber" />
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/list_item_height"
+                    android:paddingLeft="9dp"
+                    android:paddingRight="9dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/outlined_selector"
+                    android:text="Email"
+                    android:textSize="16sp"
+                    android:gravity="left|center_vertical"
+                    android:id="@+id/email" />
+
+                <TextView
+
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="9dp"
+                    android:paddingRight="9dp"
+                    android:background="@drawable/title_label"
+                    android:textColor="@color/darkGreen"
+                    android:text="PRIVACY OPTIONS"
+                    android:textStyle="bold"
+                    android:maxLines="3"
+                    android:lines="2"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:gravity="start|center_vertical"/>
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/list_item_height"
+                    android:paddingLeft="9dp"
+                    android:paddingRight="9dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/full_width_selector"
+                    android:text="Filter Users"
+                    android:textSize="16sp"
+                    android:gravity="left|center_vertical"
+                    android:id="@+id/filter" />
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/list_item_height"
+                    android:paddingLeft="9dp"
+                    android:paddingRight="9dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/full_width_selector"
+                    android:text="Block Users"
+                    android:textSize="16sp"
+                    android:gravity="left|center_vertical"
+                    android:id="@+id/block" />
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/list_item_height"
+                    android:paddingLeft="9dp"
+                    android:paddingRight="9dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/outlined_selector"
+                    android:text="Unblock Users"
+                    android:textSize="16sp"
+                    android:gravity="left|center_vertical"
+                    android:id="@+id/unblock" />
+
+
+                <TextView
+
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="9dp"
+                    android:paddingRight="9dp"
+                    android:background="@drawable/title_label"
+                    android:textColor="@color/darkGreen"
+                    android:text="ADVANCED OPTIONS"
+                    android:textStyle="bold"
+                    android:maxLines="3"
+                    android:lines="2"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:gravity="start|center_vertical"/>
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/list_item_height"
+                    android:paddingLeft="9dp"
+                    android:paddingRight="9dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/full_width_selector"
+                    android:text="Notification Settings"
+                    android:textSize="16sp"
+                    android:gravity="left|center_vertical"
+                    android:id="@+id/notification_settings" />
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/list_item_height"
+                    android:paddingLeft="9dp"
+                    android:paddingRight="9dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/outlined_selector"
+                    android:text="Review This App"
+                    android:textSize="16sp"
+                    android:gravity="left|center_vertical"
+                    android:id="@+id/review" />
+
+
+                <TextView
+
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="9dp"
+                    android:paddingRight="9dp"
+                    android:background="@drawable/title_label"
+                    android:textColor="@color/darkGreen"
+                    android:text="INFORMATION"
+                    android:textStyle="bold"
+                    android:maxLines="3"
+                    android:lines="2"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:gravity="start|center_vertical"/>
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/list_item_height"
+                    android:paddingLeft="9dp"
+                    android:paddingRight="9dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/full_width_selector"
+                    android:text="Privacy Policy"
+                    android:textSize="16sp"
+                    android:gravity="left|center_vertical"
+                    android:id="@+id/privacy_policy" />
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/list_item_height"
+                    android:paddingLeft="9dp"
+                    android:paddingRight="9dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/full_width_selector"
+                    android:text="Terms of Service"
+                    android:textSize="16sp"
+                    android:gravity="left|center_vertical"
+                    android:id="@+id/terms_of_service" />
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/list_item_height"
+                    android:paddingLeft="9dp"
+                    android:paddingRight="9dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/outlined_selector"
+                    android:text="Version"
+                    android:textSize="16sp"
+                    android:gravity="left|center_vertical"
+                    android:id="@+id/version" />
+
+
+                <TextView
+
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="9dp"
+                    android:paddingRight="9dp"
+                    android:background="@drawable/title_label"
+                    android:textColor="@color/darkGreen"
+                    android:text="ACCOUNT ACTIONS"
+                    android:textStyle="bold"
+                    android:maxLines="3"
+                    android:lines="2"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:gravity="start|center_vertical"/>
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/list_item_height"
+                    android:paddingLeft="9dp"
+                    android:paddingRight="9dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/full_width_selector"
+                    android:text="Submit Picture"
+                    android:textSize="16sp"
+                    android:gravity="left|center_vertical"
+                    android:id="@+id/sent_picture" />
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/list_item_height"
+                    android:paddingLeft="9dp"
+                    android:paddingRight="9dp"
+                    android:background="@drawable/outlined_selector"
+                    android:text="@string/logout"
+                    android:layout_weight="1"
+                    android:textSize="16dp"
+                    android:onClick="logoutUser"
+                    android:gravity="left|center_vertical"
+                    android:id="@+id/logout" />
+
+
+            </LinearLayout>
+        </ScrollView>
 
 </RelativeLayout>
