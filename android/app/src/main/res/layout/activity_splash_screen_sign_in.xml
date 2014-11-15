@@ -4,42 +4,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingLeft="@dimen/list_activity_horizontal_margin"
+    android:paddingRight="@dimen/list_activity_horizontal_margin"
     android:paddingBottom="@dimen/list_activity_vertical_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:theme="@android:style/Theme.NoTitleBar"
     android:background="@color/white"
     tools:context="com.junipertech.kickback.activities.SplashScreen">
 
-    <EditText
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/editTextUsername"
-        android:background="@drawable/edittext_selector"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:hint="Username"
-        android:inputType="text"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
-    <Space
-        android:layout_width="fill_parent"
-        android:layout_height="@dimen/space_height"
-        android:layout_below="@+id/editTextUsername"
-        android:id="@+id/space_1"/>
 
-    <EditText
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/editTextPassword"
-        android:background="@drawable/edittext_selector"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:layout_below="@+id/space_1"
-        android:layout_centerHorizontal="true" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:layout_centerInParent="true">
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextUsername"
+            android:background="@drawable/edittext_selector"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:hint="Username"
+            android:inputType="text"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+        <Space
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/space_height"
+            android:layout_below="@+id/editTextUsername"
+            android:id="@+id/space_1"/>
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextPassword"
+            android:background="@drawable/edittext_selector"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:layout_below="@+id/space_1"
+            android:layout_centerHorizontal="true" />
+        </RelativeLayout>
 
     <LinearLayout
         android:layout_alignParentBottom="true"
@@ -52,8 +60,9 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:text="Sign In"
+            android:textColor="@color/darkGreen"
             android:layout_weight="1"
-            android:background="@drawable/outlined_selector"
+            android:background="@drawable/full_width_selector"
             android:textSize="25sp"
             android:id="@+id/buttonSignIn"
             android:onClick="signInPressed"/>
@@ -62,8 +71,9 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:text="Sign Up"
+            android:textColor="@color/darkGreen"
             android:layout_weight="1"
-            android:background="@drawable/outlined_selector"
+            android:background="@drawable/full_width_selector"
             android:textSize="25sp"
             android:id="@+id/buttonCancelSignIn"
             android:onClick="toSignUpPressed"/>
