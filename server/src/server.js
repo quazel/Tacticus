@@ -13,7 +13,7 @@ net.createServer(function (socket) {
     socket.on('close', function () {
         console.log('Uh oh. Looks like the user disconnected.');
     });
-}).listen(8000);
+}).listen(8000, "0.0.0.0");
 
 /* Encryption code for AES
 crypto = require "crypto"
