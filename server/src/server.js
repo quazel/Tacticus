@@ -1,12 +1,13 @@
 var net = require('net');
-var rsa = require('node-rsa')
+var rsa = require('node-rsa');
 
 net.createServer(function (socket) {
     console.log('A user connected.');
-    socket.write('Welcome, user!\r\n');
+    socket.write('Welcome, user!\n');
     socket.on('data', function (data) {
         var message = data.toString("utf8");
         console.log('got "message"', message);
+        var packet = JSON.parse(message);
     });
     socket.on('end', function (data) {
         console.log('Shucks. A user ended the connection.');
