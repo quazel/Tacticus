@@ -24,6 +24,15 @@ public class Globals {
 
     public static void initFriends() {
         ArrayList<Kickback> kickback = new ArrayList<Kickback>();
+        friends.add(new Friend("Bob", "1-911-911-9119", kickback,true));
+        friends.add(new Friend("Jim", "1-802-457-9834", kickback,true));
+        friends.add(new Friend("Nathan Fegard", "1-603-667-7830", kickback,true));
+        friends.add(new Friend("Steve King", "1-602-752-0046", kickback,true));
+        friends.add(new Friend("Kelly", "1-420-420-Blaze'em", kickback,true));
+        friends.add(new Friend("JSON", "1-452-735-9384", kickback,true));
+        friends.add(new Friend("Burgle", "1-746-412-9001", kickback,true));
+        friends.add(new Friend("Jeremy Adams", "1-480-390-7762", kickback,true));
+
         friends.add(new Friend("Bob", "1-911-911-9119", kickback));
         friends.add(new Friend("Jim", "1-802-457-9834", kickback));
         friends.add(new Friend("Nathan Fegard", "1-603-667-7830", kickback));
@@ -32,6 +41,7 @@ public class Globals {
         friends.add(new Friend("JSON", "1-452-735-9384", kickback));
         friends.add(new Friend("Burgle", "1-746-412-9001", kickback));
         friends.add(new Friend("Jeremy Adams", "1-480-390-7762", kickback));
+
     }
 
     public static void addKickback(Kickback k) {

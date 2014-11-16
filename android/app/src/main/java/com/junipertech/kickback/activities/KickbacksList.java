@@ -3,17 +3,12 @@ package com.junipertech.kickback.activities;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.Editable;
-import android.text.Html;
-import android.text.Spanned;
 import android.text.TextWatcher;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
@@ -21,7 +16,6 @@ import com.junipertech.kickback.R;
 import com.junipertech.kickback.adapter.ListViewAdapter;
 import com.junipertech.kickback.models.Friend;
 import com.junipertech.kickback.models.Kickback;
-import com.junipertech.kickback.util.Util;
 import com.junipertech.kickback.util.Globals;
 
 import java.util.ArrayList;
