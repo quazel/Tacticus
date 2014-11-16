@@ -11,28 +11,34 @@ import com.junipertech.kickback.R;
 import com.junipertech.kickback.models.Friend;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
 
 public class StickyAdapter extends BaseAdapter implements StickyListHeadersAdapter {
 
-
+    private List<Friend> filteredList = null;
     private ArrayList<Friend> arrayList;
     private LayoutInflater inflater;
 
     public StickyAdapter(Context context, ArrayList<Friend> inputArrayList) {
         inflater = LayoutInflater.from(context);
-        arrayList = inputArrayList;
+
+        this.arrayList = inputArrayList;
+        this.filteredList = new ArrayList<Friend>();
+        this.filteredList.addAll(arrayList);
+
     }
 
     @Override
     public int getCount() {
-        return arrayList.size();
+        return filteredList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return arrayList.get(position);
+        return filteredList.get(position);
     }
 
 
@@ -60,8 +66,8 @@ public class StickyAdapter extends BaseAdapter implements StickyListHeadersAdapt
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.name.setText(arrayList.get(position).getName());
-        holder.username.setText(arrayList.get(position).getUsername());
+        holder.name.setText(filteredList.get(position).getName());
+        holder.username.setText(filteredList.get(position).getUsername());
 
         return convertView;
     }
@@ -78,7 +84,7 @@ public class StickyAdapter extends BaseAdapter implements StickyListHeadersAdapt
             holder = (HeaderViewHolder) convertView.getTag();
         }
         String headerText;
-        if(arrayList.get(position).getIsFavorite() == true){
+        if(filteredList.get(position).getIsFavorite() == true){
             headerText = "Favorites";
         }else{
             headerText = "Friends";
@@ -89,7 +95,7 @@ public class StickyAdapter extends BaseAdapter implements StickyListHeadersAdapt
 
     @Override
     public long getHeaderId(int position) { //TODO CHANGE FROM FIRST CHAR OF NAME TO FREINDS AND FAVS
-        if(arrayList.get(position).getIsFavorite()){
+        if(filteredList.get(position).getIsFavorite()){
             return 0;
         }else{
             return 1;
@@ -99,5 +105,26 @@ public class StickyAdapter extends BaseAdapter implements StickyListHeadersAdapt
     class HeaderViewHolder {
         TextView text;
     }
+
+    public void filter(String charText) {
+        charText = charText.toLowerCase(Locale.getDefault());
+        filteredList.clear();
+
+        if (charText.length() == 0) {
+            filteredList.addAll(arrayList);
+        }
+        else
+        {
+            for (Friend fl : arrayList)
+            {
+                if (fl.getName().toLowerCase(Locale.getDefault()).contains(charText)||fl.getUsername().toLowerCase(Locale.getDefault()).contains(charText))
+                {
+                    filteredList.add(fl);
+                }
+            }
+        }
+        notifyDataSetChanged();
+    }
+
 
 }
