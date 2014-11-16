@@ -77,15 +77,23 @@ public class StickyAdapter extends BaseAdapter implements StickyListHeadersAdapt
         } else {
             holder = (HeaderViewHolder) convertView.getTag();
         }
-        //set header text as first char in name
-        String headerText = "" + arrayList.get(position).getName().subSequence(0, 1).charAt(0);
+        String headerText;
+        if(arrayList.get(position).getIsFavorite() == true){
+            headerText = "Favorites";
+        }else{
+            headerText = "Friends";
+        }
         holder.text.setText(headerText);
         return convertView;
     }
 
     @Override
     public long getHeaderId(int position) { //TODO CHANGE FROM FIRST CHAR OF NAME TO FREINDS AND FAVS
-        return arrayList.get(position).getName().subSequence(0, 1).charAt(0);
+        if(arrayList.get(position).getIsFavorite()){
+            return 0;
+        }else{
+            return 1;
+        }
     }
 
     class HeaderViewHolder {

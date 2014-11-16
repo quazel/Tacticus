@@ -8,11 +8,19 @@ public class Friend {
     private String phoneNumber;
     private ArrayList<Kickback> kickbacks;
     private String username = "Username"; //Constant for now
+    private boolean isFavorite;
 
     public Friend(String name, String phoneNumber, ArrayList<Kickback> kickbacks) {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.kickbacks = kickbacks;
+    }
+
+    public Friend(String name, String phoneNumber, ArrayList<Kickback> kickbacks, boolean fav) {
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.kickbacks = kickbacks;
+        this.isFavorite = fav;
     }
 
     public String getName() {
@@ -25,5 +33,9 @@ public class Friend {
 
     public String getUsername(){
         return username;
+    }
+
+    public boolean getIsFavorite(){
+        return isFavorite;
     }
 }
