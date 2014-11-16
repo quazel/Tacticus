@@ -5,7 +5,7 @@ import java.nio.charset.Charset;
 
 public class SocketClient {
 
-    static String hostname = "stevex86.com";
+    static String hostname = "localhost";
     static int port = 8000;
 
     public static void main(String[] args) {
@@ -22,8 +22,8 @@ public class SocketClient {
             try {
                 System.out.println("Using " + Charset.defaultCharset() + " charset.");
                 Socket socket = new Socket(hostname, port);
-                String message = "Hello, World!";
-                sendBytes(message.getBytes(), socket);
+                String packet = "{\"packet_type\":\"1\"}";
+                sendBytes(packet.getBytes(), socket);
                 socket.close();
             }
             catch (Exception e) {
