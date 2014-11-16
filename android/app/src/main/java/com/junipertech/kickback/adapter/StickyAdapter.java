@@ -1,4 +1,4 @@
-package com.junipertech.kickback.StickyTest;
+package com.junipertech.kickback.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
