@@ -85,9 +85,9 @@ public class StickyAdapter extends BaseAdapter implements StickyListHeadersAdapt
         }
         String headerText;
         if(filteredList.get(position).getIsFavorite() == true){
-            headerText = "Favorites";
+            headerText = "FAVORITES";
         }else{
-            headerText = "Friends";
+            headerText = "FRIENDS";
         }
         holder.text.setText(headerText);
         return convertView;
