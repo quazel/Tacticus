@@ -1,7 +1,6 @@
 package com.junipertech.kickback.StickyTest;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -9,7 +8,6 @@ import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.junipertech.kickback.R;
 import com.junipertech.kickback.activities.AddFriend;

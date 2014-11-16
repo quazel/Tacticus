@@ -94,7 +94,7 @@ public class StickyAdapter extends BaseAdapter implements StickyListHeadersAdapt
     }
 
     @Override
-    public long getHeaderId(int position) { //TODO CHANGE FROM FIRST CHAR OF NAME TO FREINDS AND FAVS
+    public long getHeaderId(int position) {
         if(filteredList.get(position).getIsFavorite()){
             return 0;
         }else{
