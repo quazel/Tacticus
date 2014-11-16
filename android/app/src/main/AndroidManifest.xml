@@ -99,6 +99,12 @@
             android:name=".activities.FriendRequests"
             android:label="@string/title_activity_friend_requests" >
         </activity>
+
+        <activity
+            android:name=".StickyTest.TestActivity"
+            android:label="@string/title_activity_my_friends" >
+        </activity>
+
     </application>
 
 </manifest>

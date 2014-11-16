@@ -7,7 +7,7 @@
     android:background="@drawable/full_width_selector"
     android:paddingBottom="9dp">
 
-    <TextView android:id="@+id/name_thing"
+    <TextView android:id="@+id/text"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:lines="1"
@@ -17,14 +17,5 @@
         android:gravity="left|center_vertical"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"/>
-    <TextView android:id="@+id/username_thing"
-        android:layout_width="fill_parent"
-        android:textColor="@color/darkGray"
-        android:gravity="left|top"
-        android:textSize="12sp"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:paddingBottom="4dp"
-        android:layout_height="wrap_content"/>
 
 </LinearLayout>

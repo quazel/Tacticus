@@ -15,9 +15,6 @@ import android.widget.TextView;
 import com.junipertech.kickback.R;
 import com.junipertech.kickback.models.Friend;
 
-/**
- * Created by Daniel on 10/13/2014.
- */
 public class ListViewAdapter extends BaseAdapter{
 
     // Declare Variables
