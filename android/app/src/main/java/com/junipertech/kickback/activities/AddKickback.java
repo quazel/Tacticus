@@ -19,7 +19,6 @@ import com.junipertech.kickback.models.Kickback;
 import com.junipertech.kickback.util.Globals;
 
 import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
 
 import java.util.ArrayList;
 
