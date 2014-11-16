@@ -40,30 +40,11 @@
             android:label="@string/title_activity_settings"
             android:parentActivityName=".activities.Home" >
         </activity>
-        <activity
-            android:name=".activities.AccountSettings"
-            android:label="@string/title_activity_account_settings"
-            android:parentActivityName=".activities.Settings" >
-        </activity>
-        <activity
-            android:name=".activities.PrivacySettings"
-            android:label="@string/title_activity_privacy_settings"
-            android:parentActivityName=".activities.Settings" >
-        </activity>
-        <activity
-            android:name=".activities.AdvancedSettings"
-            android:label="@string/title_activity_advanced_settings"
-            android:parentActivityName=".activities.Settings" >
-        </activity>
-        <activity
-            android:name=".activities.MoreInformation"
-            android:label="@string/title_activity_more_information"
-            android:parentActivityName=".activities.Settings" >
-        </activity>
+
         <activity
             android:name=".activities.NotificationSettings"
             android:label="@string/title_activity_notification_settings"
-            android:parentActivityName=".activities.AdvancedSettings" >
+            android:parentActivityName=".activities.Settings" >
         </activity>
         <activity
             android:name=".activities.MyFriends"
@@ -74,12 +55,12 @@
         <activity
             android:name=".activities.TermsOfService"
             android:label="@string/title_activity_terms_of_service"
-            android:parentActivityName=".activities.MoreInformation" >
+            android:parentActivityName=".activities.Settings" >
         </activity>
         <activity
             android:name=".activities.PrivacyPolicy"
             android:label="@string/title_activity_privacy_policy"
-            android:parentActivityName=".activities.MoreInformation" >
+            android:parentActivityName=".activities.Settings" >
         </activity>
         <activity
             android:name=".activities.AddKickback"

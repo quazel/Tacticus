@@ -8,4 +8,6 @@
 
     <dimen name="space_height">4dp</dimen>
     <dimen name="space_width">7dp</dimen>
+
+    <dimen name="list_item_height">70dp</dimen>
 </resources>
