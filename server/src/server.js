@@ -8,6 +8,7 @@ net.createServer(function (socket) {
         var message = data.toString("utf8");
         console.log('got "message"', message);
         var packet = JSON.parse(message);
+        console.log(packet.packet_type);
     });
     socket.on('end', function (data) {
         console.log('Shucks. A user ended the connection.');
