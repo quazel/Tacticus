@@ -5,7 +5,7 @@ net.createServer(function (socket) {
     console.log('A user connected.');
     socket.write('Welcome, user!\n');
     socket.on('data', function (data) {
-        var message = data.toString("utf8");
+        var message = data.toString("utf8").slice(0, -1);
         console.log('got "message"', message);
         var packet = JSON.parse(message);
         console.log(packet.packet_type);
