@@ -1,24 +1,10 @@
 var net = require('net');
-var rsa = require('node-rsa');
 
 net.createServer(function (socket) {
-    console.log('A user connected.');
-    socket.write('Welcome, user!\n');
     socket.on('data', function (data) {
-        var message = data.toString("utf8");
-        var re = /\0/g;
-        message = message.replace(re, "");
-        console.log('got "message"', message);
-        var packet = JSON.parse(message);
-        console.log(packet);
+        console.log('burgle');
     });
-    socket.on('end', function (data) {
-        console.log('Shucks. A user ended the connection.');
-    });
-    socket.on('close', function () {
-        console.log('Uh oh. Looks like the user disconnected.');
-    });
-}).listen(8000, "0.0.0.0");
+}).listen(8000, '0.0.0.0');
 
 /* Encryption code for AES
 crypto = require "crypto"
