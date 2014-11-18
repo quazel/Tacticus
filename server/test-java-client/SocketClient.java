@@ -22,7 +22,7 @@ public class SocketClient {
             try {
                 System.out.println("Using " + Charset.defaultCharset() + " charset.");
                 Socket socket = new Socket(hostname, port);
-                String packet = "{\"packet_type\":\"1\"}";
+                String packet = "{\"packet_type\":1}";
                 sendBytes(packet.getBytes(), socket);
                 socket.close();
             }
@@ -34,8 +34,6 @@ public class SocketClient {
 
     public static void sendBytes(byte[] toSend, Socket socket) throws IOException {
         DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
-        int len = toSend.length;
-        dos.writeInt(len);
         dos.write(toSend);
     }
 

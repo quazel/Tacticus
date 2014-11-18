@@ -6,6 +6,8 @@ net.createServer(function (socket) {
         message = decryptSymetricMessage(message);
         message = removePadding(message);
         var packet = JSON.parse(message);
+        console.log(data);
+        console.log(packet);
     });
     socket.on('end', function (data) {
         console.log('User ended connection.');
@@ -16,11 +18,11 @@ net.createServer(function (socket) {
 }).listen(8000, '0.0.0.0');
 
 /*
-   Removes null and carriage return padding characters from string
+   Removes null padding characters from string
    Ensures that we get a string that can be parsed from JSON
 */
 function removePadding (message) {
-    var re = /[\0\u0013]/g;
+    var re = /[\0]/g;
     return message.replace(re, "");
 }
 
