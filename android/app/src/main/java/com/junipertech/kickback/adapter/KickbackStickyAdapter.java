@@ -72,7 +72,7 @@ public class KickbackStickyAdapter extends BaseAdapter implements StickyListHead
 
             LinearLayout body = (LinearLayout)convertView.findViewById(R.id.body);
 
-            int dayDiff = kickbackArrayList.get(position).getStart().getDayOfMonth() - kickbackArrayList.get(position+1).getStart().getDayOfMonth();
+            int dayDiff = kickbackArrayList.get(position).getStart().getDayOfYear() - kickbackArrayList.get(position+1).getStart().getDayOfYear();
             if(dayDiff != 0){
                 body.setBackgroundResource(R.drawable.full_width_selector_nobottom); //NO line on bottom
             }else{
