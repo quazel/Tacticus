@@ -71,7 +71,6 @@ public class KickbacksListStickyAdapter extends BaseAdapter implements StickyLis
                 body.setBackgroundResource(R.drawable.full_width_selector); //line on bottom
             }
 
-
             holder.name = (TextView)convertView.findViewById(R.id.name_thing);
             holder.username = (TextView)convertView.findViewById(R.id.username_thing);
             convertView.setTag(holder);
