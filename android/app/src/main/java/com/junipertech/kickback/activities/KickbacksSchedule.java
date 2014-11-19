@@ -21,11 +21,8 @@ import static com.junipertech.kickback.util.Globals.initKickBacks;
 public class KickbacksSchedule extends Activity {
 
     ArrayList<Kickback> kickbacks = Globals.kickbacks;
-
     StickyListHeadersListView stickyList;
-
     KickbackStickyAdapter stickyKickbackAdapterThing;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.junipertech.kickback.R;
@@ -55,6 +56,7 @@ public class KickbackStickyAdapter extends BaseAdapter implements StickyListHead
     }
 
     public class ViewHolder {
+
         TextView timeRange;
         TextView location;
     }
@@ -65,7 +67,17 @@ public class KickbackStickyAdapter extends BaseAdapter implements StickyListHead
 
         if (convertView == null) {
             holder = new ViewHolder();
+
             convertView = inflater.inflate(R.layout.sticky_kickback_item, parent, false);
+
+            LinearLayout body = (LinearLayout)convertView.findViewById(R.id.body);
+
+            int dayDiff = kickbackArrayList.get(position).getStart().getDayOfMonth() - kickbackArrayList.get(position+1).getStart().getDayOfMonth();
+            if(dayDiff != 0){
+                body.setBackgroundResource(R.drawable.full_width_selector_nobottom); //NO line on bottom
+            }else{
+                body.setBackgroundResource(R.drawable.full_width_selector); //line on bottom
+            }
 
             holder.timeRange = (TextView)convertView.findViewById(R.id.kickback_time_range);
             holder.location = (TextView)convertView.findViewById(R.id.kickback_location);

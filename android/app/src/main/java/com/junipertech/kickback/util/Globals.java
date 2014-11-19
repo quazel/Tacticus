@@ -23,7 +23,9 @@ public class Globals {
 
     public static void initKickBacks(){
         kickbacks.add(new Kickback(new DateTime(),new DateTime(),"Hati"));
+        kickbacks.add(new Kickback(new DateTime().plusDays(1),new DateTime().plusDays(1),"CHIPS!"));
         kickbacks.add(new Kickback(new DateTime().plusDays(1),new DateTime().plusDays(1),"Nicaragua"));
+        kickbacks.add(new Kickback(new DateTime().plusDays(1),new DateTime().plusDays(1),"Chip Factory"));
         kickbacks.add(new Kickback(new DateTime().plusDays(2),new DateTime().plusDays(2),"Nigeria"));
         kickbacks.add(new Kickback(new DateTime().plusDays(3),new DateTime().plusDays(3),"Siera Leone"));
         kickbacks.add(new Kickback(new DateTime().plusDays(4),new DateTime().plusDays(4),"New Ginea"));
