@@ -1,5 +1,7 @@
 package com.junipertech.kickback.adapter;
 
+//This adapter is to be used with the friends list activity
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;

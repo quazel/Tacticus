@@ -1,5 +1,7 @@
 package com.junipertech.kickback.adapter;
 
+//This adapter is to be used with the kickbacks schedule activity
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,7 +74,7 @@ public class KickbackStickyAdapter extends BaseAdapter implements StickyListHead
 
             LinearLayout body = (LinearLayout)convertView.findViewById(R.id.body);
 
-            int dayDiff = kickbackArrayList.get(position).getStart().getDayOfYear() - kickbackArrayList.get(position+1).getStart().getDayOfYear();
+            int dayDiff = kickbackArrayList.get(position).getStart().getDayOfYear() - kickbackArrayList.get(position+1).getStart().getDayOfYear(); //TODO Make sure this doesn't throw an out of bounds error
             if(dayDiff != 0){
                 body.setBackgroundResource(R.drawable.full_width_selector_nobottom); //NO line on bottom
             }else{

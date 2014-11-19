@@ -1,10 +1,13 @@
 package com.junipertech.kickback.adapter;
 
+//This adapter is to be used with the active kickbacks list activity
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.junipertech.kickback.R;
@@ -59,6 +62,15 @@ public class KickbacksListStickyAdapter extends BaseAdapter implements StickyLis
         if (convertView == null) {
             holder = new ViewHolder();
             convertView = inflater.inflate(R.layout.sticky_item, parent, false);
+
+            LinearLayout body = (LinearLayout)convertView.findViewById(R.id.body);
+
+            if(filteredList.get(position).getIsFavorite() != filteredList.get(position+1).getIsFavorite()){
+                body.setBackgroundResource(R.drawable.full_width_selector_nobottom); //NO line on bottom
+            }else{
+                body.setBackgroundResource(R.drawable.full_width_selector); //line on bottom
+            }
+
 
             holder.name = (TextView)convertView.findViewById(R.id.name_thing);
             holder.username = (TextView)convertView.findViewById(R.id.username_thing);
