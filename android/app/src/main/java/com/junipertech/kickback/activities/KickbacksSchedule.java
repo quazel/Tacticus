@@ -15,6 +15,8 @@ import java.util.ArrayList;
 
 import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 
+import static com.junipertech.kickback.util.Globals.initKickBacks;
+
 
 public class KickbacksSchedule extends Activity {
 
@@ -33,7 +35,7 @@ public class KickbacksSchedule extends Activity {
 
 
         if(kickbacks.size() == 0) {
-            //GIMME KICKBACKS PLS
+            initKickBacks();
         }
 
         stickyList = (StickyListHeadersListView)findViewById(R.id.kickbacks_list);

@@ -75,8 +75,8 @@ public class KickbackStickyAdapter extends BaseAdapter implements StickyListHead
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.start.setText(kickbackArrayList.get(position).getStart().toString()); // TODO MAKE THIS DATE OBJECT INTO A STRING
-        holder.stop.setText(kickbackArrayList.get(position).getStop().toString()); // TODO MAKE THIS DATE OBJECT INTO A STRING
+        holder.start.setText(formattedListTimeString(kickbackArrayList.get(position).getStart()));
+        holder.stop.setText(formattedListTimeString(kickbackArrayList.get(position).getStop()));
         holder.location.setText(kickbackArrayList.get(position).getLocation());
 
         return convertView;
@@ -166,6 +166,13 @@ public class KickbackStickyAdapter extends BaseAdapter implements StickyListHead
                 formatted = aParticularDay.toString(th);
         }
         return formatted;
+    }
+
+    private String formattedListTimeString(DateTime toConvert){
+        String builtTime = "";
+        builtTime += toConvert.getHourOfDay();
+
+        return builtTime;
     }
 }
 

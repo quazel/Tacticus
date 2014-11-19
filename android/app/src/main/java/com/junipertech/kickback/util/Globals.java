@@ -21,6 +21,22 @@ public class Globals {
     public static User theUser;
     public static boolean isOnline = false;
 
+    public static void initKickBacks(){
+        kickbacks.add(new Kickback(new DateTime(),new DateTime(),"Hati"));
+        kickbacks.add(new Kickback(new DateTime().plusDays(1),new DateTime().plusDays(1),"Nicaragua"));
+        kickbacks.add(new Kickback(new DateTime().plusDays(2),new DateTime().plusDays(2),"Nigeria"));
+        kickbacks.add(new Kickback(new DateTime().plusDays(3),new DateTime().plusDays(3),"Siera Leone"));
+        kickbacks.add(new Kickback(new DateTime().plusDays(4),new DateTime().plusDays(4),"New Ginea"));
+        kickbacks.add(new Kickback(new DateTime().plusDays(5),new DateTime().plusDays(5),"South Africa"));
+        kickbacks.add(new Kickback(new DateTime().plusDays(6),new DateTime().plusDays(6),"Main"));
+        kickbacks.add(new Kickback(new DateTime().plusDays(7),new DateTime().plusDays(7),"New York"));
+        kickbacks.add(new Kickback(new DateTime().plusDays(8),new DateTime().plusDays(8),"Bolivia"));
+        kickbacks.add(new Kickback(new DateTime().plusDays(9),new DateTime().plusDays(9),"Youtube"));
+        kickbacks.add(new Kickback(new DateTime().plusDays(10),new DateTime().plusDays(10),"My House"));
+        kickbacks.add(new Kickback(new DateTime().plusDays(11),new DateTime().plusDays(11),"Chips"));
+        kickbacks.add(new Kickback(new DateTime().plusDays(12),new DateTime().plusDays(12),"CHIPS!"));
+
+    }
 
     public static void initFriends() {
         ArrayList<Kickback> kickback = new ArrayList<Kickback>();
