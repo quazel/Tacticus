@@ -6,8 +6,7 @@ net.createServer(function (socket) {
         message = decryptSymetricMessage(message);
         message = removePadding(message);
         var packet = JSON.parse(message);
-        console.log(data);
-        console.log(packet);
+        // TODO: stuff with packet
     });
     socket.on('end', function (data) {
         console.log('User ended connection.');

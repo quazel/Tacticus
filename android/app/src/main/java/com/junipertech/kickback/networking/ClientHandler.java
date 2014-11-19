@@ -1,8 +1,8 @@
 package com.junipertech.kickback.networking;
 
 import java.io.IOException;
+import java.net.InetSocketAddress;
 import java.net.Socket;
-import java.net.SocketAddress;
 
 public class ClientHandler {
 
@@ -19,11 +19,15 @@ public class ClientHandler {
             hostname = address[0];
             port = Integer.parseInt(address[1]);
         }
-        clientSocket = new Socket(hostname, port);
-        clientSocket.setKeepAlive(true);
+        clientSocket = new Socket();
+        clientSocket.connect(new InetSocketAddress(hostname, port), 5000);
     }
 
+    public void disconnect() throws IOException {
+        clientSocket.close();
+    }
 
+    // TODO: Implement a packet send and receive queue to process packets
     public void addToSendQueue(Packet packet) {
 
     }
