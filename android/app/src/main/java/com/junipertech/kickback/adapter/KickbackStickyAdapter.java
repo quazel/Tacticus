@@ -55,8 +55,7 @@ public class KickbackStickyAdapter extends BaseAdapter implements StickyListHead
     }
 
     public class ViewHolder {
-        TextView start;
-        TextView stop;
+        TextView timeRange;
         TextView location;
     }
 
@@ -68,15 +67,14 @@ public class KickbackStickyAdapter extends BaseAdapter implements StickyListHead
             holder = new ViewHolder();
             convertView = inflater.inflate(R.layout.sticky_kickback_item, parent, false);
 
-            holder.start = (TextView)convertView.findViewById(R.id.kickback_start_time);
-            holder.stop = (TextView)convertView.findViewById(R.id.kickback_stop_time);
+            holder.timeRange = (TextView)convertView.findViewById(R.id.kickback_time_range);
             holder.location = (TextView)convertView.findViewById(R.id.kickback_location);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.start.setText(formattedListTimeString(kickbackArrayList.get(position).getStart()));
-        holder.stop.setText(formattedListTimeString(kickbackArrayList.get(position).getStop()));
+        holder.timeRange.setText(kickbackArrayList.get(position).getTimeRange());
+
         holder.location.setText(kickbackArrayList.get(position).getLocation());
 
         return convertView;
@@ -168,12 +166,6 @@ public class KickbackStickyAdapter extends BaseAdapter implements StickyListHead
         return formatted;
     }
 
-    private String formattedListTimeString(DateTime toConvert){
-        String builtTime = "";
-        builtTime += toConvert.getHourOfDay();
-
-        return builtTime;
-    }
 }
 
 
