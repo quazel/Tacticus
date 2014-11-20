@@ -177,7 +177,7 @@ public class KickbackStickyAdapter extends BaseAdapter implements StickyListHead
             default:
                 formatted = aParticularDay.toString(th);
         }
-        return formatted;
+        return formatted.toUpperCase();
     }
 
 }
