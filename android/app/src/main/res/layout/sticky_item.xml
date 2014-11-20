@@ -9,7 +9,7 @@
     android:paddingBottom="9dp">
 
     <TextView android:id="@+id/name_thing"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="17dp"
         android:textSize="16sp"

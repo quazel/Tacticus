@@ -23,15 +23,13 @@
                 <TextView
 
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/header_height"
                     android:paddingLeft="9dp"
                     android:paddingRight="9dp"
                     android:background="@drawable/title_label"
                     android:textColor="@color/darkGreen"
                     android:text="MANAGE ACCOUNT"
                     android:textStyle="bold"
-                    android:maxLines="3"
-                    android:lines="2"
                     android:paddingTop="3dp"
                     android:paddingBottom="3dp"
                     android:gravity="start|center_vertical"/>
@@ -76,15 +74,13 @@
                 <TextView
 
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/header_height"
                     android:paddingLeft="9dp"
                     android:paddingRight="9dp"
                     android:background="@drawable/title_label"
                     android:textColor="@color/darkGreen"
                     android:text="PRIVACY OPTIONS"
                     android:textStyle="bold"
-                    android:maxLines="3"
-                    android:lines="2"
                     android:paddingTop="3dp"
                     android:paddingBottom="3dp"
                     android:gravity="start|center_vertical"/>
@@ -129,15 +125,13 @@
                 <TextView
 
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/header_height"
                     android:paddingLeft="9dp"
                     android:paddingRight="9dp"
                     android:background="@drawable/title_label"
                     android:textColor="@color/darkGreen"
                     android:text="ADVANCED OPTIONS"
                     android:textStyle="bold"
-                    android:maxLines="3"
-                    android:lines="2"
                     android:paddingTop="3dp"
                     android:paddingBottom="3dp"
                     android:gravity="start|center_vertical"/>
@@ -171,15 +165,13 @@
                 <TextView
 
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/header_height"
                     android:paddingLeft="9dp"
                     android:paddingRight="9dp"
                     android:background="@drawable/title_label"
                     android:textColor="@color/darkGreen"
                     android:text="INFORMATION"
                     android:textStyle="bold"
-                    android:maxLines="3"
-                    android:lines="2"
                     android:paddingTop="3dp"
                     android:paddingBottom="3dp"
                     android:gravity="start|center_vertical"/>
@@ -224,15 +216,13 @@
                 <TextView
 
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/header_height"
                     android:paddingLeft="9dp"
                     android:paddingRight="9dp"
                     android:background="@drawable/title_label"
                     android:textColor="@color/darkGreen"
                     android:text="ACCOUNT ACTIONS"
                     android:textStyle="bold"
-                    android:maxLines="3"
-                    android:lines="2"
                     android:paddingTop="3dp"
                     android:paddingBottom="3dp"
                     android:gravity="start|center_vertical"/>
