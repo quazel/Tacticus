@@ -25,14 +25,14 @@
 
             <TextView
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/header_height"
                 android:paddingLeft="9dp"
                 android:paddingRight="9dp"
+                android:textSize="@dimen/list_header_text_size"
                 android:background="@drawable/title_label"
                 android:textColor="@color/darkGreen"
+                android:textStyle="bold"
                 android:text="FAVORITES KICKING BACK"
-                android:maxLines="3"
-                android:lines="3"
                 android:gravity="start|center_vertical"/>
             <ListView
                 android:layout_width="fill_parent"
@@ -45,13 +45,14 @@
 
             <TextView
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/header_height"
                 android:paddingLeft="9dp"
                 android:paddingRight="9dp"
+                android:textSize="@dimen/list_header_text_size"
                 android:background="@drawable/title_label"
                 android:textColor="@color/darkGreen"
+                android:textStyle="bold"
                 android:text="FRIENDS KICKING BACK"
-                android:lines="3"
                 android:gravity="start|center_vertical"/>
             <ListView
                 android:layout_width="fill_parent"
