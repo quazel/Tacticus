@@ -5,7 +5,7 @@ import org.joda.time.DateTime;
 public abstract class Packet {
 
     // Include in Packet headers
-    protected PacketType type;
+    protected ClientPacketType type;
     protected int size;
     private DateTime now = DateTime.now();
 
