@@ -15,11 +15,11 @@
         android:id="@+id/kickbackButton"
         android:textStyle="bold"
         android:text="@string/Kickback"
-        android:textColor="@color/darkGreen"
-        android:textSize="47sp"
+        android:textColor="@color/title_text_color"
+        android:textSize="@dimen/home_button_text_size"
         android:layout_centerInParent="true"
         android:layout_width="fill_parent"
-        android:layout_height="70dp"
+        android:layout_height="@dimen/home_button_height"
         android:background="@drawable/outlined_selector"
         android:onClick="onKickbackPressed"/>
 

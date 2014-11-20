@@ -22,14 +22,13 @@
         <TextView
 
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/header_height"
             android:paddingLeft="9dp"
             android:paddingRight="9dp"
+            android:textSize="@dimen/list_header_text_size"
             android:background="@drawable/title_label"
-            android:textColor="@color/darkGreen"
+            android:textColor="@color/title_text_color"
             android:text="ADD FRIENDS FROM CONTACTS"
-            android:maxLines="3"
-            android:lines="2"
             android:paddingTop="3dp"
             android:paddingBottom="3dp"
             android:gravity="start|center_vertical"/>
@@ -44,13 +43,13 @@
 
         <TextView
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/header_height"
             android:paddingLeft="9dp"
             android:paddingRight="9dp"
+            android:textSize="@dimen/list_header_text_size"
             android:background="@drawable/title_label"
-            android:textColor="@color/darkGreen"
+            android:textColor="@color/title_text_color"
             android:text="INVITE FRIENDS TO KICKBACK"
-            android:lines="2"
             android:paddingTop="3dp"
             android:paddingBottom="3dp"
             android:gravity="start|center_vertical"/>

@@ -13,14 +13,14 @@
         android:layout_height="wrap_content"
         android:paddingTop="17dp"
         android:textSize="@dimen/list_item_primary_text_size"
-        android:textColor="@color/black"
+        android:textColor="@color/primary_body_text_color"
         android:gravity="left|center_vertical"
         android:paddingLeft="12dp"
         android:paddingRight="12dp"/>
 
     <TextView android:id="@+id/kickback_location"
         android:layout_width="fill_parent"
-        android:textColor="@color/darkGray"
+        android:textColor="@color/secondary_body_text_color"
         android:gravity="left|top"
         android:textSize="@dimen/list_item_secondary_text_size"
         android:paddingLeft="12dp"

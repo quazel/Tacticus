@@ -30,7 +30,7 @@
                 android:paddingRight="9dp"
                 android:textSize="@dimen/list_header_text_size"
                 android:background="@drawable/title_label"
-                android:textColor="@color/darkGreen"
+                android:textColor="@color/title_text_color"
                 android:textStyle="bold"
                 android:text="FAVORITES KICKING BACK"
                 android:gravity="start|center_vertical"/>
@@ -50,7 +50,7 @@
                 android:paddingRight="9dp"
                 android:textSize="@dimen/list_header_text_size"
                 android:background="@drawable/title_label"
-                android:textColor="@color/darkGreen"
+                android:textColor="@color/title_text_color"
                 android:textStyle="bold"
                 android:text="FRIENDS KICKING BACK"
                 android:gravity="start|center_vertical"/>
@@ -79,7 +79,7 @@
             android:text="Stop Kicking Back"
             android:layout_weight="2"
             android:background="@drawable/outlined_selector"
-            android:textColor="@color/darkGreen"
+            android:textColor="@color/title_text_color"
             android:textSize="30sp"
             android:id="@+id/goOffline"
             android:onClick="onBusyPressed"/>

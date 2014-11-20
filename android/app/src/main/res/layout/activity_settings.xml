@@ -6,7 +6,6 @@
     android:paddingRight="@dimen/list_activity_horizontal_margin"
     android:paddingTop="@dimen/list_activity_vertical_margin"
     android:paddingBottom="@dimen/list_activity_vertical_margin"
-    android:background="@color/white"
     tools:context="com.junipertech.kickback.activities.Settings">
 
 
@@ -27,7 +26,7 @@
                     android:paddingLeft="9dp"
                     android:paddingRight="9dp"
                     android:background="@drawable/title_label"
-                    android:textColor="@color/darkGreen"
+                    android:textColor="@color/title_text_color"
                     android:text="MANAGE ACCOUNT"
                     android:textStyle="bold"
                     android:paddingTop="3dp"
@@ -39,10 +38,9 @@
                     android:layout_height="@dimen/list_item_height"
                     android:paddingLeft="9dp"
                     android:paddingRight="9dp"
-                    android:layout_weight="1"
                     android:background="@drawable/full_width_button"
                     android:text="Username"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/list_item_primary_text_size"
                     android:gravity="left|center_vertical"
                     android:id="@+id/username" />
 
@@ -51,10 +49,9 @@
                     android:layout_height="@dimen/list_item_height"
                     android:paddingLeft="9dp"
                     android:paddingRight="9dp"
-                    android:layout_weight="1"
                     android:background="@drawable/full_width_selector"
                     android:text="Phone Number"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/list_item_primary_text_size"
                     android:gravity="left|center_vertical"
                     android:id="@+id/phonenumber" />
 
@@ -63,10 +60,9 @@
                     android:layout_height="@dimen/list_item_height"
                     android:paddingLeft="9dp"
                     android:paddingRight="9dp"
-                    android:layout_weight="1"
                     android:background="@drawable/outlined_selector"
                     android:text="Email"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/list_item_primary_text_size"
                     android:gravity="left|center_vertical"
                     android:onClick="onEmailPressed"
                     android:id="@+id/email" />
@@ -78,7 +74,7 @@
                     android:paddingLeft="9dp"
                     android:paddingRight="9dp"
                     android:background="@drawable/title_label"
-                    android:textColor="@color/darkGreen"
+                    android:textColor="@color/title_text_color"
                     android:text="PRIVACY OPTIONS"
                     android:textStyle="bold"
                     android:paddingTop="3dp"
@@ -90,10 +86,9 @@
                     android:layout_height="@dimen/list_item_height"
                     android:paddingLeft="9dp"
                     android:paddingRight="9dp"
-                    android:layout_weight="1"
                     android:background="@drawable/full_width_selector"
                     android:text="Filter Users"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/list_item_primary_text_size"
                     android:gravity="left|center_vertical"
                     android:id="@+id/filter" />
 
@@ -102,10 +97,9 @@
                     android:layout_height="@dimen/list_item_height"
                     android:paddingLeft="9dp"
                     android:paddingRight="9dp"
-                    android:layout_weight="1"
                     android:background="@drawable/full_width_selector"
                     android:text="Block Users"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/list_item_primary_text_size"
                     android:gravity="left|center_vertical"
                     android:id="@+id/block" />
 
@@ -114,10 +108,9 @@
                     android:layout_height="@dimen/list_item_height"
                     android:paddingLeft="9dp"
                     android:paddingRight="9dp"
-                    android:layout_weight="1"
                     android:background="@drawable/outlined_selector"
                     android:text="Unblock Users"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/list_item_primary_text_size"
                     android:gravity="left|center_vertical"
                     android:id="@+id/unblock" />
 
@@ -129,7 +122,7 @@
                     android:paddingLeft="9dp"
                     android:paddingRight="9dp"
                     android:background="@drawable/title_label"
-                    android:textColor="@color/darkGreen"
+                    android:textColor="@color/title_text_color"
                     android:text="ADVANCED OPTIONS"
                     android:textStyle="bold"
                     android:paddingTop="3dp"
@@ -141,10 +134,9 @@
                     android:layout_height="@dimen/list_item_height"
                     android:paddingLeft="9dp"
                     android:paddingRight="9dp"
-                    android:layout_weight="1"
                     android:background="@drawable/full_width_selector"
                     android:text="Notification Settings"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/list_item_primary_text_size"
                     android:gravity="left|center_vertical"
                     android:onClick="notificationSettingsPressed"
                     android:id="@+id/notification_settings" />
@@ -154,10 +146,9 @@
                     android:layout_height="@dimen/list_item_height"
                     android:paddingLeft="9dp"
                     android:paddingRight="9dp"
-                    android:layout_weight="1"
                     android:background="@drawable/outlined_selector"
                     android:text="Review This App"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/list_item_primary_text_size"
                     android:gravity="left|center_vertical"
                     android:id="@+id/review" />
 
@@ -169,7 +160,7 @@
                     android:paddingLeft="9dp"
                     android:paddingRight="9dp"
                     android:background="@drawable/title_label"
-                    android:textColor="@color/darkGreen"
+                    android:textColor="@color/title_text_color"
                     android:text="INFORMATION"
                     android:textStyle="bold"
                     android:paddingTop="3dp"
@@ -181,10 +172,9 @@
                     android:layout_height="@dimen/list_item_height"
                     android:paddingLeft="9dp"
                     android:paddingRight="9dp"
-                    android:layout_weight="1"
                     android:background="@drawable/full_width_selector"
                     android:text="Privacy Policy"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/list_item_primary_text_size"
                     android:gravity="left|center_vertical"
                     android:id="@+id/privacy_policy" />
 
@@ -193,10 +183,9 @@
                     android:layout_height="@dimen/list_item_height"
                     android:paddingLeft="9dp"
                     android:paddingRight="9dp"
-                    android:layout_weight="1"
                     android:background="@drawable/full_width_selector"
                     android:text="Terms of Service"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/list_item_primary_text_size"
                     android:gravity="left|center_vertical"
                     android:id="@+id/terms_of_service" />
 
@@ -205,10 +194,9 @@
                     android:layout_height="@dimen/list_item_height"
                     android:paddingLeft="9dp"
                     android:paddingRight="9dp"
-                    android:layout_weight="1"
                     android:background="@drawable/outlined_selector"
                     android:text="Version"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/list_item_primary_text_size"
                     android:gravity="left|center_vertical"
                     android:id="@+id/version" />
 
@@ -220,7 +208,7 @@
                     android:paddingLeft="9dp"
                     android:paddingRight="9dp"
                     android:background="@drawable/title_label"
-                    android:textColor="@color/darkGreen"
+                    android:textColor="@color/title_text_color"
                     android:text="ACCOUNT ACTIONS"
                     android:textStyle="bold"
                     android:paddingTop="3dp"
@@ -232,10 +220,9 @@
                     android:layout_height="@dimen/list_item_height"
                     android:paddingLeft="9dp"
                     android:paddingRight="9dp"
-                    android:layout_weight="1"
                     android:background="@drawable/full_width_selector"
                     android:text="Submit Picture"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/list_item_primary_text_size"
                     android:gravity="left|center_vertical"
                     android:id="@+id/sent_picture" />
 
@@ -246,8 +233,7 @@
                     android:paddingRight="9dp"
                     android:background="@drawable/outlined_selector"
                     android:text="@string/logout"
-                    android:layout_weight="1"
-                    android:textSize="16dp"
+                    android:textSize="@dimen/list_item_primary_text_size"
                     android:onClick="logoutUser"
                     android:gravity="left|center_vertical"
                     android:id="@+id/logout" />

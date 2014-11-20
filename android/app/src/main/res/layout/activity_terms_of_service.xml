@@ -26,7 +26,7 @@
                 android:paddingEnd="9dp"
                 android:paddingTop="9dp"
                 android:paddingBottom="9dp"
-                android:textColor="@color/darkGreen"
+                android:textColor="@color/title_text_color"
                 android:text="Terms of Service:"
                 android:textSize="25sp"
                 android:background="@drawable/title_label"
