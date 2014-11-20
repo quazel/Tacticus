@@ -5,8 +5,12 @@ import org.joda.time.DateTime;
 public abstract class Packet {
 
     // Include in Packet headers
-    private PacketType type;
-    private int size;
+    protected PacketType type;
+    protected int size;
     private DateTime now = DateTime.now();
+
+    public String serialize() {
+        return "{ }";
+    }
 
 }
