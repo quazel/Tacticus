@@ -32,6 +32,7 @@ public class KickbacksListStickyAdapter extends BaseAdapter implements StickyLis
         this.filteredList = new ArrayList<Friend>();
         this.filteredList.addAll(arrayList);
 
+
     }
 
     @Override
