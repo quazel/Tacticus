@@ -86,6 +86,8 @@
         <item>Error loading days</item>
     </string-array>
 
+    <string name="dash">-</string>
+
     <string name="friendlist_favorites">FAVORITES</string>
     <string name="friendlist_friend">FRIENDS</string>
     <string name="large_sample_text">Phasellus mollis justo vel lectus tincidunt, at efficitur mi volutpat. Etiam eleifend diam ac erat bibendum, aliquet porttitor lacus dictum. Morbi bibendum lectus lectus, vel hendrerit est interdum ac. Mauris et eros sagittis, faucibus nisi sit amet, volutpat nulla. Sed vitae lobortis neque. Nunc quis tempus erat, ut sagittis leo. Ut rutrum tortor rhoncus luctus consectetur. Maecenas quis odio laoreet, scelerisque ex efficitur, auctor quam. Proin mollis elementum sapien.

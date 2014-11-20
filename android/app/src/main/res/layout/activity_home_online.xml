@@ -16,8 +16,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_above="@+id/linearLayout"
-        android:paddingTop="0dp"
-        >
+        android:paddingTop="0dp">
 
         <LinearLayout
             android:layout_width="fill_parent"

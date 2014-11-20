@@ -1,6 +1,6 @@
 package com.junipertech.kickback.adapter;
 
-//This adapter is to be used with the friends list activity
+//This adapter is to be used with the active kickbacks list activity
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -19,13 +19,13 @@ import java.util.Locale;
 
 import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
 
-public class StickyAdapter extends BaseAdapter implements StickyListHeadersAdapter {
+public class KickbacksListStickyAdapter extends BaseAdapter implements StickyListHeadersAdapter {
 
     private List<Friend> filteredList = null;
     private ArrayList<Friend> arrayList;
     private LayoutInflater inflater;
 
-    public StickyAdapter(Context context, ArrayList<Friend> inputArrayList) {
+    public KickbacksListStickyAdapter(Context context, ArrayList<Friend> inputArrayList) {
         inflater = LayoutInflater.from(context);
 
         this.arrayList = inputArrayList;
@@ -96,9 +96,9 @@ public class StickyAdapter extends BaseAdapter implements StickyListHeadersAdapt
         }
         String headerText;
         if(filteredList.get(position).getIsFavorite() == true){
-            headerText = "FAVORITES";
+            headerText = "FAVORITES KICKING BACK";
         }else{
-            headerText = "FRIENDS";
+            headerText = "FRIENDS KICKING BACK";
         }
         holder.text.setText(headerText);
         return convertView;
