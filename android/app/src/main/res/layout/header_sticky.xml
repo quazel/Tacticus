@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingTop="8dp"
-        android:textSize="14sp"
+        android:textSize="@dimen/list_header_text_size"
         android:textColor="@color/darkGreen"
         android:gravity="left|center_vertical"
         android:paddingLeft="12dp"
