@@ -107,5 +107,6 @@ Donec porta odio a ex sagittis tempus. Etiam blandit diam a elit blandit consect
 
     <string name="server_hostname">stevex86.com</string>
     <string name="server_port">8080</string>
+    <string name="empty_list">Noone found by that name</string>
 
 </resources>

@@ -7,6 +7,7 @@ import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.junipertech.kickback.R;
 import com.junipertech.kickback.adapter.KickbacksListStickyAdapter;
@@ -43,7 +44,7 @@ public class KickbacksList extends Activity {
 
         stickyList = (StickyListHeadersListView)findViewById(R.id.list);
 
-        stickyAdapterThing = new KickbacksListStickyAdapter(this,activeKickbacks);
+        stickyAdapterThing = new KickbacksListStickyAdapter(this,activeKickbacks,(TextView)findViewById(R.id.empty),(StickyListHeadersListView)findViewById(R.id.list));
 
         stickyList.setAdapter(stickyAdapterThing);
 
