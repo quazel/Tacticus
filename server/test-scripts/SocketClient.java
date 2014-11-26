@@ -1,4 +1,6 @@
 import java.net.Socket;
+import java.io.InputStream;
+import java.io.BufferedInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -22,9 +24,19 @@ public class SocketClient {
             try {
                 System.out.println("Using " + Charset.defaultCharset() + " charset.");
                 Socket socket = new Socket(hostname, port);
-                String packet = "{\"packet_type\":1}";
+                String packet = "{\"packet_type\":0, \"timestamp\":0, \"contents\": \"Ping!\"}";
                 sendBytes(packet.getBytes(), socket);
-                socket.close();
+                InputStream in = socket.getInputStream();
+                BufferedInputStream bin = new BufferedInputStream(in);
+                int length = 0;
+                for (int i = 0; i < 4; i++) {
+                    int next = bin.read();
+                    length += next << (24 - (i * 8));
+                }
+                System.out.println(length);
+                byte[] data = new byte[length];
+                bin.read(data, 0, length);
+                System.out.println(new String(data, "UTF-8"));
             }
             catch (Exception e) {
                 e.printStackTrace();
