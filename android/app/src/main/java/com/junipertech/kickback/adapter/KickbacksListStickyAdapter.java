@@ -3,13 +3,11 @@ package com.junipertech.kickback.adapter;
 //This adapter is to be used with the active kickbacks list activity
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.junipertech.kickback.R;
@@ -20,27 +18,20 @@ import java.util.List;
 import java.util.Locale;
 
 import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
-import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 
-public class KickbacksListStickyAdapter extends BaseAdapter implements StickyListHeadersAdapter{
+public class KickbacksListStickyAdapter extends BaseAdapter implements StickyListHeadersAdapter {
 
     private List<Friend> filteredList = null;
     private ArrayList<Friend> arrayList;
     private LayoutInflater inflater;
 
-    TextView noElements;
-    StickyListHeadersListView theList;
-
-    public KickbacksListStickyAdapter(Context context, ArrayList<Friend> inputArrayList, TextView noElements,StickyListHeadersListView theList) {
+    public KickbacksListStickyAdapter(Context context, ArrayList<Friend> inputArrayList) {
         inflater = LayoutInflater.from(context);
-
 
         this.arrayList = inputArrayList;
         this.filteredList = new ArrayList<Friend>();
         this.filteredList.addAll(arrayList);
 
-        this.noElements = noElements;
-        this.theList = theList;
 
     }
 
@@ -70,7 +61,6 @@ public class KickbacksListStickyAdapter extends BaseAdapter implements StickyLis
         ViewHolder holder;
 
         if (convertView == null) {
-
             holder = new ViewHolder();
             convertView = inflater.inflate(R.layout.sticky_item, parent, false);
 
@@ -90,8 +80,6 @@ public class KickbacksListStickyAdapter extends BaseAdapter implements StickyLis
         }
         holder.name.setText(filteredList.get(position).getName());
         holder.username.setText(filteredList.get(position).getUsername());
-
-
 
         return convertView;
     }
@@ -134,7 +122,6 @@ public class KickbacksListStickyAdapter extends BaseAdapter implements StickyLis
         charText = charText.toLowerCase(Locale.getDefault());
         filteredList.clear();
 
-
         if (charText.length() == 0) {
             filteredList.addAll(arrayList);
         }
@@ -148,24 +135,8 @@ public class KickbacksListStickyAdapter extends BaseAdapter implements StickyLis
                 }
             }
         }
-
-        if(filteredList.size()!=0){
-            noElements.setVisibility(View.INVISIBLE);
-            theList.setVisibility(View.VISIBLE);
-        }else{
-            noElements.setVisibility(View.VISIBLE);
-            theList.setVisibility(View.INVISIBLE);
-        }
-
         notifyDataSetChanged();
-
-
-
     }
-
-
-
-
 
 
 }
