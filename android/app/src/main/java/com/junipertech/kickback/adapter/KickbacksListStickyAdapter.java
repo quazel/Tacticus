@@ -29,8 +29,9 @@ public class KickbacksListStickyAdapter extends BaseAdapter implements StickyLis
     private LayoutInflater inflater;
 
     TextView noElements;
+    StickyListHeadersListView theList;
 
-    public KickbacksListStickyAdapter(Context context, ArrayList<Friend> inputArrayList, TextView noElements) {
+    public KickbacksListStickyAdapter(Context context, ArrayList<Friend> inputArrayList, TextView noElements,StickyListHeadersListView theList) {
         inflater = LayoutInflater.from(context);
 
 
@@ -39,6 +40,7 @@ public class KickbacksListStickyAdapter extends BaseAdapter implements StickyLis
         this.filteredList.addAll(arrayList);
 
         this.noElements = noElements;
+        this.theList = theList;
 
     }
 
@@ -149,11 +151,15 @@ public class KickbacksListStickyAdapter extends BaseAdapter implements StickyLis
 
         if(filteredList.size()!=0){
             noElements.setVisibility(View.INVISIBLE);
+            theList.setVisibility(View.VISIBLE);
         }else{
             noElements.setVisibility(View.VISIBLE);
+            theList.setVisibility(View.INVISIBLE);
         }
 
         notifyDataSetChanged();
+
+
 
     }
 

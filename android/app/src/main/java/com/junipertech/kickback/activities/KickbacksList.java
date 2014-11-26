@@ -44,7 +44,7 @@ public class KickbacksList extends Activity {
 
         stickyList = (StickyListHeadersListView)findViewById(R.id.list);
 
-        stickyAdapterThing = new KickbacksListStickyAdapter(this,activeKickbacks,(TextView)findViewById(R.id.empty));
+        stickyAdapterThing = new KickbacksListStickyAdapter(this,activeKickbacks,(TextView)findViewById(R.id.empty),(StickyListHeadersListView)findViewById(R.id.list));
 
         stickyList.setAdapter(stickyAdapterThing);
 
