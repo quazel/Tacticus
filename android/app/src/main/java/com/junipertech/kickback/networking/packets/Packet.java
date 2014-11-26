@@ -25,7 +25,7 @@ public abstract class Packet {
     protected JSONObject getStandardHeader() throws JSONException {
         JSONObject json = new JSONObject();
         json.put("packet_type", type);
-        json.put("timestamp", now.getMillis());
+        json.put("timestamp", now.getMillis() / 1000);
         return json;
     }
 
