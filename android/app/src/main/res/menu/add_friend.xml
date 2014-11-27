@@ -1,6 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.junipertech.kickback.activities.AddFriend" >
+    tools:context="com.bramble.kickback.activities.AddFriend" >
 
     <item android:id="@+id/action_search_friend"
         android:title="@string/search"

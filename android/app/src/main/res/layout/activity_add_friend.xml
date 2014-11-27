@@ -8,7 +8,7 @@
     android:paddingBottom="@dimen/list_activity_vertical_margin"
     android:id="@+id/tabHost"
     android:background="@color/white"
-    tools:context="com.junipertech.kickback.activities.AddFriend">
+    tools:context="com.bramble.kickback.activities.AddFriend">
 
     <RelativeLayout
         android:layout_width="fill_parent"

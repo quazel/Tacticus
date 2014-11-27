@@ -6,7 +6,7 @@
     android:paddingRight="@dimen/list_activity_horizontal_margin"
     android:paddingTop="@dimen/list_activity_vertical_margin"
     android:paddingBottom="@dimen/list_activity_vertical_margin"
-    tools:context="com.junipertech.kickback.activities.NotificationSettings">
+    tools:context="com.bramble.kickback.activities.NotificationSettings">
 
     <LinearLayout
         android:orientation="vertical"

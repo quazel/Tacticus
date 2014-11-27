@@ -1,7 +1,7 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.junipertech.kickback.activities.KickbacksSchedule" >
+    tools:context="com.bramble.kickback.activities.KickbacksSchedule" >
 
     <item android:id="@+id/action_add"
         android:title="@string/Add_New_Kickback"
