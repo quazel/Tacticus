@@ -1,5 +1,7 @@
 package com.junipertech.kickback.networking;
 
+import com.junipertech.kickback.networking.packets.Packet;
+
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
