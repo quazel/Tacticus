@@ -37,6 +37,9 @@ public class SocketClient {
                 byte[] data = new byte[length];
                 bin.read(data, 0, length);
                 System.out.println(new String(data, "UTF-8"));
+                while (true) {
+                    System.out.println(bin.read());
+                }
             }
             catch (Exception e) {
                 e.printStackTrace();

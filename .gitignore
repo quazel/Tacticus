@@ -7,5 +7,5 @@ node_modules/
 # Mac
 .DS_Store
 
-# Compiled Java Socket test client.
-server/test-java-client/*.class
+# Compiled Java test client files.
+server/test-scripts/*.class

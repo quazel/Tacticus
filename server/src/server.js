@@ -1,20 +1,16 @@
 var net = require('net');
+var handler = require('./packet-handler');
 
 net.createServer(function (socket) {
     socket.on('data', function (data) {
+        var length = data.readInt32BE(0);
         var message = data.toString('utf8');
         message = decryptSymetricMessage(message);
         message = removePadding(message);
         var packet = JSON.parse(message);
         switch (packet.packet_type) {
             case 0:
-                console.log('Hello client!');
-                var responsePacket = Packet0KeepAlive();
-                var b = new Buffer(4);
-                var responseBody = JSON.stringify(responsePacket);
-                b.writeInt32BE(responseBody.length, 0);
-                socket.write(b);
-                socket.write(responseBody, 'utf8');
+                handler.handlePacket0KeepAlive(socket, packet);
                 break;
             default:
                 console.log("wut");
@@ -28,11 +24,6 @@ net.createServer(function (socket) {
         console.log('User closed connection');
     });
 }).listen(8000, '0.0.0.0');
-
-
-function Packet0KeepAlive() {
-    return {type: 1, timestamp: Math.floor(new Date() / 1000), contents: "Pong!"};
-}
 
 /*
     Removes null padding characters from string
