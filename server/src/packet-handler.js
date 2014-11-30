@@ -28,7 +28,11 @@ module.exports = {
     },
 
     handlePacket5UpdateScheduleItem: function (socket, packet) {
-        
+
+    },
+
+    handlePacket6RegisterAccount : function (socket, packet) {
+
     }
 
 };

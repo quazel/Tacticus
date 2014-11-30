@@ -56,6 +56,16 @@ module.exports = {
 
             }
         };
+    },
+
+    Packet6RegisterAccount: function () {
+        return {
+            packet_type: 5,
+            timestamp: Math.floor(new Date() / 1000),
+            contents: {
+
+            }
+        };
     }
 
 };
