@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.junipertech.kickback.R;
+import com.bramble.kickback.R;
 import com.bramble.kickback.adapter.KickbackStickyAdapter;
 import com.bramble.kickback.models.Kickback;
 import com.bramble.kickback.util.Globals;

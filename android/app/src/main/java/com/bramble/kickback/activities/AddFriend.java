@@ -8,7 +8,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.TabHost;
 
-import com.junipertech.kickback.R;
+import com.bramble.kickback.R;
 
 public class AddFriend extends TabActivity {
     protected static final View view = null;

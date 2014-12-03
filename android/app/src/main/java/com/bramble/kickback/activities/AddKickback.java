@@ -14,7 +14,7 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 import android.view.View;
 
-import com.junipertech.kickback.R;
+import com.bramble.kickback.R;
 import com.bramble.kickback.models.Kickback;
 import com.bramble.kickback.util.Globals;
 

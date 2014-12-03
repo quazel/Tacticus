@@ -15,7 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.junipertech.kickback.R;
+import com.bramble.kickback.R;
 import com.bramble.kickback.util.Globals;
 
 

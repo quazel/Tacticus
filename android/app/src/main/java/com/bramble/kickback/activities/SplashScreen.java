@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.junipertech.kickback.R;
+import com.bramble.kickback.R;
 import com.bramble.kickback.util.Globals;
 
 public class SplashScreen extends Activity {

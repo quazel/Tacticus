@@ -3,7 +3,7 @@ package com.bramble.kickback.activities;
 import android.app.Activity;
 import android.os.Bundle;
 
-import com.junipertech.kickback.R;
+import com.bramble.kickback.R;
 
 public class FriendRequests extends Activity {
 

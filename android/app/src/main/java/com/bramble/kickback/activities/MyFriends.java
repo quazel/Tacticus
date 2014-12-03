@@ -9,7 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 
-import com.junipertech.kickback.R;
+import com.bramble.kickback.R;
 import com.bramble.kickback.adapter.StickyAdapter;
 import com.bramble.kickback.models.Friend;
 import com.bramble.kickback.util.Globals;

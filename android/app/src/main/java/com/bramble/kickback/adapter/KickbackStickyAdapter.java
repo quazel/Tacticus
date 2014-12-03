@@ -10,7 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.junipertech.kickback.R;
+import com.bramble.kickback.R;
 
 import java.util.ArrayList;
 
