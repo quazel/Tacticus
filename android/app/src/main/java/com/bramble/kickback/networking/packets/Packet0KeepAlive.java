@@ -14,8 +14,8 @@ public class Packet0KeepAlive extends Packet {
     }
 
     @Override
-    protected String serialize() throws JSONException {
-        JSONObject json = getStandardHeader();
+    public String serialize() throws JSONException {
+        JSONObject json = getStandardHeaderJson();
         json.put("contents", contents);
         return json.toString();
     }

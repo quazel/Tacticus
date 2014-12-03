@@ -22,15 +22,15 @@ public abstract class Packet {
         }
     }
 
-    protected JSONObject getStandardHeader() throws JSONException {
+    protected JSONObject getStandardHeaderJson() throws JSONException {
         JSONObject json = new JSONObject();
-        json.put("packet_type", type);
+        json.put("packet_type", type.getValue());
         json.put("timestamp", now.getMillis() / 1000);
         return json;
     }
 
-    protected String serialize() throws JSONException {
-        return getStandardHeader().toString();
+    public String serialize() throws JSONException {
+        return getStandardHeaderJson().toString();
     }
 
 
