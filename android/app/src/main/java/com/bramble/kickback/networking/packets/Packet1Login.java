@@ -33,11 +33,9 @@ public class Packet1Login extends Packet {
             return json.toString();
         }
         else {
-            JSONArray credentialsArray = new JSONArray();
-            credentialsArray.put(username);
-            credentialsArray.put(password);
             JSONObject credentialsObject = new JSONObject();
-            credentialsObject.put("credentials", credentialsArray);
+            credentialsObject.put("username", username);
+            credentialsObject.put("password", password);
             json.put("contents", credentialsObject);
             return json.toString();
         }
