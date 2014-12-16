@@ -25,11 +25,6 @@ import org.joda.time.format.DateTimeFormatterBuilder;
 
 public class KickbackStickyAdapter extends BaseAdapter implements StickyListHeadersAdapter {
 
-    DateTimeFormatter st;
-    DateTimeFormatter nd;
-    DateTimeFormatter rd;
-    DateTimeFormatter th;
-
     private ArrayList<Kickback> kickbackArrayList;
     private LayoutInflater inflater;
 
