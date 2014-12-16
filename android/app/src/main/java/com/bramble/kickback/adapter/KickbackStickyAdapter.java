@@ -34,8 +34,6 @@ public class KickbackStickyAdapter extends BaseAdapter implements StickyListHead
     private LayoutInflater inflater;
 
     public KickbackStickyAdapter(Context context, ArrayList<Kickback> inputArrayList) {
-        createDateFormatters();
-
         inflater = LayoutInflater.from(context);
 
         this.kickbackArrayList = inputArrayList;
