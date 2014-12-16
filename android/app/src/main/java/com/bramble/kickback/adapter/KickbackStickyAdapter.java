@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
 
 import com.bramble.kickback.models.Kickback;
+import com.bramble.kickback.util.Util;
 
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormatter;
@@ -106,7 +107,7 @@ public class KickbackStickyAdapter extends BaseAdapter implements StickyListHead
             holder = (HeaderViewHolder) convertView.getTag();
         }
         String headerText;
-        headerText = getFormattedStringFromDateTime(kickbackArrayList.get(position).getStart());
+        headerText = Util.getFormattedStringFromDateTime(kickbackArrayList.get(position).getStart());
         holder.text.setText(headerText);
         return convertView;
     }
@@ -118,66 +119,6 @@ public class KickbackStickyAdapter extends BaseAdapter implements StickyListHead
 
     class HeaderViewHolder {
         TextView text;
-    }
-
-
-    public void createDateFormatters(){
-        st = new DateTimeFormatterBuilder()
-                .appendDayOfWeekText()
-                .appendLiteral(", ")
-                .appendMonthOfYearText()
-                .appendLiteral(" ")
-                .appendDayOfMonth(1)
-                .appendLiteral("st")
-
-                .toFormatter();
-
-
-        nd = new DateTimeFormatterBuilder()
-                .appendDayOfWeekText()
-                .appendLiteral(", ")
-                .appendMonthOfYearText()
-                .appendLiteral(" ")
-                .appendDayOfMonth(1)
-                .appendLiteral("nd")
-                .toFormatter();
-
-        rd = new DateTimeFormatterBuilder()
-                .appendDayOfWeekText()
-                .appendLiteral(", ")
-                .appendMonthOfYearText()
-                .appendLiteral(" ")
-                .appendDayOfMonth(1)
-                .appendLiteral("rd")
-                .toFormatter();
-
-        th = new DateTimeFormatterBuilder()
-                .appendDayOfWeekText()
-                .appendLiteral(", ")
-                .appendMonthOfYearText()
-                .appendLiteral(" ")
-                .appendDayOfMonth(1)
-                .appendLiteral("th")
-                .toFormatter();
-    }
-
-    public String getFormattedStringFromDateTime(DateTime aParticularDay) {
-        int j = aParticularDay.getDayOfMonth() % 10;
-        String formatted;
-        switch (j) {
-            case 1:
-                formatted = aParticularDay.toString(st);
-                break;
-            case 2:
-                formatted = aParticularDay.toString(nd);
-                break;
-            case 3:
-                formatted = aParticularDay.toString(rd);
-                break;
-            default:
-                formatted = aParticularDay.toString(th);
-        }
-        return formatted.toUpperCase();
     }
 
 }
