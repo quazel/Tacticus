@@ -9,39 +9,50 @@ import org.joda.time.format.DateTimeFormatterBuilder;
 public class Util {
 
     private static DateTimeFormatter st = new DateTimeFormatterBuilder()
-                                                .appendDayOfWeekText()
-                                                .appendLiteral(", ")
-                                                .appendMonthOfYearText()
-                                                .appendLiteral(" ")
-                                                .appendDayOfMonth(1)
-                                                .appendLiteral("st")
+            .appendDayOfWeekText()
+            .appendLiteral(", ")
+            .appendMonthOfYearText()
+            .appendLiteral(" ")
+            .appendDayOfMonth(1)
+            .appendLiteral("st")
+            .toFormatter();
 
-                                                .toFormatter();
     private static DateTimeFormatter nd = new DateTimeFormatterBuilder()
-                                                .appendDayOfWeekText()
-                                                .appendLiteral(", ")
-                                                .appendMonthOfYearText()
-                                                .appendLiteral(" ")
-                                                .appendDayOfMonth(1)
-                                                .appendLiteral("nd")
-                                                .toFormatter();
+            .appendDayOfWeekText()
+            .appendLiteral(", ")
+            .appendMonthOfYearText()
+            .appendLiteral(" ")
+            .appendDayOfMonth(1)
+            .appendLiteral("nd")
+            .toFormatter();
+
     private static DateTimeFormatter rd = new DateTimeFormatterBuilder()
-                                                .appendDayOfWeekText()
-                                                .appendLiteral(", ")
-                                                .appendMonthOfYearText()
-                                                .appendLiteral(" ")
-                                                .appendDayOfMonth(1)
-                                                .appendLiteral("rd")
-                                                .toFormatter();
+            .appendDayOfWeekText()
+            .appendLiteral(", ")
+            .appendMonthOfYearText()
+            .appendLiteral(" ")
+            .appendDayOfMonth(1)
+            .appendLiteral("rd")
+            .toFormatter();
 
     private static DateTimeFormatter th = new DateTimeFormatterBuilder()
-                                                .appendDayOfWeekText()
-                                                .appendLiteral(", ")
-                                                .appendMonthOfYearText()
-                                                .appendLiteral(" ")
-                                                .appendDayOfMonth(1)
-                                                .appendLiteral("th")
-                                                .toFormatter();
+            .appendDayOfWeekText()
+            .appendLiteral(", ")
+            .appendMonthOfYearText()
+            .appendLiteral(" ")
+            .appendDayOfMonth(1)
+            .appendLiteral("th")
+            .toFormatter();
+
+    private static DateTimeFormatter current = new DateTimeFormatterBuilder()
+            .appendLiteral("this ")
+            .appendDayOfWeekText()
+            .toFormatter();
+
+    private static DateTimeFormatter next = new DateTimeFormatterBuilder()
+            .appendLiteral("next ")
+            .appendDayOfWeekText()
+            .toFormatter();
 
     public static int dpToPixels(Resources res, int dp) {
         final float scale = res.getDisplayMetrics().density;
@@ -63,6 +74,17 @@ public class Util {
                 break;
             default:
                 formatted = aParticularDay.toString(th);
+        }
+        return formatted.toUpperCase();
+    }
+
+    public static String getFormattedStringFromDay(DateTime aParticularDay) {
+        String formatted;
+        int j = aParticularDay.getDayOfMonth() - new DateTime().getDayOfMonth();
+        if (j < 7) {
+            formatted = aParticularDay.toString(current);
+        } else {
+            formatted = aParticularDay.toString(next);
         }
         return formatted.toUpperCase();
     }

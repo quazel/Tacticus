@@ -100,7 +100,9 @@ public class KickbackStickyAdapter extends BaseAdapter implements StickyListHead
             holder = (HeaderViewHolder) convertView.getTag();
         }
         String headerText;
-        headerText = Util.getFormattedStringFromDateTime(kickbackArrayList.get(position).getStart());
+        //testing headers
+        //headerText = Util.getFormattedStringFromDateTime(kickbackArrayList.get(position).getStart());
+        headerText = Util.getFormattedStringFromDay(kickbackArrayList.get(position).getStart());
         holder.text.setText(headerText);
         return convertView;
     }

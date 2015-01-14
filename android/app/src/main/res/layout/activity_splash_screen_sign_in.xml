@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/list_activity_horizontal_margin"
     android:paddingRight="@dimen/list_activity_horizontal_margin"
     android:paddingBottom="@dimen/list_activity_vertical_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingTop="@dimen/list_activity_vertical_margin"
     android:background="@color/white"
     android:theme="@android:style/Theme.NoTitleBar"
     tools:context="com.bramble.kickback.activities.SplashScreen">
@@ -16,14 +16,14 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingLeft="@dimen/credentials_padding"
+        android:paddingRight="@dimen/credentials_padding"
         android:layout_centerInParent="true">
         <EditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/editTextUsername"
-            android:background="@drawable/edittext_selector"
+            android:background="@drawable/edit_text_basic"
             android:paddingLeft="12dp"
             android:paddingRight="12dp"
             android:hint="Username"
@@ -40,7 +40,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/editTextPassword"
-            android:background="@drawable/edittext_selector"
+            android:background="@drawable/edit_text_basic"
             android:paddingLeft="12dp"
             android:paddingRight="12dp"
             android:hint="Password"
