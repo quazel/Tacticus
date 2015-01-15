@@ -88,6 +88,7 @@ public class SplashScreen extends Activity {
             Globals.loginUser(usernameField.getText().toString(), passwordField.getText().toString());
             Intent intent = new Intent(this, Home.class);
             startActivity(intent);
+            finish();
         }
     }
 
@@ -130,6 +131,7 @@ public class SplashScreen extends Activity {
             Globals.createUser(usernameField.getText().toString(),emailField.getText().toString(), passwordField.getText().toString());
             Intent intent = new Intent(this, Home.class);
             startActivity(intent);
+            finish();
         }
     }
 }

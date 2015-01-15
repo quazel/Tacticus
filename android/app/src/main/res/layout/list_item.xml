@@ -22,7 +22,7 @@
         android:textColor="@color/secondary_body_text_color"
         android:gravity="left|top"
         android:textSize="@dimen/list_item_secondary_text_size"
-        android:paddingLeft="12dp"
+        android:paddingLeft="13dp"
         android:paddingRight="12dp"
         android:paddingBottom="4dp"
         android:layout_height="wrap_content"/>

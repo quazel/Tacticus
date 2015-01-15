@@ -2,6 +2,8 @@ package com.bramble.kickback.activities;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -79,5 +81,18 @@ public class Home extends Activity {
     public void onBusyPressed(View view) {
         Globals.goOffline();
         setContentView(R.layout.activity_home);
+    }
+
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setMessage("Are you sure you want to exit Kickback?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Home.this.finish();
+                    }
+                })
+                .setNegativeButton("No", null)
+                .show();
     }
 }
