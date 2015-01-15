@@ -21,5 +21,32 @@
         <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="SettingsTheme" parent="MyTheme">
+        <item name="android:actionBarStyle">@style/SettingsTheme.ActionBar</item>
+    </style>
+
+    <style name="SettingsTheme.ActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">@color/settings_color</item>
+        <item name="android:titleTextStyle">@style/MyTheme.ActionBar.Text</item>
+    </style>
+
+    <style name="FriendsTheme" parent="MyTheme">
+        <item name="android:actionBarStyle">@style/SettingsTheme.ActionBar</item>
+    </style>
+
+    <style name="FriendsTheme.ActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">@color/friends_color</item>
+        <item name="android:titleTextStyle">@style/MyTheme.ActionBar.Text</item>
+    </style>
+
+    <style name="ScheduleTheme" parent="MyTheme">
+        <item name="android:actionBarStyle">@style/SettingsTheme.ActionBar</item>
+    </style>
+
+    <style name="ScheduleTheme.ActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">@color/schedule_color</item>
+        <item name="android:titleTextStyle">@style/MyTheme.ActionBar.Text</item>
+    </style>
     
 </resources>

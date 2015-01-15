@@ -1,6 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.bramble.kickback.activities.AddFriend" >
+    tools:context="com.bramble.kickback.activities.AddFriend"
+    android:background="@color/friends_color">
 
     <item android:id="@+id/action_search_friend"
         android:title="@string/search"

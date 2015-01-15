@@ -1,7 +1,9 @@
 package com.bramble.kickback.activities;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,6 +31,8 @@ public class KickbacksSchedule extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kickback_schedule);
         getActionBar().setDisplayHomeAsUpEnabled(true);
+        ActionBar actionBar = getActionBar();
+        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.schedule_color)));
 
 
         if(kickbacks.size() == 0) {

@@ -45,7 +45,6 @@ public class Util {
             .toFormatter();
 
     private static DateTimeFormatter current = new DateTimeFormatterBuilder()
-            .appendLiteral("this ")
             .appendDayOfWeekText()
             .toFormatter();
 
@@ -81,7 +80,13 @@ public class Util {
     public static String getFormattedStringFromDay(DateTime aParticularDay) {
         String formatted;
         int j = aParticularDay.getDayOfMonth() - new DateTime().getDayOfMonth();
-        if (j < 7) {
+        if(j == 0) {
+            formatted = "today";
+        }
+        else if(j == 1) {
+            formatted = "tomorrow";
+        }
+        else if (j < 7) {
             formatted = aParticularDay.toString(current);
         } else {
             formatted = aParticularDay.toString(next);

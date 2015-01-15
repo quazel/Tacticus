@@ -1,10 +1,12 @@
 package com.bramble.kickback.activities;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.Menu;
@@ -26,6 +28,8 @@ public class Settings extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         getActionBar().setDisplayHomeAsUpEnabled(true);
+        ActionBar actionBar = getActionBar();
+        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.settings_color)));
 
         //mega formatting hacks
         // formats username in manage account
@@ -126,28 +130,28 @@ public class Settings extends Activity {
     public void formatUsernameTextview(String s) {
         TextView user = (TextView) findViewById(R.id.username);
         String firstUser = (String)user.getText();
-        String nextUser = "<br><font color='#c9c9c9'>"+s+"</font>";
+        String nextUser = "<br><font color='#666666'>"+s+"</font>";
         user.setText(Html.fromHtml(firstUser + "\n" + "<small>" + nextUser + "</small>"));
     }
 
     public void formatPhoneNumberButton(String s) {
         Button phoneNumber = (Button) findViewById(R.id.phonenumber);
         String firstNumber = (String)phoneNumber.getText();
-        String nextNumber = "<br><font color='#c9c9c9'>"+s+"</font>";
+        String nextNumber = "<br><font color='#666666'>"+s+"</font>";
         phoneNumber.setText(Html.fromHtml(firstNumber + "\n"+"<small>"+nextNumber+"</small>"));
     }
 
     public void formatEmail(String s) {
         Button userEmail = (Button) findViewById(R.id.email);
         String firstEmail = "Email";
-        String nextEmail = "<br><font color='#c9c9c9'>"+s+"</font>";
+        String nextEmail = "<br><font color='#666666'>"+s+"</font>";
         userEmail.setText(Html.fromHtml(firstEmail + "\n"+"<small>"+nextEmail+"</small>"));
     }
 
     public void formatVersion(String s) {
         Button version = (Button) findViewById(R.id.version);
         String a = "Version";
-        String b = "<br><font color='#c9c9c9'>"+s+"</font>";
+        String b = "<br><font color='#666666'>"+s+"</font>";
         version.setText(Html.fromHtml(a + "\n"+"<small>"+b+"</small>"));
     }
 }
