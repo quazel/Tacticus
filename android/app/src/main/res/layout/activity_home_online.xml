@@ -11,13 +11,53 @@
     android:background="@color/white"
     tools:context="com.bramble.kickback.activities.Home">
 
+    <LinearLayout
+        android:layout_alignParentTop="true"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/linearLayoutTop">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:text="My \nTags"
+            android:textColor="@color/primary_color"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:paddingLeft="9dp"
+            android:paddingTop="0dp"/>
+
+        <TextView
+            android:layout_width="60dp"
+            android:layout_height="fill_parent"
+            android:text=""
+            android:textColor="@color/primary_color"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:paddingLeft="18dp"
+            android:paddingTop="0dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:text="+"
+            android:background="@drawable/outlined_selector"
+            android:textColor="@color/primary_color"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:onClick="onAddTagPressed"/>
+
+
+    </LinearLayout>
 
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_above="@+id/linearLayout"
         android:paddingTop="0dp"
-        android:paddingBottom="0dp">
+        android:paddingBottom="0dp"
+        android:layout_below="@+id/linearLayoutTop">
 
         <LinearLayout
             android:layout_width="fill_parent"

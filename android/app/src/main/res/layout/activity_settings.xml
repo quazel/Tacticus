@@ -146,6 +146,17 @@
                     android:layout_height="@dimen/list_item_height"
                     android:paddingLeft="9dp"
                     android:paddingRight="9dp"
+                    android:background="@drawable/full_width_selector"
+                    android:text="Default Tags"
+                    android:textSize="@dimen/list_item_primary_text_size"
+                    android:gravity="left|center_vertical"
+                    android:id="@+id/default_tags" />
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/list_item_height"
+                    android:paddingLeft="9dp"
+                    android:paddingRight="9dp"
                     android:background="@drawable/outlined_selector"
                     android:text="Review This App"
                     android:textSize="@dimen/list_item_primary_text_size"
