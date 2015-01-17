@@ -61,28 +61,29 @@ public class KickbackStickyAdapter extends BaseAdapter implements StickyListHead
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
 
-        if (convertView == null) {
-            holder = new ViewHolder();
+        holder = new ViewHolder();
 
-            convertView = inflater.inflate(R.layout.sticky_kickback_item, parent, false);
+        convertView = inflater.inflate(R.layout.sticky_kickback_item, parent, false);
 
-            LinearLayout body = (LinearLayout)convertView.findViewById(R.id.body);
+        LinearLayout body = (LinearLayout)convertView.findViewById(R.id.body);
 
+        if(kickbackArrayList.size()-1 == position){ //Is the last element of kickbackArrayList
+            body.setBackgroundResource(R.drawable.full_width_selector_nobottom); //NO line on bottom
+        }else{
             int dayDiff = kickbackArrayList.get(position).getStart().getDayOfYear() - kickbackArrayList.get(position+1).getStart().getDayOfYear(); //TODO Make sure this doesn't throw an out of bounds error
             if(dayDiff != 0){
                 body.setBackgroundResource(R.drawable.full_width_selector_nobottom); //NO line on bottom
             }else{
                 body.setBackgroundResource(R.drawable.full_width_selector); //line on bottom
             }
-
-            holder.timeRange = (TextView)convertView.findViewById(R.id.kickback_time_range);
-            holder.location = (TextView)convertView.findViewById(R.id.kickback_location);
-            convertView.setTag(holder);
-        } else {
-            holder = (ViewHolder) convertView.getTag();
         }
-        holder.timeRange.setText(kickbackArrayList.get(position).getTimeRange());
 
+        holder.timeRange = (TextView)convertView.findViewById(R.id.kickback_time_range);
+        holder.location = (TextView)convertView.findViewById(R.id.kickback_location);
+        convertView.setTag(holder);
+
+
+        holder.timeRange.setText(kickbackArrayList.get(position).getTimeRange());
         holder.location.setText(kickbackArrayList.get(position).getLocation());
 
         return convertView;
