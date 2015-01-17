@@ -60,11 +60,19 @@ public class KickbacksListStickyAdapter extends BaseAdapter implements StickyLis
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
 
-        if (convertView == null) {
-            holder = new ViewHolder();
-            convertView = inflater.inflate(R.layout.sticky_item, parent, false);
+        holder = new ViewHolder();
+        convertView = inflater.inflate(R.layout.sticky_item, parent, false);
 
-            LinearLayout body = (LinearLayout)convertView.findViewById(R.id.body);
+        LinearLayout body = (LinearLayout)convertView.findViewById(R.id.body);
+
+        holder.name = (TextView)convertView.findViewById(R.id.name_thing);
+        holder.username = (TextView)convertView.findViewById(R.id.username_thing);
+        convertView.setTag(holder);
+
+        if(filteredList.size()-1 == position){ //Is the last element of filteredList
+            body.setBackgroundResource(R.drawable.full_width_selector_nobottom); //NO line on bottom
+
+        }else{
 
             if(filteredList.get(position).getIsFavorite() != filteredList.get(position+1).getIsFavorite()){
                 body.setBackgroundResource(R.drawable.full_width_selector_nobottom); //NO line on bottom
@@ -72,12 +80,9 @@ public class KickbacksListStickyAdapter extends BaseAdapter implements StickyLis
                 body.setBackgroundResource(R.drawable.full_width_selector); //line on bottom
             }
 
-            holder.name = (TextView)convertView.findViewById(R.id.name_thing);
-            holder.username = (TextView)convertView.findViewById(R.id.username_thing);
-            convertView.setTag(holder);
-        } else {
-            holder = (ViewHolder) convertView.getTag();
         }
+
+
         holder.name.setText(filteredList.get(position).getName());
         holder.username.setText(filteredList.get(position).getUsername());
 
