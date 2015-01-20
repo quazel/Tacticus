@@ -81,7 +81,6 @@
             android:name="com.bramble.kickback.activities.FriendRequests"
             android:label="@string/title_activity_friend_requests" >
         </activity>
-        <receiver android:name=".receivers.NotificationReceiver"></receiver>
         <service android:name=".service.Notifier"></service>
         <receiver
             android:enabled="true"
