@@ -84,10 +84,16 @@ public class SplashScreen extends Activity {
 
     public void toSignInPressed(View v){
         setContentView(R.layout.activity_splash_screen_sign_in);
+        EditText editText = (EditText) findViewById(R.id.editTextUsername);
+        editText.setFocusable(true);
+        editText.requestFocus();
     }
 
     public void toSignUpPressed(View v){
         setContentView(R.layout.activity_splash_screen_sign_up);
+        EditText editText = (EditText) findViewById(R.id.editTextName);
+        editText.setFocusable(true);
+        editText.requestFocus();
     }
 
     public void loginPressed(View v){
