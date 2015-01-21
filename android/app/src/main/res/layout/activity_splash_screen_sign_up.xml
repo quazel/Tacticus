@@ -19,6 +19,7 @@
         android:paddingLeft="@dimen/credentials_padding"
         android:paddingRight="@dimen/credentials_padding"
         android:layout_centerInParent="true">
+        
         <EditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -27,31 +28,14 @@
             android:paddingLeft="12dp"
             android:paddingRight="12dp"
             android:hint="Username"
+            android:layout_above="@id/space_1"
             android:inputType="text"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true" />
+            />
         <Space
             android:layout_width="fill_parent"
             android:layout_height="@dimen/space_height"
-            android:layout_below="@+id/editTextDesiredUsername"
+            android:layout_above="@+id/editTextDesiredPassword"
             android:id="@+id/space_1"/>
-
-        <EditText
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/editTextEmail"
-            android:background="@drawable/edit_text_basic"
-            android:paddingLeft="12dp"
-            android:paddingRight="12dp"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
-            android:layout_below="@+id/space_1"
-            android:layout_centerHorizontal="true" />
-        <Space
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/space_height"
-            android:layout_below="@+id/editTextEmail"
-            android:id="@+id/space_2"/>
 
         <EditText
             android:layout_width="fill_parent"
@@ -62,13 +46,13 @@
             android:paddingRight="12dp"
             android:hint="Password"
             android:inputType="textPassword"
-            android:layout_below="@+id/space_2"
+            android:layout_centerVertical="true"
             android:layout_centerHorizontal="true" />
         <Space
             android:layout_width="fill_parent"
             android:layout_height="@dimen/space_height"
             android:layout_below="@+id/editTextDesiredPassword"
-            android:id="@+id/space_3"/>
+            android:id="@+id/space_2"/>
 
         <EditText
             android:layout_width="fill_parent"
@@ -79,7 +63,40 @@
             android:paddingRight="12dp"
             android:hint="Confirm Password"
             android:inputType="textPassword"
-            android:layout_below="@+id/space_3"
+            android:layout_below="@+id/space_2"
+            android:layout_centerHorizontal="true" />
+        <Space
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/space_height"
+            android:layout_below="@+id/editTextConfirmDesiredPassword"
+            android:id="@+id/space_3"/>
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextName"
+            android:background="@drawable/edit_text_basic"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:hint="Full Name"
+            android:layout_below="@id/space_3"
+            android:inputType="text"/>
+        <Space
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/space_height"
+            android:layout_below="@+id/editTextName"
+            android:id="@+id/space_4"/>
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextEmail"
+            android:background="@drawable/edit_text_basic"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:layout_below="@+id/space_4"
             android:layout_centerHorizontal="true" />
     </RelativeLayout>
 

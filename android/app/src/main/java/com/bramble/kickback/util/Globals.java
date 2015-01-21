@@ -1,6 +1,7 @@
 package com.bramble.kickback.util;
 
 import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.provider.ContactsContract;
 
@@ -42,23 +43,23 @@ public class Globals {
 
     public static void initFriends() {
         ArrayList<Kickback> kickback = new ArrayList<Kickback>();
-        friends.add(new Friend("Bob", "1-911-911-9119", kickback,true));
-        friends.add(new Friend("Jim", "1-802-457-9834", kickback,true));
-        friends.add(new Friend("Nathan Fegard", "1-603-667-7830", kickback,true));
-        friends.add(new Friend("Steve King", "1-602-752-0046", kickback,true));
-        friends.add(new Friend("Kelly", "1-420-420-Blaze'em", kickback,true));
-        friends.add(new Friend("JSON", "1-452-735-9384", kickback,true));
-        friends.add(new Friend("Burgle", "1-746-412-9001", kickback,true));
-        friends.add(new Friend("Jeremy Adams", "1-480-390-7762", kickback,true));
+        friends.add(new Friend("starfox29","Bob", "1-911-911-9119", kickback, true));
+        friends.add(new Friend("TheDudein8er","Jim", "1-802-457-9834", kickback));
+        friends.add(new Friend("punthersquid","Nathan Fegard", "1-603-667-7830", kickback, true));
+        friends.add(new Friend("stevex86","Steve King", "1-602-752-0046", kickback, true));
+        friends.add(new Friend("bitch_face11","Kelly", "1-420-420-Blaze'em", kickback, true));
+        friends.add(new Friend("parsePro","JSON", "1-452-735-9384", kickback, true));
+        friends.add(new Friend("hamBurgler","Burgle", "1-746-412-9001", kickback, true));
+        friends.add(new Friend("gay","Jeremy Adams", "1-480-390-7762", kickback, true));
 
-        friends.add(new Friend("Bob", "1-911-911-9119", kickback));
-        friends.add(new Friend("Jim", "1-802-457-9834", kickback));
-        friends.add(new Friend("Nathan Fegard", "1-603-667-7830", kickback));
-        friends.add(new Friend("Steve King", "1-602-752-0046", kickback));
-        friends.add(new Friend("Kelly", "1-420-420-Blaze'em", kickback));
-        friends.add(new Friend("JSON", "1-452-735-9384", kickback));
-        friends.add(new Friend("Burgle", "1-746-412-9001", kickback));
-        friends.add(new Friend("Jeremy Adams", "1-480-390-7762", kickback));
+        friends.add(new Friend("starfox29","Bob", "1-911-911-9119", kickback));
+        friends.add(new Friend("TheDudein8er","Jim", "1-802-457-9834", kickback));
+        friends.add(new Friend("punthersquid","Nathan Fegard", "1-603-667-7830", kickback));
+        friends.add(new Friend("stevex86","Steve King", "1-602-752-0046", kickback));
+        friends.add(new Friend("bitch_face11","Kelly", "1-420-420-Blaze'em", kickback));
+        friends.add(new Friend("parsePro","JSON", "1-452-735-9384", kickback));
+        friends.add(new Friend("hamBurgler","Burgle", "1-746-412-9001", kickback));
+        friends.add(new Friend("gay","Jeremy Adams", "1-480-390-7762", kickback));
 
     }
 
@@ -74,14 +75,16 @@ public class Globals {
         isOnline = false;
     }
 
-    public static void loginUser(String username, String password) {
-        theUser = new User(username, "somedude@email.com", "0 (000) 000-0000");
+    public static void loginUser(String username) {
+        theUser = new User(username, "burgle", "somedude@email.com", "0 (000) 000-0000");
     }
 
-    public static void createUser(String username, String email, String password){
-        theUser = new User(username, email, "0-000-000-0000");
+    public static void createUser(String username, String name, String email, String phoneNumber){
+        theUser = new User(username, name, email, "0-000-000-0000");
     }
 
+
+    //needs work
     public static void readContacts(ContentResolver cr) {
         Cursor cur = cr.query(ContactsContract.Contacts.CONTENT_URI,
                 null, null, null, null);

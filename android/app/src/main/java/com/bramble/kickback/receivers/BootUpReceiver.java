@@ -9,8 +9,8 @@ public class BootUpReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Intent myIntent = new Intent(context, NotificationReceiver.class);
-        context.startService(myIntent);
+        //Intent myIntent = new Intent(context, Notififier.class);
+        //context.startService(myIntent);
     }
 
 }

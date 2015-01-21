@@ -1,6 +1,7 @@
 package com.bramble.kickback.activities;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -85,7 +86,7 @@ public class SplashScreen extends Activity {
             Toast.makeText(this, "Usernames may only contain letters, numbers, and underscores (_).", Toast.LENGTH_SHORT).show();
         }
         else {
-            Globals.loginUser(usernameField.getText().toString(), passwordField.getText().toString());
+            Globals.loginUser(usernameField.getText().toString());
             Intent intent = new Intent(this, Home.class);
             startActivity(intent);
             finish();
@@ -99,13 +100,15 @@ public class SplashScreen extends Activity {
     public void signUpPressed(View v){
 
         EditText usernameField = (EditText) findViewById(R.id.editTextDesiredUsername);
-        EditText emailField = (EditText) findViewById(R.id.editTextEmail);
         EditText passwordField = (EditText) findViewById(R.id.editTextDesiredPassword);
         EditText confirmPasswordField = (EditText) findViewById(R.id.editTextConfirmDesiredPassword);
+        EditText nameField = (EditText) findViewById(R.id.editTextName);
+        EditText emailField = (EditText) findViewById(R.id.editTextEmail);
         String username = usernameField.getText().toString();
-        String email = emailField.getText().toString();
         String password = passwordField.getText().toString();
         String confirmPassword = confirmPasswordField.getText().toString();
+        String name = nameField.getText().toString();
+        String email = emailField.getText().toString();
         if (username.equals("") || password.equals("")) {
             Toast.makeText(this, "Please enter desired username and password.", Toast.LENGTH_SHORT).show();
         }
@@ -114,9 +117,6 @@ public class SplashScreen extends Activity {
         }
         else if(!username.matches("^[a-zA-Z0-9_]+$")) {
             Toast.makeText(this, "Usernames may only contain letters, numbers, and underscores (_).", Toast.LENGTH_SHORT).show();
-        }
-        else if(!email.matches("^[a-zA-Z0-9_\\-+%\\.]+@[a-zA-Z0-9\\-\\.]+\\.[a-zA-Z\\.]{2,6}$")){
-            Toast.makeText(this, "Please enter a valid email address.", Toast.LENGTH_SHORT).show();
         }
         else if(password.length() < 6 || password.length() > 20){
             Toast.makeText(this, "Passwords must be between 6 and 20 characters in length.", Toast.LENGTH_SHORT).show();
@@ -127,8 +127,15 @@ public class SplashScreen extends Activity {
         else if(!password.equals(confirmPassword)){
             Toast.makeText(this, "Entered passwords are not the same.", Toast.LENGTH_SHORT).show();
         }
+        else if(name.equals("")) {
+            Toast.makeText(this, "Please enter your full name.", Toast.LENGTH_SHORT).show();
+        }
+        else if(!email.matches("^[a-zA-Z0-9_\\-+%\\.]+@[a-zA-Z0-9\\-\\.]+\\.[a-zA-Z\\.]{2,6}$")){
+            Toast.makeText(this, "Please enter a valid email address.", Toast.LENGTH_SHORT).show();
+        }
         else {
-            Globals.createUser(usernameField.getText().toString(),emailField.getText().toString(), passwordField.getText().toString());
+            // temporary variable vvvv
+            Globals.createUser(usernameField.getText().toString(),nameField.getText().toString(), emailField.getText().toString(), "");
             Intent intent = new Intent(this, Home.class);
             startActivity(intent);
             finish();
