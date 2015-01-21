@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
@@ -13,7 +14,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.bramble.kickback.R;
+import com.bramble.kickback.models.User;
+import com.bramble.kickback.networking.ConnectionHandler;
 import com.bramble.kickback.util.Globals;
+
+import java.io.IOException;
 
 public class SplashScreen extends Activity {
 
@@ -77,8 +82,8 @@ public class SplashScreen extends Activity {
     public void signInPressed(View v){
         EditText usernameField = (EditText) findViewById(R.id.editTextUsername);
         EditText passwordField = (EditText) findViewById(R.id.editTextPassword);
-        String username = usernameField.getText().toString();
-        String password = passwordField.getText().toString();
+        String username = usernameField.getText().toString().trim();
+        String password = passwordField.getText().toString().trim();
         if (username.equals("") || password.equals("")) {
             Toast.makeText(this, "Please enter your username and password.", Toast.LENGTH_SHORT).show();
         }
@@ -86,10 +91,7 @@ public class SplashScreen extends Activity {
             Toast.makeText(this, "Usernames may only contain letters, numbers, and underscores (_).", Toast.LENGTH_SHORT).show();
         }
         else {
-            Globals.loginUser(usernameField.getText().toString());
-            Intent intent = new Intent(this, Home.class);
-            startActivity(intent);
-            finish();
+            new LoginTask().execute(username, password);
         }
     }
 
@@ -140,5 +142,39 @@ public class SplashScreen extends Activity {
             startActivity(intent);
             finish();
         }
+    }
+
+    private class LoginTask extends AsyncTask<String, Void, User> {
+
+        @Override
+        protected User doInBackground(String... params) {
+            try {
+                String result = new ConnectionHandler().login(params[0], params[1]);
+                if (result != null) {
+                    User user = new User(params[0]);
+                    user.setSessionId(result);
+                    return user;
+                }
+                else {
+                    return null;
+                }
+            } catch (IOException e) {
+                return null;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(User loggedUser) {
+            if (loggedUser != null) {
+                Globals.theUser = loggedUser;
+                Intent intent = new Intent(SplashScreen.this, Home.class);
+                startActivity(intent);
+                finish();
+            }
+            else {
+                Toast.makeText(SplashScreen.this, "Invalid username or password.", Toast.LENGTH_LONG).show();
+            }
+        }
+
     }
 }
