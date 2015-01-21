@@ -49,6 +49,7 @@
     <string name="add_kickback_activity_submit">Add</string>
     <string name="add_kickback_activity_cancel">Cancel</string>
     <string name="hours">Hours</string>
+    <string name="sign_up_text">By creating an account, you agree to the Terms of Use and acknowledge that you have read the Privacy Policy.</string>
 
     <string-array name="hours">
         <item>1</item>

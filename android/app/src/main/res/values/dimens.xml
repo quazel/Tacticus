@@ -8,7 +8,7 @@
     <dimen name="list_activity_vertical_margin">0dp</dimen>
 
     <!-- Specific heights and widths -->
-    <dimen name="space_height">9dp</dimen>
+    <dimen name="space_height">16dp</dimen>
     <dimen name="space_width">7dp</dimen>
     <dimen name="home_button_height">70dp</dimen>
 
@@ -24,4 +24,8 @@
 
     <!-- Credential dimensions -->
     <dimen name="credentials_padding">34dp</dimen>
+
+    <!-- edittext dimensions -->
+    <dimen name="edittext_padding">8dp</dimen>
+    <dimen name="edittext_width">280dp</dimen>
 </resources>

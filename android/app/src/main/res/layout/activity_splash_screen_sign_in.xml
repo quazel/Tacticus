@@ -20,8 +20,20 @@
         android:paddingLeft="@dimen/credentials_padding"
         android:paddingRight="@dimen/credentials_padding"
         android:layout_centerInParent="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="32dp"
+            android:paddingBottom="32dp"
+            android:text="Login"
+            android:textColor="@color/black"
+            android:textSize="36sp"
+            android:id="@+id/signInTitle"
+            android:layout_centerHorizontal="true"
+            />
         <EditText
-            android:layout_width="fill_parent"
+            android:layout_width="@dimen/edittext_width"
             android:layout_height="wrap_content"
             android:id="@+id/editTextUsername"
             android:background="@drawable/edit_text_basic"
@@ -29,7 +41,7 @@
             android:paddingRight="12dp"
             android:hint="Username"
             android:inputType="text"
-            android:layout_centerVertical="true"
+            android:layout_below="@+id/signInTitle"
             android:layout_centerHorizontal="true" />
         <Space
             android:layout_width="fill_parent"
@@ -38,7 +50,7 @@
             android:id="@+id/space_1"/>
 
         <EditText
-            android:layout_width="fill_parent"
+            android:layout_width="@dimen/edittext_width"
             android:layout_height="wrap_content"
             android:id="@+id/editTextPassword"
             android:background="@drawable/edit_text_basic"
@@ -48,7 +60,23 @@
             android:inputType="textPassword"
             android:layout_below="@+id/space_1"
             android:layout_centerHorizontal="true" />
-        </RelativeLayout>
+
+        <Space
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/space_height"
+            android:layout_below="@+id/editTextPassword"
+            android:id="@+id/space_2"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="11sp"
+            android:layout_below="@+id/space_2"
+            android:layout_centerHorizontal="true"
+            android:text="Forgot you password?"
+            android:textColor="@color/black"/>
+
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_alignParentBottom="true"
@@ -60,24 +88,24 @@
         <Button
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:text="Sign In"
+            android:text="Login"
             android:textColor="@color/title_text_color"
             android:layout_weight="1"
             android:background="@drawable/full_width_selector"
             android:textSize="25sp"
             android:id="@+id/buttonSignIn"
-            android:onClick="signInPressed"/>
+            android:onClick="loginPressed"/>
 
         <Button
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:text="Sign Up"
+            android:text="Cancel"
             android:textColor="@color/title_text_color"
             android:layout_weight="1"
             android:background="@drawable/full_width_selector"
             android:textSize="25sp"
             android:id="@+id/buttonCancelSignIn"
-            android:onClick="toSignUpPressed"/>
+            android:onClick="cancelSignInPressed"/>
 
     </LinearLayout>
 </RelativeLayout>

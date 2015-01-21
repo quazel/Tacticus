@@ -46,7 +46,7 @@ public class SplashScreen extends Activity {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    setContentView(R.layout.activity_splash_screen_sign_in);
+                    setContentView(R.layout.activity_splash_screen_directory);
 
                 }
             }, SPLASH_TIME_OUT);
@@ -74,12 +74,23 @@ public class SplashScreen extends Activity {
     }
      //attempts at using button navigation
 
+    public void cancelSignInPressed(View v){
+        setContentView(R.layout.activity_splash_screen_directory);
+    }
 
     public void cancelSignUpPressed(View v){
+        setContentView(R.layout.activity_splash_screen_directory);
+    }
+
+    public void toSignInPressed(View v){
         setContentView(R.layout.activity_splash_screen_sign_in);
     }
 
-    public void signInPressed(View v){
+    public void toSignUpPressed(View v){
+        setContentView(R.layout.activity_splash_screen_sign_up);
+    }
+
+    public void loginPressed(View v){
         EditText usernameField = (EditText) findViewById(R.id.editTextUsername);
         EditText passwordField = (EditText) findViewById(R.id.editTextPassword);
         String username = usernameField.getText().toString().trim();
@@ -94,10 +105,6 @@ public class SplashScreen extends Activity {
             setContentView(R.layout.activity_loading);
             new LoginTask().execute(username, password);
         }
-    }
-
-    public void toSignUpPressed(View v){
-        setContentView(R.layout.activity_splash_screen_sign_up);
     }
 
     public void signUpPressed(View v){
