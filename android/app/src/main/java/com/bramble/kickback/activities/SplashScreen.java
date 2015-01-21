@@ -91,6 +91,7 @@ public class SplashScreen extends Activity {
             Toast.makeText(this, "Usernames may only contain letters, numbers, and underscores (_).", Toast.LENGTH_SHORT).show();
         }
         else {
+            setContentView(R.layout.activity_loading);
             new LoginTask().execute(username, password);
         }
     }
@@ -172,6 +173,7 @@ public class SplashScreen extends Activity {
                 finish();
             }
             else {
+                setContentView(R.layout.activity_splash_screen_sign_in);
                 Toast.makeText(SplashScreen.this, "Invalid username or password.", Toast.LENGTH_LONG).show();
             }
         }

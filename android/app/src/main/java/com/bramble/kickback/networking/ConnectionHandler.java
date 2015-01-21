@@ -2,18 +2,11 @@ package com.bramble.kickback.networking;
 
 import android.util.Log;
 
-import com.bramble.kickback.models.Friend;
-import com.bramble.kickback.util.Globals;
-
-import org.json.JSONException;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
 
 import javax.net.ssl.HttpsURLConnection;
 
