@@ -96,7 +96,8 @@
 
         <activity
             android:name=".activities.AccountPortal"
-            android:label="@string/title_activity_account_portal" >
+            android:label="@string/title_activity_account_portal"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
         </activity>
     </application>
 
