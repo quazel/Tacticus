@@ -12,7 +12,7 @@
         android:label="@string/title_activity_home"
         android:theme="@style/MyTheme" >
         <activity
-            android:name="com.bramble.kickback.activities.SplashScreen"
+            android:name=".activities.SplashScreen"
             android:label="@string/title_activity_splash_screen"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar" >
@@ -23,75 +23,81 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.bramble.kickback.activities.Home"
+            android:name=".activities.Home"
             android:label="@string/Kickback" >
         </activity>
         <activity
-            android:name="com.bramble.kickback.activities.KickbacksList"
+            android:name=".activities.KickbacksList"
             android:label="@string/title_activity_kickback_list"
-            android:parentActivityName="com.bramble.kickback.activities.Home" >
+            android:parentActivityName=".activities.Home" >
         </activity>
         <activity
-            android:name="com.bramble.kickback.activities.KickbacksSchedule"
+            android:name=".activities.KickbacksSchedule"
             android:label="@string/title_activity_kickback_schedule"
-            android:parentActivityName="com.bramble.kickback.activities.Home" >
+            android:parentActivityName=".activities.Home" >
         </activity>
         <activity
-            android:name="com.bramble.kickback.activities.Settings"
+            android:name=".activities.Settings"
             android:label="@string/title_activity_settings"
-            android:parentActivityName="com.bramble.kickback.activities.Home" >
+            android:parentActivityName=".activities.Home" >
         </activity>
-
         <activity
-            android:name="com.bramble.kickback.activities.NotificationSettings"
+            android:name=".activities.NotificationSettings"
             android:label="@string/title_activity_notification_settings"
-            android:parentActivityName="com.bramble.kickback.activities.Settings" >
+            android:parentActivityName=".activities.Settings" >
         </activity>
         <activity
-            android:name="com.bramble.kickback.activities.MyFriends"
+            android:name=".activities.MyFriends"
             android:label="@string/title_activity_my_friends"
             android:launchMode="singleTop"
-            android:parentActivityName="com.bramble.kickback.activities.Home" >
+            android:parentActivityName=".activities.Home" >
         </activity>
         <activity
-            android:name="com.bramble.kickback.activities.TermsOfService"
+            android:name=".activities.TermsOfService"
             android:label="@string/title_activity_terms_of_service"
-            android:parentActivityName="com.bramble.kickback.activities.Settings" >
+            android:parentActivityName=".activities.Settings" >
         </activity>
         <activity
-            android:name="com.bramble.kickback.activities.PrivacyPolicy"
+            android:name=".activities.PrivacyPolicy"
             android:label="@string/title_activity_privacy_policy"
-            android:parentActivityName="com.bramble.kickback.activities.Settings" >
+            android:parentActivityName=".activities.Settings" >
         </activity>
         <activity
-            android:name="com.bramble.kickback.activities.AddKickback"
+            android:name=".activities.AddKickback"
             android:label="@string/title_activity_add_kickback"
-            android:parentActivityName="com.bramble.kickback.activities.KickbacksSchedule" >
+            android:parentActivityName=".activities.KickbacksSchedule" >
         </activity>
         <activity
-            android:name="com.bramble.kickback.activities.AddFriend"
+            android:name=".activities.AddFriend"
             android:label="@string/title_activity_add_friend"
-            android:parentActivityName="com.bramble.kickback.activities.MyFriends" >
+            android:parentActivityName=".activities.MyFriends" >
         </activity>
         <activity
-            android:name="com.bramble.kickback.activities.AddFriendFromContacts"
+            android:name=".activities.AddFriendFromContacts"
             android:label="@string/title_activity_add_friend_from_contacts" >
         </activity>
         <activity
-            android:name="com.bramble.kickback.activities.FriendRequests"
+            android:name=".activities.FriendRequests"
             android:label="@string/title_activity_friend_requests" >
         </activity>
-        <service android:name=".service.Notifier"></service>
-        <receiver
-            android:enabled="true"
-            android:name=".receivers.BootUpReceiver"
-            android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
 
+        <service android:name=".service.Notifier" />
+
+        <receiver
+            android:name=".receivers.BootUpReceiver"
+            android:enabled="true"
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
+
+        <activity
+            android:name=".activities.AccountPortal"
+            android:label="@string/title_activity_account_portal" >
+        </activity>
     </application>
 
 </manifest>

@@ -28,29 +28,15 @@ public class SplashScreen extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-        SharedPreferences prefs = getSharedPreferences("KickbackPreferences", 0);
         Globals.readContacts(getContentResolver());
 
-        if(prefs.contains("username")) {
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    Intent i = new Intent(SplashScreen.this, Home.class);
-                    startActivity(i);
-                    finish();
-                }
-            }, SPLASH_TIME_OUT);
-        }
-
-        else {
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    setContentView(R.layout.activity_splash_screen_directory);
-
-                }
-            }, SPLASH_TIME_OUT);
-        }
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                setContentView(R.layout.activity_splash_screen_directory);
+                finish();
+            }
+        }, SPLASH_TIME_OUT);
     }
 
 

@@ -88,7 +88,6 @@
     </string-array>
 
     <string name="dash">-</string>
-
     <string name="friendlist_favorites">FAVORITES</string>
     <string name="friendlist_friend">FRIENDS</string>
     <string name="large_sample_text">Phasellus mollis justo vel lectus tincidunt, at efficitur mi volutpat. Etiam eleifend diam ac erat bibendum, aliquet porttitor lacus dictum. Morbi bibendum lectus lectus, vel hendrerit est interdum ac. Mauris et eros sagittis, faucibus nisi sit amet, volutpat nulla. Sed vitae lobortis neque. Nunc quis tempus erat, ut sagittis leo. Ut rutrum tortor rhoncus luctus consectetur. Maecenas quis odio laoreet, scelerisque ex efficitur, auctor quam. Proin mollis elementum sapien.
@@ -104,9 +103,8 @@ Donec porta odio a ex sagittis tempus. Etiam blandit diam a elit blandit consect
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_friend_requests">FriendRequests</string>
-
-
     <string name="server_hostname">stevex86.com</string>
     <string name="server_port">8080</string>
+    <string name="title_activity_account_portal">AccountPortal</string>
 
 </resources>
