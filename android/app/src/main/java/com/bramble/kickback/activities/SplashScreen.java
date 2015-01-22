@@ -82,6 +82,13 @@ public class SplashScreen extends Activity {
         setContentView(R.layout.activity_splash_screen_directory);
     }
 
+    public void backSignUpPressed(View v){
+        setContentView(R.layout.activity_splash_screen_sign_up);
+        EditText editText = (EditText) findViewById(R.id.editTextEmail);
+        editText.setFocusable(true);
+        editText.requestFocus();
+    }
+
     public void toSignInPressed(View v){
         setContentView(R.layout.activity_splash_screen_sign_in);
         EditText editText = (EditText) findViewById(R.id.editTextUsername);
@@ -91,7 +98,14 @@ public class SplashScreen extends Activity {
 
     public void toSignUpPressed(View v){
         setContentView(R.layout.activity_splash_screen_sign_up);
-        EditText editText = (EditText) findViewById(R.id.editTextName);
+        EditText editText = (EditText) findViewById(R.id.editTextEmail);
+        editText.setFocusable(true);
+        editText.requestFocus();
+    }
+
+    public void continueSignUpPressed(View v) {
+        setContentView(R.layout.activity_splash_screen_sign_up_cont);
+        EditText editText = (EditText) findViewById(R.id.editTextFirstName);
         editText.setFocusable(true);
         editText.requestFocus();
     }
@@ -118,12 +132,14 @@ public class SplashScreen extends Activity {
         EditText usernameField = (EditText) findViewById(R.id.editTextDesiredUsername);
         EditText passwordField = (EditText) findViewById(R.id.editTextDesiredPassword);
         EditText confirmPasswordField = (EditText) findViewById(R.id.editTextConfirmDesiredPassword);
-        EditText nameField = (EditText) findViewById(R.id.editTextName);
+        EditText firstNameField = (EditText) findViewById(R.id.editTextFirstName);
+        EditText lastNameField = (EditText) findViewById(R.id.editTextLastName);
         EditText emailField = (EditText) findViewById(R.id.editTextEmail);
         String username = usernameField.getText().toString();
         String password = passwordField.getText().toString();
         String confirmPassword = confirmPasswordField.getText().toString();
-        String name = nameField.getText().toString();
+        String firstName = firstNameField.getText().toString();
+        String lastName = lastNameField.getText().toString();
         String email = emailField.getText().toString();
         if (username.equals("") || password.equals("")) {
             Toast.makeText(this, "Please enter desired username and password.", Toast.LENGTH_SHORT).show();
@@ -143,7 +159,7 @@ public class SplashScreen extends Activity {
         else if(!password.equals(confirmPassword)){
             Toast.makeText(this, "Entered passwords are not the same.", Toast.LENGTH_SHORT).show();
         }
-        else if(name.equals("")) {
+        else if(firstName.equals("")) {
             Toast.makeText(this, "Please enter your full name.", Toast.LENGTH_SHORT).show();
         }
         else if(!email.matches("^[a-zA-Z0-9_\\-+%\\.]+@[a-zA-Z0-9\\-\\.]+\\.[a-zA-Z\\.]{2,6}$")){
@@ -151,7 +167,7 @@ public class SplashScreen extends Activity {
         }
         else {
             // temporary variable vvvv
-            Globals.createUser(usernameField.getText().toString(),nameField.getText().toString(), emailField.getText().toString(), "");
+            Globals.createUser(usernameField.getText().toString(),firstNameField.getText().toString(), emailField.getText().toString(), "");
             Intent intent = new Intent(this, Home.class);
             startActivity(intent);
             finish();

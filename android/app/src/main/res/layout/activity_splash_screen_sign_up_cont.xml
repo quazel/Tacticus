@@ -28,78 +28,120 @@
             android:text="Sign Up"
             android:textColor="@color/black"
             android:textSize="36sp"
-            android:id="@+id/signUpTitle"
+            android:id="@+id/signUpTitle2"
             android:layout_centerHorizontal="true"
             />
-        
+
         <EditText
             android:layout_width="@dimen/edittext_width"
             android:layout_height="wrap_content"
-            android:id="@+id/editTextDesiredUsername"
+            android:id="@+id/editTextFirstName"
             android:background="@drawable/edit_text_basic"
             android:paddingLeft="@dimen/edittext_padding"
             android:paddingRight="@dimen/edittext_padding"
-            android:hint="Username"
-            android:layout_below="@+id/space_5"
+            android:hint="First Name"
+            android:layout_below="@+id/signUpTitle2"
             android:inputType="text"
             android:layout_centerHorizontal="true"
             />
         <Space
             android:layout_width="fill_parent"
             android:layout_height="@dimen/space_height"
-            android:layout_below="@+id/editTextDesiredUsername"
+            android:layout_below="@+id/editTextFirstName"
             android:id="@+id/space_1"/>
 
         <EditText
             android:layout_width="@dimen/edittext_width"
             android:layout_height="wrap_content"
-            android:id="@+id/editTextDesiredPassword"
+            android:id="@+id/editTextLastName"
             android:background="@drawable/edit_text_basic"
             android:paddingLeft="@dimen/edittext_padding"
             android:paddingRight="@dimen/edittext_padding"
-            android:hint="Password"
-            android:inputType="textPassword"
+            android:hint="Last Name"
             android:layout_below="@+id/space_1"
-            android:layout_centerHorizontal="true"/>
+            android:inputType="text"
+            android:layout_centerHorizontal="true"
+            />
         <Space
             android:layout_width="fill_parent"
             android:layout_height="@dimen/space_height"
-            android:layout_below="@+id/editTextDesiredPassword"
+            android:layout_below="@+id/editTextLastName"
             android:id="@+id/space_2"/>
 
         <EditText
             android:layout_width="@dimen/edittext_width"
             android:layout_height="wrap_content"
-            android:id="@+id/editTextConfirmDesiredPassword"
+            android:id="@+id/editTextBirthday"
             android:background="@drawable/edit_text_basic"
             android:paddingLeft="@dimen/edittext_padding"
             android:paddingRight="@dimen/edittext_padding"
-            android:hint="Confirm Password"
-            android:inputType="textPassword"
+            android:hint="Birthday"
             android:layout_below="@+id/space_2"
-            android:layout_centerHorizontal="true" />
+            android:inputType="text"
+            android:layout_centerHorizontal="true"
+            />
+
         <Space
             android:layout_width="fill_parent"
             android:layout_height="@dimen/space_height"
-            android:layout_below="@+id/editTextConfirmDesiredPassword"
+            android:layout_below="@+id/editTextBirthday"
             android:id="@+id/space_3"/>
 
-        <EditText
-            android:layout_width="@dimen/edittext_width"
-            android:layout_height="wrap_content"
-            android:id="@+id/editTextEmail"
-            android:background="@drawable/edit_text_basic"
-            android:paddingLeft="@dimen/edittext_padding"
-            android:paddingRight="@dimen/edittext_padding"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
-            android:layout_below="@+id/signUpTitle"
-            android:layout_centerHorizontal="true" />
+
+            <RadioGroup
+                android:layout_width="@dimen/edittext_width"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/space_3"
+                android:id="@+id/sexGroup">
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/list_item_height"
+                    android:textSize="11sp"
+                    android:text="Male"
+                    android:textColor="@color/black"
+                    android:button="@drawable/custom_checkbox_purple"
+                    android:id="@+id/male"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/list_item_height"
+                    android:textSize="11sp"
+                    android:text="Female"
+                    android:textColor="@color/black"
+                    android:button="@drawable/custom_checkbox_purple"
+                    android:id="@+id/female"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/list_item_height"
+                    android:textSize="11sp"
+                    android:text="Not Specified"
+                    android:textColor="@color/black"
+                    android:button="@drawable/custom_checkbox_purple"
+                    android:id="@+id/not_specified"/>
+
+            </RadioGroup>
+
+
+
         <Space
             android:layout_width="fill_parent"
             android:layout_height="@dimen/space_height"
-            android:layout_below="@+id/editTextEmail"
-            android:id="@+id/space_5"/>
+            android:layout_below="@+id/sexGroup"
+            android:id="@+id/space_4"/>
+
+
+
+
+        <TextView
+            android:layout_width="@dimen/edittext_width"
+            android:layout_height="wrap_content"
+            android:textSize="11sp"
+            android:layout_below="@+id/space_4"
+            android:layout_centerHorizontal="true"
+            android:text="@string/sign_up_text"
+            android:textColor="@color/black"/>
     </RelativeLayout>
 
     <LinearLayout
@@ -112,23 +154,23 @@
         <Button
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:text="Cancel"
+            android:text="Back"
             android:textColor="@color/title_text_color"
             android:layout_weight="1"
             android:background="@drawable/full_width_selector"
             android:textSize="25sp"
             android:id="@+id/buttonCancelSignUp"
-            android:onClick="cancelSignUpPressed"/>
+            android:onClick="backSignUpPressed"/>
         <Button
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:text="Continue"
+            android:text="Submit"
             android:textColor="@color/title_text_color"
             android:layout_weight="1"
             android:background="@drawable/full_width_selector"
             android:textSize="25sp"
             android:id="@+id/buttonSignUp"
-            android:onClick="continueSignUpPressed"/>
+            android:onClick="signUpPressed"/>
 
     </LinearLayout>
 

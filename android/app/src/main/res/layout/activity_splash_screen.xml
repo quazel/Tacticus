@@ -10,4 +10,10 @@
     android:background="@color/primary_color"
     tools:context="com.bramble.kickback.activities.SplashScreen">
 
+    <fragment android:name="com.bramble.kickback.activity_splash_screen_sign_up"
+        android:id="@+id/list"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent" />
+
 </RelativeLayout>
