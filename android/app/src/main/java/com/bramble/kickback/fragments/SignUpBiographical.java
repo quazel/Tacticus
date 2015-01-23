@@ -18,6 +18,9 @@ public class SignUpBiographical extends Fragment {
     EditText lastName;
     EditText birthday;
     RadioGroup sexGroup;
+    RadioButton male;
+    RadioButton female;
+    RadioButton notSpecified;
     String sex;
 
     @Override
@@ -31,6 +34,9 @@ public class SignUpBiographical extends Fragment {
         lastName = (EditText) view.findViewById(R.id.editTextLastName);
         birthday = (EditText) view.findViewById(R.id.editTextBirthday);
         sexGroup = (RadioGroup) view.findViewById(R.id.sexGroup);
+        male = (RadioButton) view.findViewById(R.id.male);
+        female = (RadioButton) view.findViewById(R.id.female);
+        notSpecified = (RadioButton) view.findViewById(R.id.not_specified);
 
         return view;
     }
@@ -85,4 +91,12 @@ public class SignUpBiographical extends Fragment {
         this.sex = sex;
     }
 
+    public void clear() {
+        firstName.setText("");
+        lastName.setText("");
+        birthday.setText("");
+        male.setChecked(false);
+        female.setChecked(false);
+        notSpecified.setChecked(false);
+    }
 }

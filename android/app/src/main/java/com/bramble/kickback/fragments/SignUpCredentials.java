@@ -73,4 +73,12 @@ public class SignUpCredentials extends Fragment {
     public void setPhoneNumberText(String phoneNumber) {
         this.phoneNumber.setText(phoneNumber);
     }
+
+    public void clear() {
+        email.setText("");
+        desiredUsername.setText("");
+        desiredPassword.setText("");
+        confirmDesiredPassword.setText("");
+        phoneNumber.setText("");
+    }
 }

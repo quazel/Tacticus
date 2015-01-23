@@ -63,7 +63,7 @@ public class AccountPortal extends Activity {
         }
     };
 
-    private ServiceConnection LoginConnection = new ServiceConnection() {
+    private ServiceConnection loginConnection = new ServiceConnection() {
         // Called when the connection with the service is established
         public void onServiceConnected(ComponentName className, IBinder service) {
             // Because we have bound to an explicit
@@ -81,6 +81,7 @@ public class AccountPortal extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         signUpServiceIntent = new Intent(this, SignUpService.class);
+        loginServiceIntent = new Intent(this, LoginService.class);
         setContentView(R.layout.activity_account_portal);
         fm = getFragmentManager();
         accountPortalIndex = new AccountPortalIndex();
@@ -96,7 +97,7 @@ public class AccountPortal extends Activity {
 
     public void toSignInPressed(View v){
         startService(loginServiceIntent);
-        bindService(loginServiceIntent, signUpConnection, BIND_AUTO_CREATE);
+        bindService(loginServiceIntent, loginConnection, BIND_AUTO_CREATE);
         FragmentTransaction ft = fm.beginTransaction();
         ft.add(R.id.fragment_place, login, "loginTag");
         //ft.addToBackStack()
@@ -170,14 +171,10 @@ public class AccountPortal extends Activity {
         Login loginFragment = (Login) getFragmentManager().findFragmentByTag("loginTag");
         loginService.setUsername(loginFragment.getUsernameText());
         loginService.setPassword(loginFragment.getPasswordText());
-        if (username.equals("") || password.equals("")) {
+        if (loginService.getUsername().equals("") || loginService.getPassword().equals("")) {
             Toast.makeText(this, "Please enter your username and password.", Toast.LENGTH_SHORT).show();
         }
-        else if(!username.matches("^[a-zA-Z0-9_]+$")) {
-            Toast.makeText(this, "Usernames may only contain letters, numbers, and underscores (_).", Toast.LENGTH_SHORT).show();
-        }
         else {
-            loginFragment = (Login) getFragmentManager().findFragmentByTag("loginTag");
             setContentView(R.layout.activity_loading);
             new LoginTask().execute(username, password);
         }
@@ -232,8 +229,8 @@ public class AccountPortal extends Activity {
         protected void onPostExecute(User loggedUser) {
             if (loggedUser != null) {
                 Globals.theUser = loggedUser;
-                Intent intent = new Intent(AccountPortal.this, Home.class);
-                startActivity(intent);
+                //Intent intent = new Intent(AccountPortal.this, Home.class);
+               //startActivity(intent);
                 finish();
             }
             else {

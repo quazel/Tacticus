@@ -24,7 +24,6 @@ public class Login extends Fragment{
         username = (EditText) view.findViewById(R.id.editTextUsername);
         password = (EditText) view.findViewById(R.id.editTextPassword);
 
-
         return view;
     }
 
@@ -44,5 +43,8 @@ public class Login extends Fragment{
         this.password.setText(password);
     }
 
-
+    public void clear() {
+        username.setText("");
+        password.setText("");
+    }
 }
