@@ -81,7 +81,7 @@
             android:label="@string/title_activity_friend_requests" >
         </activity>
 
-        <service android:name=".service.Notifier" />
+        <service android:name=".service.SignUpService" />
 
         <receiver
             android:name=".receivers.BootUpReceiver"
