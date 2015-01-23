@@ -96,9 +96,29 @@ public class AccountPortal extends Activity {
     }
 
     public void continueSignUpPressed(View v) {
-        ft = fm.beginTransaction();
-        ft.replace(R.id.fragment_place, signUpBiographical);
-        ft.commit();
+        if (signUpService.getDesiredUsername().equals("") || signUpService.getDesiredPassword().equals("")) {
+            Toast.makeText(this, "Please enter desired username and password.", Toast.LENGTH_SHORT).show();
+        }
+        else if(signUpService.getConfirmPassword().equals("")){
+            Toast.makeText(this, "Please confirm password.", Toast.LENGTH_SHORT).show();
+        }
+        else if(!signUpService.getDesiredUsername().matches("^[a-zA-Z0-9_]+$")) {
+            Toast.makeText(this, "Usernames may only contain letters, numbers, and underscores (_).", Toast.LENGTH_SHORT).show();
+        }
+        else if(signUpService.getDesiredPassword().length() < 6 || signUpService.getDesiredPassword().length() > 20){
+            Toast.makeText(this, "Passwords must be between 6 and 20 characters in length.", Toast.LENGTH_SHORT).show();
+        }
+        else if(!signUpService.getDesiredPassword().matches("^[a-zA-Z0-9_\\-!@#$%^&*]+$")) {
+            Toast.makeText(this, "Passwords may only contain letters, numbers, and the special characters !@#$%^&*-_.", Toast.LENGTH_SHORT).show();
+        }
+        else if(!signUpService.getDesiredPassword().equals(signUpService.getConfirmPassword())){
+            Toast.makeText(this, "Entered passwords are not the same.", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            ft = fm.beginTransaction();
+            ft.replace(R.id.fragment_place, signUpBiographical);
+            ft.commit();
+        }
     }
 
     public void loginPressed(View v){
@@ -119,35 +139,19 @@ public class AccountPortal extends Activity {
 
     public void signUpPressed(View v){
 
-        // insert code to grab entered edittext and store it in the instance fields provided by this class
-
-        if (username.equals("") || password.equals("")) {
-            Toast.makeText(this, "Please enter desired username and password.", Toast.LENGTH_SHORT).show();
+        if(signUpService.getFirstName().equals("")) {
+            Toast.makeText(this, "Please enter your first name.", Toast.LENGTH_SHORT).show();
         }
-        else if(SignUpService.getConfirmPassword().equals("")){
-            Toast.makeText(this, "Please confirm password.", Toast.LENGTH_SHORT).show();
+        else if(signUpService.getLastName().equals("")) {
+            Toast.makeText(this, "Please enter your last name.", Toast.LENGTH_SHORT).show();
         }
-        else if(!username.matches("^[a-zA-Z0-9_]+$")) {
-            Toast.makeText(this, "Usernames may only contain letters, numbers, and underscores (_).", Toast.LENGTH_SHORT).show();
-        }
-        else if(password.length() < 6 || password.length() > 20){
-            Toast.makeText(this, "Passwords must be between 6 and 20 characters in length.", Toast.LENGTH_SHORT).show();
-        }
-        else if(!password.matches("^[a-zA-Z0-9_\\-!@#$%^&*]+$")) {
-            Toast.makeText(this, "Passwords may only contain letters, numbers, and the special characters !@#$%^&*-_.", Toast.LENGTH_SHORT).show();
-        }
-        else if(!password.equals(confirmPassword)){
-            Toast.makeText(this, "Entered passwords are not the same.", Toast.LENGTH_SHORT).show();
-        }
-        else if(firstName.equals("")) {
-            Toast.makeText(this, "Please enter your full name.", Toast.LENGTH_SHORT).show();
-        }
-        else if(!email.matches("^[a-zA-Z0-9_\\-+%\\.]+@[a-zA-Z0-9\\-\\.]+\\.[a-zA-Z\\.]{2,6}$")){
+        else if(!signUpService.getEmail().matches("^[a-zA-Z0-9_\\-+%\\.]+@[a-zA-Z0-9\\-\\.]+\\.[a-zA-Z\\.]{2,6}$")){
             Toast.makeText(this, "Please enter a valid email address.", Toast.LENGTH_SHORT).show();
         }
         else {
             // temporary variable vvvv
-            Globals.createUser(username, firstName, email, "");
+            Globals.createUser(signUpService.getDesiredUsername(), signUpService.getFirstName(),
+                               signUpService.getEmail(),"phone number");
             Intent intent = new Intent(this, Home.class);
             startActivity(intent);
             finish();
