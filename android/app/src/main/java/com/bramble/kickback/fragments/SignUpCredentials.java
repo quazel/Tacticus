@@ -15,7 +15,7 @@ public class SignUpCredentials extends Fragment {
     EditText desiredUsername;
     EditText desiredPassword;
     EditText confirmDesiredPassword;
-
+    EditText phoneNumber;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -29,6 +29,7 @@ public class SignUpCredentials extends Fragment {
         desiredUsername = (EditText) view.findViewById(R.id.editTextDesiredUsername);
         desiredPassword = (EditText) view.findViewById(R.id.editTextDesiredPassword);
         confirmDesiredPassword = (EditText) view.findViewById(R.id.editTextConfirmDesiredPassword);
+        phoneNumber = (EditText) view.findViewById(R.id.editTextPhoneNumber);
 
         return view;
     }
@@ -49,6 +50,10 @@ public class SignUpCredentials extends Fragment {
         return this.confirmDesiredPassword.getText().toString();
     }
 
+    public String getPhoneNumberText() {
+        return this.phoneNumber.getText().toString();
+    }
+
     public void setEmailText(String email) {
         this.email.setText(email);
     }
@@ -63,5 +68,9 @@ public class SignUpCredentials extends Fragment {
 
     public void setConfirmDesiredPasswordText(String confirmDesiredPassword) {
         this.confirmDesiredPassword.setText(confirmDesiredPassword);
+    }
+
+    public void setPhoneNumberText(String phoneNumber) {
+        this.phoneNumber.setText(phoneNumber);
     }
 }
