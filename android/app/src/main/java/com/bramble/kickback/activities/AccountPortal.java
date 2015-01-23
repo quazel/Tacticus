@@ -18,27 +18,20 @@ import com.bramble.kickback.fragments.SignUpBiographical;
 import com.bramble.kickback.fragments.SignUpCredentials;
 import com.bramble.kickback.models.User;
 import com.bramble.kickback.networking.ConnectionHandler;
+import com.bramble.kickback.service.SignUpService;
 import com.bramble.kickback.util.Globals;
 
 import java.io.IOException;
 
 public class AccountPortal extends Activity {
 
-    //from sign up credentials
-    private String email;
-    private String desiredUsername;
-    private String desiredPassword;
-    private String confirmPassword;
-
-    // from sign up biographical
-    private String firstName;
-    private String lastName;
-    private String birthday;
-    private String sex;
-
     // from login
     private String username;
     private String password;
+
+    //Service
+    SignUpService signUpService;
+    Intent signUpServiceIntent;
 
     // fragment instance variables
     FragmentManager fm;
@@ -51,7 +44,11 @@ public class AccountPortal extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // start service
+
+        signUpServiceIntent = new Intent(this, SignUpService.class);
         setContentView(R.layout.activity_account_portal);
+
         fm = getFragmentManager();
 
         accountPortalIndex = new AccountPortalIndex();
@@ -73,6 +70,7 @@ public class AccountPortal extends Activity {
     }
 
     public void toSignUpPressed(View v){
+        startService(signUpServiceIntent);
         ft = fm.beginTransaction();
         ft.add(R.id.fragment_place, signUpCredentials);
         ft.commit();
@@ -80,26 +78,24 @@ public class AccountPortal extends Activity {
 
     public void cancelSignInPressed(View v){
         ft = fm.beginTransaction();
-        clearLoginEdittexts();
         ft.replace(R.id.fragment_place, accountPortalIndex);
         ft.commit();
     }
 
     public void cancelSignUpPressed(View v){
+        stopService(signUpServiceIntent);
         ft = fm.beginTransaction();
         ft.replace(R.id.fragment_place, accountPortalIndex);
         ft.commit();
     }
 
     public void backSignUpPressed(View v){
-        updateSignUpBiographicalFields();
         ft = fm.beginTransaction();
         ft.replace(R.id.fragment_place, signUpCredentials);
         ft.commit();
     }
 
     public void continueSignUpPressed(View v) {
-        updateSignUpCredentialsFields();
         ft = fm.beginTransaction();
         ft.replace(R.id.fragment_place, signUpBiographical);
         ft.commit();
@@ -108,7 +104,6 @@ public class AccountPortal extends Activity {
     public void loginPressed(View v){
 
         // insert code to grab entered edittext and store it in the instance fields provided by this class
-        updateLoginFields();
 
         if (username.equals("") || password.equals("")) {
             Toast.makeText(this, "Please enter your username and password.", Toast.LENGTH_SHORT).show();
@@ -125,12 +120,11 @@ public class AccountPortal extends Activity {
     public void signUpPressed(View v){
 
         // insert code to grab entered edittext and store it in the instance fields provided by this class
-        updateSignUpBiographicalFields();
 
         if (username.equals("") || password.equals("")) {
             Toast.makeText(this, "Please enter desired username and password.", Toast.LENGTH_SHORT).show();
         }
-        else if(confirmPassword.equals("")){
+        else if(SignUpService.getConfirmPassword().equals("")){
             Toast.makeText(this, "Please confirm password.", Toast.LENGTH_SHORT).show();
         }
         else if(!username.matches("^[a-zA-Z0-9_]+$")) {
@@ -160,59 +154,6 @@ public class AccountPortal extends Activity {
         }
     }
 
-    public void updateLoginFields() {
-
-        // for login
-        if (((EditText) findViewById(R.id.editTextUsername)).getText().toString() != null) {
-            this.username = ((EditText) findViewById(R.id.editTextUsername)).getText().toString();
-        }
-        if (((EditText) findViewById(R.id.editTextPassword)).getText().toString() != null) {
-            this.password = ((EditText) findViewById(R.id.editTextPassword)).getText().toString();
-        }
-    }
-
-    public void updateSignUpCredentialsFields() {
-        // for sign up cred
-        if (((EditText) findViewById(R.id.editTextEmail)).getText().toString() != null) {
-            this.email = ((EditText) findViewById(R.id.editTextEmail)).getText().toString();
-        }
-        if (((EditText) findViewById(R.id.editTextDesiredUsername)).getText().toString() != null) {
-            this.desiredUsername = ((EditText) findViewById(R.id.editTextDesiredUsername)).getText().toString();
-        }
-        if (((EditText) findViewById(R.id.editTextDesiredPassword)).getText().toString() != null) {
-            this.desiredPassword = ((EditText) findViewById(R.id.editTextDesiredPassword)).getText().toString();
-        }
-        if (((EditText) findViewById(R.id.editTextConfirmDesiredPassword)).getText().toString() != null) {
-            this.confirmPassword = ((EditText) findViewById(R.id.editTextConfirmDesiredPassword)).getText().toString();
-        }
-    }
-
-    public void updateSignUpBiographicalFields() {
-
-        if(((EditText) findViewById(R.id.editTextFirstName)).getText().toString() != null) {
-            this.firstName = ((EditText) findViewById(R.id.editTextFirstName)).getText().toString();
-        }
-        if(((EditText) findViewById(R.id.editTextLastName)).getText().toString() != null) {
-            this.lastName = ((EditText) findViewById(R.id.editTextLastName)).getText().toString();
-        }
-        if(((EditText) findViewById(R.id.editTextBirthday)).getText().toString() != null) {
-            this.birthday = ((EditText) findViewById(R.id.editTextBirthday)).getText().toString();
-        }
-        // insert update for sex variable when possible
-    }
-
-    public void clearLoginEdittexts() {
-        if(((EditText) findViewById(R.id.editTextUsername)).getText().toString() != null) {
-            ((EditText) findViewById(R.id.editTextUsername)).setText("");
-        }
-        if(((EditText) findViewById(R.id.editTextPassword)).getText().toString() != null) {
-            ((EditText) findViewById(R.id.editTextPassword)).setText("");
-        }
-    }
-
-    public void clearSignUpEdittexts() {
-        
-    }
 
     // Asynchronously sends a login request
 
@@ -251,39 +192,6 @@ public class AccountPortal extends Activity {
 
     }
 
-    // Getters
-    public String getEmail() {
-        return this.email;
-    }
-
-    public String getDesiredUsername() {
-        return this.desiredUsername;
-    }
-
-    public String getDesiredPassword() {
-        return this.desiredPassword;
-    }
-
-    public String getConfirmPassword() {
-        return this.confirmPassword;
-    }
-
-    public String getFirstName() {
-        return this.firstName;
-    }
-
-    public String getLastName() {
-        return this.lastName;
-    }
-
-    public String getBirthday() {
-        return this.birthday;
-    }
-
-    public String getSex() {
-        return this.sex;
-    }
-
     public String getUsername() {
         return this.username;
     }
@@ -292,39 +200,6 @@ public class AccountPortal extends Activity {
         return this.password;
     }
 
-    // Setters
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setDesiredUsername(String desiredUsername) {
-        this.desiredUsername = desiredUsername;
-    }
-
-    public void setDesiredPassword(String desiredPassword) {
-        this.desiredPassword = desiredPassword;
-    }
-
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
 
     public void setUsername(String username) {
         this.username = username;
