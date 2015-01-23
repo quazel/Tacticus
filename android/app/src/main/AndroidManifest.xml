@@ -82,6 +82,8 @@
         </activity>
 
         <service android:name=".service.SignUpService" />
+        <service android:name=".service.LoginService" />
+        <service android:name=".service.KickbackService" />
 
         <receiver
             android:name=".receivers.BootUpReceiver"
