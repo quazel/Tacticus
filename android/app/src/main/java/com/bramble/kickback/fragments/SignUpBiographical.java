@@ -1,5 +1,6 @@
 package com.bramble.kickback.fragments;
 import com.bramble.kickback.R;
+import com.bramble.kickback.service.SignUpService;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -17,7 +18,7 @@ public class SignUpBiographical extends Fragment {
     EditText lastName;
     EditText birthday;
     RadioGroup sexGroup;
-    RadioButton sexButton;
+    String sex;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -30,26 +31,26 @@ public class SignUpBiographical extends Fragment {
         lastName = (EditText) view.findViewById(R.id.editTextLastName);
         birthday = (EditText) view.findViewById(R.id.editTextBirthday);
         sexGroup = (RadioGroup) view.findViewById(R.id.sexGroup);
-        addListenerOnButton();
 
         return view;
     }
 
-    public void addListenerOnButton() {
-
-        sexGroup.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                // get selected radio button from radioGroup
-                int selectedId = sexGroup.getCheckedRadioButtonId();
-
-                // find the radiobutton by returned id
-                sexButton = (RadioButton) v.findViewById(selectedId);
-            }
-
-        });
+    public void onRadioButtonClicked(View view) {
+        boolean checked = ((RadioButton) view).isChecked();
+        switch(view.getId()) {
+            case R.id.male:
+                if (checked)
+                    sex = "male";
+                    break;
+            case R.id.female:
+                if (checked)
+                    sex = "female";
+                    break;
+            case R.id.not_specified:
+                if (checked)
+                    sex = "not specified";
+                    break;
+        }
     }
 
     public String getFirstNameText() {
@@ -65,7 +66,7 @@ public class SignUpBiographical extends Fragment {
     }
 
     public String getSexText() {
-        return this.sexButton.getText().toString();
+        return sex;
     }
 
     public void setFirstNameText(String firstName) {
@@ -80,8 +81,8 @@ public class SignUpBiographical extends Fragment {
         this.birthday.setText(birthday);
     }
 
-    public void setSexButton(String firstName) {
-        this.sexButton.setText(firstName);
+    public void setSexButton(String sex) {
+        this.sex = sex;
     }
 
 }
