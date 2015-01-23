@@ -20,6 +20,7 @@ import com.bramble.kickback.fragments.SignUpBiographical;
 import com.bramble.kickback.fragments.SignUpCredentials;
 import com.bramble.kickback.models.User;
 import com.bramble.kickback.networking.ConnectionHandler;
+import com.bramble.kickback.service.LoginService;
 import com.bramble.kickback.service.SignUpService;
 import com.bramble.kickback.util.Globals;
 
@@ -31,7 +32,9 @@ public class AccountPortal extends Activity {
     private String username;
     private String password;
 
-    //Service
+    //Services
+    private LoginService loginService;
+    private Intent loginServiceIntent;
     private SignUpService signUpService;
     private Intent signUpServiceIntent;
 
@@ -46,7 +49,7 @@ public class AccountPortal extends Activity {
     //fragments for use with methods
     private Login loginFragment;
 
-    private ServiceConnection mConnection = new ServiceConnection() {
+    private ServiceConnection signUpConnection = new ServiceConnection() {
         // Called when the connection with the service is established
         public void onServiceConnected(ComponentName className, IBinder service) {
             // Because we have bound to an explicit
@@ -54,6 +57,20 @@ public class AccountPortal extends Activity {
             // cast its IBinder to a concrete class and directly access it.
             SignUpService.LocalBinder binder = (SignUpService.LocalBinder) service;
             signUpService = binder.getService();
+        }
+        // Called when the connection with the service disconnects unexpectedly
+        public void onServiceDisconnected(ComponentName className) {
+        }
+    };
+
+    private ServiceConnection LoginConnection = new ServiceConnection() {
+        // Called when the connection with the service is established
+        public void onServiceConnected(ComponentName className, IBinder service) {
+            // Because we have bound to an explicit
+            // service that is running in our own process, we can
+            // cast its IBinder to a concrete class and directly access it.
+            LoginService.LocalBinder binder = (LoginService.LocalBinder) service;
+            loginService = binder.getService();
         }
         // Called when the connection with the service disconnects unexpectedly
         public void onServiceDisconnected(ComponentName className) {
@@ -78,6 +95,8 @@ public class AccountPortal extends Activity {
     }
 
     public void toSignInPressed(View v){
+        startService(loginServiceIntent);
+        bindService(loginServiceIntent, signUpConnection, BIND_AUTO_CREATE);
         FragmentTransaction ft = fm.beginTransaction();
         ft.add(R.id.fragment_place, login, "loginTag");
         //ft.addToBackStack()
@@ -86,20 +105,22 @@ public class AccountPortal extends Activity {
 
     public void toSignUpPressed(View v){
         startService(signUpServiceIntent);
-        bindService(signUpServiceIntent, mConnection, BIND_AUTO_CREATE);
+        bindService(signUpServiceIntent, signUpConnection, BIND_AUTO_CREATE);
         ft = fm.beginTransaction();
         ft.add(R.id.fragment_place, signUpCredentials,"signUpCredentialsTag");
         ft.commit();
     }
 
     public void cancelSignInPressed(View v){
+        loginService.clear();
+        stopService(loginServiceIntent);
         ft = fm.beginTransaction();
         ft.replace(R.id.fragment_place, accountPortalIndex);
         ft.commit();
-        signUpService.clear();
     }
 
     public void cancelSignUpPressed(View v){
+        signUpService.clear();
         stopService(signUpServiceIntent);
         ft = fm.beginTransaction();
         ft.replace(R.id.fragment_place, accountPortalIndex);
@@ -146,7 +167,9 @@ public class AccountPortal extends Activity {
     }
 
     public void loginPressed(View v){
-        // insert code to grab entered edittext and store it in the instance fields provided by this class
+        Login loginFragment = (Login) getFragmentManager().findFragmentByTag("loginTag");
+        loginService.setUsername(loginFragment.getUsernameText());
+        loginService.setPassword(loginFragment.getPasswordText());
         if (username.equals("") || password.equals("")) {
             Toast.makeText(this, "Please enter your username and password.", Toast.LENGTH_SHORT).show();
         }
