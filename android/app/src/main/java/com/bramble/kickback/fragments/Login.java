@@ -42,9 +42,4 @@ public class Login extends Fragment{
     public void setPasswordText(String password) {
         this.password.setText(password);
     }
-
-    public void clear() {
-        username.setText("");
-        password.setText("");
-    }
 }

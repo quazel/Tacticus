@@ -90,13 +90,4 @@ public class SignUpBiographical extends Fragment {
     public void setSexButton(String sex) {
         this.sex = sex;
     }
-
-    public void clear() {
-        firstName.setText("");
-        lastName.setText("");
-        birthday.setText("");
-        male.setChecked(false);
-        female.setChecked(false);
-        notSpecified.setChecked(false);
-    }
 }
