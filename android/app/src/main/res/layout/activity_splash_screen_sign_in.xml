@@ -73,7 +73,7 @@
             android:textSize="11sp"
             android:layout_below="@+id/space_2"
             android:layout_centerHorizontal="true"
-            android:text="Forgot you password?"
+            android:text="Forgot your password?"
             android:textColor="@color/black"/>
 
     </RelativeLayout>
