@@ -2,10 +2,12 @@ package com.bramble.kickback.fragments;
 import com.bramble.kickback.R;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 
@@ -30,6 +32,8 @@ public class SignUpCredentials extends Fragment {
         desiredPassword = (EditText) view.findViewById(R.id.editTextDesiredPassword);
         confirmDesiredPassword = (EditText) view.findViewById(R.id.editTextConfirmDesiredPassword);
         phoneNumber = (EditText) view.findViewById(R.id.editTextPhoneNumber);
+
+        email.requestFocus();
 
         return view;
     }

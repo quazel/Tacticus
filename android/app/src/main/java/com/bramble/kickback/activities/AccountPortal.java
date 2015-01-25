@@ -1,7 +1,6 @@
 package com.bramble.kickback.activities;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.ComponentName;
@@ -10,7 +9,6 @@ import android.content.ServiceConnection;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -223,6 +221,8 @@ public class AccountPortal extends Activity {
             Toast.makeText(this, "Please enter your mobile phone number.", Toast.LENGTH_SHORT).show();
         }
         else {
+
+            //
             ft = fm.beginTransaction();
             ft.replace(R.id.fragment_place, signUpBiographical, "signUpBiographicalTag");
             ft.commit();
