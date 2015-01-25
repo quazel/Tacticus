@@ -303,7 +303,7 @@ public class AccountPortal extends Activity {
         @Override
         protected User doInBackground(String... params) {
             try {
-                String result = new ConnectionHandler().register(params[0], params[1]);
+                String result = new ConnectionHandler().login(params[0], params[1]);
                 if (result != null) {
                     User user = new User(params[0]);
                     user.setSessionId(result);
