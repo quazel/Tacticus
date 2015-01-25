@@ -8,12 +8,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 
 public class Login extends Fragment{
 
-    EditText username;
-    EditText password;
+    private EditText username;
+    private EditText password;
+    private Button loginButton;
+    private Button cancelButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -24,6 +27,8 @@ public class Login extends Fragment{
 
         username = (EditText) view.findViewById(R.id.editTextUsername);
         password = (EditText) view.findViewById(R.id.editTextPassword);
+        loginButton = (Button) view.findViewById(R.id.buttonSignIn);
+        cancelButton = (Button) view.findViewById(R.id.buttonCancelSignIn);
 
         username.requestFocus();
 
@@ -32,6 +37,16 @@ public class Login extends Fragment{
         //imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
 
         return view;
+    }
+
+    public void disableButtons() {
+        loginButton.setEnabled(false);
+        cancelButton.setEnabled(false);
+    }
+
+    public void enableButtons() {
+        loginButton.setEnabled(true);
+        cancelButton.setEnabled(true);
     }
 
     public String getUsernameText() {
@@ -49,4 +64,6 @@ public class Login extends Fragment{
     public void setPasswordText(String password) {
         this.password.setText(password);
     }
+
+
 }

@@ -11,7 +11,7 @@
     <Space
         android:id="@+id/half_space"
         android:layout_width="match_parent"
-        android:layout_height="325dp"
+        android:layout_height="375dp"
         android:layout_gravity="center_horizontal|top" />
 
     <Space
@@ -23,6 +23,11 @@
 
 
     <FrameLayout
+        android:id="@+id/fragment_place"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <FrameLayout
         android:id="@+id/loading_place"
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
@@ -31,10 +36,5 @@
         android:layout_above="@+id/bottom_space"
         android:visibility="visible"
         />
-
-    <FrameLayout
-        android:id="@+id/fragment_place"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
 
 </RelativeLayout>

@@ -143,7 +143,7 @@ public class AccountPortal extends Activity {
             ft.add(R.id.loading_place, loadingBar, "loadingBarTag");
             ft.commit();
             new LoginTask().execute(loginService.getUsername(), loginService.getPassword());
-            loginService.setPassword("");
+            login.disableButtons();
         }
     }
 
@@ -303,7 +303,7 @@ public class AccountPortal extends Activity {
         @Override
         protected User doInBackground(String... params) {
             try {
-                String result = new ConnectionHandler().login(params[0], params[1]);
+                String result = new ConnectionHandler().register(params[0], params[1]);
                 if (result != null) {
                     User user = new User(params[0]);
                     user.setSessionId(result);
@@ -330,6 +330,8 @@ public class AccountPortal extends Activity {
                 ft.replace(R.id.fragment_place, login, "loginTag");
                 ft.commit();
                 Toast.makeText(AccountPortal.this, "Invalid username or password.", Toast.LENGTH_LONG).show();
+                loginService.setPassword("");
+                login.enableButtons();
             }
         }
     }
