@@ -21,7 +21,7 @@ import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 
 
 public class KickbacksList extends Activity {
-    ArrayList<Friend> activeKickbacks = Globals.friends;;
+    ArrayList<Friend> activeKickbacks = Globals.friends;
     ArrayList<Kickback> kickback = Globals.kickbacks; //filler empty kickback NO INFO
 
     StickyListHeadersListView stickyList;
