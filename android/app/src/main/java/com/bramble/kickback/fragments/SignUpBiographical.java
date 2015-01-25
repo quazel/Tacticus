@@ -14,23 +14,32 @@ import android.widget.RadioGroup;
 
 public class SignUpBiographical extends Fragment {
 
+    // items on the fragment
     EditText firstName;
     EditText lastName;
     EditText birthday;
     RadioGroup sexGroup;
+    RadioButton male;
+    RadioButton female;
+    RadioButton notSpecified;
     String sex;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.activity_splash_screen_sign_up_cont, container, false);
-
+        // gathers all the edit texts featured in this fragment
         firstName = (EditText) view.findViewById(R.id.editTextFirstName);
         lastName = (EditText) view.findViewById(R.id.editTextLastName);
         birthday = (EditText) view.findViewById(R.id.editTextBirthday);
         sexGroup = (RadioGroup) view.findViewById(R.id.sexGroup);
+        male = (RadioButton) view.findViewById(R.id.male);
+        female = (RadioButton) view.findViewById(R.id.female);
+        notSpecified = (RadioButton) view.findViewById(R.id.not_specified);
+
+        // sets the cursor to the first edit text featured (firstName)
+        firstName.requestFocus();
 
         return view;
     }
@@ -82,7 +91,14 @@ public class SignUpBiographical extends Fragment {
     }
 
     public void setSexButton(String sex) {
-        this.sex = sex;
+        if(sex.equals(male.getText())) {
+            male.setChecked(true);
+        }
+        else if(sex.equals(female.getText())) {
+            female.setChecked(true);
+        }
+        else {
+            notSpecified.setChecked(true);
+        }
     }
-
 }

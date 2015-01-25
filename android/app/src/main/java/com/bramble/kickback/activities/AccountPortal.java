@@ -1,14 +1,15 @@
 package com.bramble.kickback.activities;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.bramble.kickback.R;
@@ -18,85 +19,187 @@ import com.bramble.kickback.fragments.SignUpBiographical;
 import com.bramble.kickback.fragments.SignUpCredentials;
 import com.bramble.kickback.models.User;
 import com.bramble.kickback.networking.ConnectionHandler;
+import com.bramble.kickback.service.LoginService;
 import com.bramble.kickback.service.SignUpService;
 import com.bramble.kickback.util.Globals;
 
 import java.io.IOException;
 
 public class AccountPortal extends Activity {
+    //Services
+    private LoginService loginService;
+    private SignUpService signUpService;
+    // service intents
+    private Intent loginServiceIntent;
+    private Intent signUpServiceIntent;
+    // fragment manager and transaction
+    private FragmentManager fm;
+    private FragmentTransaction ft;
+    // fragments for use with fragment manager
+    private AccountPortalIndex accountPortalIndex;
+    private Login login;
+    private SignUpCredentials signUpCredentials;
+    private SignUpBiographical signUpBiographical;
 
-    // from login
-    private String username;
-    private String password;
+    // service connection to login service
+    private ServiceConnection loginConnection = new ServiceConnection() {
+        // Called when the connection with the service is established
+        public void onServiceConnected(ComponentName className, IBinder service) {
+            // Because we have bound to an explicit
+            // service that is running in our own process, we can
+            // cast its IBinder to a concrete class and directly access it.
+            LoginService.LocalBinder binder = (LoginService.LocalBinder) service;
+            loginService = binder.getService();
+        }
+        // Called when the connection with the service disconnects unexpectedly
+        public void onServiceDisconnected(ComponentName className) {
+        }
+    };
 
-    //Service
-    SignUpService signUpService;
-    Intent signUpServiceIntent;
-
-    // fragment instance variables
-    FragmentManager fm;
-    FragmentTransaction ft;
-    Fragment accountPortalIndex;
-    Fragment login;
-    Fragment signUpCredentials;
-    Fragment signUpBiographical;
+    // service connection to sign up service
+    private ServiceConnection signUpConnection = new ServiceConnection() {
+        // Called when the connection with the service is established
+        public void onServiceConnected(ComponentName className, IBinder service) {
+            // Because we have bound to an explicit
+            // service that is running in our own process, we can
+            // cast its IBinder to a concrete class and directly access it.
+            SignUpService.LocalBinder binder = (SignUpService.LocalBinder) service;
+            signUpService = binder.getService();
+        }
+        // Called when the connection with the service disconnects unexpectedly
+        public void onServiceDisconnected(ComponentName className) {
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // start service
-
+        // creating intents for use with changing currently displayed fragment
         signUpServiceIntent = new Intent(this, SignUpService.class);
+        loginServiceIntent = new Intent(this, LoginService.class);
+        // sets activity layout to the appropriate
         setContentView(R.layout.activity_account_portal);
-
+        // creates fragment manager for use with transactions with set the current fragment
         fm = getFragmentManager();
-
+        // creates fragments for use with method calls
         accountPortalIndex = new AccountPortalIndex();
         login = new Login();
         signUpCredentials = new SignUpCredentials();
         signUpBiographical = new SignUpBiographical();
-
+        // creates a transaction
         ft = fm.beginTransaction();
-
+        // add a fragment which becomes the current fragment
         ft.add(R.id.fragment_place, accountPortalIndex);
+        // commits the transaction which confirms the changes made during the transaction
+        // and makes the current fragment visible
         ft.commit();
     }
 
+    // LOGIN PATH
+    // when the login button is pressed
     public void toSignInPressed(View v){
+        // starts the login service
+        startService(loginServiceIntent);
+        // binds this activity to the login service in order to receive and address to it
+        bindService(loginServiceIntent, loginConnection, BIND_AUTO_CREATE);
+        // starts a transaction
         FragmentTransaction ft = fm.beginTransaction();
-        ft.add(R.id.fragment_place, login);
+        // replaces current fragment (accountPortalIndex) with the login fragment
+        ft.replace(R.id.fragment_place, login, "loginTag");
         //ft.addToBackStack()
         ft.commit();
     }
 
-    public void toSignUpPressed(View v){
-        startService(signUpServiceIntent);
-        ft = fm.beginTransaction();
-        ft.add(R.id.fragment_place, signUpCredentials);
-        ft.commit();
-    }
-
+    // when the cancel button is pressed (login)
     public void cancelSignInPressed(View v){
+        // clears all the instance variables within login service
+        loginService.clear();
+        // stops the login service because the user has returned to the account index fragment
+        stopService(loginServiceIntent);
+        // begins transaction that replaces the login fragment with the account index fragment
         ft = fm.beginTransaction();
         ft.replace(R.id.fragment_place, accountPortalIndex);
         ft.commit();
+        // resets the login fragment so it doesn't retain any of the inputs made by the user
+        // during the duration of the login service
+        login = new Login();
     }
 
+    // when the login button is pressed (login)
+    public void loginPressed(View v){
+        // sets the instance variables in the login service to the inputs gathered
+        // by the edit texts in the fragments
+        loginService.setUsername(login.getUsernameText());
+        loginService.setPassword(login.getPasswordText());
+        // native checks to make sure all fields are properly filled out
+        if (loginService.getUsername().equals("") || loginService.getPassword().equals("")) {
+            Toast.makeText(this, "Please enter your username and password.", Toast.LENGTH_SHORT).show();
+        }
+        // if the inputs are appropriate
+        else {
+            // NEEDS TO BE DONE
+
+            //setContentView(R.layout.activity_loading);
+            new LoginTask().execute(loginService.getUsername(), loginService.getPassword());
+            login.setUsernameText(loginService.getUsername());
+        }
+    }
+
+    // SIGN UP PATH
+    // when the sign up button is pressed
+    public void toSignUpPressed(View v){
+        // starts the sign up service
+        startService(signUpServiceIntent);
+        // binds this activity to the service
+        bindService(signUpServiceIntent, signUpConnection, BIND_AUTO_CREATE);
+        // starts a transaction
+        ft = fm.beginTransaction();
+        // replaces accountPortalIndex fragment with the signUpCredentials fragment.
+        ft.replace(R.id.fragment_place, signUpCredentials, "signUpCredentialsTag");
+        ft.commit();
+    }
+
+    // when cancel is pressed (sign up)
     public void cancelSignUpPressed(View v){
+        // clears instance variables within sign up service
+        signUpService.clear();
+        // stops the sign up service
         stopService(signUpServiceIntent);
+        // begins transaction that replaces the sign up credentials fragment with
+        // the account portal index fragment
         ft = fm.beginTransaction();
         ft.replace(R.id.fragment_place, accountPortalIndex);
         ft.commit();
+        // resets the inputs of the sign up fragments by turning them into new ones
+        signUpCredentials = new SignUpCredentials();
+        signUpBiographical = new SignUpBiographical();
     }
 
+    // when the back button is pressed (sign up)
     public void backSignUpPressed(View v){
+        // begins transaction that returns the user to the sign up credentials fragment
+        // from the sign up biographical fragment
         ft = fm.beginTransaction();
-        ft.replace(R.id.fragment_place, signUpCredentials);
+        ft.replace(R.id.fragment_place, signUpCredentials, "signUpCredentialsTag");
         ft.commit();
     }
 
+    // when the continue button is pressed (sign up)
     public void continueSignUpPressed(View v) {
-        if (signUpService.getDesiredUsername().equals("") || signUpService.getDesiredPassword().equals("")) {
+        // NEEDS REWORK (more checks with server)
+
+        // sets the instance variables inside the sign up service to the inputs
+        // gathered in the sing up credentials fragment
+        signUpService.setEmail(signUpCredentials.getEmailText());
+        signUpService.setDesiredUsername(signUpCredentials.getDesiredUsernameText());
+        signUpService.setDesiredPassword(signUpCredentials.getDesiredPasswordText());
+        signUpService.setConfirmPassword(signUpCredentials.getConfirmDesiredPasswordText());
+        signUpService.setPhoneNumber(signUpCredentials.getPhoneNumberText());
+        // native checks on inputs gathered
+        if(signUpService.getEmail().equals("")) {
+            Toast.makeText(this, "Please enter your email address.", Toast.LENGTH_SHORT).show();
+        }
+        else if (signUpService.getDesiredUsername().equals("") || signUpService.getDesiredPassword().equals("")) {
             Toast.makeText(this, "Please enter desired username and password.", Toast.LENGTH_SHORT).show();
         }
         else if(signUpService.getConfirmPassword().equals("")){
@@ -114,30 +217,24 @@ public class AccountPortal extends Activity {
         else if(!signUpService.getDesiredPassword().equals(signUpService.getConfirmPassword())){
             Toast.makeText(this, "Entered passwords are not the same.", Toast.LENGTH_SHORT).show();
         }
+        else if(signUpService.getPhoneNumber().equals("")) {
+            Toast.makeText(this, "Please enter your mobile phone number.", Toast.LENGTH_SHORT).show();
+        }
         else {
+
+            //
             ft = fm.beginTransaction();
-            ft.replace(R.id.fragment_place, signUpBiographical);
+            ft.replace(R.id.fragment_place, signUpBiographical, "signUpBiographicalTag");
             ft.commit();
         }
     }
 
-    public void loginPressed(View v){
-
-        // insert code to grab entered edittext and store it in the instance fields provided by this class
-
-        if (username.equals("") || password.equals("")) {
-            Toast.makeText(this, "Please enter your username and password.", Toast.LENGTH_SHORT).show();
-        }
-        else if(!username.matches("^[a-zA-Z0-9_]+$")) {
-            Toast.makeText(this, "Usernames may only contain letters, numbers, and underscores (_).", Toast.LENGTH_SHORT).show();
-        }
-        else {
-            setContentView(R.layout.activity_loading);
-            new LoginTask().execute(username, password);
-        }
-    }
-
+    // when the sign up button is pressed (sign up)
     public void signUpPressed(View v){
+        signUpService.setFirstName(signUpBiographical.getFirstNameText());
+        signUpService.setLastName(signUpBiographical.getLastNameText());
+        signUpService.setBirthday(signUpBiographical.getBirthdayText());
+        signUpService.setSex(signUpBiographical.getSexText());
 
         if(signUpService.getFirstName().equals("")) {
             Toast.makeText(this, "Please enter your first name.", Toast.LENGTH_SHORT).show();
@@ -149,20 +246,22 @@ public class AccountPortal extends Activity {
             Toast.makeText(this, "Please enter a valid email address.", Toast.LENGTH_SHORT).show();
         }
         else {
-            // temporary variable vvvv
+            // temporary variable vvv
             Globals.createUser(signUpService.getDesiredUsername(), signUpService.getFirstName(),
-                               signUpService.getEmail(),"phone number");
-            Intent intent = new Intent(this, Home.class);
-            startActivity(intent);
-            finish();
+                               signUpService.getEmail(),signUpService.getPhoneNumber());
+            //setContentView(R.layout.activity_loading);
+            //new SignUpTask().execute(username, password);
+            signUpBiographical.setFirstNameText(signUpService.getFirstName());
+            signUpBiographical.setLastNameText(signUpService.getLastName());
+            signUpBiographical.setBirthdayText(signUpService.getBirthday());
+            signUpBiographical.setSexButton(signUpService.getSex());
+            signUpCredentials.setDesiredUsernameText(signUpService.getDesiredUsername());
         }
     }
 
-
+    // NEEDS TO BE MOVED INTO LOGIN SERVICE
     // Asynchronously sends a login request
-
     private class LoginTask extends AsyncTask<String, Void, User> {
-
         @Override
         protected User doInBackground(String... params) {
             try {
@@ -184,8 +283,8 @@ public class AccountPortal extends Activity {
         protected void onPostExecute(User loggedUser) {
             if (loggedUser != null) {
                 Globals.theUser = loggedUser;
-                Intent intent = new Intent(AccountPortal.this, Home.class);
-                startActivity(intent);
+                //Intent intent = new Intent(AccountPortal.this, Home.class);
+               //startActivity(intent);
                 finish();
             }
             else {
@@ -193,26 +292,5 @@ public class AccountPortal extends Activity {
                 Toast.makeText(AccountPortal.this, "Invalid username or password.", Toast.LENGTH_LONG).show();
             }
         }
-
     }
-
-    public String getUsername() {
-        return this.username;
-    }
-
-    public String getPassword() {
-        return this.password;
-    }
-
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-
-
 }

@@ -2,6 +2,7 @@ package com.bramble.kickback.service;
 
 import android.app.Service;
 import android.content.Intent;
+import android.os.Binder;
 import android.os.IBinder;
 
 public class SignUpService extends Service {
@@ -11,6 +12,7 @@ public class SignUpService extends Service {
     private String desiredUsername;
     private String desiredPassword;
     private String confirmPassword;
+    private String phoneNumber;
 
     // from sign up biographical
     private String firstName;
@@ -18,9 +20,26 @@ public class SignUpService extends Service {
     private String birthday;
     private String sex;
 
+    public class LocalBinder extends Binder {
+        public SignUpService getService() { return SignUpService.this; }
+    }
+
+    private final IBinder mBinder = new LocalBinder();
+
     @Override
     public void onCreate() {
         super.onCreate();
+        //creds
+        email = "";
+        desiredUsername = "";
+        desiredPassword = "";
+        confirmPassword = "";
+        phoneNumber = "";
+        //bio
+        firstName = "";
+        lastName = "";
+        birthday = "";
+        sex = "";
     }
 
     @Override
@@ -30,16 +49,25 @@ public class SignUpService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flag, int startId) {
-
-
-
-
         return super.onStartCommand(intent, flag, startId);
     }
 
     @Override
     public IBinder onBind(Intent arg0) {
-        return null;
+        return mBinder;
+    }
+
+    public void clear() {
+        email = "";
+        desiredUsername = "";
+        desiredPassword = "";
+        confirmPassword = "";
+        phoneNumber = "";
+
+        firstName = "";
+        lastName = "";
+        birthday = "";
+        sex = "";
     }
 
     // Getters
@@ -57,6 +85,10 @@ public class SignUpService extends Service {
 
     public String getConfirmPassword() {
         return this.confirmPassword;
+    }
+
+    public String getPhoneNumber() {
+        return this.phoneNumber;
     }
 
     public String getFirstName() {
@@ -93,6 +125,10 @@ public class SignUpService extends Service {
         this.confirmPassword = confirmPassword;
     }
 
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -108,6 +144,4 @@ public class SignUpService extends Service {
     public void setSex(String sex) {
         this.sex = sex;
     }
-
-
 }

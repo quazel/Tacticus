@@ -2,10 +2,12 @@ package com.bramble.kickback.fragments;
 import com.bramble.kickback.R;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 
@@ -15,7 +17,7 @@ public class SignUpCredentials extends Fragment {
     EditText desiredUsername;
     EditText desiredPassword;
     EditText confirmDesiredPassword;
-
+    EditText phoneNumber;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -29,6 +31,9 @@ public class SignUpCredentials extends Fragment {
         desiredUsername = (EditText) view.findViewById(R.id.editTextDesiredUsername);
         desiredPassword = (EditText) view.findViewById(R.id.editTextDesiredPassword);
         confirmDesiredPassword = (EditText) view.findViewById(R.id.editTextConfirmDesiredPassword);
+        phoneNumber = (EditText) view.findViewById(R.id.editTextPhoneNumber);
+
+        email.requestFocus();
 
         return view;
     }
@@ -49,6 +54,10 @@ public class SignUpCredentials extends Fragment {
         return this.confirmDesiredPassword.getText().toString();
     }
 
+    public String getPhoneNumberText() {
+        return this.phoneNumber.getText().toString();
+    }
+
     public void setEmailText(String email) {
         this.email.setText(email);
     }
@@ -63,5 +72,9 @@ public class SignUpCredentials extends Fragment {
 
     public void setConfirmDesiredPasswordText(String confirmDesiredPassword) {
         this.confirmDesiredPassword.setText(confirmDesiredPassword);
+    }
+
+    public void setPhoneNumberText(String phoneNumber) {
+        this.phoneNumber.setText(phoneNumber);
     }
 }
