@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.bramble.kickback.R;
 import com.bramble.kickback.fragments.AccountPortalIndex;
+import com.bramble.kickback.fragments.LoadingBar;
 import com.bramble.kickback.fragments.Login;
 import com.bramble.kickback.fragments.SignUpBiographical;
 import com.bramble.kickback.fragments.SignUpCredentials;
@@ -137,11 +138,12 @@ public class AccountPortal extends Activity {
         }
         // if the inputs are appropriate
         else {
-            // NEEDS TO BE DONE
-
-            //setContentView(R.layout.activity_loading);
+            login.setPasswordText("");
+            ft = fm.beginTransaction();
+            ft.replace(R.id.fragment_place, new LoadingBar(), "loadingBarTag");
+            ft.commit();
             new LoginTask().execute(loginService.getUsername(), loginService.getPassword());
-            login.setUsernameText(loginService.getUsername());
+            loginService.setPassword("");
         }
     }
 
@@ -259,7 +261,6 @@ public class AccountPortal extends Activity {
         }
     }
 
-    // NEEDS TO BE MOVED INTO LOGIN SERVICE
     // Asynchronously sends a login request
     private class LoginTask extends AsyncTask<String, Void, User> {
         @Override
@@ -283,14 +284,53 @@ public class AccountPortal extends Activity {
         protected void onPostExecute(User loggedUser) {
             if (loggedUser != null) {
                 Globals.theUser = loggedUser;
-                //Intent intent = new Intent(AccountPortal.this, Home.class);
-               //startActivity(intent);
+                Intent intent = new Intent(AccountPortal.this, Home.class);
+                startActivity(intent);
                 finish();
             }
             else {
-                setContentView(R.layout.activity_splash_screen_sign_in);
+                ft = fm.beginTransaction();
+                ft.replace(R.id.fragment_place, login, "loginTag");
+                ft.commit();
                 Toast.makeText(AccountPortal.this, "Invalid username or password.", Toast.LENGTH_LONG).show();
             }
         }
     }
+
+    // Asynchronously sends a sign up request
+    private class SignUpTask extends AsyncTask<String, Void, User> {
+        @Override
+        protected User doInBackground(String... params) {
+            try {
+                String result = new ConnectionHandler().login(params[0], params[1]);
+                if (result != null) {
+                    User user = new User(params[0]);
+                    user.setSessionId(result);
+                    return user;
+                }
+                else {
+                    return null;
+                }
+            } catch (IOException e) {
+                return null;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(User loggedUser) {
+            if (loggedUser != null) {
+                Globals.theUser = loggedUser;
+                Intent intent = new Intent(AccountPortal.this, Home.class);
+                startActivity(intent);
+                finish();
+            }
+            else {
+                ft = fm.beginTransaction();
+                ft.replace(R.id.fragment_place, login, "loginTag");
+                ft.commit();
+                Toast.makeText(AccountPortal.this, "Invalid username or password.", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
 }

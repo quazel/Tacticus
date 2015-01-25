@@ -52,6 +52,7 @@ public class ConnectionHandler {
             return response.toString();
         }
         else {
+            Log.d("ConnectionHandler", "Received bad response from server.");
             throw new IOException("Received bad response from server.");
         }
     }
