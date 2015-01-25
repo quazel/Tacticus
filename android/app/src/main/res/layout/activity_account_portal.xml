@@ -8,33 +8,33 @@
     tools:context="com.bramble.kickback.activities.AccountPortal"
     android:background="@color/white">
 
+    <Space
+        android:id="@+id/half_space"
+        android:layout_width="match_parent"
+        android:layout_height="325dp"
+        android:layout_gravity="center_horizontal|top" />
+
+    <Space
+        android:id="@+id/bottom_space"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_gravity="center_horizontal|bottom" />
+
+
+    <FrameLayout
+        android:id="@+id/loading_place"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/half_space"
+        android:layout_above="@+id/bottom_space"
+        android:visibility="visible"
+        />
+
     <FrameLayout
         android:id="@+id/fragment_place"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
-        <!--tools:layout="@layout/fragment_account_portal_index" />-->
-    <!--android:name="com.bramble.kickback.fragments.AccountPortalIndex"-->
-    <!--
-    <FrameLayout
-        android:id="@+id/login_fragment"
-        android:name="com.bramble.kickback.fragments.Login"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout="@layout/activity_splash_screen_sign_in" />
-
-    <FrameLayout
-        android:id="@+id/sign_up_credentials_fragment"
-        android:name="com.bramble.kickback.fragments.Login"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout="@layout/activity_splash_screen_sign_up" />
-
-    <FrameLayout
-        android:id="@+id/sign_up_biographical_fragment"
-        android:name="com.bramble.kickback.fragments.Login"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout="@layout/activity_splash_screen_sign_up_cont" />
-        -->
 
 </RelativeLayout>

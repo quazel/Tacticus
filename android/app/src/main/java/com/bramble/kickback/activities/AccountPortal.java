@@ -41,7 +41,7 @@ public class AccountPortal extends Activity {
     private Login login;
     private SignUpCredentials signUpCredentials;
     private SignUpBiographical signUpBiographical;
-
+    private LoadingBar loadingBar;
     // service connection to login service
     private ServiceConnection loginConnection = new ServiceConnection() {
         // Called when the connection with the service is established
@@ -87,6 +87,7 @@ public class AccountPortal extends Activity {
         login = new Login();
         signUpCredentials = new SignUpCredentials();
         signUpBiographical = new SignUpBiographical();
+        loadingBar = new LoadingBar();
         // creates a transaction
         ft = fm.beginTransaction();
         // add a fragment which becomes the current fragment
@@ -138,9 +139,8 @@ public class AccountPortal extends Activity {
         }
         // if the inputs are appropriate
         else {
-            login.setPasswordText("");
             ft = fm.beginTransaction();
-            ft.replace(R.id.fragment_place, new LoadingBar(), "loadingBarTag");
+            ft.add(R.id.loading_place, loadingBar, "loadingBarTag");
             ft.commit();
             new LoginTask().execute(loginService.getUsername(), loginService.getPassword());
             loginService.setPassword("");
@@ -290,9 +290,10 @@ public class AccountPortal extends Activity {
             }
             else {
                 ft = fm.beginTransaction();
-                ft.replace(R.id.fragment_place, login, "loginTag");
+                ft.remove(loadingBar);
                 ft.commit();
                 Toast.makeText(AccountPortal.this, "Invalid username or password.", Toast.LENGTH_LONG).show();
+                login.setPasswordText("");
             }
         }
     }
