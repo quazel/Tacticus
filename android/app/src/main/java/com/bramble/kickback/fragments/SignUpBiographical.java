@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -15,14 +16,16 @@ import android.widget.RadioGroup;
 public class SignUpBiographical extends Fragment {
 
     // items on the fragment
-    EditText firstName;
-    EditText lastName;
-    EditText birthday;
-    RadioGroup sexGroup;
-    RadioButton male;
-    RadioButton female;
-    RadioButton notSpecified;
-    String sex;
+    private EditText firstName;
+    private EditText lastName;
+    private EditText birthday;
+    private RadioGroup sexGroup;
+    private RadioButton male;
+    private RadioButton female;
+    private RadioButton notSpecified;
+    private String sex;
+    private Button continueButton;
+    private Button cancelButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -37,6 +40,8 @@ public class SignUpBiographical extends Fragment {
         female = (RadioButton) view.findViewById(R.id.female);
         notSpecified = (RadioButton) view.findViewById(R.id.not_specified);
         sex = "";
+        continueButton = (Button) view.findViewById(R.id.buttonSignUp);
+        cancelButton = (Button) view.findViewById(R.id.buttonCancelSignUp);
 
         // sets the cursor to the first edit text featured (firstName)
         firstName.requestFocus();
@@ -63,11 +68,20 @@ public class SignUpBiographical extends Fragment {
     }
 
     public void disableButtons() {
-
+        continueButton.setEnabled(false);
+        cancelButton.setEnabled(false);
+        male.setEnabled(false);
+        female.setEnabled(false);
+        notSpecified.setEnabled(false);
     }
 
     public void enableButtons() {
-
+        continueButton.setEnabled(true);
+        cancelButton.setEnabled(true);
+        sexGroup.setEnabled(true);
+        male.setEnabled(true);
+        female.setEnabled(true);
+        notSpecified.setEnabled(true);
     }
 
     public String getFirstNameText() {

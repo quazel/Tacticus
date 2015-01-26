@@ -8,16 +8,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 
 
 public class SignUpCredentials extends Fragment {
 
-    EditText email;
-    EditText desiredUsername;
-    EditText desiredPassword;
-    EditText confirmDesiredPassword;
-    EditText phoneNumber;
+    private EditText email;
+    private EditText desiredUsername;
+    private EditText desiredPassword;
+    private EditText confirmDesiredPassword;
+    private EditText phoneNumber;
+    private Button continueButton;
+    private Button cancelButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -31,6 +34,8 @@ public class SignUpCredentials extends Fragment {
         desiredPassword = (EditText) view.findViewById(R.id.editTextDesiredPassword);
         confirmDesiredPassword = (EditText) view.findViewById(R.id.editTextConfirmDesiredPassword);
         phoneNumber = (EditText) view.findViewById(R.id.editTextPhoneNumber);
+        continueButton = (Button) view.findViewById(R.id.buttonSignUp);
+        cancelButton = (Button) view.findViewById(R.id.buttonCancelSignUp);
 
         email.requestFocus();
 
@@ -38,11 +43,13 @@ public class SignUpCredentials extends Fragment {
     }
 
     public void disableButtons() {
-
+        continueButton.setEnabled(false);
+        cancelButton.setEnabled(false);
     }
 
     public void enableButtons() {
-
+        continueButton.setEnabled(true);
+        continueButton.setEnabled(true);
     }
 
     public String getEmailText() {
