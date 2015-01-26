@@ -36,6 +36,7 @@ public class SignUpBiographical extends Fragment {
         male = (RadioButton) view.findViewById(R.id.male);
         female = (RadioButton) view.findViewById(R.id.female);
         notSpecified = (RadioButton) view.findViewById(R.id.not_specified);
+        sex = "";
 
         // sets the cursor to the first edit text featured (firstName)
         firstName.requestFocus();
@@ -59,6 +60,14 @@ public class SignUpBiographical extends Fragment {
                     sex = "not specified";
                     break;
         }
+    }
+
+    public void disableButtons() {
+
+    }
+
+    public void enableButtons() {
+
     }
 
     public String getFirstNameText() {

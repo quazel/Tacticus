@@ -18,6 +18,7 @@ public class ConnectionHandler {
     private final String userURL = baseURL + "user/";
     private final String loginURL = baseURL + "login";
     private final String registerURL = baseURL + "register";
+    private final String checkCredentialsURL = baseURL + "verify_credential_uniqueness";
     private final String kickbackURL = baseURL + "kickback/";
     private final String analyticsURL = baseURL + "analytics/";
 
@@ -100,12 +101,13 @@ public class ConnectionHandler {
     }
 
     public String checkCredentials(String username, String email, String phoneNumber) throws IOException {
-        URL requestURL = new URL(registerURL);
+        URL requestURL = new URL(checkCredentialsURL);
         HttpsURLConnection connection = (HttpsURLConnection) requestURL.openConnection();
         connection.setDoInput(true);
         connection.setRequestMethod("POST");
         connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-        connection.setRequestProperty("charset", "utf-8");
+        connection.setRequestProperty("User-Agent","Mozilla/5.0 ( compatible ) ");
+        connection.setRequestProperty("Accept","*/*");
         String urlParameters = "";
         urlParameters += "username=" + username;
         urlParameters += "&email=" + email;
@@ -119,16 +121,23 @@ public class ConnectionHandler {
 
         int responseCode = connection.getResponseCode();
         if (responseCode == 200 || responseCode == 401) {
-            BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            BufferedReader in;
+            if (responseCode == 200) {
+                in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            }
+            else {
+                in = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
+            }
             String inputLine;
             StringBuilder response = new StringBuilder();
 
             while((inputLine = in.readLine()) != null) {
                 response.append(inputLine);
+                response.append("\n");
             }
             in.close();
             Log.d("ConnectionHandler", response.toString());
-            return response.toString();
+            return responseCode + ":" + response.toString().trim();
         }
         else {
             throw new IOException("Received bad response from server.");

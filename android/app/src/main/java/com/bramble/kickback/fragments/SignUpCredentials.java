@@ -37,6 +37,14 @@ public class SignUpCredentials extends Fragment {
         return view;
     }
 
+    public void disableButtons() {
+
+    }
+
+    public void enableButtons() {
+
+    }
+
     public String getEmailText() {
         return this.email.getText().toString();
     }
@@ -76,4 +84,5 @@ public class SignUpCredentials extends Fragment {
     public void setPhoneNumberText(String phoneNumber) {
         this.phoneNumber.setText(phoneNumber);
     }
+
 }

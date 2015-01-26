@@ -226,8 +226,12 @@ public class AccountPortal extends Activity {
 
             //
             ft = fm.beginTransaction();
-            ft.replace(R.id.fragment_place, signUpBiographical, "signUpBiographicalTag");
+            ft.add(R.id.loading_place, loadingBar, "loadingBarTag");
             ft.commit();
+            new CheckCredentialTask().execute(signUpService.getDesiredUsername(),
+                                              signUpService.getEmail(),
+                                              signUpService.getPhoneNumber());
+            signUpCredentials.disableButtons();
         }
     }
 
@@ -248,16 +252,23 @@ public class AccountPortal extends Activity {
             Toast.makeText(this, "Please enter a valid email address.", Toast.LENGTH_SHORT).show();
         }
         else {
-            // temporary variable vvv
             Globals.createUser(signUpService.getDesiredUsername(), signUpService.getFirstName(),
                                signUpService.getEmail(),signUpService.getPhoneNumber());
-            //setContentView(R.layout.activity_loading);
-            //new SignUpTask().execute(username, password);
+
             signUpBiographical.setFirstNameText(signUpService.getFirstName());
             signUpBiographical.setLastNameText(signUpService.getLastName());
             signUpBiographical.setBirthdayText(signUpService.getBirthday());
             signUpBiographical.setSexButton(signUpService.getSex());
             signUpCredentials.setDesiredUsernameText(signUpService.getDesiredUsername());
+
+            ft = fm.beginTransaction();
+            ft.add(R.id.loading_place, loadingBar, "loadingBarTag");
+            ft.commit();
+            new SignUpTask().execute(signUpService.getDesiredUsername(), signUpService.getDesiredPassword(),
+                    signUpService.getEmail(), signUpService.getPhoneNumber(),
+                    signUpService.getFirstName() + " " + signUpService.getLastName(),
+                    signUpService.getBirthday(), signUpService.getSex());
+            signUpBiographical.disableButtons();
         }
     }
 
@@ -294,6 +305,47 @@ public class AccountPortal extends Activity {
                 ft.commit();
                 Toast.makeText(AccountPortal.this, "Invalid username or password.", Toast.LENGTH_LONG).show();
                 login.setPasswordText("");
+                login.enableButtons();
+            }
+        }
+    }
+
+    // Asynchronously sends a request to check uniqueness of credentials
+    private class CheckCredentialTask extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                return new ConnectionHandler().checkCredentials(params[0], params[1], params[2]);
+            } catch (IOException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            if (result != null) {
+                if (result.startsWith("200:")) {
+                    ft = fm.beginTransaction();
+                    ft.replace(R.id.fragment_place, signUpBiographical, "signUpBiographicalTag");
+                    ft.remove(loadingBar);
+                    ft.commit();
+                }
+                else if (result.startsWith("401:")) {
+                    ft = fm.beginTransaction();
+                    ft.remove(loadingBar);
+                    ft.commit();
+                    Toast.makeText(AccountPortal.this, result.replace("401:", ""), Toast.LENGTH_LONG).show();
+                    signUpCredentials.enableButtons();
+                }
+            }
+            else {
+                ft = fm.beginTransaction();
+                ft.remove(loadingBar);
+                ft.commit();
+                Toast.makeText(AccountPortal.this, "An error occurred.", Toast.LENGTH_LONG).show();
+                signUpCredentials.enableButtons();
             }
         }
     }
@@ -303,7 +355,9 @@ public class AccountPortal extends Activity {
         @Override
         protected User doInBackground(String... params) {
             try {
-                String result = new ConnectionHandler().login(params[0], params[1]);
+                String result = new ConnectionHandler().register(params[0], params[1], params[2],
+                                                                 params[3], params[4], params[5],
+                                                                 params[6]);
                 if (result != null) {
                     User user = new User(params[0]);
                     user.setSessionId(result);
@@ -327,11 +381,11 @@ public class AccountPortal extends Activity {
             }
             else {
                 ft = fm.beginTransaction();
-                ft.replace(R.id.fragment_place, login, "loginTag");
+                ft.replace(R.id.fragment_place, signUpBiographical, "signUpBiographicalTag");
+                ft.remove(loadingBar);
                 ft.commit();
-                Toast.makeText(AccountPortal.this, "Invalid username or password.", Toast.LENGTH_LONG).show();
-                loginService.setPassword("");
-                login.enableButtons();
+                Toast.makeText(AccountPortal.this, "An error occurred.", Toast.LENGTH_LONG).show();
+                signUpBiographical.enableButtons();
             }
         }
     }
