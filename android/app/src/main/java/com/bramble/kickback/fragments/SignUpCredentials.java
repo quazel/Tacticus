@@ -2,10 +2,12 @@ package com.bramble.kickback.fragments;
 import com.bramble.kickback.R;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -34,6 +36,22 @@ public class SignUpCredentials extends Fragment {
         phoneNumber = (EditText) view.findViewById(R.id.editTextPhoneNumber);
         continueButton = (Button) view.findViewById(R.id.buttonSignUp);
         cancelButton = (Button) view.findViewById(R.id.buttonCancelSignUp);
+
+        email.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(email.hasFocus()) {
+                    email.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                            imm.showSoftInput(email, InputMethodManager.SHOW_IMPLICIT);
+                        }
+                    });
+                }
+            }
+        });
+        email.requestFocus();
 
         return view;
     }

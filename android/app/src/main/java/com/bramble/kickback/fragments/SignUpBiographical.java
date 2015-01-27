@@ -2,10 +2,12 @@ package com.bramble.kickback.fragments;
 import com.bramble.kickback.R;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -41,6 +43,22 @@ public class SignUpBiographical extends Fragment {
         sex = "";
         continueButton = (Button) view.findViewById(R.id.buttonSignUp);
         cancelButton = (Button) view.findViewById(R.id.buttonCancelSignUp);
+
+        firstName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (firstName.hasFocus()) {
+                    firstName.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                            imm.showSoftInput(firstName, InputMethodManager.SHOW_IMPLICIT);
+                        }
+                    });
+                }
+            }
+        });
+        firstName.requestFocus();
 
         return view;
     }

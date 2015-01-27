@@ -2,10 +2,12 @@ package com.bramble.kickback.fragments;
 import com.bramble.kickback.R;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -28,10 +30,21 @@ public class Login extends Fragment{
         loginButton = (Button) view.findViewById(R.id.buttonSignIn);
         cancelButton = (Button) view.findViewById(R.id.buttonCancelSignIn);
 
-
-        //InputMethodManager imm = (InputMethodManager)
-                //getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-        //imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
+        username.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(username.hasFocus()) {
+                    username.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                            imm.showSoftInput(username, InputMethodManager.SHOW_IMPLICIT);
+                        }
+                    });
+                }
+            }
+        });
+        username.requestFocus();
 
         return view;
     }
