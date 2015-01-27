@@ -1,6 +1,5 @@
 package com.bramble.kickback.fragments;
 import com.bramble.kickback.R;
-import com.bramble.kickback.service.SignUpService;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -30,7 +29,7 @@ public class SignUpBiographical extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.activity_splash_screen_sign_up_cont, container, false);
+        View view =  inflater.inflate(R.layout.fragment_sign_up_biographical, container, false);
         // gathers all the edit texts featured in this fragment
         firstName = (EditText) view.findViewById(R.id.editTextFirstName);
         lastName = (EditText) view.findViewById(R.id.editTextLastName);
@@ -42,9 +41,6 @@ public class SignUpBiographical extends Fragment {
         sex = "";
         continueButton = (Button) view.findViewById(R.id.buttonSignUp);
         cancelButton = (Button) view.findViewById(R.id.buttonCancelSignUp);
-
-        // sets the cursor to the first edit text featured (firstName)
-        firstName.requestFocus();
 
         return view;
     }

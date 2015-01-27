@@ -2,12 +2,10 @@ package com.bramble.kickback.fragments;
 import com.bramble.kickback.R;
 
 import android.app.Fragment;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -22,7 +20,7 @@ public class Login extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.activity_splash_screen_sign_in,
+        View view =  inflater.inflate(R.layout.fragment_login,
                      container, false);
 
         username = (EditText) view.findViewById(R.id.editTextUsername);
@@ -30,7 +28,6 @@ public class Login extends Fragment{
         loginButton = (Button) view.findViewById(R.id.buttonSignIn);
         cancelButton = (Button) view.findViewById(R.id.buttonCancelSignIn);
 
-        username.requestFocus();
 
         //InputMethodManager imm = (InputMethodManager)
                 //getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
