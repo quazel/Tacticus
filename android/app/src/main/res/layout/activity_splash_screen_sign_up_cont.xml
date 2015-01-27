@@ -79,6 +79,8 @@
             android:layout_below="@+id/space_2"
             android:inputType="text"
             android:layout_centerHorizontal="true"
+            android:onClick="birthdayPressed"
+            android:focusable="false"
             />
 
         <Space

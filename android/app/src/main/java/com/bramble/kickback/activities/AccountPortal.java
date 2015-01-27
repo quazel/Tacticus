@@ -1,6 +1,9 @@
 package com.bramble.kickback.activities;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.ComponentName;
@@ -9,7 +12,9 @@ import android.content.ServiceConnection;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.text.format.DateFormat;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.Toast;
 
 import com.bramble.kickback.R;
@@ -25,6 +30,7 @@ import com.bramble.kickback.service.SignUpService;
 import com.bramble.kickback.util.Globals;
 
 import java.io.IOException;
+import java.util.Calendar;
 
 public class AccountPortal extends Activity {
     //Services
@@ -269,6 +275,25 @@ public class AccountPortal extends Activity {
                     signUpService.getFirstName() + " " + signUpService.getLastName(),
                     signUpService.getBirthday(), signUpService.getSex());
             signUpBiographical.disableButtons();
+        }
+    }
+
+    public void birthdayPressed(View view) {
+        Calendar current = Calendar.getInstance();
+        int year = current.get(Calendar.YEAR);
+        int month = current.get(Calendar.MONTH);
+        int day = current.get(Calendar.DAY_OF_MONTH);
+        new DatePickerDialog(this, R.style.MyTheme, new BirthdatePickerDialog(), year, month, day).show();
+    }
+
+    private class BirthdatePickerDialog implements DatePickerDialog.OnDateSetListener {
+        @Override
+        public void onDateSet(DatePicker view, int year, int month, int day) {
+            Calendar occurs = Calendar.getInstance();
+            occurs.set(Calendar.YEAR, year);
+            occurs.set(Calendar.MONTH, month);
+            occurs.set(Calendar.DAY_OF_MONTH, day);
+            AccountPortal.this.signUpService.setBirthday("");
         }
     }
 
