@@ -95,4 +95,15 @@ public class SignUpContainer {
         this.sex = sex;
     }
 
+    public void clear() {
+        desiredUsername = "";
+        desiredEmail = "";
+        desiredPhoneNumber = "";
+        password = "";
+        firstName = "";
+        lastName = "";
+        birthdate = "";
+        sex = "";
+    }
+
 }
