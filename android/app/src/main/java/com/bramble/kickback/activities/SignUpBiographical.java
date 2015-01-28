@@ -3,15 +3,20 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bramble.kickback.R;
@@ -33,6 +38,7 @@ public class SignUpBiographical extends Activity {
     private EditText firstName;
     private EditText lastName;
     private EditText birthday;
+    private String birthdayString;
     private RadioGroup sexGroup;
     private RadioButton male;
     private RadioButton female;
@@ -66,37 +72,36 @@ public class SignUpBiographical extends Activity {
         continueButton = (Button) findViewById(R.id.buttonSignUp);
         cancelButton = (Button) findViewById(R.id.buttonCancelSignUp);
 
-        firstName.setText(signUpContainer.getFirstName());
-        lastName.setText(signUpContainer.getLastName());
-        birthday.setText(signUpContainer.getBirthdate());
-        sex = signUpContainer.getSex();
-        setSexButton(sex);
+        setFirstNameText(signUpContainer.getFirstName());
+        setLastNameText(signUpContainer.getLastName());
+        setBirthdayText(convertBirthday(signUpContainer.getBirthdate()));
+        birthdayString = signUpContainer.getBirthdate();
+        setSex(signUpContainer.getSex());
+
+        lastName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                    commenceBirthdayDialog();
+                }
+                return false;
+            }
+        });
     }
 
-    public void onRadioButtonClicked(View view) {
-        boolean checked = ((RadioButton) view).isChecked();
-        switch(view.getId()) {
-            case R.id.male:
-                if (checked)
-                    sex = "male";
-                    break;
-            case R.id.female:
-                if (checked)
-                    sex = "female";
-                    break;
-            case R.id.not_specified:
-                if (checked)
-                    sex = "not specified";
-                    break;
-        }
+    public void onResume() {
+        super.onResume();
+        setFirstNameText(signUpContainer.getFirstName());
+        setLastNameText(signUpContainer.getLastName());
+        setBirthdayText(convertBirthday(signUpContainer.getBirthdate()));
+        birthdayString = signUpContainer.getBirthdate();
+        setSex(signUpContainer.getSex());
     }
-
 
     // when the sign up button is pressed (sign up)
     public void signUpPressed(View v){
         signUpContainer.setFirstName(firstName.getText().toString());
         signUpContainer.setLastName(lastName.getText().toString());
-        signUpContainer.setBirthdate(birthday.getText().toString());
+        signUpContainer.setBirthdate(birthdayString);
         signUpContainer.setSex(getSexText());
 
         if(signUpContainer.getFirstName().equals("")) {
@@ -114,7 +119,7 @@ public class SignUpBiographical extends Activity {
 
             firstName.setText(signUpContainer.getFirstName());
             lastName.setText(signUpContainer.getLastName());
-            birthday.setText(signUpContainer.getBirthdate());
+            birthday.setText(convertBirthday(signUpContainer.getBirthdate()));
             setSexButton(signUpContainer.getSex());
 
             ft = fm.beginTransaction();
@@ -130,6 +135,10 @@ public class SignUpBiographical extends Activity {
 
     // when the back button is pressed (sign up)
     public void backSignUpPressed(View v){
+        signUpContainer.setFirstName(firstName.getText().toString());
+        signUpContainer.setLastName(lastName.getText().toString());
+        signUpContainer.setBirthdate(birthdayString);
+        signUpContainer.setSex(getSexText());
         finish();
     }
 
@@ -150,24 +159,24 @@ public class SignUpBiographical extends Activity {
         notSpecified.setEnabled(true);
     }
 
-    public void setSexButton(String sex) {
-        if(sex.equals("male")) {
-            male.setChecked(true);
-        }
-        else if(sex.equals("female")) {
-            female.setChecked(true);
-        }
-        else if(sex.equals("not specified")){
-            notSpecified.setChecked(true);
-        }
+    public void birthdayPressed(View view) {
+        commenceBirthdayDialog();
     }
 
-    public void birthdayPressed(View view) {
+    public void commenceBirthdayDialog() {
         Calendar current = Calendar.getInstance();
         int year = current.get(Calendar.YEAR);
         int month = current.get(Calendar.MONTH);
         int day = current.get(Calendar.DAY_OF_MONTH);
         new DatePickerDialog(this, new BirthdatePickerDialog(), year, month, day).show();
+    }
+
+    public String convertBirthday(String b) {
+        if(!b.equals("")) {
+            String[] tokens = b.split("-");
+            return tokens[1] + "/" + tokens[2] + "/" + tokens[0];
+        }
+        else return "";
     }
 
     private class BirthdatePickerDialog implements DatePickerDialog.OnDateSetListener {
@@ -177,7 +186,9 @@ public class SignUpBiographical extends Activity {
             occurs.set(Calendar.YEAR, year);
             occurs.set(Calendar.MONTH, month);
             occurs.set(Calendar.DAY_OF_MONTH, day);
-            setBirthdayText(year + "-" + month+1 + "-" + day);
+            birthdayString = (year + "-" + (month+1) + "-" + day);
+            setBirthdayText((month+1)+"/"+day+"/"+year);
+            lastName.clearFocus();
         }
     }
 
@@ -246,5 +257,33 @@ public class SignUpBiographical extends Activity {
 
     public void setBirthdayText(String birthday) {
         this.birthday.setText(birthday);
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+        setSexButton(this.sex);
+    }
+    public void setSexButton(String sex) {
+        if(sex.equals("male")) {
+            male.setChecked(true);
+        }
+        else if(sex.equals("female")) {
+            female.setChecked(true);
+        }
+        else if(sex.equals("not specified")){
+            notSpecified.setChecked(true);
+        }
+    }
+
+    public void onMaleClicked(View view) {
+        setSex("male");
+    }
+
+    public void onFemaleClicked(View view) {
+        setSex("female");
+    }
+
+    public void onNotSpecifiedClicked(View view) {
+        setSex("not specified");
     }
 }

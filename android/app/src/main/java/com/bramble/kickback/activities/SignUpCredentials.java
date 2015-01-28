@@ -15,10 +15,13 @@ import android.content.ServiceConnection;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -60,6 +63,15 @@ public class SignUpCredentials extends Activity {
         setEmailText(signUpContainer.getDesiredEmail());
         setDesiredUsernameText(signUpContainer.getDesiredUsername());
         setPhoneNumberText(signUpContainer.getDesiredPhoneNumber());
+
+        phoneNumber.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                    commenceContinueSignUp();
+                }
+                return false;
+            }
+        });
     }
 
     public void disableButtons() {
@@ -69,11 +81,15 @@ public class SignUpCredentials extends Activity {
 
     public void enableButtons() {
         continueButton.setEnabled(true);
-        continueButton.setEnabled(true);
+        cancelButton.setEnabled(true);
     }
 
     // when the continue button is pressed (sign up)
         public void continueSignUpPressed(View v) {
+        commenceContinueSignUp();
+    }
+
+    public void commenceContinueSignUp() {
         // sets the instance variables inside the sign up service to the inputs
         // gathered in the sign up credentials
         signUpContainer.setDesiredEmail(email.getText().toString());
@@ -178,9 +194,12 @@ public class SignUpCredentials extends Activity {
         protected void onPostExecute(String result) {
             if (result != null) {
                 if (result.startsWith("200:")) {
+                    ft = fm.beginTransaction();
+                    ft.remove(loadingBar);
+                    ft.commit();
+                    SignUpCredentials.this.enableButtons();
                     Intent intent = new Intent(SignUpCredentials.this, SignUpBiographical.class);
                     startActivity(intent);
-                    finish();
                 }
                 else if (result.startsWith("401:")) {
                     Toast.makeText(SignUpCredentials.this, result.replace("401:", ""), Toast.LENGTH_LONG).show();
