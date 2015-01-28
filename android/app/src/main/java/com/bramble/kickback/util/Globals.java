@@ -19,7 +19,6 @@ public class Globals {
     public static ArrayList<Friend> friends = new ArrayList<Friend>();
     public static ArrayList<Kickback> kickbacks = new ArrayList<Kickback>();
     public static ArrayList<Person> contacts = new ArrayList<Person>();
-    public static User theUser;
     public static boolean isOnline = false;
 
     public static void initKickBacks(){
@@ -74,15 +73,6 @@ public class Globals {
     public static void goOffline() {
         isOnline = false;
     }
-
-    public static void loginUser(String username) {
-        theUser = new User(username, "burgle", "somedude@email.com", "0 (000) 000-0000");
-    }
-
-    public static void createUser(String username, String name, String email, String phoneNumber){
-        theUser = new User(username, name, email, "0-000-000-0000");
-    }
-
 
     //needs work
     public static void readContacts(ContentResolver cr) {

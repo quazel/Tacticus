@@ -26,6 +26,9 @@ import com.bramble.kickback.models.User;
 import com.bramble.kickback.networking.ConnectionHandler;
 import com.bramble.kickback.util.Globals;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.util.Calendar;
 
@@ -117,9 +120,6 @@ public class SignUpBiographical extends Activity {
             Toast.makeText(this, "Please select your sex.", Toast.LENGTH_SHORT).show();
         }
         else {
-            Globals.createUser(signUpContainer.getDesiredUsername(), signUpContainer.getFirstName(),
-                    signUpContainer.getDesiredEmail(), signUpContainer.getDesiredPhoneNumber());
-
             firstName.setText(signUpContainer.getFirstName());
             lastName.setText(signUpContainer.getLastName());
             birthday.setText(convertBirthday(signUpContainer.getBirthdate()));
@@ -204,8 +204,14 @@ public class SignUpBiographical extends Activity {
                         params[3], params[4], params[5],
                         params[6]);
                 if (result != null) {
-                    User user = new User(params[0]);
-                    user.setSessionId(result);
+                    JSONObject json = new JSONObject(result);
+                    User user = User.getUser();
+                    user.setName(json.getString("name"));
+                    user.setUsername(json.getString("username"));
+                    user.setEmail(json.getString("email"));
+                    user.setPhoneNumber(json.getString("phone_number"));
+                    user.setSessionId(json.getString("session_id"));
+                    user.setTemp(true);
                     return user;
                 }
                 else {
@@ -213,13 +219,14 @@ public class SignUpBiographical extends Activity {
                 }
             } catch (IOException e) {
                 return null;
+            } catch (JSONException e) {
+                return null;
             }
         }
 
         @Override
         protected void onPostExecute(User loggedUser) {
             if (loggedUser != null) {
-                Globals.theUser = loggedUser;
                 Intent intent = new Intent(SignUpBiographical.this, Home.class);
                 startActivity(intent);
                 finish();

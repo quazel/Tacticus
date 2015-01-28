@@ -22,6 +22,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 
 public class Login extends Activity {
@@ -104,8 +107,14 @@ public class Login extends Activity {
             try {
                 String result = new ConnectionHandler().login(params[0], params[1]);
                 if (result != null) {
-                    User user = new User(params[0]);
-                    user.setSessionId(result);
+                    JSONObject json = new JSONObject(result);
+                    User user = User.getUser();
+                    user.setName(json.getString("name"));
+                    user.setUsername(json.getString("username"));
+                    user.setEmail(json.getString("email"));
+                    user.setPhoneNumber(json.getString("phone_number"));
+                    user.setSessionId(json.getString("session_id"));
+                    user.setTemp(false);
                     return user;
                 }
                 else {
@@ -113,13 +122,14 @@ public class Login extends Activity {
                 }
             } catch (IOException e) {
                 return null;
+            } catch (JSONException e) {
+                return null;
             }
         }
 
         @Override
         protected void onPostExecute(User loggedUser) {
             if (loggedUser != null) {
-                Globals.theUser = loggedUser;
                 Intent intent = new Intent(Login.this, Home.class);
                 startActivity(intent);
                 finish();

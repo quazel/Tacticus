@@ -1,33 +1,30 @@
 package com.bramble.kickback.models;
 
-import android.content.ContentValues;
-
-import com.bramble.kickback.networking.ConnectionHandler;
-
-import org.json.JSONException;
-
-import java.io.IOException;
-
 public class User {
+
+    private static User instance;
 
     private String username;
     private String name;
     private String email;
     private String phoneNumber;
     private String sessionId;
+    private boolean temp;
 
-    public User(String username) {
-        this.username = username;
-        this.name = "Steve King, Jr.";
-        this.email = "stevekx86@gmail.com";
-        this.phoneNumber = "1 602-752-0045";
+    public static synchronized User getUser() {
+        if (instance == null) {
+            instance = new User();
+        }
+        return instance;
     }
 
-    public User(String username, String name, String email, String phoneNumber) {
-        this.username = username;
-        this.name = name;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
+    private User() {
+        username = "";
+        name = "";
+        email = "";
+        phoneNumber = "";
+        sessionId = "";
+        temp = false;
     }
 
     public String getUsername() {
@@ -50,6 +47,10 @@ public class User {
         return sessionId;
     }
 
+    public boolean isTemp() {
+        return temp;
+    }
+
     public void setUsername(String username) {
         this.username = username;
     }
@@ -68,6 +69,10 @@ public class User {
 
     public void setSessionId(String sessionId) {
         this.sessionId = sessionId;
+    }
+
+    public void setTemp(boolean temp) {
+        this.temp = temp;
     }
 
 }

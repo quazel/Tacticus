@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.bramble.kickback.R;
+import com.bramble.kickback.models.User;
 import com.bramble.kickback.util.Globals;
 
 
@@ -31,18 +32,19 @@ public class Settings extends Activity {
         ActionBar actionBar = getActionBar();
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.settings_color)));
 
+        User user = User.getUser();
         //mega formatting hacks
         // formats username in manage account
-        String username = Globals.theUser.getUsername(); //dummy variable
+        String username = user.getUsername(); //dummy variable
         formatUsernameTextview(username);
         // formats phone number in manage accounts
-        String number = Globals.theUser.getPhoneNumber(); //dummy variable
+        String number = user.getPhoneNumber(); //dummy variable
         formatPhoneNumberButton(number);
         //formats email in manage account
-        String email = Globals.theUser.getEmail();
+        String email = user.getEmail();
         formatEmail(email);
         //formats version in information
-        String version = "0.0.00.0 © 2014 Juniper Tech, Inc.";
+        String version = "0.0.00.0 © 2014 Bramble, LLC.";
         formatVersion(version);
     }
 
@@ -72,20 +74,22 @@ public class Settings extends Activity {
 
     public void emailDialog(Activity activity) {
 
+        final User user = User.getUser();
+
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle("Enter your email");
 
         final View view = getLayoutInflater().inflate(R.layout.email_dialog, null);
 
         final EditText input = (EditText) view.findViewById(R.id.email_field);
-        input.append(Globals.theUser.getEmail());
+        input.append(user.getEmail());
 
         builder.setView(view);
         builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Globals.theUser.setEmail(input.getText().toString());
-                formatEmail(Globals.theUser.getEmail());
+                user.setEmail(input.getText().toString());
+                formatEmail(user.getEmail());
             }
         });
         builder.setNegativeButton("Cancel", null);
