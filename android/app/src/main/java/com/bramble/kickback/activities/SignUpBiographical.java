@@ -147,7 +147,8 @@ public class SignUpBiographical extends Activity {
 
     // when the back button is pressed (sign up)
     public void backSignUpPressed(View v){
-       finish();
+        finish();
+        overridePendingTransition(0,0);
     }
 
     public void disableButtons() {
@@ -224,6 +225,7 @@ public class SignUpBiographical extends Activity {
             if (loggedUser != null) {
                 Globals.theUser = loggedUser;
                 Intent intent = new Intent(SignUpBiographical.this, Home.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
                 finish();
             }

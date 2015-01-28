@@ -1,6 +1,7 @@
 <resources>
     
     <style name="MyTheme" parent="@android:style/Theme.Holo.Light">
+        <item name="android:windowAnimationStyle">@null</item>
         <item name="android:actionBarStyle">@style/MyTheme.ActionBar</item>
         <item name="android:editTextStyle">@android:style/Widget.Holo.EditText</item>
         <item name="android:radioButtonStyle">@android:style/Widget.CompoundButton.CheckBox</item>

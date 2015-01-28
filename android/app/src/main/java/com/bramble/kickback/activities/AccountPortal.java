@@ -19,6 +19,7 @@ public class AccountPortal extends Activity {
     // when the login button is pressed
     public void toSignInPressed(View v){
         Intent intent = new Intent(this, Login.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(intent);
     }
 
@@ -26,6 +27,7 @@ public class AccountPortal extends Activity {
     // when the sign up button is pressed
     public void toSignUpPressed(View v){
         Intent intent = new Intent(this, SignUpCredentials.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(intent);
     }
 }
