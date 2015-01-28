@@ -1,25 +1,19 @@
 package com.bramble.kickback.activities;
+import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
 import com.bramble.kickback.R;
 import com.bramble.kickback.containers.SignUpContainer;
 import com.bramble.kickback.fragments.LoadingBar;
 import com.bramble.kickback.networking.ConnectionHandler;
-import com.bramble.kickback.service.SignUpService;
-
-import android.app.Activity;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
-import android.content.ServiceConnection;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.os.IBinder;
-import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import java.io.IOException;
 
