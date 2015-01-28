@@ -28,6 +28,7 @@ public class SignUpCredentials extends Activity {
     private EditText desiredUsername;
     private EditText desiredPassword;
     private EditText confirmDesiredPassword;
+    private EditText countryCode;
     private EditText phoneNumber;
     private Button continueButton;
     private Button cancelButton;
@@ -49,6 +50,7 @@ public class SignUpCredentials extends Activity {
         desiredUsername = (EditText) findViewById(R.id.editTextDesiredUsername);
         desiredPassword = (EditText) findViewById(R.id.editTextDesiredPassword);
         confirmDesiredPassword = (EditText) findViewById(R.id.editTextConfirmDesiredPassword);
+        countryCode = (EditText) findViewById(R.id.editTextCountryCode);
         phoneNumber = (EditText) findViewById(R.id.editTextPhoneNumber);
         continueButton = (Button) findViewById(R.id.buttonSignUp);
         cancelButton = (Button) findViewById(R.id.buttonCancelSignUp);
@@ -56,6 +58,15 @@ public class SignUpCredentials extends Activity {
         setEmailText(signUpContainer.getDesiredEmail());
         setDesiredUsernameText(signUpContainer.getDesiredUsername());
         setPhoneNumberText(signUpContainer.getDesiredPhoneNumber());
+
+        confirmDesiredPassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                    commenceCountryPicker();
+                }
+                return false;
+            }
+        });
 
         phoneNumber.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -88,6 +99,7 @@ public class SignUpCredentials extends Activity {
         signUpContainer.setDesiredEmail(email.getText().toString());
         signUpContainer.setDesiredUsername(desiredUsername.getText().toString());
         signUpContainer.setPassword(desiredPassword.getText().toString());
+        signUpContainer.setCountryCode(countryCode.getText().toString());
         signUpContainer.setDesiredPhoneNumber(phoneNumber.getText().toString());
         // native checks on inputs gathered
         if(signUpContainer.getDesiredEmail().equals("")) {
@@ -101,6 +113,9 @@ public class SignUpCredentials extends Activity {
         }
         else if(confirmDesiredPassword.getText().toString().equals("")){
             Toast.makeText(this, "Please confirm password.", Toast.LENGTH_SHORT).show();
+        }
+        else if(signUpContainer.getCountryCode().equals("")) {
+            Toast.makeText(this, "Please select your country code.", Toast.LENGTH_SHORT).show();
         }
         else if(!signUpContainer.getDesiredUsername().matches("^[a-zA-Z0-9_]+$")) {
             Toast.makeText(this, "Usernames may only contain letters, numbers, and underscores (_).", Toast.LENGTH_SHORT).show();
@@ -133,6 +148,14 @@ public class SignUpCredentials extends Activity {
         finish();
     }
 
+    public void countryCodePressed(View view) {
+        commenceCountryPicker();
+    }
+    // IMPORTANT
+    public void commenceCountryPicker() {
+        // country picker code!
+    }
+
     public String getEmailText() {
         return this.email.getText().toString();
     }
@@ -147,6 +170,10 @@ public class SignUpCredentials extends Activity {
 
     public String getConfirmDesiredPasswordText() {
         return this.confirmDesiredPassword.getText().toString();
+    }
+
+    public String getCountryCode() {
+        return this.countryCode.getText().toString();
     }
 
     public String getPhoneNumberText() {
@@ -167,6 +194,10 @@ public class SignUpCredentials extends Activity {
 
     public void setConfirmDesiredPasswordText(String confirmDesiredPassword) {
         this.confirmDesiredPassword.setText(confirmDesiredPassword);
+    }
+
+    public void setCountryCodeText(String countryCode) {
+        this.countryCode.setText(countryCode);
     }
 
     public void setPhoneNumberText(String phoneNumber) {

@@ -90,7 +90,7 @@
 
 
             <RadioGroup
-                android:layout_width="@dimen/edittext_width"
+                android:layout_width="280dp"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_centerHorizontal="true"
