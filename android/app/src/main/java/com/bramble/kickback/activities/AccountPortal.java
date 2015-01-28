@@ -113,44 +113,9 @@ public class AccountPortal extends Activity {
         // starts a transaction
         FragmentTransaction ft = fm.beginTransaction();
         // replaces current fragment (accountPortalIndex) with the login fragment
-        ft.replace(R.id.fragment_place, login, "loginTag");
+        //ft.replace(R.id.fragment_place, login, "loginTag");
         //ft.addToBackStack()
         ft.commit();
-    }
-
-    // when the cancel button is pressed (login)
-    public void cancelSignInPressed(View v){
-        // clears all the instance variables within login service
-        loginService.clear();
-        // stops the login service because the user has returned to the account index fragment
-        stopService(loginServiceIntent);
-        // begins transaction that replaces the login fragment with the account index fragment
-        ft = fm.beginTransaction();
-        ft.replace(R.id.fragment_place, accountPortalIndex);
-        ft.commit();
-        // resets the login fragment so it doesn't retain any of the inputs made by the user
-        // during the duration of the login service
-        login = new Login();
-    }
-
-    // when the login button is pressed (login)
-    public void loginPressed(View v){
-        // sets the instance variables in the login service to the inputs gathered
-        // by the edit texts in the fragments
-        loginService.setUsername(login.getUsernameText());
-        loginService.setPassword(login.getPasswordText());
-        // native checks to make sure all fields are properly filled out
-        if (loginService.getUsername().equals("") || loginService.getPassword().equals("")) {
-            Toast.makeText(this, "Please enter your username and password.", Toast.LENGTH_SHORT).show();
-        }
-        // if the inputs are appropriate
-        else {
-            ft = fm.beginTransaction();
-            ft.add(R.id.loading_place, loadingBar, "loadingBarTag");
-            ft.commit();
-            new LoginTask().execute(loginService.getUsername(), loginService.getPassword());
-            login.disableButtons();
-        }
     }
 
     // SIGN UP PATH
@@ -163,7 +128,7 @@ public class AccountPortal extends Activity {
         // starts a transaction
         ft = fm.beginTransaction();
         // replaces accountPortalIndex fragment with the signUpCredentials fragment.
-        ft.replace(R.id.fragment_place, signUpCredentials, "signUpCredentialsTag");
+        //ft.replace(R.id.fragment_place, signUpCredentials, "signUpCredentialsTag");
         ft.commit();
     }
 
@@ -176,7 +141,7 @@ public class AccountPortal extends Activity {
         // begins transaction that replaces the sign up credentials fragment with
         // the account portal index fragment
         ft = fm.beginTransaction();
-        ft.replace(R.id.fragment_place, accountPortalIndex);
+        //ft.replace(R.id.fragment_place, accountPortalIndex);
         ft.commit();
         // resets the inputs of the sign up fragments by turning them into new ones
         signUpCredentials = new SignUpCredentials();
@@ -188,7 +153,7 @@ public class AccountPortal extends Activity {
         // begins transaction that returns the user to the sign up credentials fragment
         // from the sign up biographical fragment
         ft = fm.beginTransaction();
-        ft.replace(R.id.fragment_place, signUpCredentials, "signUpCredentialsTag");
+        //ft.replace(R.id.fragment_place, signUpCredentials, "signUpCredentialsTag");
         ft.commit();
     }
 
@@ -294,44 +259,6 @@ public class AccountPortal extends Activity {
             occurs.set(Calendar.MONTH, month);
             occurs.set(Calendar.DAY_OF_MONTH, day);
             AccountPortal.this.signUpService.setBirthday("");
-        }
-    }
-
-    // Asynchronously sends a login request
-    private class LoginTask extends AsyncTask<String, Void, User> {
-        @Override
-        protected User doInBackground(String... params) {
-            try {
-                String result = new ConnectionHandler().login(params[0], params[1]);
-                if (result != null) {
-                    User user = new User(params[0]);
-                    user.setSessionId(result);
-                    return user;
-                }
-                else {
-                    return null;
-                }
-            } catch (IOException e) {
-                return null;
-            }
-        }
-
-        @Override
-        protected void onPostExecute(User loggedUser) {
-            if (loggedUser != null) {
-                Globals.theUser = loggedUser;
-                Intent intent = new Intent(AccountPortal.this, Home.class);
-                startActivity(intent);
-                finish();
-            }
-            else {
-                ft = fm.beginTransaction();
-                ft.remove(loadingBar);
-                ft.commit();
-                Toast.makeText(AccountPortal.this, "Invalid username or password.", Toast.LENGTH_LONG).show();
-                login.setPasswordText("");
-                login.enableButtons();
-            }
         }
     }
 
