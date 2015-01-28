@@ -1,8 +1,11 @@
 package com.bramble.kickback.fragments;
 import com.bramble.kickback.R;
+import com.bramble.kickback.networking.ConnectionHandler;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,9 +13,12 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import java.io.IOException;
 
 
-public class SignUpCredentials extends Fragment {
+public class SignUpCredentials extends Activity {
 
     private EditText email;
     private EditText desiredUsername;
@@ -23,28 +29,24 @@ public class SignUpCredentials extends Fragment {
     private Button cancelButton;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
 
-        // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_sign_up_credentials,
-                     container, false);
-
-        email = (EditText) view.findViewById(R.id.editTextEmail);
-        desiredUsername = (EditText) view.findViewById(R.id.editTextDesiredUsername);
-        desiredPassword = (EditText) view.findViewById(R.id.editTextDesiredPassword);
-        confirmDesiredPassword = (EditText) view.findViewById(R.id.editTextConfirmDesiredPassword);
-        phoneNumber = (EditText) view.findViewById(R.id.editTextPhoneNumber);
-        continueButton = (Button) view.findViewById(R.id.buttonSignUp);
-        cancelButton = (Button) view.findViewById(R.id.buttonCancelSignUp);
+        email = (EditText) findViewById(R.id.editTextEmail);
+        desiredUsername = (EditText) findViewById(R.id.editTextDesiredUsername);
+        desiredPassword = (EditText) findViewById(R.id.editTextDesiredPassword);
+        confirmDesiredPassword = (EditText) findViewById(R.id.editTextConfirmDesiredPassword);
+        phoneNumber = (EditText) findViewById(R.id.editTextPhoneNumber);
+        continueButton = (Button) findViewById(R.id.buttonSignUp);
+        cancelButton = (Button) findViewById(R.id.buttonCancelSignUp);
 
         email.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if(email.hasFocus()) {
+                if (email.hasFocus()) {
                     email.post(new Runnable() {
                         @Override
                         public void run() {
-                            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                             imm.showSoftInput(email, InputMethodManager.SHOW_IMPLICIT);
                         }
                     });
@@ -54,10 +56,7 @@ public class SignUpCredentials extends Fragment {
         if(email.getText().equals("")){
             email.requestFocus();
         }
-        return view;
     }
-
-
 
     public void disableButtons() {
         continueButton.setEnabled(false);
@@ -67,6 +66,75 @@ public class SignUpCredentials extends Fragment {
     public void enableButtons() {
         continueButton.setEnabled(true);
         continueButton.setEnabled(true);
+    }
+
+    // when the continue button is pressed (sign up)
+    public void continueSignUpPressed(View v) {
+        /*
+        // NEEDS REWORK (more checks with server)
+
+        // sets the instance variables inside the sign up service to the inputs
+        // gathered in the sing up credentials fragment
+        signUpService.setEmail(signUpCredentials.getEmailText());
+        signUpService.setDesiredUsername(signUpCredentials.getDesiredUsernameText());
+        signUpService.setDesiredPassword(signUpCredentials.getDesiredPasswordText());
+        signUpService.setConfirmPassword(signUpCredentials.getConfirmDesiredPasswordText());
+        signUpService.setPhoneNumber(signUpCredentials.getPhoneNumberText());
+        // native checks on inputs gathered
+        if(signUpService.getEmail().equals("")) {
+            Toast.makeText(this, "Please enter your email address.", Toast.LENGTH_SHORT).show();
+        }
+        else if (signUpService.getDesiredUsername().equals("") || signUpService.getDesiredPassword().equals("")) {
+            Toast.makeText(this, "Please enter desired username and password.", Toast.LENGTH_SHORT).show();
+        }
+        else if(signUpService.getConfirmPassword().equals("")){
+            Toast.makeText(this, "Please confirm password.", Toast.LENGTH_SHORT).show();
+        }
+        else if(!signUpService.getDesiredUsername().matches("^[a-zA-Z0-9_]+$")) {
+            Toast.makeText(this, "Usernames may only contain letters, numbers, and underscores (_).", Toast.LENGTH_SHORT).show();
+        }
+        else if(signUpService.getDesiredPassword().length() < 6 || signUpService.getDesiredPassword().length() > 20){
+            Toast.makeText(this, "Passwords must be between 6 and 20 characters in length.", Toast.LENGTH_SHORT).show();
+        }
+        else if(!signUpService.getDesiredPassword().matches("^[a-zA-Z0-9_\\-!@#$%^&*]+$")) {
+            Toast.makeText(this, "Passwords may only contain letters, numbers, and the special characters !@#$%^&*-_.", Toast.LENGTH_SHORT).show();
+        }
+        else if(!signUpService.getDesiredPassword().equals(signUpService.getConfirmPassword())){
+            Toast.makeText(this, "Entered passwords are not the same.", Toast.LENGTH_SHORT).show();
+        }
+        else if(signUpService.getPhoneNumber().equals("")) {
+            Toast.makeText(this, "Please enter your mobile phone number.", Toast.LENGTH_SHORT).show();
+        }
+        else {
+
+            //
+            ft = fm.beginTransaction();
+            ft.add(R.id.loading_place, loadingBar, "loadingBarTag");
+            ft.commit();
+            new CheckCredentialTask().execute(signUpService.getDesiredUsername(),
+                    signUpService.getEmail(),
+                    signUpService.getPhoneNumber());
+            signUpCredentials.disableButtons();
+        }
+        */
+    }
+
+    // when cancel is pressed (sign up)
+    public void cancelSignUpPressed(View v){
+        /*
+        // clears instance variables within sign up service
+        signUpService.clear();
+        // stops the sign up service
+        stopService(signUpServiceIntent);
+        // begins transaction that replaces the sign up credentials fragment with
+        // the account portal index fragment
+        ft = fm.beginTransaction();
+        //ft.replace(R.id.fragment_place, accountPortalIndex);
+        ft.commit();
+        // resets the inputs of the sign up fragments by turning them into new ones
+        signUpCredentials = new SignUpCredentials();
+        signUpBiographical = new SignUpBiographical();
+        */
     }
 
     public String getEmailText() {
@@ -109,4 +177,45 @@ public class SignUpCredentials extends Fragment {
         this.phoneNumber.setText(phoneNumber);
     }
 
+    /*
+    // Asynchronously sends a request to check uniqueness of credentials
+    private class CheckCredentialTask extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                return new ConnectionHandler().checkCredentials(params[0], params[1], params[2]);
+            } catch (IOException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            if (result != null) {
+                if (result.startsWith("200:")) {
+                    ft = fm.beginTransaction();
+                    ft.replace(R.id.fragment_place, signUpBiographical, "signUpBiographicalTag");
+                    ft.remove(loadingBar);
+                    ft.commit();
+                }
+                else if (result.startsWith("401:")) {
+                    ft = fm.beginTransaction();
+                    ft.remove(loadingBar);
+                    ft.commit();
+                    Toast.makeText(AccountPortal.this, result.replace("401:", ""), Toast.LENGTH_LONG).show();
+                    signUpCredentials.enableButtons();
+                }
+            }
+            else {
+                ft = fm.beginTransaction();
+                ft.remove(loadingBar);
+                ft.commit();
+                Toast.makeText(AccountPortal.this, "An error occurred.", Toast.LENGTH_LONG).show();
+                signUpCredentials.enableButtons();
+            }
+        }
+    }
+    */
 }
