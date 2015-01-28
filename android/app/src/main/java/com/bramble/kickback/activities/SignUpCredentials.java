@@ -120,6 +120,9 @@ public class SignUpCredentials extends Activity {
         }
         else {
             disableButtons();
+            ft = fm.beginTransaction();
+            ft.add(R.id.loading_frame, loadingBar);
+            ft.commit();
             new CheckCredentialTask().execute(getDesiredUsernameText(), getEmailText(), getPhoneNumberText());
         }
     }
@@ -160,6 +163,9 @@ public class SignUpCredentials extends Activity {
                 }
             }
             else {
+                ft = fm.beginTransaction();
+                ft.remove(loadingBar);
+                ft.commit();
                 Toast.makeText(SignUpCredentials.this, "An error occurred.", Toast.LENGTH_LONG).show();
                 SignUpCredentials.this.enableButtons();
             }

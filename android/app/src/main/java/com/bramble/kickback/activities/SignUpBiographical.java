@@ -142,6 +142,9 @@ public class SignUpBiographical extends Activity {
             birthday.setText(signUpService.getBirthday());
             setSexButton(signUpService.getSex());
 
+            ft = fm.beginTransaction();
+            ft.add(R.id.loading_frame, loadingBar);
+            ft.commit();
             new SignUpTask().execute(signUpService.getDesiredUsername(), signUpService.getDesiredPassword(),
                     signUpService.getEmail(), signUpService.getPhoneNumber(),
                     signUpService.getFirstName() + " " + signUpService.getLastName(),
@@ -233,6 +236,9 @@ public class SignUpBiographical extends Activity {
                 finish();
             }
             else {
+                ft = fm.beginTransaction();
+                ft.remove(loadingBar);
+                ft.commit();
                 Toast.makeText(SignUpBiographical.this, "An error occurred.", Toast.LENGTH_LONG).show();
                 SignUpBiographical.this.enableButtons();
             }

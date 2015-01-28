@@ -1,10 +1,13 @@
 package com.bramble.kickback.activities;
 import com.bramble.kickback.R;
+import com.bramble.kickback.fragments.LoadingBar;
 import com.bramble.kickback.models.User;
 import com.bramble.kickback.networking.ConnectionHandler;
 import com.bramble.kickback.util.Globals;
 
 import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -24,10 +27,18 @@ public class Login extends Activity {
     private Button loginButton;
     private Button cancelButton;
 
+    private FragmentManager fm;
+    private FragmentTransaction ft;
+    private LoadingBar loadingBar;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        fm = getFragmentManager();
+        loadingBar = new LoadingBar();
+
         username = (EditText) findViewById(R.id.editTextUsername);
         password = (EditText) findViewById(R.id.editTextPassword);
         loginButton = (Button) findViewById(R.id.buttonSignIn);
@@ -58,6 +69,9 @@ public class Login extends Activity {
         }
         else {
             disableButtons();
+            ft = fm.beginTransaction();
+            ft.add(R.id.loading_frame, loadingBar);
+            ft.commit();
             new LoginTask().execute(username, password);
         }
     }
@@ -90,6 +104,9 @@ public class Login extends Activity {
                 finish();
             }
             else {
+                ft = fm.beginTransaction();
+                ft.remove(loadingBar);
+                ft.commit();
                 Toast.makeText(Login.this, "Invalid username or password.", Toast.LENGTH_LONG).show();
                 Login.this.setPasswordText("");
                 Login.this.enableButtons();
