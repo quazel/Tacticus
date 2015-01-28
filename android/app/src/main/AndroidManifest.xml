@@ -102,15 +102,18 @@
         </activity>
         <activity android:name=".activities.Login"
             android:label="Login"
-            android:theme="@style/CustomNoBar">
+            android:theme="@style/CustomNoBar"
+            android:windowSoftInputMode="stateVisible">
         </activity>
         <activity android:name=".activities.SignUpCredentials"
             android:label="SignUpCredentials"
-            android:theme="@style/CustomNoBar">
+            android:theme="@style/CustomNoBar"
+            android:windowSoftInputMode="stateVisible">
         </activity>
         <activity android:name=".activities.SignUpBiographical"
             android:label="SignUpBiographical"
-            android:theme="@style/CustomNoBar">
+            android:theme="@style/CustomNoBar"
+            android:windowSoftInputMode="stateVisible">
         </activity>
     </application>
 

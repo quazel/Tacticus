@@ -5,9 +5,12 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bramble.kickback.R;
@@ -16,7 +19,6 @@ import com.bramble.kickback.fragments.LoadingBar;
 import com.bramble.kickback.networking.ConnectionHandler;
 
 import java.io.IOException;
-
 
 public class SignUpCredentials extends Activity {
 
@@ -54,6 +56,15 @@ public class SignUpCredentials extends Activity {
         setEmailText(signUpContainer.getDesiredEmail());
         setDesiredUsernameText(signUpContainer.getDesiredUsername());
         setPhoneNumberText(signUpContainer.getDesiredPhoneNumber());
+
+        phoneNumber.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                    commenceContinueSignUp();
+                }
+                return false;
+            }
+        });
     }
 
     public void disableButtons() {
@@ -63,11 +74,15 @@ public class SignUpCredentials extends Activity {
 
     public void enableButtons() {
         continueButton.setEnabled(true);
-        continueButton.setEnabled(true);
+        cancelButton.setEnabled(true);
     }
 
     // when the continue button is pressed (sign up)
         public void continueSignUpPressed(View v) {
+        commenceContinueSignUp();
+    }
+
+    public void commenceContinueSignUp() {
         // sets the instance variables inside the sign up service to the inputs
         // gathered in the sign up credentials
         signUpContainer.setDesiredEmail(email.getText().toString());
@@ -77,6 +92,9 @@ public class SignUpCredentials extends Activity {
         // native checks on inputs gathered
         if(signUpContainer.getDesiredEmail().equals("")) {
             Toast.makeText(this, "Please enter your email address.", Toast.LENGTH_SHORT).show();
+        }
+        else if(!signUpContainer.getDesiredEmail().matches("^[a-zA-Z0-9_\\-+%\\.]+@[a-zA-Z0-9\\-\\.]+\\.[a-zA-Z\\.]{2,6}$")){
+            Toast.makeText(this, "Please enter a valid email address.", Toast.LENGTH_SHORT).show();
         }
         else if (signUpContainer.getDesiredUsername().equals("") || signUpContainer.getPassword().equals("")) {
             Toast.makeText(this, "Please enter desired username and password.", Toast.LENGTH_SHORT).show();
@@ -172,9 +190,12 @@ public class SignUpCredentials extends Activity {
         protected void onPostExecute(String result) {
             if (result != null) {
                 if (result.startsWith("200:")) {
+                    ft = fm.beginTransaction();
+                    ft.remove(loadingBar);
+                    ft.commit();
+                    SignUpCredentials.this.enableButtons();
                     Intent intent = new Intent(SignUpCredentials.this, SignUpBiographical.class);
                     startActivity(intent);
-                    finish();
                 }
                 else if (result.startsWith("401:")) {
                     Toast.makeText(SignUpCredentials.this, result.replace("401:", ""), Toast.LENGTH_LONG).show();

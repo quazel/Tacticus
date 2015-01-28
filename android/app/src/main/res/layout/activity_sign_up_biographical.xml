@@ -95,8 +95,7 @@
                 android:orientation="horizontal"
                 android:layout_centerHorizontal="true"
                 android:layout_below="@+id/space_3"
-                android:id="@+id/sexGroup"
-                android:onClick="onRadioButtonClicked">
+                android:id="@+id/sexGroup">
 
                 <RadioButton
                     android:layout_width="wrap_content"
@@ -105,7 +104,8 @@
                     android:text="Male"
                     android:textColor="@color/black"
                     android:button="@drawable/custom_checkbox_purple"
-                    android:id="@+id/male"/>
+                    android:id="@+id/male"
+                    android:onClick="onMaleClicked"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/list_item_height"
@@ -113,7 +113,8 @@
                     android:text="Female"
                     android:textColor="@color/black"
                     android:button="@drawable/custom_checkbox_purple"
-                    android:id="@+id/female"/>
+                    android:id="@+id/female"
+                    android:onClick="onFemaleClicked"/>
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/list_item_height"
@@ -121,7 +122,8 @@
                     android:text="Not Specified"
                     android:textColor="@color/black"
                     android:button="@drawable/custom_checkbox_purple"
-                    android:id="@+id/not_specified"/>
+                    android:id="@+id/not_specified"
+                    android:onClick="onNotSpecifiedClicked"/>
 
             </RadioGroup>
 

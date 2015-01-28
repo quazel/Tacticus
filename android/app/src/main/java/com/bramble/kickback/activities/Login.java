@@ -12,10 +12,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -43,7 +47,19 @@ public class Login extends Activity {
         password = (EditText) findViewById(R.id.editTextPassword);
         loginButton = (Button) findViewById(R.id.buttonSignIn);
         cancelButton = (Button) findViewById(R.id.buttonCancelSignIn);
+
+        password.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                    commenceLogin();
+                }
+                return false;
+            }
+        });
+
+        username.requestFocus();
     }
+
 
     public void disableButtons() {
         loginButton.setEnabled(false);
@@ -62,6 +78,11 @@ public class Login extends Activity {
 
     // when the login button is pressed (login)
     public void loginPressed(View v){
+        commenceLogin();
+    }
+
+
+    public void commenceLogin() {
         String username = getUsernameText();
         String password = getPasswordText();
         if (username.equals("") || password.equals("")) {
