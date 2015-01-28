@@ -15,7 +15,7 @@
             android:name=".activities.SplashScreen"
             android:label="@string/title_activity_splash_screen"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
+            android:theme="@style/CustomNoBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -98,19 +98,19 @@
         <activity
             android:name=".activities.AccountPortal"
             android:label="@string/title_activity_account_portal"
-            android:theme="@android:style/Theme.Black.NoTitleBar" >
+            android:theme="@style/CustomNoBar" >
         </activity>
         <activity android:name=".activities.Login"
             android:label="Login"
-            android:theme="@android:style/Theme.Black.NoTitleBar">
+            android:theme="@style/CustomNoBar">
         </activity>
         <activity android:name=".activities.SignUpCredentials"
             android:label="SignUpCredentials"
-            android:theme="@android:style/Theme.Black.NoTitleBar">
+            android:theme="@style/CustomNoBar">
         </activity>
         <activity android:name=".activities.SignUpBiographical"
             android:label="SignUpBiographical"
-            android:theme="@android:style/Theme.Black.NoTitleBar">
+            android:theme="@style/CustomNoBar">
         </activity>
     </application>
 
