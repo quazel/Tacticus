@@ -131,7 +131,6 @@ public class SignUpCredentials extends Activity {
         // stops the sign up service
         stopService(signUpServiceIntent);
         finish();
-        overridePendingTransition(0,0);
     }
 
     // Asynchronously sends a request to check uniqueness of credentials

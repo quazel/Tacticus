@@ -47,7 +47,6 @@ public class Login extends Activity {
     // when the cancel button is pressed (login)
     public void cancelSignInPressed(View v){
         finish();
-        overridePendingTransition(0,0);
     }
 
     // when the login button is pressed (login)
@@ -87,7 +86,6 @@ public class Login extends Activity {
             if (loggedUser != null) {
                 Globals.theUser = loggedUser;
                 Intent intent = new Intent(Login.this, Home.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
                 finish();
             }
