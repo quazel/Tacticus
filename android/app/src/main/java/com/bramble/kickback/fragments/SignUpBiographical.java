@@ -58,7 +58,9 @@ public class SignUpBiographical extends Fragment {
                 }
             }
         });
-        firstName.requestFocus();
+        if(firstName.getText().equals("")) {
+            firstName.requestFocus();
+        }
 
         return view;
     }

@@ -51,10 +51,13 @@ public class SignUpCredentials extends Fragment {
                 }
             }
         });
-        email.requestFocus();
-
+        if(email.getText().equals("")){
+            email.requestFocus();
+        }
         return view;
     }
+
+
 
     public void disableButtons() {
         continueButton.setEnabled(false);
