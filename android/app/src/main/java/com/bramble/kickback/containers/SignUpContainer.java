@@ -6,6 +6,7 @@ public class SignUpContainer {
 
     private String desiredUsername;
     private String desiredEmail;
+    private String countryCode;
     private String desiredPhoneNumber;
     private String password;
     private String firstName;
@@ -16,6 +17,7 @@ public class SignUpContainer {
     private SignUpContainer() {
         desiredUsername = "";
         desiredEmail = "";
+        countryCode = "";
         desiredPhoneNumber = "";
         password = "";
         firstName = "";
@@ -37,6 +39,10 @@ public class SignUpContainer {
 
     public String getDesiredEmail() {
         return desiredEmail;
+    }
+
+    public String getCountryCode() {
+        return countryCode;
     }
 
     public String getDesiredPhoneNumber() {
@@ -69,6 +75,10 @@ public class SignUpContainer {
 
     public void setDesiredEmail(String email) {
         desiredEmail = email;
+    }
+
+    public void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
     }
 
     public void setDesiredPhoneNumber(String phoneNumber) {
