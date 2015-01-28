@@ -1,27 +1,12 @@
 package com.bramble.kickback.activities;
-import com.bramble.kickback.R;
-import com.bramble.kickback.fragments.LoadingBar;
-import com.bramble.kickback.models.User;
-import com.bramble.kickback.networking.ConnectionHandler;
-import com.bramble.kickback.service.SignUpService;
-import com.bramble.kickback.util.Globals;
-
 import android.app.Activity;
 import android.app.DatePickerDialog;
-import android.app.Dialog;
-import android.app.DialogFragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
-import android.content.ServiceConnection;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.IBinder;
-import android.util.Log;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -29,28 +14,20 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.bramble.kickback.R;
+import com.bramble.kickback.containers.SignUpContainer;
+import com.bramble.kickback.fragments.LoadingBar;
+import com.bramble.kickback.models.User;
+import com.bramble.kickback.networking.ConnectionHandler;
+import com.bramble.kickback.util.Globals;
+
 import java.io.IOException;
 import java.util.Calendar;
 
 
 public class SignUpBiographical extends Activity {
 
-    private SignUpService signUpService;
-    private Intent signUpServiceIntent;
-
-    private ServiceConnection signUpConnection = new ServiceConnection() {
-        // Called when the connection with the service is established
-        public void onServiceConnected(ComponentName className, IBinder service) {
-            // Because we have bound to an explicit
-            // service that is running in our own process, we can
-            // cast its IBinder to a concrete class and directly access it.
-            SignUpService.LocalBinder binder = (SignUpService.LocalBinder) service;
-            signUpService = binder.getService();
-        }
-        // Called when the connection with the service disconnects unexpectedly
-        public void onServiceDisconnected(ComponentName className) {
-        }
-    };
+    private SignUpContainer signUpContainer;
 
     // items on the fragment
     private EditText firstName;
@@ -72,8 +49,8 @@ public class SignUpBiographical extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_biographical);
-        signUpServiceIntent = new Intent(this, SignUpService.class);
-        bindService(signUpServiceIntent, signUpConnection, Context.BIND_AUTO_CREATE);
+
+        signUpContainer = SignUpContainer.getInstance();
 
         fm = getFragmentManager();
         loadingBar = new LoadingBar();
@@ -89,13 +66,11 @@ public class SignUpBiographical extends Activity {
         continueButton = (Button) findViewById(R.id.buttonSignUp);
         cancelButton = (Button) findViewById(R.id.buttonCancelSignUp);
 
-        /*
-        firstName.setText(signUpService.getFirstName());
-        lastName.setText(signUpService.getLastName());
-        birthday.setText(signUpService.getBirthday());
-        sex = signUpService.getSex();
+        firstName.setText(signUpContainer.getFirstName());
+        lastName.setText(signUpContainer.getLastName());
+        birthday.setText(signUpContainer.getBirthdate());
+        sex = signUpContainer.getSex();
         setSexButton(sex);
-        */
     }
 
     public void onRadioButtonClicked(View view) {
@@ -119,36 +94,36 @@ public class SignUpBiographical extends Activity {
 
     // when the sign up button is pressed (sign up)
     public void signUpPressed(View v){
-        signUpService.setFirstName(firstName.getText().toString());
-        signUpService.setLastName(lastName.getText().toString());
-        signUpService.setBirthday(birthday.getText().toString());
-        signUpService.setSex(getSexText());
+        signUpContainer.setFirstName(firstName.getText().toString());
+        signUpContainer.setLastName(lastName.getText().toString());
+        signUpContainer.setBirthdate(birthday.getText().toString());
+        signUpContainer.setSex(getSexText());
 
-        if(signUpService.getFirstName().equals("")) {
+        if(signUpContainer.getFirstName().equals("")) {
             Toast.makeText(this, "Please enter your first name.", Toast.LENGTH_SHORT).show();
         }
-        else if(signUpService.getLastName().equals("")) {
+        else if(signUpContainer.getLastName().equals("")) {
             Toast.makeText(this, "Please enter your last name.", Toast.LENGTH_SHORT).show();
         }
-        else if(!signUpService.getEmail().matches("^[a-zA-Z0-9_\\-+%\\.]+@[a-zA-Z0-9\\-\\.]+\\.[a-zA-Z\\.]{2,6}$")){
+        else if(!signUpContainer.getDesiredEmail().matches("^[a-zA-Z0-9_\\-+%\\.]+@[a-zA-Z0-9\\-\\.]+\\.[a-zA-Z\\.]{2,6}$")){
             Toast.makeText(this, "Please enter a valid email address.", Toast.LENGTH_SHORT).show();
         }
         else {
-            Globals.createUser(signUpService.getDesiredUsername(), signUpService.getFirstName(),
-                    signUpService.getEmail(), signUpService.getPhoneNumber());
+            Globals.createUser(signUpContainer.getDesiredUsername(), signUpContainer.getFirstName(),
+                    signUpContainer.getDesiredEmail(), signUpContainer.getDesiredPhoneNumber());
 
-            firstName.setText(signUpService.getFirstName());
-            lastName.setText(signUpService.getLastName());
-            birthday.setText(signUpService.getBirthday());
-            setSexButton(signUpService.getSex());
+            firstName.setText(signUpContainer.getFirstName());
+            lastName.setText(signUpContainer.getLastName());
+            birthday.setText(signUpContainer.getBirthdate());
+            setSexButton(signUpContainer.getSex());
 
             ft = fm.beginTransaction();
             ft.add(R.id.loading_frame, loadingBar);
             ft.commit();
-            new SignUpTask().execute(signUpService.getDesiredUsername(), signUpService.getDesiredPassword(),
-                    signUpService.getEmail(), signUpService.getPhoneNumber(),
-                    signUpService.getFirstName() + " " + signUpService.getLastName(),
-                    signUpService.getBirthday(), signUpService.getSex());
+            new SignUpTask().execute(signUpContainer.getDesiredUsername(), signUpContainer.getPassword(),
+                    signUpContainer.getDesiredEmail(), signUpContainer.getDesiredPhoneNumber(),
+                    signUpContainer.getFirstName() + " " + signUpContainer.getLastName(),
+                    signUpContainer.getBirthdate(), signUpContainer.getSex());
             disableButtons();
         }
     }
