@@ -31,7 +31,7 @@ public class Login extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.fragment_login);
         username = (EditText) findViewById(R.id.editTextUsername);
         password = (EditText) findViewById(R.id.editTextPassword);
         loginButton = (Button) findViewById(R.id.buttonSignIn);
@@ -95,6 +95,7 @@ public class Login extends Activity {
         // during the duration of the login service
         login = new Login();
         */
+        finish();
     }
 
     // when the login button is pressed (login)

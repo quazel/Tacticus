@@ -60,7 +60,8 @@ public class SignUpCredentials extends Activity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_sign_up_credentials);
         signUpServiceIntent = new Intent(this, SignUpService.class);
         startService(signUpServiceIntent);
         bindService(signUpServiceIntent, signUpConnection, Context.BIND_AUTO_CREATE);

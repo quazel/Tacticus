@@ -70,6 +70,8 @@ public class SignUpBiographical extends Activity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_sign_up_biographical);
         signUpServiceIntent = new Intent(this, SignUpService.class);
         bindService(signUpServiceIntent, signUpConnection, Context.BIND_AUTO_CREATE);
 
@@ -102,7 +104,7 @@ public class SignUpBiographical extends Activity {
                 }
             }
         });
-        if(firstName.getText().equals("")) {
+        if(firstName.getText().toString().equals("")) {
             firstName.requestFocus();
         }
     }
@@ -278,7 +280,7 @@ public class SignUpBiographical extends Activity {
             occurs.set(Calendar.YEAR, year);
             occurs.set(Calendar.MONTH, month);
             occurs.set(Calendar.DAY_OF_MONTH, day);
-            setBirthdayText(year + "-" + month + "-" + day);
+            setBirthdayText(year + "-" + month+1 + "-" + day);
         }
     }
 

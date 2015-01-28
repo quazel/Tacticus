@@ -82,7 +82,6 @@
         </activity>
 
         <service android:name=".service.SignUpService" />
-        <service android:name=".service.LoginService" />
         <service android:name=".service.KickbackService" />
 
         <receiver
@@ -100,6 +99,18 @@
             android:name=".activities.AccountPortal"
             android:label="@string/title_activity_account_portal"
             android:theme="@android:style/Theme.Black.NoTitleBar" >
+        </activity>
+        <activity android:name=".fragments.Login"
+            android:label="Login"
+            android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:name=".fragments.SignUpCredentials"
+            android:label="SignUpCredentials"
+            android:theme="@android:style/Theme.Black.NoTitleBar">
+        </activity>
+        <activity android:name=".fragments.SignUpBiographical"
+            android:label="SignUpBiographical"
+            android:theme="@android:style/Theme.Black.NoTitleBar">
         </activity>
     </application>
 
