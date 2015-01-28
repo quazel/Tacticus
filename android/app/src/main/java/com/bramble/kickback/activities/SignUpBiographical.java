@@ -83,27 +83,14 @@ public class SignUpBiographical extends Activity {
         male = (RadioButton) findViewById(R.id.male);
         female = (RadioButton) findViewById(R.id.female);
         notSpecified = (RadioButton) findViewById(R.id.not_specified);
-        sex = "";
         continueButton = (Button) findViewById(R.id.buttonSignUp);
         cancelButton = (Button) findViewById(R.id.buttonCancelSignUp);
 
-        firstName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (firstName.hasFocus()) {
-                    firstName.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                            imm.showSoftInput(firstName, InputMethodManager.SHOW_IMPLICIT);
-                        }
-                    });
-                }
-            }
-        });
-        if(firstName.getText().toString().equals("")) {
-            firstName.requestFocus();
-        }
+        firstName.setText(signUpService.getFirstName());
+        lastName.setText(signUpService.getLastName());
+        birthday.setText(signUpService.getBirthday());
+        sex = signUpService.getSex();
+        setSexButton(sex);
     }
 
     public void onRadioButtonClicked(View view) {
@@ -127,42 +114,6 @@ public class SignUpBiographical extends Activity {
 
     // when the sign up button is pressed (sign up)
     public void signUpPressed(View v){
-        /*
-        signUpService.setFirstName(signUpBiographical.getFirstNameText());
-        signUpService.setLastName(signUpBiographical.getLastNameText());
-        signUpService.setBirthday(signUpBiographical.getBirthdayText());
-        signUpService.setSex(signUpBiographical.getSexText());
-
-        if(signUpService.getFirstName().equals("")) {
-            Toast.makeText(this, "Please enter your first name.", Toast.LENGTH_SHORT).show();
-        }
-        else if(signUpService.getLastName().equals("")) {
-            Toast.makeText(this, "Please enter your last name.", Toast.LENGTH_SHORT).show();
-        }
-        else if(!signUpService.getEmail().matches("^[a-zA-Z0-9_\\-+%\\.]+@[a-zA-Z0-9\\-\\.]+\\.[a-zA-Z\\.]{2,6}$")){
-            Toast.makeText(this, "Please enter a valid email address.", Toast.LENGTH_SHORT).show();
-        }
-        else {
-            Globals.createUser(signUpService.getDesiredUsername(), signUpService.getFirstName(),
-                    signUpService.getEmail(), signUpService.getPhoneNumber());
-
-            signUpBiographical.setFirstNameText(signUpService.getFirstName());
-            signUpBiographical.setLastNameText(signUpService.getLastName());
-            signUpBiographical.setBirthdayText(signUpService.getBirthday());
-            signUpBiographical.setSexButton(signUpService.getSex());
-            signUpCredentials.setDesiredUsernameText(signUpService.getDesiredUsername());
-
-            ft = fm.beginTransaction();
-            ft.add(R.id.loading_place, loadingBar, "loadingBarTag");
-            ft.commit();
-            new SignUpTask().execute(signUpService.getDesiredUsername(), signUpService.getDesiredPassword(),
-                    signUpService.getEmail(), signUpService.getPhoneNumber(),
-                    signUpService.getFirstName() + " " + signUpService.getLastName(),
-                    signUpService.getBirthday(), signUpService.getSex());
-            signUpBiographical.disableButtons();
-        }
-        */
-
         signUpService.setFirstName(firstName.getText().toString());
         signUpService.setLastName(lastName.getText().toString());
         signUpService.setBirthday(birthday.getText().toString());
@@ -196,13 +147,7 @@ public class SignUpBiographical extends Activity {
 
     // when the back button is pressed (sign up)
     public void backSignUpPressed(View v){
-        /*
-        // begins transaction that returns the user to the sign up credentials fragment
-        // from the sign up biographical fragment
-        ft = fm.beginTransaction();
-        //ft.replace(R.id.fragment_place, signUpCredentials, "signUpCredentialsTag");
-        ft.commit();
-        */
+       finish();
     }
 
     public void disableButtons() {
@@ -222,34 +167,6 @@ public class SignUpBiographical extends Activity {
         notSpecified.setEnabled(true);
     }
 
-    public String getFirstNameText() {
-        return this.firstName.getText().toString();
-    }
-
-    public String getLastNameText() {
-        return this.lastName.getText().toString();
-    }
-
-    public String getBirthdayText() {
-        return this.birthday.getText().toString();
-    }
-
-    public String getSexText() {
-        return sex;
-    }
-
-    public void setFirstNameText(String firstName) {
-        this.firstName.setText(firstName);
-    }
-
-    public void setLastNameText(String lastName) {
-        this.lastName.setText(lastName);
-    }
-
-    public void setBirthdayText(String birthday) {
-        this.birthday.setText(birthday);
-    }
-
     public void setSexButton(String sex) {
         if(sex.equals("male")) {
             male.setChecked(true);
@@ -257,7 +174,7 @@ public class SignUpBiographical extends Activity {
         else if(sex.equals("female")) {
             female.setChecked(true);
         }
-        else {
+        else if(sex.equals("not specified")){
             notSpecified.setChecked(true);
         }
     }
@@ -317,4 +234,31 @@ public class SignUpBiographical extends Activity {
         }
     }
 
+    public String getFirstNameText() {
+        return this.firstName.getText().toString();
+    }
+
+    public String getLastNameText() {
+        return this.lastName.getText().toString();
+    }
+
+    public String getBirthdayText() {
+        return this.birthday.getText().toString();
+    }
+
+    public String getSexText() {
+        return sex;
+    }
+
+    public void setFirstNameText(String firstName) {
+        this.firstName.setText(firstName);
+    }
+
+    public void setLastNameText(String lastName) {
+        this.lastName.setText(lastName);
+    }
+
+    public void setBirthdayText(String birthday) {
+        this.birthday.setText(birthday);
+    }
 }

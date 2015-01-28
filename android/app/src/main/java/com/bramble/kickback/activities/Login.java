@@ -32,22 +32,6 @@ public class Login extends Activity {
         password = (EditText) findViewById(R.id.editTextPassword);
         loginButton = (Button) findViewById(R.id.buttonSignIn);
         cancelButton = (Button) findViewById(R.id.buttonCancelSignIn);
-
-        username.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (username.hasFocus()) {
-                    username.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                            imm.showSoftInput(username, InputMethodManager.SHOW_IMPLICIT);
-                        }
-                    });
-                }
-            }
-        });
-        username.requestFocus();
     }
 
     public void disableButtons() {
@@ -60,60 +44,13 @@ public class Login extends Activity {
         cancelButton.setEnabled(true);
     }
 
-    public String getUsernameText() {
-        return username.getText().toString();
-    }
-
-    public String getPasswordText() {
-        return password.getText().toString();
-    }
-
-    public void setUsernameText(String username) {
-        this.username.setText(username);
-    }
-
-    public void setPasswordText(String password) {
-        this.password.setText(password);
-    }
-
     // when the cancel button is pressed (login)
     public void cancelSignInPressed(View v){
-        /*
-        // clears all the instance variables within login service
-        loginService.clear();
-        // stops the login service because the user has returned to the account index fragment
-        stopService(loginServiceIntent);
-        // begins transaction that replaces the login fragment with the account index fragment
-        ft = fm.beginTransaction();
-        ft.replace(R.id.fragment_place, accountPortalIndex);
-        ft.commit();
-        // resets the login fragment so it doesn't retain any of the inputs made by the user
-        // during the duration of the login service
-        login = new Login();
-        */
         finish();
     }
 
     // when the login button is pressed (login)
     public void loginPressed(View v){
-        /*
-        // sets the instance variables in the login service to the inputs gathered
-        // by the edit texts in the fragments
-        loginService.setUsername(login.getUsernameText());
-        loginService.setPassword(login.getPasswordText());
-        // native checks to make sure all fields are properly filled out
-        if (loginService.getUsername().equals("") || loginService.getPassword().equals("")) {
-            Toast.makeText(this, "Please enter your username and password.", Toast.LENGTH_SHORT).show();
-        }
-        // if the inputs are appropriate
-        else {
-            ft = fm.beginTransaction();
-            ft.add(R.id.loading_place, loadingBar, "loadingBarTag");
-            ft.commit();
-            new LoginTask().execute(loginService.getUsername(), loginService.getPassword());
-            login.disableButtons();
-        }
-        */
         String username = getUsernameText();
         String password = getPasswordText();
         if (username.equals("") || password.equals("")) {
@@ -160,4 +97,19 @@ public class Login extends Activity {
         }
     }
 
+    public String getUsernameText() {
+        return username.getText().toString();
+    }
+
+    public String getPasswordText() {
+        return password.getText().toString();
+    }
+
+    public void setUsernameText(String username) {
+        this.username.setText(username);
+    }
+
+    public void setPasswordText(String password) {
+        this.password.setText(password);
+    }
 }

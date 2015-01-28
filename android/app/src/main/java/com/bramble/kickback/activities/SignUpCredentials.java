@@ -72,24 +72,6 @@ public class SignUpCredentials extends Activity {
         phoneNumber = (EditText) findViewById(R.id.editTextPhoneNumber);
         continueButton = (Button) findViewById(R.id.buttonSignUp);
         cancelButton = (Button) findViewById(R.id.buttonCancelSignUp);
-
-        email.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (email.hasFocus()) {
-                    email.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                            imm.showSoftInput(email, InputMethodManager.SHOW_IMPLICIT);
-                        }
-                    });
-                }
-            }
-        });
-        if(email.getText().equals("")){
-            email.requestFocus();
-        }
     }
 
     public void disableButtons() {
@@ -103,12 +85,9 @@ public class SignUpCredentials extends Activity {
     }
 
     // when the continue button is pressed (sign up)
-    public void continueSignUpPressed(View v) {
-
-        // NEEDS REWORK (more checks with server)
-
+        public void continueSignUpPressed(View v) {
         // sets the instance variables inside the sign up service to the inputs
-        // gathered in the sing up credentials fragment
+        // gathered in the sign up credentials
         signUpService.setEmail(email.getText().toString());
         signUpService.setDesiredUsername(desiredUsername.getText().toString());
         signUpService.setDesiredPassword(desiredPassword.getText().toString());
@@ -154,6 +133,38 @@ public class SignUpCredentials extends Activity {
         finish();
     }
 
+    // Asynchronously sends a request to check uniqueness of credentials
+    private class CheckCredentialTask extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                return new ConnectionHandler().checkCredentials(params[0], params[1], params[2]);
+            } catch (IOException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            if (result != null) {
+                if (result.startsWith("200:")) {
+                    Intent intent = new Intent(SignUpCredentials.this, SignUpBiographical.class);
+                    startActivity(intent);
+                }
+                else if (result.startsWith("401:")) {
+                    Toast.makeText(SignUpCredentials.this, result.replace("401:", ""), Toast.LENGTH_LONG).show();
+                    SignUpCredentials.this.enableButtons();
+                }
+            }
+            else {
+                Toast.makeText(SignUpCredentials.this, "An error occurred.", Toast.LENGTH_LONG).show();
+                SignUpCredentials.this.enableButtons();
+            }
+        }
+    }
+
     public String getEmailText() {
         return this.email.getText().toString();
     }
@@ -194,35 +205,4 @@ public class SignUpCredentials extends Activity {
         this.phoneNumber.setText(phoneNumber);
     }
 
-    // Asynchronously sends a request to check uniqueness of credentials
-    private class CheckCredentialTask extends AsyncTask<String, Void, String> {
-
-        @Override
-        protected String doInBackground(String... params) {
-            try {
-                return new ConnectionHandler().checkCredentials(params[0], params[1], params[2]);
-            } catch (IOException e) {
-                e.printStackTrace();
-                return null;
-            }
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            if (result != null) {
-                if (result.startsWith("200:")) {
-                    Intent intent = new Intent(SignUpCredentials.this, SignUpBiographical.class);
-                    startActivity(intent);
-                }
-                else if (result.startsWith("401:")) {
-                    Toast.makeText(SignUpCredentials.this, result.replace("401:", ""), Toast.LENGTH_LONG).show();
-                    SignUpCredentials.this.enableButtons();
-                }
-            }
-            else {
-                Toast.makeText(SignUpCredentials.this, "An error occurred.", Toast.LENGTH_LONG).show();
-                SignUpCredentials.this.enableButtons();
-            }
-        }
-    }
 }
