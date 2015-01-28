@@ -100,6 +100,9 @@ public class SignUpCredentials extends Activity {
         if(signUpContainer.getDesiredEmail().equals("")) {
             Toast.makeText(this, "Please enter your email address.", Toast.LENGTH_SHORT).show();
         }
+        else if(!signUpContainer.getDesiredEmail().matches("^[a-zA-Z0-9_\\-+%\\.]+@[a-zA-Z0-9\\-\\.]+\\.[a-zA-Z\\.]{2,6}$")){
+            Toast.makeText(this, "Please enter a valid email address.", Toast.LENGTH_SHORT).show();
+        }
         else if (signUpContainer.getDesiredUsername().equals("") || signUpContainer.getPassword().equals("")) {
             Toast.makeText(this, "Please enter desired username and password.", Toast.LENGTH_SHORT).show();
         }

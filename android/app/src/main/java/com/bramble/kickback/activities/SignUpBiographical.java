@@ -110,8 +110,11 @@ public class SignUpBiographical extends Activity {
         else if(signUpContainer.getLastName().equals("")) {
             Toast.makeText(this, "Please enter your last name.", Toast.LENGTH_SHORT).show();
         }
-        else if(!signUpContainer.getDesiredEmail().matches("^[a-zA-Z0-9_\\-+%\\.]+@[a-zA-Z0-9\\-\\.]+\\.[a-zA-Z\\.]{2,6}$")){
-            Toast.makeText(this, "Please enter a valid email address.", Toast.LENGTH_SHORT).show();
+        else if(signUpContainer.getBirthdate().equals("")) {
+            Toast.makeText(this, "Please enter your birth date.", Toast.LENGTH_SHORT).show();
+        }
+        else if(signUpContainer.getSex().equals("")) {
+            Toast.makeText(this, "Please select your sex.", Toast.LENGTH_SHORT).show();
         }
         else {
             Globals.createUser(signUpContainer.getDesiredUsername(), signUpContainer.getFirstName(),
