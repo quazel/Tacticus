@@ -29,6 +29,5 @@ public class AccountPortal extends Activity {
     public void toSignUpPressed(View v){
         Intent intent = new Intent(this, SignUpCredentials.class);
         startActivity(intent);
-
     }
 }

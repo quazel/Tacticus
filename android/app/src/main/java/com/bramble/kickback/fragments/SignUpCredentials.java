@@ -1,12 +1,16 @@
 package com.bramble.kickback.fragments;
 import com.bramble.kickback.R;
+import com.bramble.kickback.activities.AccountPortal;
 import com.bramble.kickback.networking.ConnectionHandler;
 import com.bramble.kickback.service.SignUpService;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -25,6 +29,7 @@ import java.io.IOException;
 public class SignUpCredentials extends Activity {
 
     private SignUpService signUpService;
+    private Intent signUpServiceIntent;
 
     private ServiceConnection signUpConnection = new ServiceConnection() {
         // Called when the connection with the service is established
@@ -48,8 +53,19 @@ public class SignUpCredentials extends Activity {
     private Button continueButton;
     private Button cancelButton;
 
+    private FragmentManager fm;
+    private FragmentTransaction ft;
+    private LoadingBar loadingBar;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
+        signUpServiceIntent = new Intent(this, SignUpService.class);
+        startService(signUpServiceIntent);
+        bindService(signUpServiceIntent, signUpConnection, Context.BIND_AUTO_CREATE);
+
+        fm = getFragmentManager();
+        loadingBar = new LoadingBar();
 
         email = (EditText) findViewById(R.id.editTextEmail);
         desiredUsername = (EditText) findViewById(R.id.editTextDesiredUsername);
@@ -90,16 +106,16 @@ public class SignUpCredentials extends Activity {
 
     // when the continue button is pressed (sign up)
     public void continueSignUpPressed(View v) {
-        /*
+
         // NEEDS REWORK (more checks with server)
 
         // sets the instance variables inside the sign up service to the inputs
         // gathered in the sing up credentials fragment
-        signUpService.setEmail(signUpCredentials.getEmailText());
-        signUpService.setDesiredUsername(signUpCredentials.getDesiredUsernameText());
-        signUpService.setDesiredPassword(signUpCredentials.getDesiredPasswordText());
-        signUpService.setConfirmPassword(signUpCredentials.getConfirmDesiredPasswordText());
-        signUpService.setPhoneNumber(signUpCredentials.getPhoneNumberText());
+        signUpService.setEmail(email.getText().toString());
+        signUpService.setDesiredUsername(desiredUsername.getText().toString());
+        signUpService.setDesiredPassword(desiredPassword.getText().toString());
+        signUpService.setConfirmPassword(confirmDesiredPassword.getText().toString());
+        signUpService.setPhoneNumber(phoneNumber.getText().toString());
         // native checks on inputs gathered
         if(signUpService.getEmail().equals("")) {
             Toast.makeText(this, "Please enter your email address.", Toast.LENGTH_SHORT).show();
@@ -131,30 +147,18 @@ public class SignUpCredentials extends Activity {
             ft = fm.beginTransaction();
             ft.add(R.id.loading_place, loadingBar, "loadingBarTag");
             ft.commit();
-            new CheckCredentialTask().execute(signUpService.getDesiredUsername(),
-                    signUpService.getEmail(),
-                    signUpService.getPhoneNumber());
-            signUpCredentials.disableButtons();
+            disableButtons();
         }
-        */
     }
 
     // when cancel is pressed (sign up)
     public void cancelSignUpPressed(View v){
-        /*
         // clears instance variables within sign up service
         signUpService.clear();
         // stops the sign up service
         stopService(signUpServiceIntent);
-        // begins transaction that replaces the sign up credentials fragment with
-        // the account portal index fragment
-        ft = fm.beginTransaction();
-        //ft.replace(R.id.fragment_place, accountPortalIndex);
-        ft.commit();
-        // resets the inputs of the sign up fragments by turning them into new ones
-        signUpCredentials = new SignUpCredentials();
-        signUpBiographical = new SignUpBiographical();
-        */
+        Intent intent = new Intent(this, AccountPortal.class);
+        startActivity(intent);
     }
 
     public String getEmailText() {
