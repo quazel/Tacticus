@@ -210,7 +210,6 @@ public class SignUpBiographical extends Activity {
                     user.setUsername(json.getString("username"));
                     user.setEmail(json.getString("email"));
                     user.setPhoneNumber(json.getString("phone_number"));
-                    user.setSessionId(json.getString("session_id"));
                     user.setTemp(true);
                     return user;
                 }
