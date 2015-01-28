@@ -152,6 +152,7 @@ public class SignUpCredentials extends Activity {
                 if (result.startsWith("200:")) {
                     Intent intent = new Intent(SignUpCredentials.this, SignUpBiographical.class);
                     startActivity(intent);
+                    finish();
                 }
                 else if (result.startsWith("401:")) {
                     Toast.makeText(SignUpCredentials.this, result.replace("401:", ""), Toast.LENGTH_LONG).show();

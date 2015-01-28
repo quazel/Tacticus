@@ -8,6 +8,8 @@ import com.bramble.kickback.util.Globals;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.ComponentName;
@@ -17,6 +19,7 @@ import android.content.ServiceConnection;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -86,11 +89,13 @@ public class SignUpBiographical extends Activity {
         continueButton = (Button) findViewById(R.id.buttonSignUp);
         cancelButton = (Button) findViewById(R.id.buttonCancelSignUp);
 
+        /*
         firstName.setText(signUpService.getFirstName());
         lastName.setText(signUpService.getLastName());
         birthday.setText(signUpService.getBirthday());
         sex = signUpService.getSex();
         setSexButton(sex);
+        */
     }
 
     public void onRadioButtonClicked(View view) {
@@ -184,7 +189,7 @@ public class SignUpBiographical extends Activity {
         int year = current.get(Calendar.YEAR);
         int month = current.get(Calendar.MONTH);
         int day = current.get(Calendar.DAY_OF_MONTH);
-        new DatePickerDialog(this, R.style.MyTheme, new BirthdatePickerDialog(), year, month, day).show();
+        new DatePickerDialog(this, new BirthdatePickerDialog(), year, month, day).show();
     }
 
     private class BirthdatePickerDialog implements DatePickerDialog.OnDateSetListener {
