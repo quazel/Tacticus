@@ -117,9 +117,17 @@ public class Login extends Activity {
             login.disableButtons();
         }
         */
+        String username = getUsernameText();
+        String password = getPasswordText();
+        if (username.equals("") || password.equals("")) {
+            Toast.makeText(this, "Please enter your username and password.", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            new LoginTask().execute(username, password);
+            disableButtons();
+        }
     }
 
-    /*
     // Asynchronously sends a login request
     private class LoginTask extends AsyncTask<String, Void, User> {
         @Override
@@ -143,20 +151,16 @@ public class Login extends Activity {
         protected void onPostExecute(User loggedUser) {
             if (loggedUser != null) {
                 Globals.theUser = loggedUser;
-                Intent intent = new Intent(AccountPortal.this, Home.class);
+                Intent intent = new Intent(Login.this, Home.class);
                 startActivity(intent);
                 finish();
             }
             else {
-                ft = fm.beginTransaction();
-                ft.remove(loadingBar);
-                ft.commit();
-                Toast.makeText(AccountPortal.this, "Invalid username or password.", Toast.LENGTH_LONG).show();
-                login.setPasswordText("");
-                login.enableButtons();
+                Toast.makeText(Login.this, "Invalid username or password.", Toast.LENGTH_LONG).show();
+                Login.this.setPasswordText("");
+                Login.this.enableButtons();
             }
         }
     }
-    */
 
 }
