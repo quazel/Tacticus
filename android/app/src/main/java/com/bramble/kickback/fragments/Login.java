@@ -123,8 +123,8 @@ public class Login extends Activity {
             Toast.makeText(this, "Please enter your username and password.", Toast.LENGTH_SHORT).show();
         }
         else {
-            new LoginTask().execute(username, password);
             disableButtons();
+            new LoginTask().execute(username, password);
         }
     }
 

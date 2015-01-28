@@ -1,6 +1,7 @@
 package com.bramble.kickback.fragments;
 import com.bramble.kickback.R;
 import com.bramble.kickback.activities.AccountPortal;
+import com.bramble.kickback.activities.Home;
 import com.bramble.kickback.networking.ConnectionHandler;
 import com.bramble.kickback.service.SignUpService;
 
@@ -142,12 +143,8 @@ public class SignUpCredentials extends Activity {
             Toast.makeText(this, "Please enter your mobile phone number.", Toast.LENGTH_SHORT).show();
         }
         else {
-
-            //
-            ft = fm.beginTransaction();
-            ft.add(R.id.loading_place, loadingBar, "loadingBarTag");
-            ft.commit();
             disableButtons();
+            new CheckCredentialTask().execute(getDesiredUsernameText(), getEmailText(), getPhoneNumberText());
         }
     }
 
@@ -157,8 +154,7 @@ public class SignUpCredentials extends Activity {
         signUpService.clear();
         // stops the sign up service
         stopService(signUpServiceIntent);
-        Intent intent = new Intent(this, AccountPortal.class);
-        startActivity(intent);
+        finish();
     }
 
     public String getEmailText() {
@@ -201,7 +197,6 @@ public class SignUpCredentials extends Activity {
         this.phoneNumber.setText(phoneNumber);
     }
 
-    /*
     // Asynchronously sends a request to check uniqueness of credentials
     private class CheckCredentialTask extends AsyncTask<String, Void, String> {
 
@@ -219,27 +214,18 @@ public class SignUpCredentials extends Activity {
         protected void onPostExecute(String result) {
             if (result != null) {
                 if (result.startsWith("200:")) {
-                    ft = fm.beginTransaction();
-                    ft.replace(R.id.fragment_place, signUpBiographical, "signUpBiographicalTag");
-                    ft.remove(loadingBar);
-                    ft.commit();
+                    Intent intent = new Intent(SignUpCredentials.this, SignUpBiographical.class);
+                    startActivity(intent);
                 }
                 else if (result.startsWith("401:")) {
-                    ft = fm.beginTransaction();
-                    ft.remove(loadingBar);
-                    ft.commit();
-                    Toast.makeText(AccountPortal.this, result.replace("401:", ""), Toast.LENGTH_LONG).show();
-                    signUpCredentials.enableButtons();
+                    Toast.makeText(SignUpCredentials.this, result.replace("401:", ""), Toast.LENGTH_LONG).show();
+                    SignUpCredentials.this.enableButtons();
                 }
             }
             else {
-                ft = fm.beginTransaction();
-                ft.remove(loadingBar);
-                ft.commit();
-                Toast.makeText(AccountPortal.this, "An error occurred.", Toast.LENGTH_LONG).show();
-                signUpCredentials.enableButtons();
+                Toast.makeText(SignUpCredentials.this, "An error occurred.", Toast.LENGTH_LONG).show();
+                SignUpCredentials.this.enableButtons();
             }
         }
     }
-    */
 }
