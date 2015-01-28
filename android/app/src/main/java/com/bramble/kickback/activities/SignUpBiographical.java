@@ -1,6 +1,6 @@
-package com.bramble.kickback.fragments;
+package com.bramble.kickback.activities;
 import com.bramble.kickback.R;
-import com.bramble.kickback.activities.Home;
+import com.bramble.kickback.fragments.LoadingBar;
 import com.bramble.kickback.models.User;
 import com.bramble.kickback.networking.ConnectionHandler;
 import com.bramble.kickback.service.SignUpService;
@@ -8,7 +8,6 @@ import com.bramble.kickback.util.Globals;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
-import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.ComponentName;
@@ -18,9 +17,7 @@ import android.content.ServiceConnection;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -71,7 +68,7 @@ public class SignUpBiographical extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_sign_up_biographical);
+        setContentView(R.layout.activity_sign_up_biographical);
         signUpServiceIntent = new Intent(this, SignUpService.class);
         bindService(signUpServiceIntent, signUpConnection, Context.BIND_AUTO_CREATE);
 
