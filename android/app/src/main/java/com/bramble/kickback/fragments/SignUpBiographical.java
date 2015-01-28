@@ -3,15 +3,21 @@ import com.bramble.kickback.R;
 import com.bramble.kickback.activities.Home;
 import com.bramble.kickback.models.User;
 import com.bramble.kickback.networking.ConnectionHandler;
+import com.bramble.kickback.service.SignUpService;
 import com.bramble.kickback.util.Globals;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +35,23 @@ import java.util.Calendar;
 
 public class SignUpBiographical extends Activity {
 
+    private SignUpService signUpService;
+    private Intent signUpServiceIntent;
+
+    private ServiceConnection signUpConnection = new ServiceConnection() {
+        // Called when the connection with the service is established
+        public void onServiceConnected(ComponentName className, IBinder service) {
+            // Because we have bound to an explicit
+            // service that is running in our own process, we can
+            // cast its IBinder to a concrete class and directly access it.
+            SignUpService.LocalBinder binder = (SignUpService.LocalBinder) service;
+            signUpService = binder.getService();
+        }
+        // Called when the connection with the service disconnects unexpectedly
+        public void onServiceDisconnected(ComponentName className) {
+        }
+    };
+
     // items on the fragment
     private EditText firstName;
     private EditText lastName;
@@ -41,8 +64,18 @@ public class SignUpBiographical extends Activity {
     private Button continueButton;
     private Button cancelButton;
 
+    private FragmentManager fm;
+    private FragmentTransaction ft;
+    private LoadingBar loadingBar;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        signUpServiceIntent = new Intent(this, SignUpService.class);
+        bindService(signUpServiceIntent, signUpConnection, Context.BIND_AUTO_CREATE);
+
+        fm = getFragmentManager();
+        loadingBar = new LoadingBar();
+
         // gathers all the edit texts featured in this fragment
         firstName = (EditText) findViewById(R.id.editTextFirstName);
         lastName = (EditText) findViewById(R.id.editTextLastName);
@@ -92,6 +125,7 @@ public class SignUpBiographical extends Activity {
         }
     }
 
+
     // when the sign up button is pressed (sign up)
     public void signUpPressed(View v){
         /*
@@ -129,6 +163,36 @@ public class SignUpBiographical extends Activity {
             signUpBiographical.disableButtons();
         }
         */
+
+        signUpService.setFirstName(firstName.getText().toString());
+        signUpService.setLastName(lastName.getText().toString());
+        signUpService.setBirthday(birthday.getText().toString());
+        signUpService.setSex(getSexText());
+
+        if(signUpService.getFirstName().equals("")) {
+            Toast.makeText(this, "Please enter your first name.", Toast.LENGTH_SHORT).show();
+        }
+        else if(signUpService.getLastName().equals("")) {
+            Toast.makeText(this, "Please enter your last name.", Toast.LENGTH_SHORT).show();
+        }
+        else if(!signUpService.getEmail().matches("^[a-zA-Z0-9_\\-+%\\.]+@[a-zA-Z0-9\\-\\.]+\\.[a-zA-Z\\.]{2,6}$")){
+            Toast.makeText(this, "Please enter a valid email address.", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Globals.createUser(signUpService.getDesiredUsername(), signUpService.getFirstName(),
+                    signUpService.getEmail(), signUpService.getPhoneNumber());
+
+            firstName.setText(signUpService.getFirstName());
+            lastName.setText(signUpService.getLastName());
+            birthday.setText(signUpService.getBirthday());
+            setSexButton(signUpService.getSex());
+
+            new SignUpTask().execute(signUpService.getDesiredUsername(), signUpService.getDesiredPassword(),
+                    signUpService.getEmail(), signUpService.getPhoneNumber(),
+                    signUpService.getFirstName() + " " + signUpService.getLastName(),
+                    signUpService.getBirthday(), signUpService.getSex());
+            disableButtons();
+        }
     }
 
     // when the back button is pressed (sign up)
@@ -188,10 +252,10 @@ public class SignUpBiographical extends Activity {
     }
 
     public void setSexButton(String sex) {
-        if(sex.equals(male.getText())) {
+        if(sex.equals("male")) {
             male.setChecked(true);
         }
-        else if(sex.equals(female.getText())) {
+        else if(sex.equals("female")) {
             female.setChecked(true);
         }
         else {
@@ -218,7 +282,6 @@ public class SignUpBiographical extends Activity {
         }
     }
 
-    /*
     // Asynchronously sends a sign up request
     private class SignUpTask extends AsyncTask<String, Void, User> {
         @Override
@@ -244,20 +307,15 @@ public class SignUpBiographical extends Activity {
         protected void onPostExecute(User loggedUser) {
             if (loggedUser != null) {
                 Globals.theUser = loggedUser;
-                Intent intent = new Intent(AccountPortal.this, Home.class);
+                Intent intent = new Intent(SignUpBiographical.this, Home.class);
                 startActivity(intent);
                 finish();
             }
             else {
-                ft = fm.beginTransaction();
-                ft.replace(R.id.fragment_place, signUpBiographical, "signUpBiographicalTag");
-                ft.remove(loadingBar);
-                ft.commit();
-                Toast.makeText(AccountPortal.this, "An error occurred.", Toast.LENGTH_LONG).show();
-                signUpBiographical.enableButtons();
+                Toast.makeText(SignUpBiographical.this, "An error occurred.", Toast.LENGTH_LONG).show();
+                SignUpBiographical.this.enableButtons();
             }
         }
     }
-    */
 
 }
