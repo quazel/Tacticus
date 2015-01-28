@@ -1,12 +1,16 @@
 package com.bramble.kickback.fragments;
 import com.bramble.kickback.R;
 import com.bramble.kickback.networking.ConnectionHandler;
+import com.bramble.kickback.service.SignUpService;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.ServiceConnection;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +23,22 @@ import java.io.IOException;
 
 
 public class SignUpCredentials extends Activity {
+
+    private SignUpService signUpService;
+
+    private ServiceConnection signUpConnection = new ServiceConnection() {
+        // Called when the connection with the service is established
+        public void onServiceConnected(ComponentName className, IBinder service) {
+            // Because we have bound to an explicit
+            // service that is running in our own process, we can
+            // cast its IBinder to a concrete class and directly access it.
+            SignUpService.LocalBinder binder = (SignUpService.LocalBinder) service;
+            signUpService = binder.getService();
+        }
+        // Called when the connection with the service disconnects unexpectedly
+        public void onServiceDisconnected(ComponentName className) {
+        }
+    };
 
     private EditText email;
     private EditText desiredUsername;

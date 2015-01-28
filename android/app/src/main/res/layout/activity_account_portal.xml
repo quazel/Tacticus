@@ -1,40 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/list_activity_horizontal_margin"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/list_activity_horizontal_margin"
     android:paddingRight="@dimen/list_activity_horizontal_margin"
-    android:paddingTop="@dimen/list_activity_vertical_margin"
     android:paddingBottom="@dimen/list_activity_vertical_margin"
+    android:paddingTop="@dimen/list_activity_vertical_margin"
+    android:background="@color/white"
     android:theme="@android:style/Theme.NoTitleBar"
-    tools:context="com.bramble.kickback.activities.AccountPortal"
-    android:background="@color/white">
+    android:imeOptions="actionDone">
 
-    <Space
-        android:id="@+id/half_space"
-        android:layout_width="match_parent"
-        android:layout_height="375dp"
-        android:layout_gravity="center_horizontal|top" />
-
-    <Space
-        android:id="@+id/bottom_space"
+    <LinearLayout
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:layout_gravity="center_horizontal|bottom" />
+        android:orientation="horizontal">
 
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="Login"
+            android:textColor="@color/title_text_color"
+            android:layout_weight="1"
+            android:background="@drawable/full_width_selector"
+            android:textSize="25sp"
+            android:id="@+id/toLogin"
+            android:onClick="toSignInPressed"/>
 
-    <FrameLayout
-        android:id="@+id/fragment_place"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="Sign Up"
+            android:textColor="@color/title_text_color"
+            android:layout_weight="1"
+            android:background="@drawable/full_width_selector"
+            android:textSize="25sp"
+            android:id="@+id/toSignUp"
+            android:onClick="toSignUpPressed"/>
 
-    <FrameLayout
-        android:id="@+id/loading_place"
-        android:layout_centerHorizontal="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/half_space"
-        android:layout_above="@+id/bottom_space"
-        android:visibility="visible"
-        />
+    </LinearLayout>
 
 </RelativeLayout>

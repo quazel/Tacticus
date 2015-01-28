@@ -131,6 +131,15 @@ public class SignUpBiographical extends Activity {
         */
     }
 
+    // when the back button is pressed (sign up)
+    public void backSignUpPressed(View v){
+        // begins transaction that returns the user to the sign up credentials fragment
+        // from the sign up biographical fragment
+        ft = fm.beginTransaction();
+        //ft.replace(R.id.fragment_place, signUpCredentials, "signUpCredentialsTag");
+        ft.commit();
+    }
+
     public void disableButtons() {
         continueButton.setEnabled(false);
         cancelButton.setEnabled(false);
