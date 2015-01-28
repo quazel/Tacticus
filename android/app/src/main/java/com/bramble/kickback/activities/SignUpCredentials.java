@@ -1,5 +1,6 @@
 package com.bramble.kickback.activities;
 import com.bramble.kickback.R;
+import com.bramble.kickback.containers.SignUpContainer;
 import com.bramble.kickback.fragments.LoadingBar;
 import com.bramble.kickback.networking.ConnectionHandler;
 import com.bramble.kickback.service.SignUpService;
@@ -25,22 +26,7 @@ import java.io.IOException;
 
 public class SignUpCredentials extends Activity {
 
-    private SignUpService signUpService;
-    private Intent signUpServiceIntent;
-
-    private ServiceConnection signUpConnection = new ServiceConnection() {
-        // Called when the connection with the service is established
-        public void onServiceConnected(ComponentName className, IBinder service) {
-            // Because we have bound to an explicit
-            // service that is running in our own process, we can
-            // cast its IBinder to a concrete class and directly access it.
-            SignUpService.LocalBinder binder = (SignUpService.LocalBinder) service;
-            signUpService = binder.getService();
-        }
-        // Called when the connection with the service disconnects unexpectedly
-        public void onServiceDisconnected(ComponentName className) {
-        }
-    };
+    private SignUpContainer signUpContainer;
 
     private EditText email;
     private EditText desiredUsername;
@@ -58,9 +44,7 @@ public class SignUpCredentials extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_credentials);
-        signUpServiceIntent = new Intent(this, SignUpService.class);
-        startService(signUpServiceIntent);
-        bindService(signUpServiceIntent, signUpConnection, Context.BIND_AUTO_CREATE);
+        signUpContainer = SignUpContainer.getInstance();
 
         fm = getFragmentManager();
         loadingBar = new LoadingBar();
@@ -72,6 +56,10 @@ public class SignUpCredentials extends Activity {
         phoneNumber = (EditText) findViewById(R.id.editTextPhoneNumber);
         continueButton = (Button) findViewById(R.id.buttonSignUp);
         cancelButton = (Button) findViewById(R.id.buttonCancelSignUp);
+
+        setEmailText(signUpContainer.getDesiredEmail());
+        setDesiredUsernameText(signUpContainer.getDesiredUsername());
+        setPhoneNumberText(signUpContainer.getDesiredPhoneNumber());
     }
 
     public void disableButtons() {
@@ -88,34 +76,33 @@ public class SignUpCredentials extends Activity {
         public void continueSignUpPressed(View v) {
         // sets the instance variables inside the sign up service to the inputs
         // gathered in the sign up credentials
-        signUpService.setEmail(email.getText().toString());
-        signUpService.setDesiredUsername(desiredUsername.getText().toString());
-        signUpService.setDesiredPassword(desiredPassword.getText().toString());
-        signUpService.setConfirmPassword(confirmDesiredPassword.getText().toString());
-        signUpService.setPhoneNumber(phoneNumber.getText().toString());
+        signUpContainer.setDesiredEmail(email.getText().toString());
+        signUpContainer.setDesiredUsername(desiredUsername.getText().toString());
+        signUpContainer.setPassword(desiredPassword.getText().toString());
+        signUpContainer.setDesiredPhoneNumber(phoneNumber.getText().toString());
         // native checks on inputs gathered
-        if(signUpService.getEmail().equals("")) {
+        if(signUpContainer.getDesiredEmail().equals("")) {
             Toast.makeText(this, "Please enter your email address.", Toast.LENGTH_SHORT).show();
         }
-        else if (signUpService.getDesiredUsername().equals("") || signUpService.getDesiredPassword().equals("")) {
+        else if (signUpContainer.getDesiredUsername().equals("") || signUpContainer.getPassword().equals("")) {
             Toast.makeText(this, "Please enter desired username and password.", Toast.LENGTH_SHORT).show();
         }
-        else if(signUpService.getConfirmPassword().equals("")){
+        else if(confirmDesiredPassword.getText().toString().equals("")){
             Toast.makeText(this, "Please confirm password.", Toast.LENGTH_SHORT).show();
         }
-        else if(!signUpService.getDesiredUsername().matches("^[a-zA-Z0-9_]+$")) {
+        else if(!signUpContainer.getDesiredUsername().matches("^[a-zA-Z0-9_]+$")) {
             Toast.makeText(this, "Usernames may only contain letters, numbers, and underscores (_).", Toast.LENGTH_SHORT).show();
         }
-        else if(signUpService.getDesiredPassword().length() < 6 || signUpService.getDesiredPassword().length() > 20){
+        else if(signUpContainer.getPassword().length() < 6 || signUpContainer.getPassword().length() > 20){
             Toast.makeText(this, "Passwords must be between 6 and 20 characters in length.", Toast.LENGTH_SHORT).show();
         }
-        else if(!signUpService.getDesiredPassword().matches("^[a-zA-Z0-9_\\-!@#$%^&*]+$")) {
+        else if(!signUpContainer.getPassword().matches("^[a-zA-Z0-9_\\-!@#$%^&*]+$")) {
             Toast.makeText(this, "Passwords may only contain letters, numbers, and the special characters !@#$%^&*-_.", Toast.LENGTH_SHORT).show();
         }
-        else if(!signUpService.getDesiredPassword().equals(signUpService.getConfirmPassword())){
+        else if(!signUpContainer.getPassword().equals(confirmDesiredPassword.getText().toString())) {
             Toast.makeText(this, "Entered passwords are not the same.", Toast.LENGTH_SHORT).show();
         }
-        else if(signUpService.getPhoneNumber().equals("")) {
+        else if(signUpContainer.getDesiredPhoneNumber().equals("")) {
             Toast.makeText(this, "Please enter your mobile phone number.", Toast.LENGTH_SHORT).show();
         }
         else {
@@ -129,47 +116,9 @@ public class SignUpCredentials extends Activity {
 
     // when cancel is pressed (sign up)
     public void cancelSignUpPressed(View v){
-        // clears instance variables within sign up service
-        signUpService.clear();
-        // stops the sign up service
-        stopService(signUpServiceIntent);
+        // clears the data in the sign up container
+        signUpContainer.clear();
         finish();
-    }
-
-    // Asynchronously sends a request to check uniqueness of credentials
-    private class CheckCredentialTask extends AsyncTask<String, Void, String> {
-
-        @Override
-        protected String doInBackground(String... params) {
-            try {
-                return new ConnectionHandler().checkCredentials(params[0], params[1], params[2]);
-            } catch (IOException e) {
-                e.printStackTrace();
-                return null;
-            }
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            if (result != null) {
-                if (result.startsWith("200:")) {
-                    Intent intent = new Intent(SignUpCredentials.this, SignUpBiographical.class);
-                    startActivity(intent);
-                    finish();
-                }
-                else if (result.startsWith("401:")) {
-                    Toast.makeText(SignUpCredentials.this, result.replace("401:", ""), Toast.LENGTH_LONG).show();
-                    SignUpCredentials.this.enableButtons();
-                }
-            }
-            else {
-                ft = fm.beginTransaction();
-                ft.remove(loadingBar);
-                ft.commit();
-                Toast.makeText(SignUpCredentials.this, "An error occurred.", Toast.LENGTH_LONG).show();
-                SignUpCredentials.this.enableButtons();
-            }
-        }
     }
 
     public String getEmailText() {
@@ -210,6 +159,42 @@ public class SignUpCredentials extends Activity {
 
     public void setPhoneNumberText(String phoneNumber) {
         this.phoneNumber.setText(phoneNumber);
+    }
+
+    // Asynchronously sends a request to check uniqueness of credentials
+    private class CheckCredentialTask extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                return new ConnectionHandler().checkCredentials(params[0], params[1], params[2]);
+            } catch (IOException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            if (result != null) {
+                if (result.startsWith("200:")) {
+                    Intent intent = new Intent(SignUpCredentials.this, SignUpBiographical.class);
+                    startActivity(intent);
+                    finish();
+                }
+                else if (result.startsWith("401:")) {
+                    Toast.makeText(SignUpCredentials.this, result.replace("401:", ""), Toast.LENGTH_LONG).show();
+                    SignUpCredentials.this.enableButtons();
+                }
+            }
+            else {
+                ft = fm.beginTransaction();
+                ft.remove(loadingBar);
+                ft.commit();
+                Toast.makeText(SignUpCredentials.this, "An error occurred.", Toast.LENGTH_LONG).show();
+                SignUpCredentials.this.enableButtons();
+            }
+        }
     }
 
 }
