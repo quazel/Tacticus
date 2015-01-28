@@ -100,15 +100,15 @@
             android:label="@string/title_activity_account_portal"
             android:theme="@android:style/Theme.Black.NoTitleBar" >
         </activity>
-        <activity android:name=".fragments.Login"
+        <activity android:name=".activities.Login"
             android:label="Login"
             android:theme="@android:style/Theme.Black.NoTitleBar">
         </activity>
-        <activity android:name=".fragments.SignUpCredentials"
+        <activity android:name=".activities.SignUpCredentials"
             android:label="SignUpCredentials"
             android:theme="@android:style/Theme.Black.NoTitleBar">
         </activity>
-        <activity android:name=".fragments.SignUpBiographical"
+        <activity android:name=".activities.SignUpBiographical"
             android:label="SignUpBiographical"
             android:theme="@android:style/Theme.Black.NoTitleBar">
         </activity>

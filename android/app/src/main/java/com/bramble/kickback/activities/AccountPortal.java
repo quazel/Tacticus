@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.bramble.kickback.R;
-import com.bramble.kickback.fragments.Login;
-import com.bramble.kickback.fragments.SignUpCredentials;
 
 public class AccountPortal extends Activity {
 
