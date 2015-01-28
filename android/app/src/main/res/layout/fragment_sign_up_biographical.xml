@@ -95,7 +95,8 @@
                 android:orientation="horizontal"
                 android:layout_centerHorizontal="true"
                 android:layout_below="@+id/space_3"
-                android:id="@+id/sexGroup">
+                android:id="@+id/sexGroup"
+                android:onClick="onRadioButtonClicked">
 
                 <RadioButton
                     android:layout_width="wrap_content"

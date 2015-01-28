@@ -116,7 +116,6 @@ public class AccountPortal extends Activity {
         ft.replace(R.id.fragment_place, login, "loginTag");
         //ft.addToBackStack()
         ft.commit();
-        login.focusUsername();
     }
 
     // when the cancel button is pressed (login)
