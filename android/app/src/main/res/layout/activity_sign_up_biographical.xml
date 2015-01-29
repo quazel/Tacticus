@@ -127,19 +127,14 @@
 
             </RadioGroup>
 
-
-
         <Space
             android:layout_width="fill_parent"
             android:layout_height="@dimen/space_height"
             android:layout_below="@+id/sexGroup"
             android:id="@+id/space_4"/>
 
-
-
-
         <TextView
-            android:layout_width="@dimen/edittext_width"
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:textSize="11sp"
             android:layout_below="@+id/space_4"

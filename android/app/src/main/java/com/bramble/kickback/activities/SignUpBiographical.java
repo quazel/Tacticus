@@ -91,15 +91,6 @@ public class SignUpBiographical extends Activity {
         });
     }
 
-    public void onResume() {
-        super.onResume();
-        setFirstNameText(signUpContainer.getFirstName());
-        setLastNameText(signUpContainer.getLastName());
-        setBirthdayText(convertBirthday(signUpContainer.getBirthdate()));
-        birthdayString = signUpContainer.getBirthdate();
-        setSex(signUpContainer.getSex());
-    }
-
     // when the sign up button is pressed (sign up)
     public void signUpPressed(View v){
         signUpContainer.setFirstName(firstName.getText().toString());
@@ -142,6 +133,19 @@ public class SignUpBiographical extends Activity {
         signUpContainer.setLastName(lastName.getText().toString());
         signUpContainer.setBirthdate(birthdayString);
         signUpContainer.setSex(getSexText());
+        Intent intent = new Intent(this, SignUpCredentials.class);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        signUpContainer.setFirstName(firstName.getText().toString());
+        signUpContainer.setLastName(lastName.getText().toString());
+        signUpContainer.setBirthdate(birthdayString);
+        signUpContainer.setSex(getSexText());
+        Intent intent = new Intent(this, SignUpCredentials.class);
+        startActivity(intent);
         finish();
     }
 

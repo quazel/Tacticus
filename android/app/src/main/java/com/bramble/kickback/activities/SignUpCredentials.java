@@ -57,6 +57,9 @@ public class SignUpCredentials extends Activity {
 
         setEmailText(signUpContainer.getDesiredEmail());
         setDesiredUsernameText(signUpContainer.getDesiredUsername());
+        setDesiredPasswordText(signUpContainer.getPassword());
+        setConfirmDesiredPasswordText(signUpContainer.getPassword());
+        setCountryCodeText(signUpContainer.getCountryCode());
         setPhoneNumberText(signUpContainer.getDesiredPhoneNumber());
 
         confirmDesiredPassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -145,6 +148,16 @@ public class SignUpCredentials extends Activity {
     public void cancelSignUpPressed(View v){
         // clears the data in the sign up container
         signUpContainer.clear();
+        Intent intent = new Intent(this, AccountPortal.class);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        signUpContainer.clear();
+        Intent intent = new Intent(this, AccountPortal.class);
+        startActivity(intent);
         finish();
     }
 
@@ -227,6 +240,7 @@ public class SignUpCredentials extends Activity {
                     SignUpCredentials.this.enableButtons();
                     Intent intent = new Intent(SignUpCredentials.this, SignUpBiographical.class);
                     startActivity(intent);
+                    finish();
                 }
                 else if (result.startsWith("401:")) {
                     Toast.makeText(SignUpCredentials.this, result.replace("401:", ""), Toast.LENGTH_LONG).show();

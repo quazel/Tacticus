@@ -100,6 +100,7 @@ public class Home extends Activity {
         ft.commit();
     }
 
+    @Override
     public void onBackPressed() {
         new AlertDialog.Builder(this)
                 .setMessage("Are you sure you want to exit Kickback?")

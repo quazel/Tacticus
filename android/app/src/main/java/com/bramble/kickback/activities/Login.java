@@ -76,6 +76,15 @@ public class Login extends Activity {
 
     // when the cancel button is pressed (login)
     public void cancelSignInPressed(View v){
+        Intent intent = new Intent(this, AccountPortal.class);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, AccountPortal.class);
+        startActivity(intent);
         finish();
     }
 
