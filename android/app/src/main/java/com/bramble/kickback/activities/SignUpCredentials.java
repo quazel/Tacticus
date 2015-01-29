@@ -1,13 +1,18 @@
 package com.bramble.kickback.activities;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -36,6 +41,9 @@ public class SignUpCredentials extends Activity {
     private FragmentManager fm;
     private FragmentTransaction ft;
     private LoadingBar loadingBar;
+
+    private CharSequence[] countryCodeArray;
+    AlertDialog countryCodeDialog;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -79,6 +87,9 @@ public class SignUpCredentials extends Activity {
                 return false;
             }
         });
+
+        countryCodeArray = getResources().getStringArray(R.array.CountryCodes);
+
     }
 
     public void disableButtons() {
@@ -167,6 +178,37 @@ public class SignUpCredentials extends Activity {
     // IMPORTANT
     public void commenceCountryPicker() {
         // country picker code!
+        AlertDialog.Builder builder = new AlertDialog.Builder(SignUpCredentials.this);
+
+        builder.setTitle("Select Your Country Code");
+        builder.setSingleChoiceItems(countryCodeArray, -1, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int item) {
+                switch(item)
+                {
+                    case 0:
+                        // Your code when first option
+                        break;
+                    case 1:
+                        // Your code when 2nd  option
+
+                        break;
+                    case 2:
+                        // Your code when 3rd option
+                        break;
+                    case 3:
+                        // Your code when 4th  option
+                        break;
+                }
+            }
+        });
+        builder.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        builder.setNegativeButton("Cancel", null);
+        builder.show();
     }
 
     public String getEmailText() {
