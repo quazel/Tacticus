@@ -285,6 +285,9 @@ public class SignUpCredentials extends Activity {
                     finish();
                 }
                 else if (result.startsWith("401:")) {
+                    ft = fm.beginTransaction();
+                    ft.remove(loadingBar);
+                    ft.commit();
                     Toast.makeText(SignUpCredentials.this, result.replace("401:", ""), Toast.LENGTH_LONG).show();
                     SignUpCredentials.this.enableButtons();
                 }

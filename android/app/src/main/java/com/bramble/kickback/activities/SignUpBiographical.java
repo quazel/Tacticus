@@ -175,7 +175,9 @@ public class SignUpBiographical extends Activity {
         int year = current.get(Calendar.YEAR);
         int month = current.get(Calendar.MONTH);
         int day = current.get(Calendar.DAY_OF_MONTH);
-        new DatePickerDialog(this, new BirthdatePickerDialog(), year, month, day).show();
+        DatePickerDialog dialog =new DatePickerDialog(this, new BirthdatePickerDialog(), year, month, day);
+        dialog.getDatePicker().setMaxDate(current.getTimeInMillis());
+        dialog.show();
     }
 
     public String convertBirthday(String b) {
