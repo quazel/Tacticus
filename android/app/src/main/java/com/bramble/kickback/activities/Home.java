@@ -3,6 +3,8 @@ package com.bramble.kickback.activities;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +14,9 @@ import android.view.View;
 import android.widget.Button;
 
 import com.bramble.kickback.R;
+import com.bramble.kickback.fragments.KickbackFragment;
+import com.bramble.kickback.fragments.KickbackList;
+import com.bramble.kickback.fragments.LoadingBar;
 import com.bramble.kickback.util.Globals;
 
 
@@ -19,17 +24,27 @@ public class Home extends Activity {
 
     private Button theButton;
 
+    private FragmentManager fm;
+    private FragmentTransaction ft;
+    private KickbackList kickbackList;
+    private KickbackFragment kickbackFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (Globals.isOnline) {
-            setContentView(R.layout.activity_home_online);
-        }
-        else {
-            setContentView(R.layout.activity_home);
-        }
+        setContentView(R.layout.activity_home);
+
+        fm = getFragmentManager();
+        kickbackFragment = new KickbackFragment();
+        kickbackList = new KickbackList();
+
         ActionBar actionbar = getActionBar();
         theButton =(Button)findViewById(R.id.kickbackButton);
+
+        ft = getFragmentManager().beginTransaction();
+        //ft.setCustomAnimations(android.R.animator, android.R.animator.fade_out);
+        ft.add(R.id.home_container, kickbackFragment);
+        ft.commit();
     }
 
 
@@ -72,15 +87,17 @@ public class Home extends Activity {
     }*/
 
     public void onKickbackPressed(View view) {
-
-            Globals.goOnline();
-            setContentView(R.layout.activity_home_online);
-
+        ft = getFragmentManager().beginTransaction();
+        //ft.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out);
+        ft.replace(R.id.home_container, kickbackList);
+        ft.commit();
     }
 
     public void onBusyPressed(View view) {
-        Globals.goOffline();
-        setContentView(R.layout.activity_home);
+        ft = getFragmentManager().beginTransaction();
+        //ft.setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out);
+        ft.replace(R.id.home_container, kickbackFragment);
+        ft.commit();
     }
 
     public void onBackPressed() {
