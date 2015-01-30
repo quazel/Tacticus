@@ -40,8 +40,6 @@ public class Main extends Activity implements ActionBar.TabListener{
     private String[] tabs = { "Add Friends", "Friends", "Home", "Schedule", "Add Schedule" };
 
     // for home fragment tab
-    private OnlineFragment onlineFragment;
-    private OfflineFragment offlineFragment;
     ArrayList<Friend> onlineFriends;
 
 
@@ -49,7 +47,6 @@ public class Main extends Activity implements ActionBar.TabListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         // Initialization
         fragments = new ArrayList<Fragment>();
         addFriendsFragment = new AddFriendsFragment();
@@ -95,27 +92,15 @@ public class Main extends Activity implements ActionBar.TabListener{
             public void onPageScrollStateChanged(int arg0) {
             }
         });
-
-        // home fragment stuff
-        onlineFragment = new OnlineFragment();
-        offlineFragment = new OfflineFragment();
-        ft = fm.beginTransaction();
-        // if online add kickback list if offline add kickback fragment
-        // just for now
-        ft.add(R.id.home_container, offlineFragment);
     }
 
     // home functionality
     public void goOnlinePressed(View view) {
-        ft = fm.beginTransaction();
-        ft.replace(R.id.home_container, onlineFragment);
-        ft.commit();
+        homeFragment.goOnline();
     }
 
     public void goOfflinePressed(View view) {
-        ft = fm.beginTransaction();
-        ft.replace(R.id.home_container, offlineFragment);
-        ft.commit();
+        homeFragment.goOffline();
     }
 
 
