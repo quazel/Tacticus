@@ -7,6 +7,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 
 import com.bramble.kickback.R;
 import com.bramble.kickback.adapter.MainActivityPageAdapter;
@@ -17,6 +18,7 @@ import com.bramble.kickback.fragments.HomeFragment;
 import com.bramble.kickback.fragments.OfflineFragment;
 import com.bramble.kickback.fragments.OnlineFragment;
 import com.bramble.kickback.fragments.PlannerFragment;
+import com.bramble.kickback.models.Friend;
 
 import java.util.ArrayList;
 
@@ -40,6 +42,8 @@ public class Main extends Activity implements ActionBar.TabListener{
     // for home fragment tab
     private OnlineFragment onlineFragment;
     private OfflineFragment offlineFragment;
+    ArrayList<Friend> onlineFriends;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,6 +105,21 @@ public class Main extends Activity implements ActionBar.TabListener{
         ft.add(R.id.home_container, offlineFragment);
     }
 
+    // home functionality
+    public void goOnlinePressed(View view) {
+        ft = fm.beginTransaction();
+        ft.replace(R.id.home_container, onlineFragment);
+        ft.commit();
+    }
+
+    public void goOfflinePressed(View view) {
+        ft = fm.beginTransaction();
+        ft.replace(R.id.home_container, offlineFragment);
+        ft.commit();
+    }
+
+
+    // tab stuff
     @Override
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
     }

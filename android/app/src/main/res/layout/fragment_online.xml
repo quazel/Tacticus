@@ -41,7 +41,7 @@
             android:textColor="@color/title_text_color"
             android:textSize="30sp"
             android:textStyle="bold"
-            android:id="@+id/goOffline"
-            android:onClick="onBusyPressed"/>
+            android:id="@+id/goOfflineButton"
+            android:onClick="goOfflinePressed"/>
     </LinearLayout>
 </RelativeLayout>
