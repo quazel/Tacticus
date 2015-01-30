@@ -43,6 +43,7 @@ public class SignUpCredentials extends Activity {
     private LoadingBar loadingBar;
 
     private CharSequence[] countryCodeArray;
+    private String selected;
     AlertDialog countryCodeDialog;
 
     @Override
@@ -183,28 +184,13 @@ public class SignUpCredentials extends Activity {
         builder.setTitle("Select Your Country Code");
         builder.setSingleChoiceItems(countryCodeArray, -1, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int item) {
-                switch(item)
-                {
-                    case 0:
-                        // Your code when first option
-                        break;
-                    case 1:
-                        // Your code when 2nd  option
-
-                        break;
-                    case 2:
-                        // Your code when 3rd option
-                        break;
-                    case 3:
-                        // Your code when 4th  option
-                        break;
-                }
+                selected = countryCodeArray[item].toString().split(",")[1];
             }
         });
         builder.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-
+                countryCode.setText(selected);
             }
         });
         builder.setNegativeButton("Cancel", null);
