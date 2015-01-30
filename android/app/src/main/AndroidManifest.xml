@@ -22,78 +22,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activities.Home"
-            android:label="@string/Kickback" >
-        </activity>
-        <activity
-            android:name=".activities.KickbacksList"
-            android:label="@string/title_activity_kickback_list"
-            android:parentActivityName=".activities.Home" >
-        </activity>
-        <activity
-            android:name=".activities.KickbacksSchedule"
-            android:label="@string/title_activity_kickback_schedule"
-            android:parentActivityName=".activities.Home" >
-        </activity>
-        <activity
-            android:name=".activities.Settings"
-            android:label="@string/title_activity_settings"
-            android:parentActivityName=".activities.Home" >
-        </activity>
-        <activity
-            android:name=".activities.NotificationSettings"
-            android:label="@string/title_activity_notification_settings"
-            android:parentActivityName=".activities.Settings" >
-        </activity>
-        <activity
-            android:name=".activities.MyFriends"
-            android:label="@string/title_activity_my_friends"
-            android:launchMode="singleTop"
-            android:parentActivityName=".activities.Home" >
-        </activity>
-        <activity
-            android:name=".activities.TermsOfService"
-            android:label="@string/title_activity_terms_of_service"
-            android:parentActivityName=".activities.Settings" >
-        </activity>
-        <activity
-            android:name=".activities.PrivacyPolicy"
-            android:label="@string/title_activity_privacy_policy"
-            android:parentActivityName=".activities.Settings" >
-        </activity>
-        <activity
-            android:name=".activities.AddKickback"
-            android:label="@string/title_activity_add_kickback"
-            android:parentActivityName=".activities.KickbacksSchedule" >
-        </activity>
-        <activity
-            android:name=".activities.AddFriend"
-            android:label="@string/title_activity_add_friend"
-            android:parentActivityName=".activities.MyFriends" >
-        </activity>
-        <activity
-            android:name=".activities.AddFriendFromContacts"
-            android:label="@string/title_activity_add_friend_from_contacts" >
-        </activity>
-        <activity
-            android:name=".activities.FriendRequests"
-            android:label="@string/title_activity_friend_requests" >
-        </activity>
-
-        <service android:name=".service.SignUpService" />
-        <service android:name=".service.KickbackService" />
-
-        <receiver
-            android:name=".receivers.BootUpReceiver"
-            android:enabled="true"
-            android:permission="android.permission.RECEIVE_BOOT_COMPLETED" >
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </receiver>
 
         <activity
             android:name=".activities.AccountPortal"
@@ -115,6 +43,25 @@
             android:theme="@style/CustomNoBar"
             android:windowSoftInputMode="stateVisible">
         </activity>
+
+        <activity
+            android:name=".activities.Main"
+            android:label="Main">
+        </activity>
+
+        <service android:name=".service.KickbackService" />
+
+        <receiver
+            android:name=".receivers.BootUpReceiver"
+            android:enabled="true"
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+
     </application>
 
 </manifest>

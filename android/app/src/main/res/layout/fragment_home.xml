@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="@dimen/list_activity_horizontal_margin"
     android:paddingRight="@dimen/list_activity_horizontal_margin"
     android:paddingBottom="@dimen/list_activity_vertical_margin"
     android:paddingTop="@dimen/list_activity_vertical_margin"
-    android:background="@color/white"
-    tools:context="com.bramble.kickback.activities.Home">
+    android:background="@color/white" >
 
     <FrameLayout
         android:layout_width="match_parent"

@@ -229,7 +229,7 @@ public class SignUpBiographical extends Activity {
         @Override
         protected void onPostExecute(User loggedUser) {
             if (loggedUser != null) {
-                Intent intent = new Intent(SignUpBiographical.this, Home.class);
+                Intent intent = new Intent(SignUpBiographical.this, Main.class);
                 startActivity(intent);
                 finish();
             }

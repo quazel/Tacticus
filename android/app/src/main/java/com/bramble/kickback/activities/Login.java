@@ -135,7 +135,7 @@ public class Login extends Activity {
         @Override
         protected void onPostExecute(User loggedUser) {
             if (loggedUser != null) {
-                Intent intent = new Intent(Login.this, Home.class);
+                Intent intent = new Intent(Login.this, Main.class);
                 startActivity(intent);
                 finish();
             }

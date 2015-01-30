@@ -84,9 +84,6 @@ public class SignUpCredentials extends Activity {
                 return false;
             }
         });
-
-        countryCodeArray = getResources().getStringArray(R.array.CountryCodes);
-
     }
 
     public void disableButtons() {
