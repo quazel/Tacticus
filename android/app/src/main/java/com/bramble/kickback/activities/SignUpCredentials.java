@@ -29,7 +29,6 @@ public class SignUpCredentials extends Activity {
     private EditText email;
     private EditText desiredUsername;
     private EditText desiredPassword;
-    private EditText confirmDesiredPassword;
     private EditText countryCode;
     private EditText phoneNumber;
     private Button continueButton;
@@ -55,7 +54,6 @@ public class SignUpCredentials extends Activity {
         email = (EditText) findViewById(R.id.editTextEmail);
         desiredUsername = (EditText) findViewById(R.id.editTextDesiredUsername);
         desiredPassword = (EditText) findViewById(R.id.editTextDesiredPassword);
-        confirmDesiredPassword = (EditText) findViewById(R.id.editTextConfirmDesiredPassword);
         countryCode = (EditText) findViewById(R.id.editTextCountryCode);
         phoneNumber = (EditText) findViewById(R.id.editTextPhoneNumber);
         continueButton = (Button) findViewById(R.id.buttonSignUp);
@@ -64,10 +62,10 @@ public class SignUpCredentials extends Activity {
         setEmailText(signUpContainer.getDesiredEmail());
         setDesiredUsernameText(signUpContainer.getDesiredUsername());
         setDesiredPasswordText(signUpContainer.getPassword());
-        setConfirmDesiredPasswordText(signUpContainer.getPassword());
         setCountryCodeText(signUpContainer.getCountryCode());
         setPhoneNumberText(signUpContainer.getDesiredPhoneNumber());
 
+        /*
         confirmDesiredPassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
@@ -76,6 +74,7 @@ public class SignUpCredentials extends Activity {
                 return false;
             }
         });
+        */
 
         phoneNumber.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -123,9 +122,6 @@ public class SignUpCredentials extends Activity {
         else if (signUpContainer.getDesiredUsername().equals("") || signUpContainer.getPassword().equals("")) {
             Toast.makeText(this, "Please enter desired username and password.", Toast.LENGTH_SHORT).show();
         }
-        else if(confirmDesiredPassword.getText().toString().equals("")){
-            Toast.makeText(this, "Please confirm password.", Toast.LENGTH_SHORT).show();
-        }
         else if(signUpContainer.getCountryCode().equals("")) {
             Toast.makeText(this, "Please select your country code.", Toast.LENGTH_SHORT).show();
         }
@@ -137,9 +133,6 @@ public class SignUpCredentials extends Activity {
         }
         else if(!signUpContainer.getPassword().matches("^[a-zA-Z0-9_\\-!@#$%^&*]+$")) {
             Toast.makeText(this, "Passwords may only contain letters, numbers, and the special characters !@#$%^&*-_.", Toast.LENGTH_SHORT).show();
-        }
-        else if(!signUpContainer.getPassword().equals(confirmDesiredPassword.getText().toString())) {
-            Toast.makeText(this, "Entered passwords are not the same.", Toast.LENGTH_SHORT).show();
         }
         else if(signUpContainer.getDesiredPhoneNumber().equals("")) {
             Toast.makeText(this, "Please enter your mobile phone number.", Toast.LENGTH_SHORT).show();
@@ -207,10 +200,6 @@ public class SignUpCredentials extends Activity {
         return this.desiredPassword.getText().toString();
     }
 
-    public String getConfirmDesiredPasswordText() {
-        return this.confirmDesiredPassword.getText().toString();
-    }
-
     public String getCountryCode() {
         return this.countryCode.getText().toString();
     }
@@ -229,10 +218,6 @@ public class SignUpCredentials extends Activity {
 
     public void setDesiredPasswordText(String desiredPassword) {
         this.desiredPassword.setText(desiredPassword);
-    }
-
-    public void setConfirmDesiredPasswordText(String confirmDesiredPassword) {
-        this.confirmDesiredPassword.setText(confirmDesiredPassword);
     }
 
     public void setCountryCodeText(String countryCode) {
