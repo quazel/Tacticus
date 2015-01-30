@@ -14,6 +14,8 @@ import com.bramble.kickback.fragments.AddFriendsFragment;
 import com.bramble.kickback.fragments.AddPlanFragment;
 import com.bramble.kickback.fragments.FriendsFragment;
 import com.bramble.kickback.fragments.HomeFragment;
+import com.bramble.kickback.fragments.OfflineFragment;
+import com.bramble.kickback.fragments.OnlineFragment;
 import com.bramble.kickback.fragments.PlannerFragment;
 
 import java.util.ArrayList;
@@ -28,11 +30,16 @@ public class Main extends Activity implements ActionBar.TabListener{
     private AddPlanFragment addPlanFragment;
 
     private FragmentManager fm;
+    private FragmentTransaction ft;
     private ViewPager viewPager;
     private MainActivityPageAdapter mAdapter;
     private ActionBar actionBar;
     // Tab titles
     private String[] tabs = { "Add Friends", "Friends", "Home", "Schedule", "Add Schedule" };
+
+    // for home fragment tab
+    private OnlineFragment onlineFragment;
+    private OfflineFragment offlineFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,8 +91,15 @@ public class Main extends Activity implements ActionBar.TabListener{
             public void onPageScrollStateChanged(int arg0) {
             }
         });
-    }
 
+        // home fragment stuff
+        onlineFragment = new OnlineFragment();
+        offlineFragment = new OfflineFragment();
+        ft = fm.beginTransaction();
+        // if online add kickback list if offline add kickback fragment
+        // just for now
+        ft.add(R.id.home_container, offlineFragment);
+    }
 
     @Override
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
@@ -102,4 +116,5 @@ public class Main extends Activity implements ActionBar.TabListener{
     public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
     }
 
+    
 }
