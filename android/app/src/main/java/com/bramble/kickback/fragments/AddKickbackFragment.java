@@ -8,13 +8,11 @@ import android.view.ViewGroup;
 
 import com.bramble.kickback.R;
 
-public class LoadingBar extends Fragment {
-
+public class AddKickbackFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_loading, container, false);
+        View view =  inflater.inflate(R.layout.activity_add_kickback, container, false);
         return view;
     }
-
 }
