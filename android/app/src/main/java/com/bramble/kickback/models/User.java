@@ -10,6 +10,7 @@ public class User {
     private String phoneNumber;
     private String sessionId;
     private boolean temp;
+    private boolean online;
 
     public static synchronized User getUser() {
         if (instance == null) {
@@ -25,6 +26,7 @@ public class User {
         phoneNumber = "";
         sessionId = "";
         temp = false;
+        online = false;
     }
 
     public String getUsername() {
@@ -51,6 +53,10 @@ public class User {
         return temp;
     }
 
+    public boolean isOnline() {
+        return online;
+    }
+
     public void setUsername(String username) {
         this.username = username;
     }
@@ -73,6 +79,10 @@ public class User {
 
     public void setTemp(boolean temp) {
         this.temp = temp;
+    }
+
+    public void setOnline(boolean online) {
+        this.online = online;
     }
 
 }
