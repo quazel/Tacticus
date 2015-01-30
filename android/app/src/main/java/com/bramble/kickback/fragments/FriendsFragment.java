@@ -5,14 +5,40 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import com.bramble.kickback.R;
+import com.bramble.kickback.adapter.StickyAdapter;
+import com.bramble.kickback.models.Friend;
+import com.bramble.kickback.util.Globals;
 
-public class FriendsFragment extends Fragment{
+import java.util.ArrayList;
+
+import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
+
+public class FriendsFragment extends Fragment {
+
+    private ArrayList<Friend> friends = Globals.friends;
+    private StickyListHeadersListView stickyList;
+    private StickyAdapter stickyAdapterThing;
+    private EditText searchInput;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_friends, container, false);
+
+        if (friends.size() == 0) {
+            Globals.initFriends();
+        }
+
+        stickyList = (StickyListHeadersListView) view.findViewById(R.id.all_friends_list);
+
+        stickyAdapterThing = new StickyAdapter(view.getContext(), friends);
+
+        stickyList.setAdapter(stickyAdapterThing);
+
         return view;
     }
+
 }
