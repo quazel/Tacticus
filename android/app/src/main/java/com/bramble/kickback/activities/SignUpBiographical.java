@@ -3,14 +3,12 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -24,7 +22,6 @@ import com.bramble.kickback.containers.SignUpContainer;
 import com.bramble.kickback.fragments.LoadingBar;
 import com.bramble.kickback.models.User;
 import com.bramble.kickback.networking.ConnectionHandler;
-import com.bramble.kickback.util.Globals;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -84,7 +81,7 @@ public class SignUpBiographical extends Activity {
         lastName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
-                    commenceBirthdayDialog();
+                    showBirthdayLogin();
                 }
                 return false;
             }
@@ -167,10 +164,10 @@ public class SignUpBiographical extends Activity {
     }
 
     public void birthdayPressed(View view) {
-        commenceBirthdayDialog();
+        showBirthdayLogin();
     }
 
-    public void commenceBirthdayDialog() {
+    public void showBirthdayLogin() {
         Calendar current = Calendar.getInstance();
         int year = current.get(Calendar.YEAR);
         int month = current.get(Calendar.MONTH);

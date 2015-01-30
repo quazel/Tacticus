@@ -3,20 +3,16 @@ import com.bramble.kickback.R;
 import com.bramble.kickback.fragments.LoadingBar;
 import com.bramble.kickback.models.User;
 import com.bramble.kickback.networking.ConnectionHandler;
-import com.bramble.kickback.util.Globals;
 
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -54,7 +50,7 @@ public class Login extends Activity {
         password.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
-                    commenceLogin();
+                    login();
                 }
                 return false;
             }
@@ -90,11 +86,11 @@ public class Login extends Activity {
 
     // when the login button is pressed (login)
     public void loginPressed(View v){
-        commenceLogin();
+        login();
     }
 
 
-    public void commenceLogin() {
+    public void login() {
         String username = getUsernameText();
         String password = getPasswordText();
         if (username.equals("") || password.equals("")) {

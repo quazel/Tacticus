@@ -3,7 +3,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -11,8 +10,6 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -74,7 +71,7 @@ public class SignUpCredentials extends Activity {
         confirmDesiredPassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
-                    commenceCountryPicker();
+                    showCountryCodeDialog();
                 }
                 return false;
             }
@@ -83,7 +80,7 @@ public class SignUpCredentials extends Activity {
         phoneNumber.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
-                    commenceContinueSignUp();
+                    continueSignUp();
                 }
                 return false;
             }
@@ -105,10 +102,10 @@ public class SignUpCredentials extends Activity {
 
     // when the continue button is pressed (sign up)
         public void continueSignUpPressed(View v) {
-        commenceContinueSignUp();
+        continueSignUp();
     }
 
-    public void commenceContinueSignUp() {
+    public void continueSignUp() {
         // sets the instance variables inside the sign up service to the inputs
         // gathered in the sign up credentials
         signUpContainer.setDesiredEmail(email.getText().toString());
@@ -174,10 +171,11 @@ public class SignUpCredentials extends Activity {
     }
 
     public void countryCodePressed(View view) {
-        commenceCountryPicker();
+        showCountryCodeDialog();
     }
+
     // IMPORTANT
-    public void commenceCountryPicker() {
+    public void showCountryCodeDialog() {
         // country picker code!
         AlertDialog.Builder builder = new AlertDialog.Builder(SignUpCredentials.this);
 
