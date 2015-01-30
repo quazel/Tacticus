@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/kickbackButton"
+        android:id="@+id/goOnlineButton"
         android:textStyle="bold"
         android:text="@string/Kickback"
         android:textColor="@color/title_text_color"
@@ -13,6 +13,6 @@
         android:layout_width="fill_parent"
         android:layout_height="@dimen/home_button_height"
         android:background="@drawable/outlined_selector"
-        android:onClick="onKickbackPressed"/>
+        android:onClick="goOnlinePressed"/>
 
 </RelativeLayout>
