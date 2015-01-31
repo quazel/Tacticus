@@ -19,7 +19,6 @@ public class Globals {
     public static ArrayList<Friend> friends = new ArrayList<Friend>();
     public static ArrayList<Kickback> kickbacks = new ArrayList<Kickback>();
     public static ArrayList<Person> contacts = new ArrayList<Person>();
-    public static boolean isOnline = false;
 
     public static void initKickBacks(){
         kickbacks.add(new Kickback(new DateTime(),new DateTime(),"Hati"));
@@ -27,8 +26,8 @@ public class Globals {
         kickbacks.add(new Kickback(new DateTime().plusDays(1),new DateTime().plusDays(1),"Nicaragua"));
         kickbacks.add(new Kickback(new DateTime().plusDays(1),new DateTime().plusDays(1),"Chip Factory"));
         kickbacks.add(new Kickback(new DateTime().plusDays(2),new DateTime().plusDays(2),"Nigeria"));
-        kickbacks.add(new Kickback(new DateTime().plusDays(3),new DateTime().plusDays(3),"Siera Leone"));
-        kickbacks.add(new Kickback(new DateTime().plusDays(4),new DateTime().plusDays(4),"New Ginea"));
+        kickbacks.add(new Kickback(new DateTime().plusDays(3),new DateTime().plusDays(3),"Sierra Leone"));
+        kickbacks.add(new Kickback(new DateTime().plusDays(4),new DateTime().plusDays(4),"New Guinea"));
         kickbacks.add(new Kickback(new DateTime().plusDays(5),new DateTime().plusDays(5),"South Africa"));
         kickbacks.add(new Kickback(new DateTime().plusDays(6),new DateTime().plusDays(6),"Main"));
         kickbacks.add(new Kickback(new DateTime().plusDays(7),new DateTime().plusDays(7),"New York"));
@@ -66,13 +65,6 @@ public class Globals {
         kickbacks.add(k);
     }
 
-    public static void goOnline() {
-        isOnline = true;
-    }
-
-    public static void goOffline() {
-        isOnline = false;
-    }
 
     //needs work
     public static void readContacts(ContentResolver cr) {
