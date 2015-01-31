@@ -95,4 +95,19 @@ public class User {
         this.online = online;
     }
 
+    public void addFriend(Friend friend) {
+        if (!friends.contains(friend)) {
+            friends.add(friend);
+        }
+    }
+
+    public void removeFriend(Friend friend) {
+        if (friends.contains(friend)) {
+            friends.remove(friend);
+            if (onlineFriends.contains(friend)) {
+                onlineFriends.remove(friend);
+            }
+        }
+    }
+
 }
