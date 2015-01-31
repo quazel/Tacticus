@@ -26,8 +26,8 @@
             android:layout_height="wrap_content"
             android:paddingTop="32dp"
             android:paddingBottom="32dp"
-            android:text="Login"
-            android:textColor="@color/black"
+            android:text="Log In"
+            android:textColor="@color/title_text_color"
             android:textSize="36sp"
             android:id="@+id/signInTitle"
             android:layout_centerHorizontal="true"
@@ -35,18 +35,18 @@
         <EditText
             android:layout_width="@dimen/edittext_width"
             android:layout_height="wrap_content"
-            android:id="@+id/editTextUsername"
+            android:id="@+id/editTextLoginEmail"
             android:background="@drawable/edit_text_basic"
             android:paddingLeft="12dp"
             android:paddingRight="12dp"
-            android:hint="Username"
-            android:inputType="text"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
             android:layout_below="@+id/signInTitle"
             android:layout_centerHorizontal="true" />
         <Space
             android:layout_width="fill_parent"
             android:layout_height="@dimen/space_height"
-            android:layout_below="@+id/editTextUsername"
+            android:layout_below="@+id/editTextLoginEmail"
             android:id="@+id/space_1"/>
 
         <EditText
@@ -78,36 +78,18 @@
 
     </RelativeLayout>
 
-    <LinearLayout
-        android:layout_alignParentBottom="true"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:weightSum="2"
-        android:orientation="horizontal">
-
         <Button
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:text="Login"
-            android:textColor="@color/title_text_color"
-            android:layout_weight="1"
-            android:background="@drawable/full_width_selector"
-            android:textSize="25sp"
+            android:layout_height="100dp"
+            android:text="LOG IN"
+            android:textColor="@color/white"
+            android:background="@color/primary_color"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            android:layout_alignParentBottom="true"
             android:id="@+id/buttonSignIn"
             android:onClick="loginPressed"/>
 
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:text="Cancel"
-            android:textColor="@color/title_text_color"
-            android:layout_weight="1"
-            android:background="@drawable/full_width_selector"
-            android:textSize="25sp"
-            android:id="@+id/buttonCancelSignIn"
-            android:onClick="cancelSignInPressed"/>
-
-    </LinearLayout>
     <Space
         android:layout_width="match_parent"
         android:layout_height="385dp"

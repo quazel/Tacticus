@@ -12,34 +12,28 @@
     android:theme="@android:style/Theme.NoTitleBar"
     android:imeOptions="actionDone">
 
-    <LinearLayout
-        android:layout_alignParentBottom="true"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:orientation="horizontal">
-
         <Button
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:text="Login"
-            android:textColor="@color/title_text_color"
-            android:layout_weight="1"
-            android:background="@drawable/full_width_selector"
-            android:textSize="25sp"
+            android:layout_height="100dp"
+            android:text="LOG IN"
+            android:textColor="@color/white"
+            android:background="@color/primary_color"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            android:layout_above="@+id/toSignUp"
             android:id="@+id/toLogin"
             android:onClick="toSignInPressed"/>
 
         <Button
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:text="Sign Up"
-            android:textColor="@color/title_text_color"
-            android:layout_weight="1"
-            android:background="@drawable/full_width_selector"
-            android:textSize="25sp"
+            android:layout_height="100dp"
+            android:text="SIGN UP"
+            android:textColor="@color/white"
+            android:background="@color/title_text_color"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            android:layout_alignParentBottom="true"
             android:id="@+id/toSignUp"
             android:onClick="toSignUpPressed"/>
-
-    </LinearLayout>
 
 </RelativeLayout>

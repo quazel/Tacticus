@@ -25,10 +25,9 @@ import java.io.IOException;
 
 public class Login extends Activity {
 
-    private EditText username;
+    private EditText email;
     private EditText password;
     private Button loginButton;
-    private Button cancelButton;
 
     private FragmentManager fm;
     private FragmentTransaction ft;
@@ -42,10 +41,9 @@ public class Login extends Activity {
         fm = getFragmentManager();
         loadingBar = new LoadingBar();
 
-        username = (EditText) findViewById(R.id.editTextUsername);
+        email = (EditText) findViewById(R.id.editTextLoginEmail);
         password = (EditText) findViewById(R.id.editTextPassword);
         loginButton = (Button) findViewById(R.id.buttonSignIn);
-        cancelButton = (Button) findViewById(R.id.buttonCancelSignIn);
 
         password.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -56,25 +54,16 @@ public class Login extends Activity {
             }
         });
 
-        username.requestFocus();
+        email.requestFocus();
     }
 
 
     public void disableButtons() {
         loginButton.setEnabled(false);
-        cancelButton.setEnabled(false);
     }
 
     public void enableButtons() {
         loginButton.setEnabled(true);
-        cancelButton.setEnabled(true);
-    }
-
-    // when the cancel button is pressed (login)
-    public void cancelSignInPressed(View v){
-        Intent intent = new Intent(this, AccountPortal.class);
-        startActivity(intent);
-        finish();
     }
 
     @Override
@@ -91,17 +80,17 @@ public class Login extends Activity {
 
 
     public void login() {
-        String username = getUsernameText();
+        String email = getEmailText();
         String password = getPasswordText();
-        if (username.equals("") || password.equals("")) {
-            Toast.makeText(this, "Please enter your username and password.", Toast.LENGTH_SHORT).show();
+        if (email.equals("") || password.equals("")) {
+            Toast.makeText(this, "Please enter your email and password.", Toast.LENGTH_SHORT).show();
         }
         else {
             disableButtons();
             ft = fm.beginTransaction();
             ft.add(R.id.loading_frame, loadingBar);
             ft.commit();
-            new LoginTask().execute(username, password);
+            new LoginTask().execute(email, password);
         }
     }
 
@@ -150,16 +139,16 @@ public class Login extends Activity {
         }
     }
 
-    public String getUsernameText() {
-        return username.getText().toString();
+    public String getEmailText() {
+        return email.getText().toString();
     }
 
     public String getPasswordText() {
         return password.getText().toString();
     }
 
-    public void setUsernameText(String username) {
-        this.username.setText(username);
+    public void setEmailText(String username) {
+        this.email.setText(username);
     }
 
     public void setPasswordText(String password) {
