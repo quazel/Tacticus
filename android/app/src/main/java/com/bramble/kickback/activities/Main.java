@@ -92,6 +92,7 @@ public class Main extends Activity implements ActionBar.TabListener{
             public void onPageScrollStateChanged(int arg0) {
             }
         });
+        viewPager.setCurrentItem(2, false);
     }
 
     // home functionality

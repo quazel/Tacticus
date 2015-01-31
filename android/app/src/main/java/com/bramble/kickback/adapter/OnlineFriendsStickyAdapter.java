@@ -31,8 +31,6 @@ public class OnlineFriendsStickyAdapter extends BaseAdapter implements StickyLis
         this.arrayList = inputArrayList;
         this.filteredList = new ArrayList<Friend>();
         this.filteredList.addAll(arrayList);
-
-
     }
 
     @Override
