@@ -1,5 +1,7 @@
 package com.bramble.kickback.models;
 
+import org.joda.time.DateTime;
+
 import java.util.ArrayList;
 
 public class User {
@@ -16,9 +18,10 @@ public class User {
     private boolean temp;
     private boolean online;
 
-    // Data collections, i.e. friends lists
+    // Data collections, i.e. friends lists and kickbacks
     private ArrayList<Friend> friends;
     private ArrayList<Friend> onlineFriends;
+    private ArrayList<Kickback> plans;
 
     // Lazy initialization and getting of User instance. Synchronized so that we can ensure that
     // user is not created by two concurrent threads.
@@ -57,6 +60,22 @@ public class User {
         friends.add(new Friend("parsePro","JSON", "1-452-735-9384", kickback));
         friends.add(new Friend("hamBurgler","Burgle", "1-746-412-9001", kickback));
         friends.add(new Friend("gay","Jeremy Adams", "1-480-390-7762", kickback));
+
+        plans.add(new Kickback(new DateTime(),new DateTime(),"Hati"));
+        plans.add(new Kickback(new DateTime().plusDays(1),new DateTime().plusDays(1),"CHIPS!"));
+        plans.add(new Kickback(new DateTime().plusDays(1),new DateTime().plusDays(1),"Nicaragua"));
+        plans.add(new Kickback(new DateTime().plusDays(1),new DateTime().plusDays(1),"Chip Factory"));
+        plans.add(new Kickback(new DateTime().plusDays(2),new DateTime().plusDays(2),"Nigeria"));
+        plans.add(new Kickback(new DateTime().plusDays(3),new DateTime().plusDays(3),"Sierra Leone"));
+        plans.add(new Kickback(new DateTime().plusDays(4),new DateTime().plusDays(4),"New Guinea"));
+        plans.add(new Kickback(new DateTime().plusDays(5),new DateTime().plusDays(5),"South Africa"));
+        plans.add(new Kickback(new DateTime().plusDays(6),new DateTime().plusDays(6),"Main"));
+        plans.add(new Kickback(new DateTime().plusDays(7),new DateTime().plusDays(7),"New York"));
+        plans.add(new Kickback(new DateTime().plusDays(8),new DateTime().plusDays(8),"Bolivia"));
+        plans.add(new Kickback(new DateTime().plusDays(9),new DateTime().plusDays(9),"Youtube"));
+        plans.add(new Kickback(new DateTime().plusDays(10),new DateTime().plusDays(10),"My House"));
+        plans.add(new Kickback(new DateTime().plusDays(11),new DateTime().plusDays(11),"Chips"));
+        plans.add(new Kickback(new DateTime().plusDays(12),new DateTime().plusDays(12),"CHIPS!"));
 
         onlineFriends = friends;
     }
@@ -117,6 +136,14 @@ public class User {
         this.online = online;
     }
 
+    public synchronized ArrayList<Friend> getFriends() {
+        return friends;
+    }
+
+    public synchronized ArrayList<Friend> getOnlineFriends() {
+        return onlineFriends;
+    }
+
     public synchronized void addFriend(Friend friend) {
         if (!friends.contains(friend)) {
             friends.add(friend);
@@ -132,12 +159,20 @@ public class User {
         }
     }
 
-    public synchronized ArrayList<Friend> getFriends() {
-        return friends;
+    public synchronized void addKickback(Kickback kickback) {
+        if (!plans.contains(kickback)) {
+            plans.add(kickback);
+        }
     }
 
-    public synchronized ArrayList<Friend> getOnlineFriends() {
-        return onlineFriends;
+    public synchronized void removeKickback(Kickback kickback) {
+        if (plans.contains(kickback)) {
+            plans.remove(kickback);
+        }
+    }
+
+    public synchronized ArrayList<Kickback> getPlans() {
+        return plans;
     }
 
 }
