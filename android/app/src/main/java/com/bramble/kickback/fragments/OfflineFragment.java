@@ -8,11 +8,11 @@ import android.view.ViewGroup;
 
 import com.bramble.kickback.R;
 
-public class KickbackList extends Fragment {
+public class OfflineFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_kickback_list,
+        View view =  inflater.inflate(R.layout.fragment_offline,
                 container, false);
         return view;
     }

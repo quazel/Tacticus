@@ -1,6 +1,6 @@
 package com.bramble.kickback.adapter;
 
-//This adapter is to be used with the friends list activity
+//This adapter is to be used with the active kickbacks list activity
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -19,18 +19,19 @@ import java.util.Locale;
 
 import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
 
-public class StickyAdapter extends BaseAdapter implements StickyListHeadersAdapter {
+public class OnlineFriendsStickyAdapter extends BaseAdapter implements StickyListHeadersAdapter {
 
     private List<Friend> filteredList = null;
     private ArrayList<Friend> arrayList;
     private LayoutInflater inflater;
 
-    public StickyAdapter(Context context, ArrayList<Friend> inputArrayList) {
+    public OnlineFriendsStickyAdapter(Context context, ArrayList<Friend> inputArrayList) {
         inflater = LayoutInflater.from(context);
 
         this.arrayList = inputArrayList;
         this.filteredList = new ArrayList<Friend>();
         this.filteredList.addAll(arrayList);
+
 
     }
 
@@ -64,6 +65,10 @@ public class StickyAdapter extends BaseAdapter implements StickyListHeadersAdapt
 
         LinearLayout body = (LinearLayout)convertView.findViewById(R.id.body);
 
+        holder.name = (TextView)convertView.findViewById(R.id.name_thing);
+        holder.username = (TextView)convertView.findViewById(R.id.username_thing);
+        convertView.setTag(holder);
+
         if(filteredList.size()-1 == position){ //Is the last element of filteredList
             body.setBackgroundResource(R.drawable.full_width_selector_nobottom); //NO line on bottom
         }else{
@@ -73,10 +78,6 @@ public class StickyAdapter extends BaseAdapter implements StickyListHeadersAdapt
                 body.setBackgroundResource(R.drawable.full_width_selector); //line on bottom
             }
         }
-
-        holder.name = (TextView)convertView.findViewById(R.id.name_thing);
-        holder.username = (TextView)convertView.findViewById(R.id.username_thing);
-        convertView.setTag(holder);
 
         holder.name.setText(filteredList.get(position).getName());
         holder.username.setText(filteredList.get(position).getUsername());
@@ -97,9 +98,9 @@ public class StickyAdapter extends BaseAdapter implements StickyListHeadersAdapt
         }
         String headerText;
         if(filteredList.get(position).getIsFavorite() == true){
-            headerText = "FAVORITES";
+            headerText = "FAVORITES KICKING BACK";
         }else{
-            headerText = "FRIENDS";
+            headerText = "FRIENDS KICKING BACK";
         }
         holder.text.setText(headerText);
         return convertView;

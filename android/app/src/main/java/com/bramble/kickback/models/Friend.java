@@ -1,7 +1,5 @@
 package com.bramble.kickback.models;
 
-import android.content.ContentResolver;
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
@@ -13,22 +11,22 @@ public class Friend {
 
     private String name;
     private String phoneNumber;
-    private ArrayList<Kickback> kickbacks;
-    private String username; //Constant for now
+    private String username;
     private boolean isFavorite;
+    private ArrayList<Kickback> plans;
 
-    public Friend(String name, String username, String phoneNumber, ArrayList<Kickback> kickbacks) {
+    public Friend(String name, String username, String phoneNumber, ArrayList<Kickback> plans) {
         this.name = name;
         this.username = username;
         this.phoneNumber = phoneNumber;
-        this.kickbacks = kickbacks;
+        this.plans = plans;
     }
 
-    public Friend(String name, String username, String phoneNumber, ArrayList<Kickback> kickbacks, boolean fav) {
+    public Friend(String name, String username, String phoneNumber, ArrayList<Kickback> plans, boolean fav) {
         this.name = name;
         this.username = username;
         this.phoneNumber = phoneNumber;
-        this.kickbacks = kickbacks;
+        this.plans = plans;
         this.isFavorite = fav;
     }
 

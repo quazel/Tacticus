@@ -5,10 +5,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 
 import com.bramble.kickback.R;
 import com.bramble.kickback.adapter.FriendsStickyAdapter;
+import com.bramble.kickback.adapter.OnlineFriendsStickyAdapter;
 import com.bramble.kickback.models.Friend;
 import com.bramble.kickback.util.Globals;
 
@@ -16,29 +16,29 @@ import java.util.ArrayList;
 
 import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 
-public class FriendsFragment extends Fragment {
+public class OnlineFragment extends Fragment {
 
-    private ArrayList<Friend> friends = Globals.friends;
+    private ArrayList<Friend> onlineFriends;
     private StickyListHeadersListView stickyList;
-    private FriendsStickyAdapter friendsStickyAdapter;
-    private EditText searchInput;
+    private OnlineFriendsStickyAdapter onlineFriendsStickyAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_friends, container, false);
+        View view =  inflater.inflate(R.layout.fragment_online, container, false);
 
-        if (friends.size() == 0) {
+        onlineFriends = Globals.friends;
+
+        if (onlineFriends.size() == 0) {
             Globals.initFriends();
         }
 
-        stickyList = (StickyListHeadersListView) view.findViewById(R.id.all_friends_list);
+        stickyList = (StickyListHeadersListView) view.findViewById(R.id.online_list);
 
-        friendsStickyAdapter = new FriendsStickyAdapter(view.getContext(), friends);
+        onlineFriendsStickyAdapter = new OnlineFriendsStickyAdapter(view.getContext(), onlineFriends);
 
-        stickyList.setAdapter(friendsStickyAdapter);
+        stickyList.setAdapter(onlineFriendsStickyAdapter);
 
         return view;
     }
-
 }
