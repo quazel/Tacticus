@@ -22,7 +22,7 @@ public class ConnectionHandler {
     private final String kickbackURL = baseURL + "kickback/";
     private final String analyticsURL = baseURL + "analytics/";
 
-    public String login(String username, String password) throws IOException {
+    public String login(String email, String password) throws IOException {
         URL requestURL = new URL(loginURL);
         HttpsURLConnection connection = (HttpsURLConnection) requestURL.openConnection();
         connection.setDoInput(true);
@@ -30,7 +30,7 @@ public class ConnectionHandler {
         connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
         connection.setRequestProperty("charset", "utf-8");
         String urlParameters = "";
-        urlParameters += "username=" + username;
+        urlParameters += "email=" + email;
         urlParameters += "&password=" + password;
         connection.setRequestProperty("Content-Length", "" + urlParameters.getBytes().length);
         connection.setUseCaches (false);

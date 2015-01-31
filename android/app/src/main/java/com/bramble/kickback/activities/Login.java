@@ -104,7 +104,7 @@ public class Login extends Activity {
                     JSONObject json = new JSONObject(result);
                     User user = User.getUser();
                     user.setName(json.getString("name"));
-                    user.setNickname(json.getString("username"));
+                    user.setNickname(json.getString("nickname"));
                     user.setEmail(json.getString("email"));
                     user.setPhoneNumber(json.getString("phone_number"));
                     user.setSessionId(json.getString("session_id"));
@@ -132,7 +132,7 @@ public class Login extends Activity {
                 ft = fm.beginTransaction();
                 ft.remove(loadingBar);
                 ft.commit();
-                Toast.makeText(Login.this, "Invalid username or password.", Toast.LENGTH_LONG).show();
+                Toast.makeText(Login.this, "Invalid email or password.", Toast.LENGTH_LONG).show();
                 Login.this.setPasswordText("");
                 Login.this.enableButtons();
             }
