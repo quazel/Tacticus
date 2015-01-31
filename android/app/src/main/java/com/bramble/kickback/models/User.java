@@ -27,51 +27,51 @@ public class User {
         temp = false;
     }
 
-    public String getUsername() {
+    public synchronized String getUsername() {
         return username;
     }
 
-    public String getName() {
+    public synchronized String getName() {
         return name;
     }
 
-    public String getEmail() {
+    public synchronized String getEmail() {
         return email;
     }
 
-    public String getPhoneNumber() {
+    public synchronized String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public String getSessionId() {
+    public synchronized String getSessionId() {
         return sessionId;
     }
 
-    public boolean isTemp() {
+    public synchronized boolean isTemp() {
         return temp;
     }
 
-    public void setUsername(String username) {
+    public synchronized void setUsername(String username) {
         this.username = username;
     }
 
-    public void setName(String name) {
+    public synchronized void setName(String name) {
         this.name = name;
     }
 
-    public void setEmail(String email) {
+    public synchronized void setEmail(String email) {
         this.email = email;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public synchronized void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
-    public void setSessionId(String sessionId) {
+    public synchronized void setSessionId(String sessionId) {
         this.sessionId = sessionId;
     }
 
-    public void setTemp(boolean temp) {
+    public synchronized void setTemp(boolean temp) {
         this.temp = temp;
     }
 
