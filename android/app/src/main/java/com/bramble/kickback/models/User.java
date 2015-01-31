@@ -105,11 +105,7 @@ public class User {
         return temp;
     }
 
-    public boolean isOnline() {
-        return online;
-    }
-
-    public void setNickname(String nickname) {
+    public synchronized void setNickname(String nickname) {
         this.nickname = nickname;
     }
 
