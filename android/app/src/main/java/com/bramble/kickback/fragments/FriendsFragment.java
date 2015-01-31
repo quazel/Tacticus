@@ -10,6 +10,7 @@ import android.widget.EditText;
 import com.bramble.kickback.R;
 import com.bramble.kickback.adapter.FriendsStickyAdapter;
 import com.bramble.kickback.models.Friend;
+import com.bramble.kickback.models.User;
 import com.bramble.kickback.util.Globals;
 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 
 public class FriendsFragment extends Fragment {
 
-    private ArrayList<Friend> friends = Globals.friends;
+    private ArrayList<Friend> friends;
     private StickyListHeadersListView stickyList;
     private FriendsStickyAdapter friendsStickyAdapter;
     private EditText searchInput;
@@ -28,9 +29,7 @@ public class FriendsFragment extends Fragment {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_friends, container, false);
 
-        if (friends.size() == 0) {
-            Globals.initFriends();
-        }
+        friends = User.getUser().getFriends();
 
         stickyList = (StickyListHeadersListView) view.findViewById(R.id.all_friends_list);
 

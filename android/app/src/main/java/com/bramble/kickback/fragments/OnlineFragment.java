@@ -10,6 +10,7 @@ import com.bramble.kickback.R;
 import com.bramble.kickback.adapter.FriendsStickyAdapter;
 import com.bramble.kickback.adapter.OnlineFriendsStickyAdapter;
 import com.bramble.kickback.models.Friend;
+import com.bramble.kickback.models.User;
 import com.bramble.kickback.util.Globals;
 
 import java.util.ArrayList;
@@ -27,11 +28,7 @@ public class OnlineFragment extends Fragment {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_online, container, false);
 
-        onlineFriends = Globals.friends;
-
-        if (onlineFriends.size() == 0) {
-            Globals.initFriends();
-        }
+        onlineFriends = User.getUser().getOnlineFriends();
 
         stickyList = (StickyListHeadersListView) view.findViewById(R.id.online_list);
 
