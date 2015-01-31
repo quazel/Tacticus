@@ -10,7 +10,7 @@ public class User {
     private static User instance;
 
     // Primary fields
-    private String username;
+    private String nickname;
     private String name;
     private String email;
     private String phoneNumber;
@@ -33,7 +33,7 @@ public class User {
     }
 
     private User() {
-        username = "";
+        nickname = "";
         name = "";
         email = "";
         phoneNumber = "";
@@ -61,6 +61,7 @@ public class User {
         friends.add(new Friend("hamBurgler","Burgle", "1-746-412-9001", kickback));
         friends.add(new Friend("gay","Jeremy Adams", "1-480-390-7762", kickback));
 
+        plans = new ArrayList<Kickback>();
         plans.add(new Kickback(new DateTime(),new DateTime(),"Hati"));
         plans.add(new Kickback(new DateTime().plusDays(1),new DateTime().plusDays(1),"CHIPS!"));
         plans.add(new Kickback(new DateTime().plusDays(1),new DateTime().plusDays(1),"Nicaragua"));
@@ -80,8 +81,8 @@ public class User {
         onlineFriends = friends;
     }
 
-    public synchronized String getUsername() {
-        return username;
+    public synchronized String getNickname() {
+        return nickname;
     }
 
     public synchronized String getName() {
@@ -108,8 +109,8 @@ public class User {
         return online;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
     public synchronized void setName(String name) {

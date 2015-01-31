@@ -79,7 +79,7 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
         convertView.setTag(holder);
 
         holder.name.setText(filteredList.get(position).getName());
-        holder.username.setText(filteredList.get(position).getUsername());
+        holder.username.setText(filteredList.get(position).getNickname());
 
         return convertView;
     }
@@ -129,7 +129,7 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
         {
             for (Friend fl : arrayList)
             {
-                if (fl.getName().toLowerCase(Locale.getDefault()).contains(charText)||fl.getUsername().toLowerCase(Locale.getDefault()).contains(charText))
+                if (fl.getName().toLowerCase(Locale.getDefault()).contains(charText)||fl.getNickname().toLowerCase(Locale.getDefault()).contains(charText))
                 {
                     filteredList.add(fl);
                 }

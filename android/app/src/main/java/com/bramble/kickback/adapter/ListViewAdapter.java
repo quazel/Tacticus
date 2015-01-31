@@ -66,7 +66,7 @@ public class ListViewAdapter extends BaseAdapter{
         }
         // Set the results into TextViews
         holder.name.setText(listFriendList.get(position).getName());
-        holder.username.setText(listFriendList.get(position).getUsername());
+        holder.username.setText(listFriendList.get(position).getNickname());
         //holder.phoneNumber.setText(listFriendList.get(position).getPhoneNumber());
 
         // Listen for ListView Item Click
@@ -76,7 +76,7 @@ public class ListViewAdapter extends BaseAdapter{
             public void onClick(View arg0) {
                 //Intent intent = new Intent(mContext, INSERT CLASS NAME HERE.class);
                 //intent.putExtra("name",(listFriendList.get(position).getName()));
-                //intent.putExtra("username",(listFriendList.get(position).getUsername()));
+                //intent.putExtra("username",(listFriendList.get(position).getNickname()));
                 //intent.putExtra("phoneNumber",(listFriendList.get(position).getPhoneNumber()));
                 //mContext.startActivity(intent);
             }
@@ -96,7 +96,7 @@ public class ListViewAdapter extends BaseAdapter{
         {
             for (Friend fl : arraylist)
             {
-                if (fl.getName().toLowerCase(Locale.getDefault()).contains(charText)||fl.getUsername().toLowerCase(Locale.getDefault()).contains(charText))
+                if (fl.getName().toLowerCase(Locale.getDefault()).contains(charText)||fl.getNickname().toLowerCase(Locale.getDefault()).contains(charText))
                 {
                     listFriendList.add(fl);
                 }

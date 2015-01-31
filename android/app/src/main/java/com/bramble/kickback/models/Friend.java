@@ -11,20 +11,20 @@ public class Friend {
 
     private String name;
     private String phoneNumber;
-    private String username;
+    private String nickname;
     private boolean isFavorite;
     private ArrayList<Kickback> plans;
 
-    public Friend(String name, String username, String phoneNumber, ArrayList<Kickback> plans) {
+    public Friend(String name, String nickname, String phoneNumber, ArrayList<Kickback> plans) {
         this.name = name;
-        this.username = username;
+        this.nickname = nickname;
         this.phoneNumber = phoneNumber;
         this.plans = plans;
     }
 
-    public Friend(String name, String username, String phoneNumber, ArrayList<Kickback> plans, boolean fav) {
+    public Friend(String name, String nickname, String phoneNumber, ArrayList<Kickback> plans, boolean fav) {
         this.name = name;
-        this.username = username;
+        this.nickname = nickname;
         this.phoneNumber = phoneNumber;
         this.plans = plans;
         this.isFavorite = fav;
@@ -38,8 +38,8 @@ public class Friend {
         return phoneNumber;
     }
 
-    public String getUsername(){
-        return username;
+    public String getNickname(){
+        return nickname;
     }
 
     public boolean getIsFavorite(){
