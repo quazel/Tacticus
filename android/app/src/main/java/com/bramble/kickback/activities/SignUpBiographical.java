@@ -45,7 +45,6 @@ public class SignUpBiographical extends Activity {
     private RadioButton notSpecified;
     private String sex;
     private Button continueButton;
-    private Button cancelButton;
 
     private FragmentManager fm;
     private FragmentTransaction ft;
@@ -70,7 +69,6 @@ public class SignUpBiographical extends Activity {
         female = (RadioButton) findViewById(R.id.female);
         notSpecified = (RadioButton) findViewById(R.id.not_specified);
         continueButton = (Button) findViewById(R.id.buttonSignUp);
-        cancelButton = (Button) findViewById(R.id.buttonCancelSignUp);
 
         setFirstNameText(signUpContainer.getFirstName());
         setLastNameText(signUpContainer.getLastName());
@@ -124,17 +122,6 @@ public class SignUpBiographical extends Activity {
         }
     }
 
-    // when the back button is pressed (sign up)
-    public void backSignUpPressed(View v){
-        signUpContainer.setFirstName(firstName.getText().toString());
-        signUpContainer.setLastName(lastName.getText().toString());
-        signUpContainer.setBirthdate(birthdayString);
-        signUpContainer.setSex(getSexText());
-        Intent intent = new Intent(this, SignUpCredentials.class);
-        startActivity(intent);
-        finish();
-    }
-
     @Override
     public void onBackPressed() {
         signUpContainer.setFirstName(firstName.getText().toString());
@@ -148,7 +135,6 @@ public class SignUpBiographical extends Activity {
 
     public void disableButtons() {
         continueButton.setEnabled(false);
-        cancelButton.setEnabled(false);
         male.setEnabled(false);
         female.setEnabled(false);
         notSpecified.setEnabled(false);
@@ -156,7 +142,6 @@ public class SignUpBiographical extends Activity {
 
     public void enableButtons() {
         continueButton.setEnabled(true);
-        cancelButton.setEnabled(true);
         sexGroup.setEnabled(true);
         male.setEnabled(true);
         female.setEnabled(true);

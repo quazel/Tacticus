@@ -27,12 +27,11 @@ public class SignUpCredentials extends Activity {
     private SignUpContainer signUpContainer;
 
     private EditText email;
-    private EditText desiredUsername;
+    private EditText desiredNickname;
     private EditText desiredPassword;
     private EditText countryCode;
     private EditText phoneNumber;
     private Button continueButton;
-    private Button cancelButton;
 
     private FragmentManager fm;
     private FragmentTransaction ft;
@@ -52,15 +51,14 @@ public class SignUpCredentials extends Activity {
         loadingBar = new LoadingBar();
 
         email = (EditText) findViewById(R.id.editTextEmail);
-        desiredUsername = (EditText) findViewById(R.id.editTextDesiredUsername);
+        desiredNickname = (EditText) findViewById(R.id.editTextDesiredNickname);
         desiredPassword = (EditText) findViewById(R.id.editTextDesiredPassword);
         countryCode = (EditText) findViewById(R.id.editTextCountryCode);
         phoneNumber = (EditText) findViewById(R.id.editTextPhoneNumber);
         continueButton = (Button) findViewById(R.id.buttonSignUp);
-        cancelButton = (Button) findViewById(R.id.buttonCancelSignUp);
 
         setEmailText(signUpContainer.getDesiredEmail());
-        setDesiredUsernameText(signUpContainer.getDesiredUsername());
+        setDesiredNicknameText(signUpContainer.getDesiredUsername());
         setDesiredPasswordText(signUpContainer.getPassword());
         setCountryCodeText(signUpContainer.getCountryCode());
         setPhoneNumberText(signUpContainer.getDesiredPhoneNumber());
@@ -88,12 +86,10 @@ public class SignUpCredentials extends Activity {
 
     public void disableButtons() {
         continueButton.setEnabled(false);
-        cancelButton.setEnabled(false);
     }
 
     public void enableButtons() {
         continueButton.setEnabled(true);
-        cancelButton.setEnabled(true);
     }
 
     // when the continue button is pressed (sign up)
@@ -105,7 +101,7 @@ public class SignUpCredentials extends Activity {
         // sets the instance variables inside the sign up service to the inputs
         // gathered in the sign up credentials
         signUpContainer.setDesiredEmail(email.getText().toString());
-        signUpContainer.setDesiredUsername(desiredUsername.getText().toString());
+        signUpContainer.setDesiredUsername(desiredNickname.getText().toString());
         signUpContainer.setPassword(desiredPassword.getText().toString());
         signUpContainer.setCountryCode(countryCode.getText().toString());
         signUpContainer.setDesiredPhoneNumber(phoneNumber.getText().toString());
@@ -117,13 +113,13 @@ public class SignUpCredentials extends Activity {
             Toast.makeText(this, "Please enter a valid email address.", Toast.LENGTH_SHORT).show();
         }
         else if (signUpContainer.getDesiredUsername().equals("") || signUpContainer.getPassword().equals("")) {
-            Toast.makeText(this, "Please enter desired username and password.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please enter desired nickname and password.", Toast.LENGTH_SHORT).show();
         }
         else if(signUpContainer.getCountryCode().equals("")) {
             Toast.makeText(this, "Please select your country code.", Toast.LENGTH_SHORT).show();
         }
         else if(!signUpContainer.getDesiredUsername().matches("^[a-zA-Z0-9_]+$")) {
-            Toast.makeText(this, "Usernames may only contain letters, numbers, and underscores (_).", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Nicknames may only contain letters, numbers, and underscores (_).", Toast.LENGTH_SHORT).show();
         }
         else if(signUpContainer.getPassword().length() < 6 || signUpContainer.getPassword().length() > 20){
             Toast.makeText(this, "Passwords must be between 6 and 20 characters in length.", Toast.LENGTH_SHORT).show();
@@ -139,17 +135,8 @@ public class SignUpCredentials extends Activity {
             ft = fm.beginTransaction();
             ft.add(R.id.loading_frame, loadingBar);
             ft.commit();
-            new CheckCredentialTask().execute(getDesiredUsernameText(), getEmailText(), getPhoneNumberText());
+            new CheckCredentialTask().execute(getDesiredNicknameText(), getEmailText(), getPhoneNumberText());
         }
-    }
-
-    // when cancel is pressed (sign up)
-    public void cancelSignUpPressed(View v){
-        // clears the data in the sign up container
-        signUpContainer.clear();
-        Intent intent = new Intent(this, AccountPortal.class);
-        startActivity(intent);
-        finish();
     }
 
     @Override
@@ -189,8 +176,8 @@ public class SignUpCredentials extends Activity {
         return this.email.getText().toString();
     }
 
-    public String getDesiredUsernameText() {
-        return this.desiredUsername.getText().toString();
+    public String getDesiredNicknameText() {
+        return this.desiredNickname.getText().toString();
     }
 
     public String getDesiredPasswordText() {
@@ -209,8 +196,8 @@ public class SignUpCredentials extends Activity {
         this.email.setText(email);
     }
 
-    public void setDesiredUsernameText(String desiredUsername) {
-        this.desiredUsername.setText(desiredUsername);
+    public void setDesiredNicknameText(String desiredUsername) {
+        this.desiredNickname.setText(desiredUsername);
     }
 
     public void setDesiredPasswordText(String desiredPassword) {

@@ -26,7 +26,7 @@
             android:paddingTop="32dp"
             android:paddingBottom="32dp"
             android:text="Sign Up"
-            android:textColor="@color/black"
+            android:textColor="@color/title_text_color"
             android:textSize="36sp"
             android:id="@+id/signUpTitle2"
             android:layout_centerHorizontal="true"
@@ -143,35 +143,18 @@
             android:textColor="@color/black"/>
     </RelativeLayout>
 
-    <LinearLayout
-        android:layout_alignParentBottom="true"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:weightSum="2"
-        android:orientation="horizontal">
-
         <Button
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:text="Back"
-            android:textColor="@color/title_text_color"
-            android:layout_weight="1"
-            android:background="@drawable/full_width_selector"
-            android:textSize="25sp"
-            android:id="@+id/buttonCancelSignUp"
-            android:onClick="backSignUpPressed"/>
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:text="Submit"
-            android:textColor="@color/title_text_color"
-            android:layout_weight="1"
-            android:background="@drawable/full_width_selector"
-            android:textSize="25sp"
+            android:layout_height="100dp"
+            android:text="SIGN UP"
+            android:textColor="@color/white"
+            android:background="@color/title_text_color"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            android:layout_alignParentBottom="true"
             android:id="@+id/buttonSignUp"
             android:onClick="signUpPressed"/>
 
-    </LinearLayout>
     <Space
         android:layout_width="match_parent"
         android:layout_height="385dp"
