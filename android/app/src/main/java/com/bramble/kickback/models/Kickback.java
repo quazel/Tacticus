@@ -85,54 +85,5 @@ public class Kickback {
 
         return toReturn;
     }
-
-    /*
-    public String getTimeRange() {
-
-        String startMinutes = Integer.getTimeRange(this.getStart().getMinuteOfHour());
-        String stopMinutes = Integer.getTimeRange(this.getStop().getMinuteOfHour());
-
-        if(startMinutes.equals("0")) {
-            startMinutes = "00";
-        }
-        if(stopMinutes.equals("0")) {
-            stopMinutes = "00";
-        }
-
-        if (this.getStart().getHourOfDay() < 12 ||
-            this.getStart().getHourOfDay() == 24)
-        {
-            if (this.getStop().getHourOfDay() < 12 ||
-                this.getStop().getHourOfDay() == 24)
-            {
-                return this.getStart().get(DateTimeFieldType.hourOfHalfday()) + ":" +
-                        startMinutes + "am" +
-                        " - " +
-                        this.getStop().get(DateTimeFieldType.hourOfHalfday()) + ":" +
-                        stopMinutes+"am";
-            }
-            return this.getStart().get(DateTimeFieldType.hourOfHalfday()) + ":" +
-                    startMinutes + "am" +
-                    " - " +
-                    this.getStop().get(DateTimeFieldType.hourOfHalfday()) + ":" +
-                    stopMinutes+"pm";
-        }
-        else
-        {
-            if (this.getStart().getHourOfDay() == 12)
-            {
-                return "12:" +
-                        startMinutes + "pm" +
-                        " - " +
-                        this.getStop().get(DateTimeFieldType.hourOfHalfday()) + ":" +
-                        stopMinutes + "pm";
-            }
-            return this.getStart().get(DateTimeFieldType.hourOfHalfday()) + ":" +
-                    startMinutes + "pm" +
-                    " - " +
-                    this.getStop().get(DateTimeFieldType.hourOfHalfday()) + ":" +
-                    stopMinutes+"pm";
-
-        }
-    }*/
+    
 }
