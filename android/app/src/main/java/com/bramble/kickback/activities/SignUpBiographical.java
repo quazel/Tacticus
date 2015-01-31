@@ -189,13 +189,13 @@ public class SignUpBiographical extends Activity {
         protected User doInBackground(String... params) {
             try {
                 String result = new ConnectionHandler().register(params[0], params[1], params[2],
-                        params[3], params[4], params[5],
-                        params[6]);
+                                                                 params[3], params[4], params[5],
+                                                                 params[6]);
                 if (result != null) {
                     JSONObject json = new JSONObject(result);
                     User user = User.getUser();
                     user.setName(json.getString("name"));
-                    user.setNickname(json.getString("username"));
+                    user.setNickname(json.getString("nickname"));
                     user.setEmail(json.getString("email"));
                     user.setPhoneNumber(json.getString("phone_number"));
                     user.setTemp(true);

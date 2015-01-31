@@ -58,7 +58,7 @@ public class ConnectionHandler {
         }
     }
 
-    public String register(String username, String password, String email, String phoneNumber,
+    public String register(String nickname, String password, String email, String phoneNumber,
                            String name, String birthdate, String sex) throws IOException
     {
         URL requestURL = new URL(registerURL);
@@ -68,7 +68,7 @@ public class ConnectionHandler {
         connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
         connection.setRequestProperty("charset", "utf-8");
         String urlParameters = "";
-        urlParameters += "username=" + username;
+        urlParameters += "nickname=" + nickname;
         urlParameters += "&password=" + password;
         urlParameters += "&email=" + email;
         urlParameters += "&phone_number=" + phoneNumber;
@@ -100,7 +100,7 @@ public class ConnectionHandler {
         }
     }
 
-    public String checkCredentials(String username, String email, String phoneNumber) throws IOException {
+    public String checkCredentials(String email, String phoneNumber) throws IOException {
         URL requestURL = new URL(checkCredentialsURL);
         HttpsURLConnection connection = (HttpsURLConnection) requestURL.openConnection();
         connection.setDoInput(true);
@@ -109,8 +109,7 @@ public class ConnectionHandler {
         connection.setRequestProperty("User-Agent","Mozilla/5.0 ( compatible ) ");
         connection.setRequestProperty("Accept","*/*");
         String urlParameters = "";
-        urlParameters += "username=" + username;
-        urlParameters += "&email=" + email;
+        urlParameters += "email=" + email;
         urlParameters += "&phone_number=" + phoneNumber;
         connection.setRequestProperty("Content-Length", "" + urlParameters.getBytes().length);
         connection.setUseCaches (false);

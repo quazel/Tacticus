@@ -135,7 +135,7 @@ public class SignUpCredentials extends Activity {
             ft = fm.beginTransaction();
             ft.add(R.id.loading_frame, loadingBar);
             ft.commit();
-            new CheckCredentialTask().execute(getDesiredNicknameText(), getEmailText(), getPhoneNumberText());
+            new CheckCredentialTask().execute(getEmailText(), getPhoneNumberText());
         }
     }
 
@@ -218,7 +218,7 @@ public class SignUpCredentials extends Activity {
         @Override
         protected String doInBackground(String... params) {
             try {
-                return new ConnectionHandler().checkCredentials(params[0], params[1], params[2]);
+                return new ConnectionHandler().checkCredentials(params[0], params[1]);
             } catch (IOException e) {
                 e.printStackTrace();
                 return null;
