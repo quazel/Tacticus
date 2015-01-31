@@ -1,9 +1,13 @@
 package com.bramble.kickback.models;
 
+import java.util.ArrayList;
+
 public class User {
 
+    // Singleton instance
     private static User instance;
 
+    // Primary fields
     private String username;
     private String name;
     private String email;
@@ -12,6 +16,12 @@ public class User {
     private boolean temp;
     private boolean online;
 
+    // Data collections, i.e. friends lists
+    private ArrayList<Friend> friends;
+    private ArrayList<Friend> onlineFriends;
+
+    // Lazy initialization and getting of User instance. Synchronized so that we can ensure that
+    // user is not created by two concurrent threads.
     public static synchronized User getUser() {
         if (instance == null) {
             instance = new User();
