@@ -18,7 +18,7 @@
 
     </RelativeLayout>
     <se.emilsjolander.stickylistheaders.StickyListHeadersListView
-        android:id="@+id/home_list"
+        android:id="@+id/online_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/tag_layout"

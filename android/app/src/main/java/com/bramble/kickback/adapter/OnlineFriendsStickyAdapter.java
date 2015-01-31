@@ -19,13 +19,13 @@ import java.util.Locale;
 
 import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
 
-public class KickbacksListStickyAdapter extends BaseAdapter implements StickyListHeadersAdapter {
+public class OnlineFriendsStickyAdapter extends BaseAdapter implements StickyListHeadersAdapter {
 
     private List<Friend> filteredList = null;
     private ArrayList<Friend> arrayList;
     private LayoutInflater inflater;
 
-    public KickbacksListStickyAdapter(Context context, ArrayList<Friend> inputArrayList) {
+    public OnlineFriendsStickyAdapter(Context context, ArrayList<Friend> inputArrayList) {
         inflater = LayoutInflater.from(context);
 
         this.arrayList = inputArrayList;
