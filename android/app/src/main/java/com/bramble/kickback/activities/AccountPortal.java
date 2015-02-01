@@ -34,6 +34,7 @@ public class AccountPortal extends Activity {
         finish();
     }
 
+    /*
     @Override
     public void onBackPressed() {
         new AlertDialog.Builder(this)
@@ -47,4 +48,5 @@ public class AccountPortal extends Activity {
                 .setNegativeButton("No", null)
                 .show();
     }
+    */
 }

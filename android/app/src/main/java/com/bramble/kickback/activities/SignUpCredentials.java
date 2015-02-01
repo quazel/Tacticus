@@ -162,7 +162,7 @@ public class SignUpCredentials extends Activity {
         AlertDialog.Builder builder = new AlertDialog.Builder(SignUpCredentials.this);
 
         builder.setTitle("Select Your Country Code");
-        builder.setSingleChoiceItems(countryCodeArray, -1, new DialogInterface.OnClickListener() {
+        builder.setSingleChoiceItems(countryCodeArray, 0, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int item) {
                 countryNumber = CountryCode.getCountryCodeByID(item) + "";
                 selected = countryCodeArray[item].toString();
