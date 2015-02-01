@@ -76,4 +76,10 @@ public class Friend {
         }
         return false;
     }
+
+    @Override
+    public String toString() {
+        return nickname;
+    }
+
 }
