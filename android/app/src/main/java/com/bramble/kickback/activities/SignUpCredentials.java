@@ -56,7 +56,6 @@ public class SignUpCredentials extends Activity {
         desiredNickname = (EditText) findViewById(R.id.editTextDesiredNickname);
         desiredPassword = (EditText) findViewById(R.id.editTextDesiredPassword);
         countryCode = (EditText) findViewById(R.id.editTextCountryCode);
-        countryNumber = "";
         phoneNumber = (EditText) findViewById(R.id.editTextPhoneNumber);
         continueButton = (Button) findViewById(R.id.buttonSignUp);
 
@@ -87,6 +86,8 @@ public class SignUpCredentials extends Activity {
         });
 
         countryCodeArray = CountryCode.getAllCanonicalNames();
+        countryNumber = "1";
+        selected = "United States";
     }
 
     public void disableButtons() {
@@ -160,7 +161,6 @@ public class SignUpCredentials extends Activity {
     public void showCountryCodeDialog() {
         // country picker code!
         AlertDialog.Builder builder = new AlertDialog.Builder(SignUpCredentials.this);
-
         builder.setTitle("Select Your Country");
         builder.setSingleChoiceItems(countryCodeArray, 0, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int item) {
