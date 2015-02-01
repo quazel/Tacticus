@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/body"
     android:layout_width="match_parent"
     android:layout_height="@dimen/list_item_height"
     android:orientation="vertical"
@@ -8,7 +9,7 @@
     android:paddingBottom="9dp">
 
     <TextView android:id="@+id/username_thing"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="17dp"
         android:textSize="@dimen/list_item_primary_text_size"
