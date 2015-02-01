@@ -17,14 +17,13 @@
         android:id="@+id/tag_layout">
 
     </RelativeLayout>
-    <se.emilsjolander.stickylistheaders.StickyListHeadersListView
-        android:id="@+id/online_list"
+
+    <GridView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/tag_layout"
-        android:layout_above="@+id/linearLayout"
-        android:divider="@null"
-        android:dividerHeight="0dp"/>
+        android:columnWidth="90dp"
+        android:numColumns="3"
+        android:id="@+id/friendGrid"/>
 
     <LinearLayout
         android:layout_alignParentBottom="true"
