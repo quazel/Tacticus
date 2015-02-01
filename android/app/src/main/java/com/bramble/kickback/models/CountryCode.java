@@ -635,7 +635,7 @@ public enum CountryCode {
         }
     }
 
-    public CharSequence[] getAllCanonicalNames() {
+    public static CharSequence[] getAllCanonicalNames() {
         CharSequence[] toReturn = new CharSequence[CountryCode.values().length];
         for (int i = 0; i < CountryCode.values().length; i++) {
             toReturn[i] = CountryCode.values()[i].getCanonicalName();
@@ -643,7 +643,7 @@ public enum CountryCode {
         return toReturn;
     }
 
-    public int getCountryCodeByID(int id) {
+    public static int getCountryCodeByID(int id) {
         CountryCode countryCode = CountryCode.values()[id];
         if (countryCode == CANADA || countryCode == PUERTO_RICO)
             return UNITED_STATES.code;

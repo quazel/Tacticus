@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.bramble.kickback.R;
 import com.bramble.kickback.containers.SignUpContainer;
 import com.bramble.kickback.fragments.LoadingBar;
+import com.bramble.kickback.models.CountryCode;
 import com.bramble.kickback.networking.ConnectionHandler;
 
 import java.io.IOException;
@@ -82,6 +83,8 @@ public class SignUpCredentials extends Activity {
                 return false;
             }
         });
+
+        countryCodeArray = CountryCode.getAllCanonicalNames();
     }
 
     public void disableButtons() {
@@ -159,7 +162,7 @@ public class SignUpCredentials extends Activity {
         builder.setTitle("Select Your Country Code");
         builder.setSingleChoiceItems(countryCodeArray, -1, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int item) {
-                selected = countryCodeArray[item].toString().split(",")[1];
+                selected = CountryCode.getCountryCodeByID(item) + "";
             }
         });
         builder.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
