@@ -64,16 +64,16 @@ public class SignUpCredentials extends Activity {
         setCountryCodeText(signUpContainer.getCountryCode());
         setPhoneNumberText(signUpContainer.getDesiredPhoneNumber());
 
-        /*
-        confirmDesiredPassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+
+        desiredPassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_NEXT)) {
                     showCountryCodeDialog();
                 }
                 return false;
             }
         });
-        */
+
 
         phoneNumber.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
