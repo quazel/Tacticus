@@ -31,6 +31,7 @@ public class SignUpCredentials extends Activity {
     private EditText desiredNickname;
     private EditText desiredPassword;
     private EditText countryCode;
+    private String countryNumber;
     private EditText phoneNumber;
     private Button continueButton;
 
@@ -55,6 +56,7 @@ public class SignUpCredentials extends Activity {
         desiredNickname = (EditText) findViewById(R.id.editTextDesiredNickname);
         desiredPassword = (EditText) findViewById(R.id.editTextDesiredPassword);
         countryCode = (EditText) findViewById(R.id.editTextCountryCode);
+        countryNumber = "";
         phoneNumber = (EditText) findViewById(R.id.editTextPhoneNumber);
         continueButton = (Button) findViewById(R.id.buttonSignUp);
 
@@ -106,7 +108,7 @@ public class SignUpCredentials extends Activity {
         signUpContainer.setDesiredEmail(email.getText().toString());
         signUpContainer.setDesiredUsername(desiredNickname.getText().toString());
         signUpContainer.setPassword(desiredPassword.getText().toString());
-        signUpContainer.setCountryCode(countryCode.getText().toString());
+        signUpContainer.setCountryCode(countryNumber);
         signUpContainer.setDesiredPhoneNumber(phoneNumber.getText().toString());
         // native checks on inputs gathered
         if(signUpContainer.getDesiredEmail().equals("")) {
@@ -162,7 +164,8 @@ public class SignUpCredentials extends Activity {
         builder.setTitle("Select Your Country Code");
         builder.setSingleChoiceItems(countryCodeArray, -1, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int item) {
-                selected = CountryCode.getCountryCodeByID(item) + "";
+                countryNumber = CountryCode.getCountryCodeByID(item) + "";
+                selected = countryCodeArray[item].toString();
             }
         });
         builder.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
