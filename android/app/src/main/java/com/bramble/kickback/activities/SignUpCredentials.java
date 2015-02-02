@@ -141,6 +141,7 @@ public class SignUpCredentials extends Activity {
             ft = fm.beginTransaction();
             ft.add(R.id.loading_frame, loadingBar);
             ft.commit();
+            continueButton.setText("CONTINUING");
             new CheckCredentialTask().execute(getEmailText(), getPhoneNumberText());
         }
     }
@@ -239,6 +240,7 @@ public class SignUpCredentials extends Activity {
                     ft.remove(loadingBar);
                     ft.commit();
                     SignUpCredentials.this.enableButtons();
+                    continueButton.setText("CONTINUE");
                     Intent intent = new Intent(SignUpCredentials.this, SignUpBiographical.class);
                     startActivity(intent);
                     finish();
@@ -249,6 +251,7 @@ public class SignUpCredentials extends Activity {
                     ft.commit();
                     Toast.makeText(SignUpCredentials.this, result.replace("401:", ""), Toast.LENGTH_LONG).show();
                     SignUpCredentials.this.enableButtons();
+                    continueButton.setText("CONTINUE");
                 }
             }
             else {
@@ -257,6 +260,7 @@ public class SignUpCredentials extends Activity {
                 ft.commit();
                 Toast.makeText(SignUpCredentials.this, "An error occurred.", Toast.LENGTH_LONG).show();
                 SignUpCredentials.this.enableButtons();
+                continueButton.setText("CONTINUE");
             }
         }
     }

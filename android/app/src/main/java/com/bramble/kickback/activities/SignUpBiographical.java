@@ -80,6 +80,7 @@ public class SignUpBiographical extends Activity {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
                     showBirthdayLogin();
+                    firstName.clearFocus();
                 }
                 return false;
             }
@@ -114,6 +115,7 @@ public class SignUpBiographical extends Activity {
             ft = fm.beginTransaction();
             ft.add(R.id.loading_frame, loadingBar);
             ft.commit();
+            continueButton.setText("SIGNING UP");
             new SignUpTask().execute(signUpContainer.getDesiredUsername(), signUpContainer.getPassword(),
                     signUpContainer.getDesiredEmail(), signUpContainer.getDesiredPhoneNumber(),
                     signUpContainer.getFirstName() + " " + signUpContainer.getLastName(),
@@ -224,6 +226,7 @@ public class SignUpBiographical extends Activity {
                 ft.commit();
                 Toast.makeText(SignUpBiographical.this, "An error occurred.", Toast.LENGTH_LONG).show();
                 SignUpBiographical.this.enableButtons();
+                continueButton.setText("SIGN UP");
             }
         }
     }

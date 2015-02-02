@@ -90,6 +90,7 @@ public class Login extends Activity {
             ft = fm.beginTransaction();
             ft.add(R.id.loading_frame, loadingBar);
             ft.commit();
+            loginButton.setText("LOGGING IN");
             new LoginTask().execute(email, password);
         }
     }
@@ -132,6 +133,7 @@ public class Login extends Activity {
                 ft = fm.beginTransaction();
                 ft.remove(loadingBar);
                 ft.commit();
+                loginButton.setText("LOG IN");
                 Toast.makeText(Login.this, "Invalid email or password.", Toast.LENGTH_LONG).show();
                 Login.this.setPasswordText("");
                 Login.this.enableButtons();
