@@ -23,14 +23,15 @@
         android:layout_height="match_parent"
         android:columnWidth="90dp"
         android:numColumns="3"
-        android:id="@+id/friendGrid"/>
+        android:id="@+id/friendGrid"
+        android:layout_above="@id/button_layout"/>
 
     <LinearLayout
         android:layout_alignParentBottom="true"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:id="@+id/linearLayout">
+        android:id="@+id/button_layout">
 
         <Button
             android:layout_width="fill_parent"
