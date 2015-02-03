@@ -33,10 +33,4 @@
     <color name="darkBlue">#00AFBF</color>
     <color name="lightBlue">#B9EBFF</color>
 
-    <selector xmlns:android="http://schemas.android.com/apk/res/android">
-        <item android:state_pressed="true" android:color="#fff"/>
-        <item android:state_activated="true" android:color="#fff"/>
-        <item android:color="#000" />
-    </selector>
-
 </resources>
