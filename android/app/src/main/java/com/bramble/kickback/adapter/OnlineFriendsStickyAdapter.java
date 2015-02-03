@@ -67,16 +67,6 @@ public class OnlineFriendsStickyAdapter extends BaseAdapter implements StickyLis
         holder.username = (TextView)convertView.findViewById(R.id.username_thing);
         convertView.setTag(holder);
 
-        if(filteredList.size()-1 == position){ //Is the last element of filteredList
-            body.setBackgroundResource(R.drawable.full_width_selector_nobottom); //NO line on bottom
-        }else{
-            if(filteredList.get(position).getIsFavorite() != filteredList.get(position+1).getIsFavorite()){
-                body.setBackgroundResource(R.drawable.full_width_selector_nobottom); //NO line on bottom
-            }else{
-                body.setBackgroundResource(R.drawable.full_width_selector); //line on bottom
-            }
-        }
-
         holder.name.setText(filteredList.get(position).getName());
         holder.username.setText(filteredList.get(position).getNickname());
 
