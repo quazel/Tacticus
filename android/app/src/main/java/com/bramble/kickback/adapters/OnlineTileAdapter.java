@@ -41,7 +41,7 @@ public class OnlineTileAdapter extends ArrayAdapter<Friend> {
                     break;
                 case 1:
                     if (friend.getIsFavorite())
-                        view = mInflator.inflate(R.layout.online_tile_item_megenta, parent, false);
+                        view = mInflator.inflate(R.layout.online_tile_item_magenta, parent, false);
                     else
                         view = mInflator.inflate(R.layout.online_tile_item_green, parent, false);
                     break;
