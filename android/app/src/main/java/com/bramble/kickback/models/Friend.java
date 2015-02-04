@@ -15,14 +15,14 @@ public class Friend {
     private boolean isFavorite;
     private ArrayList<Kickback> plans;
 
-    public Friend(String name, String nickname, String phoneNumber, ArrayList<Kickback> plans) {
+    public Friend(String nickname, String name, String phoneNumber, ArrayList<Kickback> plans) {
         this.name = name;
         this.nickname = nickname;
         this.phoneNumber = phoneNumber;
         this.plans = plans;
     }
 
-    public Friend(String name, String nickname, String phoneNumber, ArrayList<Kickback> plans, boolean fav) {
+    public Friend(String nickname, String name, String phoneNumber, ArrayList<Kickback> plans, boolean fav) {
         this.name = name;
         this.nickname = nickname;
         this.phoneNumber = phoneNumber;
