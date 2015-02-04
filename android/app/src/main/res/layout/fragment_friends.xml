@@ -11,6 +11,31 @@
         android:id="@+id/friends_actionbar"
         android:background="@color/friends_color">
 
+        <Button
+            android:layout_width="@dimen/up_button_width"
+            android:layout_height="fill_parent"
+            android:background="@color/transparent"
+            android:id="@+id/add_friends_back_button"
+            android:onClick="friendsBackButtonPressed"/>
+
+        <ImageView
+            android:layout_width="@dimen/up_button_side_lengths"
+            android:layout_height="@dimen/up_button_side_lengths"
+            android:background="@drawable/custom_white_up_button"
+            android:layout_centerVertical="true"
+            android:id="@+id/friends_up_button"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Friends"
+            android:textColor="@color/white"
+            android:textSize="@dimen/action_bar_text_size"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/friends_up_button"
+            android:layout_toEndOf="@+id/friends_up_button"
+            android:id="@+id/friends_textview"/>
+
         </RelativeLayout>
 
     <se.emilsjolander.stickylistheaders.StickyListHeadersListView

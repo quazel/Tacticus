@@ -11,6 +11,31 @@
         android:id="@+id/planner_actionbar"
         android:background="@color/schedule_color">
 
+        <Button
+            android:layout_width="@dimen/up_button_width"
+            android:layout_height="fill_parent"
+            android:background="@color/transparent"
+            android:id="@+id/planner_back_button"
+            android:onClick="plannerBackButtonPressed"/>
+
+        <ImageView
+            android:layout_width="@dimen/up_button_side_lengths"
+            android:layout_height="@dimen/up_button_side_lengths"
+            android:background="@drawable/custom_white_up_button"
+            android:layout_centerVertical="true"
+            android:id="@+id/planner_up_button"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My Kickbacks"
+            android:textColor="@color/white"
+            android:textSize="@dimen/action_bar_text_size"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/planner_up_button"
+            android:layout_toEndOf="@+id/planner_up_button"
+            android:id="@+id/planner_textview"/>
+
     </RelativeLayout>
 
     <se.emilsjolander.stickylistheaders.StickyListHeadersListView

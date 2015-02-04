@@ -88,4 +88,20 @@ public class Main extends Activity {
     public void goOfflinePressed(View view) {
         homeFragment.goOffline();
     }
+
+    public void friendsBackButtonPressed(View view) {
+        viewPager.setCurrentItem(2);
+    }
+
+    public void addFriendsBackButtonPressed(View view) {
+        viewPager.setCurrentItem(3);
+    }
+
+    public void addPlanBackButtonPressed(View view) {
+        viewPager.setCurrentItem(1);
+    }
+
+    public void plannerBackButtonPressed(View view) {
+        viewPager.setCurrentItem(2);
+    }
 }
