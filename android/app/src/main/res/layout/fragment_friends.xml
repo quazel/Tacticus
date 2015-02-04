@@ -3,12 +3,22 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" 
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:id="@+id/friends_actionbar"
+        android:background="@color/friends_color">
+
+        </RelativeLayout>
 
     <se.emilsjolander.stickylistheaders.StickyListHeadersListView
         android:id="@+id/all_friends_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="@null"
-        android:dividerHeight="0dp"/>
+        android:dividerHeight="0dp"
+        android:layout_below="@id/friends_actionbar"/>
 
 </RelativeLayout>

@@ -25,17 +25,16 @@ import java.util.ArrayList;
 public class Main extends Activity {
 
     private ArrayList<Fragment> fragments;
-    private AddFriendsFragment addFriendsFragment;
-    private FriendsFragment friendsFragment;
-    private HomeFragment homeFragment;
-    private PlannerFragment plannerFragment;
     private AddPlanFragment addPlanFragment;
+    private PlannerFragment plannerFragment;
+    private HomeFragment homeFragment;
+    private FriendsFragment friendsFragment;
+    private AddFriendsFragment addFriendsFragment;
 
     private FragmentManager fm;
     private FragmentTransaction ft;
     private ViewPager viewPager;
     private MainActivityPageAdapter mAdapter;
-    private ActionBar actionBar;
     // for home fragment tab
     ArrayList<Friend> onlineFriends;
 
@@ -46,24 +45,22 @@ public class Main extends Activity {
         setContentView(R.layout.activity_main);
         // Initialization
         fragments = new ArrayList<Fragment>();
-        addFriendsFragment = new AddFriendsFragment();
-        friendsFragment = new FriendsFragment();
-        homeFragment = new HomeFragment();
-        plannerFragment = new PlannerFragment();
         addPlanFragment = new AddPlanFragment();
-        fragments.add(addFriendsFragment);
-        fragments.add(friendsFragment);
-        fragments.add(homeFragment);
-        fragments.add(plannerFragment);
+        plannerFragment = new PlannerFragment();
+        homeFragment = new HomeFragment();
+        friendsFragment = new FriendsFragment();
+        addFriendsFragment = new AddFriendsFragment();
         fragments.add(addPlanFragment);
+        fragments.add(plannerFragment);
+        fragments.add(homeFragment);
+        fragments.add(friendsFragment);
+        fragments.add(addFriendsFragment);
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
-        actionBar = getActionBar();
         fm = getFragmentManager();
         mAdapter = new MainActivityPageAdapter(fm, fragments);
 
         viewPager.setAdapter(mAdapter);
-        actionBar.setHomeButtonEnabled(false);
         //actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
