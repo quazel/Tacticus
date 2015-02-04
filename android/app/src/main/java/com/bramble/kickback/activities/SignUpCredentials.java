@@ -142,7 +142,7 @@ public class SignUpCredentials extends Activity {
             ft.add(R.id.loading_frame, loadingBar);
             ft.commit();
             continueButton.setText("CONTINUING");
-            new CheckCredentialTask().execute(getEmailText(), getPhoneNumberText());
+            new CheckCredentialTask().execute(signUpContainer.getDesiredEmail(), signUpContainer.getFullPhoneNumber());
         }
     }
 
