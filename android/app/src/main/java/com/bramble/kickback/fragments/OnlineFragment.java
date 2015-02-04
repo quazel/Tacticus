@@ -9,12 +9,11 @@ import android.widget.ArrayAdapter;
 import android.widget.GridView;
 
 import com.bramble.kickback.R;
+import com.bramble.kickback.adapters.OnlineTileAdapter;
 import com.bramble.kickback.models.Friend;
 import com.bramble.kickback.models.User;
 
 import java.util.ArrayList;
-
-import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 
 public class OnlineFragment extends Fragment {
 
@@ -27,7 +26,7 @@ public class OnlineFragment extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_online, container, false);
 
         gridView = (GridView) view.findViewById(R.id.friendGrid);
-        gridView.setAdapter(new ArrayAdapter<Friend>(view.getContext(), R.layout.online_tile_item_blue, R.id.nickname_place, User.getUser().getOnlineFriends()));
+        gridView.setAdapter(new OnlineTileAdapter(view.getContext(), R.layout.online_tile_item_blue, User.getUser().getOnlineFriends()));
 
         /*
         onlineFriends = User.getUser().getOnlineFriends();
