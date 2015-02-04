@@ -4,16 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:id="@+id/planner_actionbar"
+        android:background="@color/schedule_color">
+
+    </RelativeLayout>
+
     <se.emilsjolander.stickylistheaders.StickyListHeadersListView
         android:id="@+id/kickbacks_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="@null"
-        android:dividerHeight="0dp"/>
+        android:dividerHeight="0dp"
+        android:layout_below="@+id/planner_actionbar"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="planner"/>
 
 </RelativeLayout>
