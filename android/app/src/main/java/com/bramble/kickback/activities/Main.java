@@ -22,7 +22,7 @@ import com.bramble.kickback.models.Friend;
 
 import java.util.ArrayList;
 
-public class Main extends Activity implements ActionBar.TabListener{
+public class Main extends Activity {
 
     private ArrayList<Fragment> fragments;
     private AddFriendsFragment addFriendsFragment;
@@ -91,23 +91,4 @@ public class Main extends Activity implements ActionBar.TabListener{
     public void goOfflinePressed(View view) {
         homeFragment.goOffline();
     }
-
-
-    // tab stuff
-    @Override
-    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
-    }
-
-    @Override
-    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
-        // on tab selected
-        // show respected fragment view
-        viewPager.setCurrentItem(tab.getPosition());
-    }
-
-    @Override
-    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
-    }
-
-    
 }
