@@ -67,7 +67,7 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
         if(filteredList.size()-1 == position){ //Is the last element of filteredList
             body.setBackgroundResource(R.drawable.full_width_selector_nobottom); //NO line on bottom
         }else{
-            if(filteredList.get(position).getIsFavorite() != filteredList.get(position+1).getIsFavorite()){
+            if(filteredList.get(position).isFavorite() != filteredList.get(position+1).isFavorite()){
                 body.setBackgroundResource(R.drawable.full_width_selector_nobottom); //NO line on bottom
             }else{
                 body.setBackgroundResource(R.drawable.full_width_selector); //line on bottom
@@ -96,7 +96,7 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
             holder = (HeaderViewHolder) convertView.getTag();
         }
         String headerText;
-        if(filteredList.get(position).getIsFavorite() == true){
+        if(filteredList.get(position).isFavorite() == true){
             headerText = "FAVORITES";
         }else{
             headerText = "FRIENDS";
@@ -107,7 +107,7 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
 
     @Override
     public long getHeaderId(int position) {
-        if(filteredList.get(position).getIsFavorite()){
+        if(filteredList.get(position).isFavorite()){
             return 0;
         }else{
             return 1;

@@ -33,14 +33,14 @@ public class OnlineTileAdapter extends ArrayAdapter<Friend> {
             int swatch = position % 2;
             switch (swatch) {
                 case 0:
-                    if (friend.getIsFavorite())
+                    if (friend.isFavorite())
                         view = mInflator.inflate(R.layout.online_tile_item_orange, parent, false);
 
                     else
                         view = mInflator.inflate(R.layout.online_tile_item_blue, parent, false);
                     break;
                 case 1:
-                    if (friend.getIsFavorite())
+                    if (friend.isFavorite())
                         view = mInflator.inflate(R.layout.online_tile_item_magenta, parent, false);
                     else
                         view = mInflator.inflate(R.layout.online_tile_item_green, parent, false);

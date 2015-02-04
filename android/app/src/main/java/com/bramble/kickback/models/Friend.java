@@ -42,7 +42,7 @@ public class Friend {
         return nickname;
     }
 
-    public boolean getIsFavorite(){
+    public boolean isFavorite(){
         return isFavorite;
     }
 
