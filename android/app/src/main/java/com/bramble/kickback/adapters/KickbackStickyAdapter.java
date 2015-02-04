@@ -1,4 +1,4 @@
-package com.bramble.kickback.adapter;
+package com.bramble.kickback.adapters;
 
 //This adapter is to be used with the kickbacks schedule activity
 
@@ -18,10 +18,6 @@ import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
 
 import com.bramble.kickback.models.Kickback;
 import com.bramble.kickback.util.Util;
-
-import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormatter;
-import org.joda.time.format.DateTimeFormatterBuilder;
 
 public class KickbackStickyAdapter extends BaseAdapter implements StickyListHeadersAdapter {
 

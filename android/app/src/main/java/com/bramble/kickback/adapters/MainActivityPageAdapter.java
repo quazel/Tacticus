@@ -1,4 +1,4 @@
-package com.bramble.kickback.adapter;
+package com.bramble.kickback.adapters;
 
 import android.app.Fragment;
 import android.app.FragmentManager;

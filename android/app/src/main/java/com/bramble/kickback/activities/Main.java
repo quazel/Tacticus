@@ -1,6 +1,5 @@
 package com.bramble.kickback.activities;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -10,13 +9,11 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 
 import com.bramble.kickback.R;
-import com.bramble.kickback.adapter.MainActivityPageAdapter;
+import com.bramble.kickback.adapters.MainActivityPageAdapter;
 import com.bramble.kickback.fragments.AddFriendsFragment;
 import com.bramble.kickback.fragments.AddPlanFragment;
 import com.bramble.kickback.fragments.FriendsFragment;
 import com.bramble.kickback.fragments.HomeFragment;
-import com.bramble.kickback.fragments.OfflineFragment;
-import com.bramble.kickback.fragments.OnlineFragment;
 import com.bramble.kickback.fragments.PlannerFragment;
 import com.bramble.kickback.models.Friend;
 

@@ -8,10 +8,9 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.bramble.kickback.R;
-import com.bramble.kickback.adapter.FriendsStickyAdapter;
+import com.bramble.kickback.adapters.FriendsStickyAdapter;
 import com.bramble.kickback.models.Friend;
 import com.bramble.kickback.models.User;
-import com.bramble.kickback.util.Globals;
 
 import java.util.ArrayList;
 

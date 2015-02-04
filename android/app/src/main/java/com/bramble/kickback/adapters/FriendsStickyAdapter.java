@@ -1,4 +1,4 @@
-package com.bramble.kickback.adapter;
+package com.bramble.kickback.adapters;
 
 //This adapter is to be used with the friends list activity
 
