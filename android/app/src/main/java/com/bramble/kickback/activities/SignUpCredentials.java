@@ -41,7 +41,6 @@ public class SignUpCredentials extends Activity {
 
     private CharSequence[] countryCodeArray;
     private String selected;
-    AlertDialog countryCodeDialog;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -111,6 +110,7 @@ public class SignUpCredentials extends Activity {
         signUpContainer.setPassword(desiredPassword.getText().toString());
         signUpContainer.setCountryCode(countryNumber);
         signUpContainer.setDesiredPhoneNumber(phoneNumber.getText().toString());
+        signUpContainer.setFullPhoneNumber();
         // native checks on inputs gathered
         if(signUpContainer.getDesiredEmail().equals("")) {
             Toast.makeText(this, "Please enter your email address.", Toast.LENGTH_SHORT).show();
@@ -133,7 +133,7 @@ public class SignUpCredentials extends Activity {
         else if(!signUpContainer.getPassword().matches("^[a-zA-Z0-9_\\-!@#$%^&*]+$")) {
             Toast.makeText(this, "Passwords may only contain letters, numbers, and the special characters !@#$%^&*-_.", Toast.LENGTH_SHORT).show();
         }
-        else if(signUpContainer.getDesiredPhoneNumber().equals("")) {
+        else if(phoneNumber.getText().toString().equals("")) {
             Toast.makeText(this, "Please enter your mobile phone number.", Toast.LENGTH_SHORT).show();
         }
         else {
