@@ -63,5 +63,4 @@ public class OnlineTileAdapter extends ArrayAdapter<Friend> {
     private class ViewHolder {
         public TextView nicknameView;
     }
-
 }

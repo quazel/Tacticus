@@ -33,7 +33,7 @@ public class Main extends Activity {
     private ViewPager viewPager;
     private MainActivityPageAdapter mAdapter;
     // for home fragment tab
-    ArrayList<Friend> onlineFriends;
+    ArrayList<Friend> selectedFriends;
 
 
     @Override
@@ -75,6 +75,8 @@ public class Main extends Activity {
             }
         });
         viewPager.setCurrentItem(2);
+
+        selectedFriends = new ArrayList<Friend>();
     }
 
     // home functionality
