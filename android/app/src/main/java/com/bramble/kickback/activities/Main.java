@@ -36,9 +36,6 @@ public class Main extends Activity implements ActionBar.TabListener{
     private ViewPager viewPager;
     private MainActivityPageAdapter mAdapter;
     private ActionBar actionBar;
-    // Tab titles
-    private String[] tabs = { "Add Friends", "Friends", "Home", "Schedule", "Add Schedule" };
-
     // for home fragment tab
     ArrayList<Friend> onlineFriends;
 
@@ -67,21 +64,12 @@ public class Main extends Activity implements ActionBar.TabListener{
 
         viewPager.setAdapter(mAdapter);
         actionBar.setHomeButtonEnabled(false);
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-
-        // Adding Tabs
-        for (String tab_name : tabs) {
-            actionBar.addTab(actionBar.newTab().setText(tab_name)
-                    .setTabListener(this));
-        }
+        //actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
             @Override
             public void onPageSelected(int position) {
-                // on changing the page
-                // make respected tab selected
-                actionBar.setSelectedNavigationItem(position);
             }
 
             @Override
@@ -92,7 +80,7 @@ public class Main extends Activity implements ActionBar.TabListener{
             public void onPageScrollStateChanged(int arg0) {
             }
         });
-        viewPager.setCurrentItem(2, false);
+        viewPager.setCurrentItem(2);
     }
 
     // home functionality
