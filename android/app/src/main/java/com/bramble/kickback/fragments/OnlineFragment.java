@@ -9,7 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.GridView;
 
 import com.bramble.kickback.R;
-import com.bramble.kickback.adapter.OnlineFriendsStickyAdapter;
 import com.bramble.kickback.models.Friend;
 import com.bramble.kickback.models.User;
 
@@ -20,8 +19,6 @@ import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 public class OnlineFragment extends Fragment {
 
     private ArrayList<Friend> onlineFriends;
-    private StickyListHeadersListView stickyList;
-    private OnlineFriendsStickyAdapter onlineFriendsStickyAdapter;
     private GridView gridView;
 
     @Override
