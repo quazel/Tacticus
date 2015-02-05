@@ -143,5 +143,47 @@ public class ConnectionHandler {
         }
     }
 
+    public String ping(String sessionId) throws IOException {
+        URL requestURL = new URL(checkCredentialsURL);
+        HttpsURLConnection connection = (HttpsURLConnection) requestURL.openConnection();
+        connection.setDoInput(true);
+        connection.setRequestMethod("POST");
+        connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+        connection.setRequestProperty("User-Agent","Mozilla/5.0 ( compatible ) ");
+        connection.setRequestProperty("Accept","*/*");
+        String urlParameters = "";
+        urlParameters += "session_id=" + sessionId;
+        connection.setRequestProperty("Content-Length", "" + urlParameters.getBytes().length);
+        connection.setUseCaches (false);
+        OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream());
+        writer.write(urlParameters);
+        writer.flush();
+        writer.close();
+
+        int responseCode = connection.getResponseCode();
+        if (responseCode == 200 || responseCode == 401) {
+            BufferedReader in;
+            if (responseCode == 200) {
+                in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            }
+            else {
+                in = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
+            }
+            String inputLine;
+            StringBuilder response = new StringBuilder();
+
+            while((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+                response.append("\n");
+            }
+            in.close();
+            Log.d("ConnectionHandler", response.toString());
+            return responseCode + ":" + response.toString().trim();
+        }
+        else {
+            throw new IOException("Received bad response from server.");
+        }
+    }
+
 }
 
