@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="2">
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:text="Call"
+        android:background="@drawable/outlined_selector"
+        android:textColor="@color/title_text_color"
+        android:textSize="30sp"
+        android:id="@+id/call_single"
+        android:onClick="callSinglePressed"
+        android:layout_weight="1"/>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:text="Text"
+        android:background="@drawable/outlined_selector"
+        android:textColor="@color/title_text_color"
+        android:textSize="30sp"
+        android:id="@+id/text_single"
+        android:onClick="textSinglePressed"
+        android:layout_weight="1"/>
+
+</LinearLayout>
