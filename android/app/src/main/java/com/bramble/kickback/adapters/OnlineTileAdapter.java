@@ -14,17 +14,20 @@ import android.widget.TextView;
 import com.bramble.kickback.R;
 import com.bramble.kickback.models.Friend;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class OnlineTileAdapter extends ArrayAdapter<Friend> {
 
     private LayoutInflater mInflator;
     private List<Friend> mFriends;
+    private List<Friend> mSelected;
 
     public OnlineTileAdapter(Context context, int resource, List<Friend> friends) {
         super(context, resource, friends);
         mInflator = LayoutInflater.from(context);
         mFriends = friends;
+        mSelected = new ArrayList<Friend>();
     }
 
     @Override
@@ -69,10 +72,24 @@ public class OnlineTileAdapter extends ArrayAdapter<Friend> {
                 ViewHolder holder = (ViewHolder) arg0.getTag();
                 parentGridView.setItemChecked(holder.index, !arg0.isActivated());
                 arg0.setActivated(!arg0.isActivated());
+                if (arg0.isActivated()) {
+                    if (!mSelected.contains(mFriends.get(holder.index))) {
+                        mSelected.add(mFriends.get(holder.index));
+                    }
+                }
+                else {
+                    if (mSelected.contains(mFriends.get(holder.index))) {
+                        mSelected.remove(mFriends.get(holder.index));
+                    }
+                }
             }
         });
 
         return view;
+    }
+
+    public List<Friend> getSelectedFriends() {
+        return mSelected;
     }
 
     private class ViewHolder {
