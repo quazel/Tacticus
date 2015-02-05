@@ -68,6 +68,7 @@ public class OnlineTileAdapter extends ArrayAdapter<Friend> {
                 GridView parentGridView = (GridView) parent;
                 ViewHolder holder = (ViewHolder) arg0.getTag();
                 parentGridView.setItemChecked(holder.index, !arg0.isActivated());
+                arg0.setActivated(!arg0.isActivated());
             }
         });
 
