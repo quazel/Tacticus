@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Button
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:text="Stop Kicking Back"
+    android:background="@drawable/outlined_selector"
+    android:textColor="@color/title_text_color"
+    android:textSize="30sp"
+    android:id="@+id/goOfflineButton"
+    android:onClick="goOfflinePressed"/>
