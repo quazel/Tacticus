@@ -57,6 +57,16 @@ public class OnlineTileAdapter extends ArrayAdapter<Friend> {
 
         viewHolder.nicknameView.setText(friend.getNickname());
 
+        view.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                if (arg0.isActivated()) {
+                    
+                }
+            }
+        });
+
         return view;
     }
 
