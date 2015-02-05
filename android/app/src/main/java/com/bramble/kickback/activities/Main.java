@@ -6,6 +6,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 
 import com.bramble.kickback.R;
@@ -18,6 +19,7 @@ import com.bramble.kickback.fragments.PlannerFragment;
 import com.bramble.kickback.models.Friend;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Main extends Activity {
 
@@ -28,7 +30,7 @@ public class Main extends Activity {
     private ViewPager viewPager;
     private MainActivityPageAdapter mAdapter;
     // for home fragment tab
-    ArrayList<Friend> selectedFriends;
+    List<Friend> selectedFriends;
 
 
     @Override
@@ -93,5 +95,10 @@ public class Main extends Activity {
 
     public void plannerBackButtonPressed(View view) {
         viewPager.setCurrentItem(2);
+    }
+
+    public void updateSelectedFriends(List<Friend> selectedFriends) {
+        this.selectedFriends = selectedFriends;
+        Log.d("Burgle", "TOP KEK");
     }
 }
