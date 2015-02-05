@@ -1,10 +1,14 @@
 package com.bramble.kickback.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Checkable;
+import android.widget.GridView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.bramble.kickback.R;
@@ -23,9 +27,8 @@ public class OnlineTileAdapter extends ArrayAdapter<Friend> {
         mFriends = friends;
     }
 
-
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, final ViewGroup parent) {
         View view = null;
         ViewHolder viewHolder;
         Friend friend = mFriends.get(position);
@@ -56,14 +59,15 @@ public class OnlineTileAdapter extends ArrayAdapter<Friend> {
         }
 
         viewHolder.nicknameView.setText(friend.getNickname());
+        viewHolder.index = position;
 
         view.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
-                if (arg0.isActivated()) {
-                    
-                }
+                GridView parentGridView = (GridView) parent;
+                ViewHolder holder = (ViewHolder) arg0.getTag();
+                parentGridView.setItemChecked(holder.index, !arg0.isActivated());
             }
         });
 
@@ -72,5 +76,6 @@ public class OnlineTileAdapter extends ArrayAdapter<Friend> {
 
     private class ViewHolder {
         public TextView nicknameView;
+        public int index;
     }
 }
