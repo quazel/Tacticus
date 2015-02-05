@@ -1,17 +1,16 @@
 package com.bramble.kickback.adapters;
 
+import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Checkable;
 import android.widget.GridView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.bramble.kickback.R;
+import com.bramble.kickback.activities.Main;
 import com.bramble.kickback.models.Friend;
 
 import java.util.ArrayList;
@@ -22,12 +21,14 @@ public class OnlineTileAdapter extends ArrayAdapter<Friend> {
     private LayoutInflater mInflator;
     private List<Friend> mFriends;
     private List<Friend> mSelected;
+    private Main mMainFragment;
 
-    public OnlineTileAdapter(Context context, int resource, List<Friend> friends) {
+    public OnlineTileAdapter(Context context, int resource, List<Friend> friends, Activity parentActivity) {
         super(context, resource, friends);
         mInflator = LayoutInflater.from(context);
         mFriends = friends;
         mSelected = new ArrayList<Friend>();
+        mMainFragment = (Main) parentActivity;
     }
 
     @Override
@@ -82,6 +83,7 @@ public class OnlineTileAdapter extends ArrayAdapter<Friend> {
                         mSelected.remove(mFriends.get(holder.index));
                     }
                 }
+                mMainFragment.updateSelectedFriends(mSelected);
             }
         });
 

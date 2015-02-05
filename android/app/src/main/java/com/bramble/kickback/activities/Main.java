@@ -99,6 +99,5 @@ public class Main extends Activity {
 
     public void updateSelectedFriends(List<Friend> selectedFriends) {
         this.selectedFriends = selectedFriends;
-        Log.d("Burgle", "TOP KEK");
     }
 }

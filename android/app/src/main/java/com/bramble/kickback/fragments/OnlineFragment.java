@@ -26,7 +26,7 @@ public class OnlineFragment extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_online, container, false);
 
         gridView = (GridView) view.findViewById(R.id.friendGrid);
-        gridView.setAdapter(new OnlineTileAdapter(view.getContext(), R.layout.online_tile_item_blue, User.getUser().getOnlineFriends()));
+        gridView.setAdapter(new OnlineTileAdapter(view.getContext(), R.layout.online_tile_item_blue, User.getUser().getOnlineFriends(), getActivity()));
 
         /*
         onlineFriends = User.getUser().getOnlineFriends();
