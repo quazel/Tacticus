@@ -8,6 +8,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import com.bramble.kickback.R;
 import com.bramble.kickback.util.Globals;
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 
 
 public class SplashScreen extends Activity {
@@ -17,6 +19,7 @@ public class SplashScreen extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_splash_screen);
         Globals.readContacts(getContentResolver());
 
