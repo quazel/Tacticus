@@ -17,7 +17,6 @@ public class SplashScreen extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        System.out.println("on create");
         setContentView(R.layout.activity_splash_screen);
         Globals.readContacts(getContentResolver());
 
@@ -25,9 +24,7 @@ public class SplashScreen extends Activity {
             @Override
             public void run() {
                 Intent accountPortalIntent = new Intent(SplashScreen.this, AccountPortal.class);
-                System.out.println("Starting account portal");
                 startActivity(accountPortalIntent);
-                System.out.println("started account portal");
                 finish();
             }
         }, SPLASH_TIME_OUT);
