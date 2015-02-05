@@ -12,8 +12,6 @@ import com.bramble.kickback.R;
 
 public class HomeFragment extends Fragment {
 
-    public OnlineFragment onlineFragment;
-    public OfflineFragment offlineFragment;
     public FragmentManager homeManager;
     public FragmentTransaction homeTransaction;
     @Override
@@ -21,11 +19,9 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_home, container, false);
 
-        offlineFragment = new OfflineFragment();
-        onlineFragment = new OnlineFragment();
         homeManager = getFragmentManager();
         homeTransaction = homeManager.beginTransaction();
-        homeTransaction.add(R.id.home_container, offlineFragment);
+        homeTransaction.add(R.id.home_container, new OfflineFragment());
         homeTransaction.commit();
 
         return view;
@@ -33,13 +29,13 @@ public class HomeFragment extends Fragment {
 
     public void goOnline() {
         homeTransaction = homeManager.beginTransaction();
-        homeTransaction.replace(R.id.home_container, onlineFragment);
+        homeTransaction.replace(R.id.home_container, new OnlineFragment());
         homeTransaction.commit();
     }
 
     public void goOffline() {
         homeTransaction = homeManager.beginTransaction();
-        homeTransaction.replace(R.id.home_container, offlineFragment);
+        homeTransaction.replace(R.id.home_container, new OfflineFragment());
         homeTransaction.commit();
     }
 }
