@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 
 import com.bramble.kickback.R;
 
@@ -58,31 +59,27 @@ public class HomeFragment extends Fragment {
         goOfflineFragment = new GoOfflineFragment();
     }
 
-    public void replaceGoOfflineWithCallText() {
-        homeTransaction = homeManager.beginTransaction();
-        homeTransaction.replace(R.id.online_button_container, callTextFragment);
-        homeTransaction.commit();
-        goOfflineFragment = new GoOfflineFragment();
-    }
-
-    public void replaceCallTextWithTextCancel() {
-        homeTransaction = homeManager.beginTransaction();
-        homeTransaction.replace(R.id.online_button_container, textCancelFragment);
-        homeTransaction.commit();
-        callTextFragment = new CallTextFragment();
-    }
-
-    public void replaceTextCancelWithCallText() {
-        homeTransaction = homeManager.beginTransaction();
-        homeTransaction.replace(R.id.online_button_container, callTextFragment);
-        homeTransaction.commit();
-        textCancelFragment = new TextCancelFragment();
-    }
-
-    public void replaceCallTextWithGoOffline() {
+    public void replaceWithGoOffline() {
         homeTransaction = homeManager.beginTransaction();
         homeTransaction.replace(R.id.online_button_container, goOfflineFragment);
         homeTransaction.commit();
         callTextFragment = new CallTextFragment();
+        textCancelFragment = new TextCancelFragment();
+    }
+
+    public void replaceWithCallText() {
+        homeTransaction = homeManager.beginTransaction();
+        homeTransaction.replace(R.id.online_button_container, callTextFragment);
+        homeTransaction.commit();
+        textCancelFragment = new TextCancelFragment();
+        goOfflineFragment = new GoOfflineFragment();
+    }
+
+    public void replaceWithTextCancel() {
+        homeTransaction = homeManager.beginTransaction();
+        homeTransaction.replace(R.id.online_button_container, textCancelFragment);
+        homeTransaction.commit();
+        callTextFragment = new CallTextFragment();
+        goOfflineFragment = new GoOfflineFragment();
     }
 }

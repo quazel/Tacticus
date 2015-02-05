@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
+import android.widget.GridView;
 
 import com.bramble.kickback.R;
 import com.bramble.kickback.adapters.MainActivityPageAdapter;
@@ -24,14 +25,15 @@ import java.util.List;
 public class Main extends Activity {
 
     private ArrayList<Fragment> fragments;
-    private HomeFragment homeFragment;
+
     private FragmentManager fm;
     private FragmentTransaction ft;
     private ViewPager viewPager;
     private MainActivityPageAdapter mAdapter;
-    // for home fragment tab
-    List<Friend> selectedFriends;
-
+    // for home fragment
+    private List<Friend> selectedFriends;
+    private HomeFragment homeFragment;
+    private GridView friendGrid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,7 @@ public class Main extends Activity {
         setContentView(R.layout.activity_main);
         // Initialization
         homeFragment = new HomeFragment();
+        friendGrid = (GridView) findViewById(R.id.friendGrid);
         fragments = new ArrayList<Fragment>();
         fragments.add(new AddPlanFragment());
         fragments.add(new PlannerFragment());
@@ -81,6 +84,23 @@ public class Main extends Activity {
         homeFragment.goOffline();
     }
 
+    public void callSinglePressed(View view) {
+
+    }
+
+    public void textSinglePressed(View view) {
+
+    }
+
+    public void textSeveralPressed(View view) {
+
+    }
+
+    public void cancelSeveralPressed(View view) {
+        //friendGrid.clearChoices();
+        //friendGrid.requestLayout();
+    }
+
     public void friendsBackButtonPressed(View view) {
         viewPager.setCurrentItem(2);
     }
@@ -99,5 +119,14 @@ public class Main extends Activity {
 
     public void updateSelectedFriends(List<Friend> selectedFriends) {
         this.selectedFriends = selectedFriends;
+        if(selectedFriends.size() == 0){
+            homeFragment.replaceWithGoOffline();
+        }
+        else if(selectedFriends.size() == 1) {
+            homeFragment.replaceWithCallText();
+        }
+        else {
+            homeFragment.replaceWithTextCancel();
+        }
     }
 }
