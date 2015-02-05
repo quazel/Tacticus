@@ -22,12 +22,7 @@ import java.util.ArrayList;
 public class Main extends Activity {
 
     private ArrayList<Fragment> fragments;
-    private AddPlanFragment addPlanFragment;
-    private PlannerFragment plannerFragment;
     private HomeFragment homeFragment;
-    private FriendsFragment friendsFragment;
-    private AddFriendsFragment addFriendsFragment;
-
     private FragmentManager fm;
     private FragmentTransaction ft;
     private ViewPager viewPager;
@@ -41,17 +36,13 @@ public class Main extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // Initialization
-        fragments = new ArrayList<Fragment>();
-        addPlanFragment = new AddPlanFragment();
-        plannerFragment = new PlannerFragment();
         homeFragment = new HomeFragment();
-        friendsFragment = new FriendsFragment();
-        addFriendsFragment = new AddFriendsFragment();
-        fragments.add(addPlanFragment);
-        fragments.add(plannerFragment);
+        fragments = new ArrayList<Fragment>();
+        fragments.add(new AddPlanFragment());
+        fragments.add(new PlannerFragment());
         fragments.add(homeFragment);
-        fragments.add(friendsFragment);
-        fragments.add(addFriendsFragment);
+        fragments.add(new FriendsFragment());
+        fragments.add(new AddFriendsFragment());
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         fm = getFragmentManager();
