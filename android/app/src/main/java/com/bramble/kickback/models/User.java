@@ -46,7 +46,7 @@ public class User {
         friends.add(new Friend("starfox29","Bob", "1-911-911-9119", kickback, true));
         friends.add(new Friend("TheDude","Jim", "1-802-457-9834", kickback, true));
         friends.add(new Friend("punther","Nathan Fegard", "1-603-667-7830", kickback, true));
-        friends.add(new Friend("stevex86","Steve King", "1-602-752-0046", kickback, true));
+        friends.add(new Friend("stevex86","Steve King", "1-602-752-0045", kickback, true));
         friends.add(new Friend("bitch_face","Kelly", "1-420-420-Blaze'em", kickback, true));
         friends.add(new Friend("parsePro","JSON", "1-452-735-9384", kickback, true));
         friends.add(new Friend("hamBurgle","Burgle", "1-746-412-9001", kickback, true));
@@ -55,7 +55,7 @@ public class User {
         friends.add(new Friend("starfox29","Bob", "1-911-911-9119", kickback));
         friends.add(new Friend("TheDude","Jim", "1-802-457-9834", kickback));
         friends.add(new Friend("punther","Nathan Fegard", "1-603-667-7830", kickback));
-        friends.add(new Friend("stevex86","Steve King", "1-602-752-0046", kickback));
+        friends.add(new Friend("stevex86","Steve King", "1-602-752-0045", kickback));
         friends.add(new Friend("bitch_face","Kelly", "1-420-420-Blaze'em", kickback));
         friends.add(new Friend("parsePro","JSON", "1-452-735-9384", kickback));
         friends.add(new Friend("hamBurgle","Burgle", "1-746-412-9001", kickback));

@@ -1,9 +1,13 @@
 package com.bramble.kickback.activities;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -12,6 +16,7 @@ import android.widget.GridView;
 
 import com.bramble.kickback.R;
 import com.bramble.kickback.adapters.MainActivityPageAdapter;
+import com.bramble.kickback.adapters.OnlineTileAdapter;
 import com.bramble.kickback.fragments.AddFriendsFragment;
 import com.bramble.kickback.fragments.AddPlanFragment;
 import com.bramble.kickback.fragments.FriendsFragment;
@@ -84,21 +89,45 @@ public class Main extends Activity {
     }
 
     public void callSinglePressed(View view) {
-
+        Intent callIntent = new Intent(Intent.ACTION_DIAL);
+        callIntent.setData(Uri.parse("tel:" + selectedFriends.get(0).getPhoneNumber()));
+        startActivity(callIntent);
     }
 
     public void textSinglePressed(View view) {
-
+        Intent smsIntent = new Intent(Intent.ACTION_VIEW);
+        smsIntent.setType("vnd.android-dir/mms-sms");
+        smsIntent.putExtra("address", selectedFriends.get(0).getPhoneNumber());
+        smsIntent.putExtra("sms_body","Let's Kickback.");
+        startActivity(smsIntent);
     }
 
     public void textSeveralPressed(View view) {
-
+        String separator = "; ";
+        if(android.os.Build.MANUFACTURER.equalsIgnoreCase("samsung")){
+            separator = ", ";
+        }
+        String listOfPhoneNumbers ="";
+        for(int i = 0; i < selectedFriends.size(); i ++) {
+            if(i == 0) {
+                listOfPhoneNumbers = selectedFriends.get(i).getPhoneNumber();
+            }
+            else {
+                listOfPhoneNumbers = listOfPhoneNumbers + separator + selectedFriends.get(i).getPhoneNumber();
+            }
+        }
+        Intent smsIntent = new Intent(Intent.ACTION_VIEW);
+        smsIntent.setType("vnd.android-dir/mms-sms");
+        smsIntent.putExtra("address", listOfPhoneNumbers);
+        smsIntent.putExtra("sms_body","Let's Kickback.");
+        startActivity(smsIntent);
     }
 
     public void cancelSeveralPressed(View view) {
         friendGrid = (GridView) findViewById(R.id.friendGrid);
         friendGrid.clearChoices();
         friendGrid.requestLayout();
+        ((OnlineTileAdapter)friendGrid.getAdapter()).clearSelectedItems();
     }
 
     public void friendsBackButtonPressed(View view) {
@@ -127,6 +156,33 @@ public class Main extends Activity {
         }
         else {
             homeFragment.replaceWithTextCancel();
+        }
+    }
+
+    public void onBackPressed() {
+        if(viewPager.getCurrentItem()==2) {
+            new AlertDialog.Builder(this)
+                    .setMessage("Are you sure you wish to exit Kickback?")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            Main.this.finish();
+                        }
+                    })
+                    .setNegativeButton("No", null)
+                    .show();
+        }
+        else if(viewPager.getCurrentItem()==0) {
+            viewPager.setCurrentItem(1);
+        }
+        else if(viewPager.getCurrentItem()==1) {
+            viewPager.setCurrentItem(2);
+        }
+        else if(viewPager.getCurrentItem()==4) {
+            viewPager.setCurrentItem(3);
+        }
+        else if(viewPager.getCurrentItem()==3) {
+            viewPager.setCurrentItem(2);
         }
     }
 }

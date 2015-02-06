@@ -96,6 +96,7 @@ public class OnlineTileAdapter extends ArrayAdapter<Friend> {
 
     public void clearSelectedItems() {
         mSelected.clear();
+        mMainFragment.updateSelectedFriends(mSelected);
     }
 
     private class ViewHolder {
