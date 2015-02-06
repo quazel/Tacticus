@@ -22,8 +22,15 @@
 
     <FrameLayout
         android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/marquee_container"
+        android:layout_above="@+id/online_button_container"/>
+
+
+    <FrameLayout
+        android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:id="@+id/online_container"
-        android:layout_above="@+id/online_button_container"/>
+        android:layout_above="@+id/marquee_container"/>
 
 </RelativeLayout>
