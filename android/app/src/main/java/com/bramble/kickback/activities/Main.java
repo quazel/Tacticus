@@ -41,7 +41,6 @@ public class Main extends Activity {
         setContentView(R.layout.activity_main);
         // Initialization
         homeFragment = new HomeFragment();
-        friendGrid = (GridView) findViewById(R.id.friendGrid);
         fragments = new ArrayList<Fragment>();
         fragments.add(new AddPlanFragment());
         fragments.add(new PlannerFragment());
@@ -97,8 +96,9 @@ public class Main extends Activity {
     }
 
     public void cancelSeveralPressed(View view) {
-        //friendGrid.clearChoices();
-        //friendGrid.requestLayout();
+        friendGrid = (GridView) findViewById(R.id.friendGrid);
+        friendGrid.clearChoices();
+        friendGrid.requestLayout();
     }
 
     public void friendsBackButtonPressed(View view) {
