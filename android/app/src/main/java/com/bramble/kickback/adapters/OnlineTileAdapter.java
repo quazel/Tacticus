@@ -94,8 +94,13 @@ public class OnlineTileAdapter extends ArrayAdapter<Friend> {
         return mSelected;
     }
 
+    public void clearSelectedItems() {
+        mSelected.clear();
+    }
+
     private class ViewHolder {
         public TextView nicknameView;
         public int index;
     }
+
 }
