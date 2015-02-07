@@ -13,20 +13,17 @@ public class Friend {
     private String phoneNumber;
     private String nickname;
     private boolean isFavorite;
-    private ArrayList<Kickback> plans;
 
-    public Friend(String nickname, String name, String phoneNumber, ArrayList<Kickback> plans) {
+    public Friend(String nickname, String name, String phoneNumber) {
         this.name = name;
         this.nickname = nickname;
         this.phoneNumber = phoneNumber;
-        this.plans = plans;
     }
 
-    public Friend(String nickname, String name, String phoneNumber, ArrayList<Kickback> plans, boolean fav) {
+    public Friend(String nickname, String name, String phoneNumber,  boolean fav) {
         this.name = name;
         this.nickname = nickname;
         this.phoneNumber = phoneNumber;
-        this.plans = plans;
         this.isFavorite = fav;
     }
 

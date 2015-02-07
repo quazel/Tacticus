@@ -1,16 +1,10 @@
 package com.bramble.kickback.util;
 
 import android.content.ContentResolver;
-import android.content.ContentValues;
 import android.database.Cursor;
 import android.provider.ContactsContract;
 
-import com.bramble.kickback.models.Friend;
-import com.bramble.kickback.models.Kickback;
 import com.bramble.kickback.models.Person;
-import com.bramble.kickback.models.User;
-
-import org.joda.time.DateTime;
 
 import java.util.ArrayList;
 

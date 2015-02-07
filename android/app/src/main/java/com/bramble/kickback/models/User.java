@@ -41,24 +41,23 @@ public class User {
         online = false;
 
         friends = new ArrayList<Friend>();
-        ArrayList<Kickback> kickback = new ArrayList<Kickback>();
-        friends.add(new Friend("starfox29","Bob", "1-911-911-9119", kickback, true));
-        friends.add(new Friend("TheDude","Jim", "1-802-457-9834", kickback, true));
-        friends.add(new Friend("punther","Nathan Fegard", "1-603-667-7830", kickback, true));
-        friends.add(new Friend("stevex86","Steve King", "1-602-752-0045", kickback, true));
-        friends.add(new Friend("bitch_face","Kelly", "1-420-420-Blaze'em", kickback, true));
-        friends.add(new Friend("parsePro","JSON", "1-452-735-9384", kickback, true));
-        friends.add(new Friend("hamBurgle","Burgle", "1-746-412-9001", kickback, true));
-        friends.add(new Friend("gay","Jeremy Adams", "1-480-390-7762", kickback, true));
+        friends.add(new Friend("starfox29","Bob", "1-911-911-9119", true));
+        friends.add(new Friend("TheDude","Jim", "1-802-457-9834", true));
+        friends.add(new Friend("punther","Nathan Fegard", "1-603-667-7830", true));
+        friends.add(new Friend("stevex86","Steve King", "1-602-752-0045", true));
+        friends.add(new Friend("bitch_face","Kelly", "1-420-420-Blaze'em", true));
+        friends.add(new Friend("parsePro","JSON", "1-452-735-9384", true));
+        friends.add(new Friend("hamBurgle","Burgle", "1-746-412-9001", true));
+        friends.add(new Friend("gay","Jeremy Adams", "1-480-390-7762", true));
 
-        friends.add(new Friend("starfox29","Bob", "1-911-911-9119", kickback));
-        friends.add(new Friend("TheDude","Jim", "1-802-457-9834", kickback));
-        friends.add(new Friend("punther","Nathan Fegard", "1-603-667-7830", kickback));
-        friends.add(new Friend("stevex86","Steve King", "1-602-752-0045", kickback));
-        friends.add(new Friend("bitch_face","Kelly", "1-420-420-Blaze'em", kickback));
-        friends.add(new Friend("parsePro","JSON", "1-452-735-9384", kickback));
-        friends.add(new Friend("hamBurgle","Burgle", "1-746-412-9001", kickback));
-        friends.add(new Friend("gay","Jeremy Adams", "1-480-390-7762", kickback));
+        friends.add(new Friend("starfox29","Bob", "1-911-911-9119"));
+        friends.add(new Friend("TheDude","Jim", "1-802-457-9834"));
+        friends.add(new Friend("punther","Nathan Fegard", "1-603-667-7830"));
+        friends.add(new Friend("stevex86","Steve King", "1-602-752-0045"));
+        friends.add(new Friend("bitch_face","Kelly", "1-420-420-Blaze'em"));
+        friends.add(new Friend("parsePro","JSON", "1-452-735-9384"));
+        friends.add(new Friend("hamBurgle","Burgle", "1-746-412-9001"));
+        friends.add(new Friend("gay","Jeremy Adams", "1-480-390-7762"));
 
         onlineFriends = friends;
     }
@@ -137,4 +136,5 @@ public class User {
             }
         }
     }
+
 }

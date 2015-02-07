@@ -2,23 +2,7 @@ package com.bramble.kickback.adapters;
 
 //This adapter is to be used with the kickbacks schedule activity
 
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
-import com.bramble.kickback.R;
-
-import java.util.ArrayList;
-
-import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
-
-import com.bramble.kickback.models.Kickback;
-import com.bramble.kickback.util.Util;
-
+/*
 public class KickbackStickyAdapter extends BaseAdapter implements StickyListHeadersAdapter {
 
     private ArrayList<Kickback> kickbackArrayList;
@@ -114,5 +98,5 @@ public class KickbackStickyAdapter extends BaseAdapter implements StickyListHead
     }
 
 }
-
+*/
 
