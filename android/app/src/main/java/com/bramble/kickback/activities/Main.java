@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.View;
 import android.widget.GridView;
 
@@ -18,10 +17,8 @@ import com.bramble.kickback.R;
 import com.bramble.kickback.adapters.MainActivityPageAdapter;
 import com.bramble.kickback.adapters.OnlineTileAdapter;
 import com.bramble.kickback.fragments.AddFriendsFragment;
-import com.bramble.kickback.fragments.AddPlanFragment;
 import com.bramble.kickback.fragments.FriendsFragment;
 import com.bramble.kickback.fragments.HomeFragment;
-import com.bramble.kickback.fragments.PlannerFragment;
 import com.bramble.kickback.models.Friend;
 
 import java.util.ArrayList;
@@ -47,11 +44,17 @@ public class Main extends Activity {
         // Initialization
         homeFragment = new HomeFragment();
         fragments = new ArrayList<Fragment>();
-        fragments.add(new AddPlanFragment());
-        fragments.add(new PlannerFragment());
-        fragments.add(homeFragment);
-        fragments.add(new FriendsFragment());
         fragments.add(new AddFriendsFragment());
+        fragments.add(new FriendsFragment());
+        fragments.add(homeFragment);
+        // insert personal gallery here maybe something like this
+        /*
+        for(int i = 0; i < gallery.size(); i ++) {
+            tempGalleryFragment = new GallaryFragment();
+            tempGalleryFragment.setPicture(this.gallery.get(i));
+            fragments.add(tempGalleryFragment);
+        }
+        */
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         fm = getFragmentManager();
@@ -135,16 +138,9 @@ public class Main extends Activity {
     }
 
     public void addFriendsBackButtonPressed(View view) {
-        viewPager.setCurrentItem(3);
-    }
-
-    public void addPlanBackButtonPressed(View view) {
         viewPager.setCurrentItem(1);
     }
 
-    public void plannerBackButtonPressed(View view) {
-        viewPager.setCurrentItem(2);
-    }
 
     public void updateSelectedFriends(List<Friend> selectedFriends) {
         this.selectedFriends = selectedFriends;
@@ -157,6 +153,7 @@ public class Main extends Activity {
         else {
             homeFragment.replaceWithTextCancel();
         }
+        homeFragment.updateMarquee(this.selectedFriends);
     }
 
     public void onBackPressed() {
@@ -178,10 +175,7 @@ public class Main extends Activity {
         else if(viewPager.getCurrentItem()==1) {
             viewPager.setCurrentItem(2);
         }
-        else if(viewPager.getCurrentItem()==4) {
-            viewPager.setCurrentItem(3);
-        }
-        else if(viewPager.getCurrentItem()==3) {
+        else if(viewPager.getCurrentItem()>2) {
             viewPager.setCurrentItem(2);
         }
     }
