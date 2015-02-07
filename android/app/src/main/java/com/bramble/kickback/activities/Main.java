@@ -133,6 +133,14 @@ public class Main extends Activity {
         ((OnlineTileAdapter)friendGrid.getAdapter()).clearSelectedItems();
     }
 
+    public void upperFeedPressed(View view) {
+
+    }
+
+    public void lowerFeedPressed(View view) {
+
+    }
+
     public void friendsBackButtonPressed(View view) {
         viewPager.setCurrentItem(2);
     }
