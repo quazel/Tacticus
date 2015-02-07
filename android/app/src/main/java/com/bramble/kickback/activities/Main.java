@@ -18,6 +18,7 @@ import com.bramble.kickback.adapters.MainActivityPageAdapter;
 import com.bramble.kickback.adapters.OnlineTileAdapter;
 import com.bramble.kickback.fragments.AddFriendsFragment;
 import com.bramble.kickback.fragments.FriendsFragment;
+import com.bramble.kickback.fragments.GalleryFragment;
 import com.bramble.kickback.fragments.HomeFragment;
 import com.bramble.kickback.models.Friend;
 
@@ -47,10 +48,11 @@ public class Main extends Activity {
         fragments.add(new AddFriendsFragment());
         fragments.add(new FriendsFragment());
         fragments.add(homeFragment);
+        fragments.add(new GalleryFragment());
         // insert personal gallery here maybe something like this
         /*
         for(int i = 0; i < gallery.size(); i ++) {
-            tempGalleryFragment = new GallaryFragment();
+            tempGalleryFragment = new GalleryFragment();
             tempGalleryFragment.setPicture(this.gallery.get(i));
             fragments.add(tempGalleryFragment);
         }
@@ -149,6 +151,10 @@ public class Main extends Activity {
         viewPager.setCurrentItem(1);
     }
 
+    public void galleryBackButtonPressed(View view) {
+        viewPager.setCurrentItem(2);
+    }
+
 
     public void updateSelectedFriends(List<Friend> selectedFriends) {
         this.selectedFriends = selectedFriends;
@@ -183,7 +189,7 @@ public class Main extends Activity {
         else if(viewPager.getCurrentItem()==1) {
             viewPager.setCurrentItem(2);
         }
-        else if(viewPager.getCurrentItem()>2) {
+        else if(viewPager.getCurrentItem()==3) {
             viewPager.setCurrentItem(2);
         }
     }
