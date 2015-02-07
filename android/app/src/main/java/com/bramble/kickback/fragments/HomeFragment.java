@@ -7,9 +7,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.GridView;
+import android.widget.TextView;
 
 import com.bramble.kickback.R;
+import com.bramble.kickback.models.Friend;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomeFragment extends Fragment {
 
@@ -20,6 +26,7 @@ public class HomeFragment extends Fragment {
     public GoOfflineFragment goOfflineFragment;
     public CallTextFragment callTextFragment;
     public TextCancelFragment textCancelFragment;
+    public MarqueeFragment marqueeFragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -31,6 +38,7 @@ public class HomeFragment extends Fragment {
         goOfflineFragment = new GoOfflineFragment();
         callTextFragment = new CallTextFragment();
         textCancelFragment = new TextCancelFragment();
+        marqueeFragment = new MarqueeFragment();
 
         homeManager = getFragmentManager();
         homeTransaction = homeManager.beginTransaction();
@@ -38,6 +46,28 @@ public class HomeFragment extends Fragment {
         homeTransaction.commit();
 
         return view;
+    }
+
+    public void updateMarquee(List<Friend> selectedFriends) {
+        /*
+        if(selectedFriends.size() == 0) {
+            homeTransaction = homeManager.beginTransaction();
+            homeTransaction.remove(marqueeFragment);
+            homeTransaction.commit();
+        }
+        else {
+            TextView selectedList = (TextView) getActivity().findViewById(R.id.selected_marquee);
+            String friendsToList = "";
+            for(int i = 0; i < selectedFriends.size(); i ++) {
+                if(i == 0) {
+                    friendsToList = selectedFriends.get(i).getName();
+                }
+                else {
+                    friendsToList = friendsToList + ", " + selectedFriends.get(i).getName();
+                }
+            }
+            selectedList.setText(friendsToList);
+        }*/
     }
 
     public void goOnline() {
