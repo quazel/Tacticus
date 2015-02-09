@@ -2,24 +2,14 @@ package com.bramble.kickback.service;
 
 
 import android.app.Service;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Binder;
 import android.os.IBinder;
 
-import com.bramble.kickback.models.User;
-import com.bramble.kickback.networking.ConnectionHandler;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-
-public class KickbackBootUpService extends Service {
+public class KickbackService extends Service {
 
     public class LocalBinder extends Binder {
-        public KickbackBootUpService getService() { return KickbackBootUpService.this; }
+        public KickbackService getService() { return KickbackService.this; }
     }
 
     private final IBinder mBinder = new LocalBinder();
@@ -27,7 +17,7 @@ public class KickbackBootUpService extends Service {
 
     @Override
     public void onCreate() {
-
+        super.onCreate();
     }
 
     @Override

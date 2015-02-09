@@ -7,7 +7,7 @@ import android.content.SharedPreferences;
 
 import com.bramble.kickback.models.User;
 import com.bramble.kickback.networking.ConnectionHandler;
-import com.bramble.kickback.service.KickbackBootUpService;
+import com.bramble.kickback.service.KickbackService;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,7 +18,7 @@ public class BootUpReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Intent myIntent = new Intent(context, KickbackBootUpService.class);
+        Intent myIntent = new Intent(context, KickbackService.class);
         context.startService(myIntent);
         SharedPreferences prefs = context.getSharedPreferences("prefs", Context.MODE_PRIVATE);
         if (!pingServer(prefs)) {
