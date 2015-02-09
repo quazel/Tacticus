@@ -5,6 +5,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
+import android.widget.Toast;
 
 public class KickbackService extends Service {
 
@@ -30,6 +31,14 @@ public class KickbackService extends Service {
         return mBinder;
     }
 
+
+    public void start() {
+        Toast.makeText(this, "Started", Toast.LENGTH_LONG).show();
+    }
+
+    public void stop() {
+        Toast.makeText(this, "Stopped", Toast.LENGTH_LONG).show();
+    }
 
 
 }
