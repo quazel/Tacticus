@@ -7,6 +7,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -19,26 +22,16 @@ public class ConnectionHandler {
     private final String loginURL = baseURL + "login";
     private final String registerURL = baseURL + "register";
     private final String checkCredentialsURL = baseURL + "verify_credential_uniqueness";
+    private final String pingURL = baseURL + "ping";
     private final String kickbackURL = baseURL + "kickback/";
     private final String analyticsURL = baseURL + "analytics/";
 
     public String login(String email, String password) throws IOException {
-        URL requestURL = new URL(loginURL);
-        HttpsURLConnection connection = (HttpsURLConnection) requestURL.openConnection();
-        connection.setDoInput(true);
-        connection.setRequestMethod("POST");
-        connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-        connection.setRequestProperty("charset", "utf-8");
-        String urlParameters = "";
-        urlParameters += "email=" + email;
-        urlParameters += "&password=" + password;
-        connection.setRequestProperty("Content-Length", "" + urlParameters.getBytes().length);
-        connection.setUseCaches (false);
-        OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream());
-        writer.write(urlParameters);
-        writer.flush();
-        writer.close();
+        HashMap<String, String> params = new HashMap<String, String>();
+        params.put("email", email);
+        params.put("password", password);
 
+        HttpsURLConnection connection = buildPostRequest(loginURL, params);
         int responseCode = connection.getResponseCode();
         if (responseCode == 200) {
             BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
@@ -61,27 +54,16 @@ public class ConnectionHandler {
     public String register(String nickname, String password, String email, String phoneNumber,
                            String name, String birthdate, String sex) throws IOException
     {
-        URL requestURL = new URL(registerURL);
-        HttpsURLConnection connection = (HttpsURLConnection) requestURL.openConnection();
-        connection.setDoInput(true);
-        connection.setRequestMethod("POST");
-        connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-        connection.setRequestProperty("charset", "utf-8");
-        String urlParameters = "";
-        urlParameters += "nickname=" + nickname;
-        urlParameters += "&password=" + password;
-        urlParameters += "&email=" + email;
-        urlParameters += "&phone_number=" + phoneNumber;
-        urlParameters += "&name=" + name;
-        urlParameters += "&birthdate=" + birthdate;
-        urlParameters += "&sex=" + sex;
-        connection.setRequestProperty("Content-Length", "" + urlParameters.getBytes().length);
-        connection.setUseCaches (false);
-        OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream());
-        writer.write(urlParameters);
-        writer.flush();
-        writer.close();
+        HashMap<String, String> params = new HashMap<String, String>();
+        params.put("nickname", nickname);
+        params.put("password", password);
+        params.put("email", email);
+        params.put("phone_number", phoneNumber);
+        params.put("name", name);
+        params.put("birthdate", birthdate);
+        params.put("sex", sex);
 
+        HttpsURLConnection connection = buildPostRequest(registerURL, params);
         int responseCode = connection.getResponseCode();
         if (responseCode == 200 || responseCode == 401) {
             BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
@@ -101,23 +83,11 @@ public class ConnectionHandler {
     }
 
     public String checkCredentials(String email, String phoneNumber) throws IOException {
-        URL requestURL = new URL(checkCredentialsURL);
-        HttpsURLConnection connection = (HttpsURLConnection) requestURL.openConnection();
-        connection.setDoInput(true);
-        connection.setRequestMethod("POST");
-        connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-        connection.setRequestProperty("User-Agent","Mozilla/5.0 ( compatible ) ");
-        connection.setRequestProperty("Accept","*/*");
-        String urlParameters = "";
-        urlParameters += "email=" + email;
-        urlParameters += "&phone_number=" + phoneNumber;
-        connection.setRequestProperty("Content-Length", "" + urlParameters.getBytes().length);
-        connection.setUseCaches (false);
-        OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream());
-        writer.write(urlParameters);
-        writer.flush();
-        writer.close();
+        HashMap<String, String> params = new HashMap<String, String>();
+        params.put("email", email);
+        params.put("phone_number", phoneNumber);
 
+        HttpsURLConnection connection = buildPostRequest(checkCredentialsURL, params);
         int responseCode = connection.getResponseCode();
         if (responseCode == 200 || responseCode == 401) {
             BufferedReader in;
@@ -144,7 +114,7 @@ public class ConnectionHandler {
     }
 
     public String ping(String sessionId) throws IOException {
-        URL requestURL = new URL(checkCredentialsURL);
+        URL requestURL = new URL(pingURL);
         HttpsURLConnection connection = (HttpsURLConnection) requestURL.openConnection();
         connection.setDoInput(true);
         connection.setRequestMethod("POST");
@@ -183,6 +153,42 @@ public class ConnectionHandler {
         else {
             throw new IOException("Received bad response from server.");
         }
+    }
+
+    public HttpsURLConnection buildGetRequest(String url, HashMap<String, String> params) throws IOException {
+        throw new RuntimeException("NYI");
+    }
+
+    public HttpsURLConnection buildPostRequest(String url, HashMap<String, String> params) throws IOException {
+        URL requestURL = new URL(loginURL);
+        HttpsURLConnection connection = (HttpsURLConnection) requestURL.openConnection();
+        connection.setDoInput(true);
+        connection.setRequestMethod("POST");
+        connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+        connection.setRequestProperty("charset", "utf-8");
+
+        StringBuilder urlParametersBuilder = new StringBuilder();
+        int count = 0;
+
+        for (Map.Entry<String, String> entry : params.entrySet()) {
+            String key = entry.getKey();
+            String value = entry.getValue();
+            if (count > 0) {
+                urlParametersBuilder.append("&");
+            }
+            urlParametersBuilder.append(key + "=" + value);
+            count++;
+        }
+
+        String urlParameters = urlParametersBuilder.toString();
+        connection.setRequestProperty("Content-Length", "" + urlParameters.getBytes().length);
+        connection.setUseCaches (false);
+        OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream());
+        writer.write(urlParameters);
+        writer.flush();
+        writer.close();
+
+        return connection;
     }
 
 }
