@@ -20,8 +20,9 @@ public class BootUpReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         Intent myIntent = new Intent(context, KickbackBootUpService.class);
         context.startService(myIntent);
-        if (!pingServer(context)) {
-            if(!login(context)) {
+        SharedPreferences prefs = context.getSharedPreferences("prefs", Context.MODE_PRIVATE);
+        if (!pingServer(prefs)) {
+            if(!login(prefs)) {
                 SharedPreferences.Editor editor = prefs.edit();
                 editor.clear();
                 editor.apply();
@@ -29,9 +30,8 @@ public class BootUpReceiver extends BroadcastReceiver {
         }
     }
 
-    public boolean pingServer(Context context) {
+    public boolean pingServer(SharedPreferences prefs) {
         try {
-            SharedPreferences prefs = context.getSharedPreferences("prefs", Context.MODE_PRIVATE);
             String session = prefs.getString("session", "");
             String result = new ConnectionHandler().ping(session);
             if (result.startsWith("200:")) {
@@ -48,9 +48,8 @@ public class BootUpReceiver extends BroadcastReceiver {
         }
     }
 
-    public boolean login(Context context) {
+    public boolean login(SharedPreferences prefs) {
         try {
-            SharedPreferences prefs = context.getSharedPreferences("prefs", Context.MODE_PRIVATE);
             String email = prefs.getString("email", "");
             String password = prefs.getString("password", "");
             String result = new ConnectionHandler().login(email, password);
