@@ -5,10 +5,14 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.GridView;
@@ -21,6 +25,7 @@ import com.bramble.kickback.fragments.FriendsFragment;
 import com.bramble.kickback.fragments.GalleryFragment;
 import com.bramble.kickback.fragments.HomeFragment;
 import com.bramble.kickback.models.Friend;
+import com.bramble.kickback.service.KickbackService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +42,9 @@ public class Main extends Activity {
     private List<Friend> selectedFriends;
     private HomeFragment homeFragment;
     private GridView friendGrid;
+
+    private KickbackService mService;
+    private boolean mBound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +90,22 @@ public class Main extends Activity {
         viewPager.setCurrentItem(2);
 
         selectedFriends = new ArrayList<Friend>();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Intent intent = new Intent(this, KickbackService.class);
+        bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mBound) {
+            unbindService(mConnection);
+            mBound = false;
+        }
     }
 
     // home functionality
@@ -193,4 +217,19 @@ public class Main extends Activity {
             viewPager.setCurrentItem(2);
         }
     }
+
+    private ServiceConnection mConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            KickbackService.LocalBinder binder = (KickbackService.LocalBinder) service;
+            mService = binder.getService();
+            mBound = true;
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            mBound = false;
+        }
+    };
+
 }
