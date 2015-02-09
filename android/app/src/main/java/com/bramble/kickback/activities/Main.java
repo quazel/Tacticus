@@ -111,10 +111,12 @@ public class Main extends Activity {
     // home functionality
     public void goOnlinePressed(View view) {
         homeFragment.goOnline();
+        mService.startPolling();
     }
 
     public void goOfflinePressed(View view) {
         homeFragment.goOffline();
+        mService.stopPolling();
     }
 
     public void callSinglePressed(View view) {

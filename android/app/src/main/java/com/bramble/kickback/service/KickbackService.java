@@ -32,11 +32,11 @@ public class KickbackService extends Service {
     }
 
 
-    public void start() {
+    public void startPolling() {
         Toast.makeText(this, "Started", Toast.LENGTH_LONG).show();
     }
 
-    public void stop() {
+    public void stopPolling() {
         Toast.makeText(this, "Stopped", Toast.LENGTH_LONG).show();
     }
 
