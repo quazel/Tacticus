@@ -9,7 +9,7 @@
         android:layout_height="?android:attr/actionBarSize"
         android:layout_alignParentTop="true"
         android:id="@+id/friends_actionbar"
-        android:background="@color/friends_color">
+        android:background="@color/primary_color">
 
         <Button
             android:layout_width="@dimen/up_button_width"

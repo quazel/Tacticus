@@ -103,5 +103,4 @@ public class OnlineTileAdapter extends ArrayAdapter<Friend> {
         public TextView nicknameView;
         public int index;
     }
-
 }
