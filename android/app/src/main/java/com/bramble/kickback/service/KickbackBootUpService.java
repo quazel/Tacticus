@@ -27,16 +27,7 @@ public class KickbackBootUpService extends Service {
 
     @Override
     public void onCreate() {
-        SharedPreferences prefs = getSharedPreferences("prefs", Context.MODE_PRIVATE);
-        String email = prefs.getString("email", "");
-        String password = prefs.getString("password", "");
-        if (!pingServer()) {
-            if(!login()) {
-                SharedPreferences.Editor editor = prefs.edit();
-                editor.clear();
-                editor.apply();
-            }
-        }
+
     }
 
     @Override
@@ -49,47 +40,6 @@ public class KickbackBootUpService extends Service {
         return mBinder;
     }
 
-    public boolean pingServer() {
-        try {
-            SharedPreferences prefs = getSharedPreferences("prefs", Context.MODE_PRIVATE);
-            String session = prefs.getString("session", "");
-            String result = new ConnectionHandler().ping(session);
-            if (result.startsWith("200:")) {
-                SharedPreferences.Editor editor = prefs.edit();
-                editor.putString("session", result.replace("200:", ""));
-                editor.apply();
-                return true;
-            }
-            else {
-                return false;
-            }
-        } catch(IOException e) {
-            return false;
-        }
-    }
 
-    public boolean login() {
-        try {
-            SharedPreferences prefs = getSharedPreferences("prefs", Context.MODE_PRIVATE);
-            String email = prefs.getString("email", "");
-            String password = prefs.getString("password", "");
-            String result = new ConnectionHandler().login(email, password);
-            JSONObject resultJSON = new JSONObject(result);
-            User user = User.getUser();
-            user.setEmail(resultJSON.getString("email"));
-            user.setName(resultJSON.getString("name"));
-            user.setNickname(resultJSON.getString("nickname"));
-            user.setPhoneNumber("phone_number");
-            user.setSessionId(resultJSON.getString("session_id"));
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.putString("session", resultJSON.getString("session_id"));
-            editor.apply();
-            return true;
-        } catch (IOException e) {
-            return false;
-        } catch (JSONException e) {
-            return false;
-        }
-    }
 
 }
