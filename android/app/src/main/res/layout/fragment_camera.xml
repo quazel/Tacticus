@@ -41,7 +41,10 @@
         android:layout_below="@+id/camera_actionbar"
         android:id="@+id/picture_preview_container">
 
-
+        <SurfaceView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/picture_preview"/>
 
     </com.bramble.kickback.layout.SquareRelativeLayout>
 
