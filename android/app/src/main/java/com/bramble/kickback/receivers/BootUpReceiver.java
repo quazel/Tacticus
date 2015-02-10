@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
         import android.content.Context;
         import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 
 import com.bramble.kickback.models.User;
 import com.bramble.kickback.networking.ConnectionHandler;
@@ -20,14 +21,7 @@ public class BootUpReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         Intent myIntent = new Intent(context, KickbackService.class);
         context.startService(myIntent);
-        SharedPreferences prefs = context.getSharedPreferences("prefs", Context.MODE_PRIVATE);
-        if (!pingServer(prefs)) {
-            if(!login(prefs)) {
-                SharedPreferences.Editor editor = prefs.edit();
-                editor.clear();
-                editor.apply();
-            }
-        }
+        new PingTask().execute(context);
     }
 
     public boolean pingServer(SharedPreferences prefs) {
@@ -69,6 +63,23 @@ public class BootUpReceiver extends BroadcastReceiver {
         } catch (JSONException e) {
             return false;
         }
+    }
+
+    private class PingTask extends AsyncTask<Context, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Context... params) {
+            SharedPreferences prefs = params[0].getSharedPreferences("prefs", Context.MODE_PRIVATE);
+            if (!pingServer(prefs)) {
+                if(!login(prefs)) {
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.clear();
+                    editor.apply();
+                }
+            }
+            return null;
+        }
+
     }
 
 }
