@@ -3,6 +3,7 @@ package com.bramble.kickback.handlers;
 import android.content.Context;
 import android.hardware.Camera;
 import android.os.Environment;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -40,7 +41,7 @@ public class PhotoHandler implements Camera.PictureCallback {
             fos.close();
         }
         catch (Exception error) {
-
+            Toast.makeText(context,"couldnt save ur pic", Toast.LENGTH_LONG);
         }
     }
 

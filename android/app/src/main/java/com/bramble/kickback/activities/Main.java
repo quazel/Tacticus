@@ -21,6 +21,7 @@ import com.bramble.kickback.R;
 import com.bramble.kickback.adapters.MainActivityPageAdapter;
 import com.bramble.kickback.adapters.OnlineTileAdapter;
 import com.bramble.kickback.fragments.AddFriendsFragment;
+import com.bramble.kickback.fragments.CameraFragment;
 import com.bramble.kickback.fragments.FriendsFragment;
 import com.bramble.kickback.fragments.GalleryFragment;
 import com.bramble.kickback.fragments.HomeFragment;
@@ -41,6 +42,7 @@ public class Main extends Activity {
     // for home fragment
     private List<Friend> selectedFriends;
     private HomeFragment homeFragment;
+    private CameraFragment cameraFragment;
     private GridView friendGrid;
 
     private KickbackService mService;
@@ -52,10 +54,12 @@ public class Main extends Activity {
         setContentView(R.layout.activity_main);
         // Initialization
         homeFragment = new HomeFragment();
+        cameraFragment = new CameraFragment();
         fragments = new ArrayList<Fragment>();
         fragments.add(new AddFriendsFragment());
         fragments.add(new FriendsFragment());
         fragments.add(homeFragment);
+        fragments.add(cameraFragment);
         fragments.add(new GalleryFragment());
         // insert personal gallery here maybe something like this
         /*
@@ -162,11 +166,15 @@ public class Main extends Activity {
     }
 
     public void upperFeedPressed(View view) {
-
+        // feed directory
     }
 
     public void lowerFeedPressed(View view) {
+        // feed directory
+    }
 
+    public void takePicturePressed(View view) {
+        cameraFragment.capturePicture();
     }
 
     public void friendsBackButtonPressed(View view) {
@@ -178,9 +186,12 @@ public class Main extends Activity {
     }
 
     public void galleryBackButtonPressed(View view) {
-        viewPager.setCurrentItem(2);
+        viewPager.setCurrentItem(3);
     }
 
+    public void cameraBackButtonPressed(View view) {
+        viewPager.setCurrentItem(2);
+    }
 
     public void updateSelectedFriends(List<Friend> selectedFriends) {
         this.selectedFriends = selectedFriends;
@@ -217,6 +228,9 @@ public class Main extends Activity {
         }
         else if(viewPager.getCurrentItem()==3) {
             viewPager.setCurrentItem(2);
+        }
+        else if(viewPager.getCurrentItem()==4) {
+            viewPager.setCurrentItem(3);
         }
     }
 
