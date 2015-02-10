@@ -15,7 +15,7 @@
             android:layout_width="@dimen/up_button_width"
             android:layout_height="fill_parent"
             android:background="@color/transparent"
-            android:id="@+id/add_friends_back_button"
+            android:id="@+id/friends_back_button"
             android:onClick="friendsBackButtonPressed"/>
 
         <ImageView

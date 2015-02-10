@@ -1,6 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</LinearLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:id="@+id/camera_actionbar"
+        android:background="@color/title_text_color">
+
+        <Button
+            android:layout_width="@dimen/up_button_width"
+            android:layout_height="fill_parent"
+            android:background="@color/transparent"
+            android:id="@+id/camera_back_button"
+            android:onClick="cameraBackButtonPressed"/>
+        <ImageView
+            android:layout_width="@dimen/up_button_side_lengths"
+            android:layout_height="@dimen/up_button_side_lengths"
+            android:background="@drawable/custom_white_up_button"
+            android:layout_centerVertical="true"
+            android:id="@+id/camera_up_button"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Camera"
+            android:textColor="@color/white"
+            android:textSize="@dimen/action_bar_text_size"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/camera_up_button"
+            android:layout_toEndOf="@+id/camera_up_button"
+            android:id="@+id/camera_textview"/>
+        </RelativeLayout>
+
+    <com.bramble.kickback.layout.SquareRelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/camera_actionbar"
+        android:id="@+id/picture_preview_container">
+
+
+
+    </com.bramble.kickback.layout.SquareRelativeLayout>
+
+</RelativeLayout>
