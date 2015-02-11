@@ -23,6 +23,7 @@ public class ConnectionHandler {
     private final String registerURL = baseURL + "register";
     private final String checkCredentialsURL = baseURL + "verify_credential_uniqueness";
     private final String pingURL = baseURL + "ping";
+    private final String pollURL = baseURL + "poll";
     private final String kickbackURL = baseURL + "kickback/";
     private final String analyticsURL = baseURL + "analytics/";
 
@@ -154,6 +155,36 @@ public class ConnectionHandler {
         params.put("session_id", sessionId);
 
         HttpsURLConnection connection = buildPostRequest(pingURL, params);
+        int responseCode = connection.getResponseCode();
+        if (responseCode == 200 || responseCode == 401) {
+            BufferedReader in;
+            if (responseCode == 200) {
+                in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            }
+            else {
+                in = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
+            }
+            String inputLine;
+            StringBuilder response = new StringBuilder();
+
+            while((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+                response.append("\n");
+            }
+            in.close();
+            Log.d("ConnectionHandler", response.toString());
+            return responseCode + ":" + response.toString().trim();
+        }
+        else {
+            throw new IOException("Received bad response from server.");
+        }
+    }
+
+    public String poll(String sessionId) throws IOException {
+        HashMap<String, String> params = new HashMap<String, String>();
+        params.put("session_id", sessionId);
+
+        HttpsURLConnection connection = buildPostRequest(pollURL, params);
         int responseCode = connection.getResponseCode();
         if (responseCode == 200 || responseCode == 401) {
             BufferedReader in;
