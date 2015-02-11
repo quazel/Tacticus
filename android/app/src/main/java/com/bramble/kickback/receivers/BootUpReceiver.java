@@ -1,14 +1,13 @@
 package com.bramble.kickback.receivers;
 
 import android.content.BroadcastReceiver;
-        import android.content.Context;
-        import android.content.Intent;
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 
 import com.bramble.kickback.models.User;
 import com.bramble.kickback.networking.ConnectionHandler;
-import com.bramble.kickback.service.KickbackService;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,8 +18,6 @@ public class BootUpReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Intent myIntent = new Intent(context, KickbackService.class);
-        context.startService(myIntent);
         new PingTask().execute(context);
     }
 
