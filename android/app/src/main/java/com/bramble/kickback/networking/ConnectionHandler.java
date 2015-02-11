@@ -26,6 +26,42 @@ public class ConnectionHandler {
     private final String kickbackURL = baseURL + "kickback/";
     private final String analyticsURL = baseURL + "analytics/";
 
+    public HttpsURLConnection buildGetRequest(String url, HashMap<String, String> params) throws IOException {
+        throw new RuntimeException("NYI");
+    }
+
+    public HttpsURLConnection buildPostRequest(String url, HashMap<String, String> params) throws IOException {
+        URL requestURL = new URL(loginURL);
+        HttpsURLConnection connection = (HttpsURLConnection) requestURL.openConnection();
+        connection.setDoInput(true);
+        connection.setRequestMethod("POST");
+        connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+        connection.setRequestProperty("charset", "utf-8");
+
+        StringBuilder urlParametersBuilder = new StringBuilder();
+        int count = 0;
+
+        for (Map.Entry<String, String> entry : params.entrySet()) {
+            String key = entry.getKey();
+            String value = entry.getValue();
+            if (count > 0) {
+                urlParametersBuilder.append("&");
+            }
+            urlParametersBuilder.append(key + "=" + value);
+            count++;
+        }
+
+        String urlParameters = urlParametersBuilder.toString();
+        connection.setRequestProperty("Content-Length", "" + urlParameters.getBytes().length);
+        connection.setUseCaches (false);
+        OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream());
+        writer.write(urlParameters);
+        writer.flush();
+        writer.close();
+
+        return connection;
+    }
+
     public String login(String email, String password) throws IOException {
         HashMap<String, String> params = new HashMap<String, String>();
         params.put("email", email);
@@ -153,42 +189,6 @@ public class ConnectionHandler {
         else {
             throw new IOException("Received bad response from server.");
         }
-    }
-
-    public HttpsURLConnection buildGetRequest(String url, HashMap<String, String> params) throws IOException {
-        throw new RuntimeException("NYI");
-    }
-
-    public HttpsURLConnection buildPostRequest(String url, HashMap<String, String> params) throws IOException {
-        URL requestURL = new URL(loginURL);
-        HttpsURLConnection connection = (HttpsURLConnection) requestURL.openConnection();
-        connection.setDoInput(true);
-        connection.setRequestMethod("POST");
-        connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-        connection.setRequestProperty("charset", "utf-8");
-
-        StringBuilder urlParametersBuilder = new StringBuilder();
-        int count = 0;
-
-        for (Map.Entry<String, String> entry : params.entrySet()) {
-            String key = entry.getKey();
-            String value = entry.getValue();
-            if (count > 0) {
-                urlParametersBuilder.append("&");
-            }
-            urlParametersBuilder.append(key + "=" + value);
-            count++;
-        }
-
-        String urlParameters = urlParametersBuilder.toString();
-        connection.setRequestProperty("Content-Length", "" + urlParameters.getBytes().length);
-        connection.setUseCaches (false);
-        OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream());
-        writer.write(urlParameters);
-        writer.flush();
-        writer.close();
-
-        return connection;
     }
 
 }
