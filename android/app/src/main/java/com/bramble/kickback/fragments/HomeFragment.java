@@ -3,6 +3,7 @@ package com.bramble.kickback.fragments;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,9 +12,15 @@ import android.widget.Toast;
 
 import com.bramble.kickback.R;
 import com.bramble.kickback.models.Friend;
+import com.bramble.kickback.models.User;
+import com.bramble.kickback.networking.ConnectionHandler;
 
+import org.json.JSONException;
+
+import java.io.IOException;
 import java.util.List;
 import java.util.Timer;
+import java.util.TimerTask;
 
 public class HomeFragment extends Fragment {
 
@@ -25,7 +32,6 @@ public class HomeFragment extends Fragment {
     private CallTextFragment callTextFragment;
     private TextCancelFragment textCancelFragment;
     private MarqueeFragment marqueeFragment;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -113,6 +119,31 @@ public class HomeFragment extends Fragment {
         homeTransaction.commit();
         callTextFragment = new CallTextFragment();
         goOfflineFragment = new GoOfflineFragment();
+    }
+
+    private class PollTask extends AsyncTask<Void, Void, Boolean> {
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+            String sessionId = User.getUser().getSessionId();
+            try {
+                String result = new ConnectionHandler().poll(sessionId);
+                return true;
+
+            } catch (IOException e) {
+                return false;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result) {
+            if (result) {
+                Toast.makeText(HomeFragment.this.getActivity(), "Success!", Toast.LENGTH_SHORT);
+            } else {
+                Toast.makeText(HomeFragment.this.getActivity(), "Success!", Toast.LENGTH_SHORT);
+            }
+        }
+
     }
 
 }
