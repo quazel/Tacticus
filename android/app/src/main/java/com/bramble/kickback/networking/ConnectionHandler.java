@@ -150,22 +150,10 @@ public class ConnectionHandler {
     }
 
     public String ping(String sessionId) throws IOException {
-        URL requestURL = new URL(pingURL);
-        HttpsURLConnection connection = (HttpsURLConnection) requestURL.openConnection();
-        connection.setDoInput(true);
-        connection.setRequestMethod("POST");
-        connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-        connection.setRequestProperty("User-Agent","Mozilla/5.0 ( compatible ) ");
-        connection.setRequestProperty("Accept","*/*");
-        String urlParameters = "";
-        urlParameters += "session_id=" + sessionId;
-        connection.setRequestProperty("Content-Length", "" + urlParameters.getBytes().length);
-        connection.setUseCaches (false);
-        OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream());
-        writer.write(urlParameters);
-        writer.flush();
-        writer.close();
+        HashMap<String, String> params = new HashMap<String, String>();
+        params.put("session_id", sessionId);
 
+        HttpsURLConnection connection = buildPostRequest(pingURL, params);
         int responseCode = connection.getResponseCode();
         if (responseCode == 200 || responseCode == 401) {
             BufferedReader in;
