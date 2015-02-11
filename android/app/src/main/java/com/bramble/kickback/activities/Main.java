@@ -5,21 +5,13 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.ComponentName;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.ServiceConnection;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.IBinder;
-import android.os.Message;
-import android.os.Messenger;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.GridView;
-import android.widget.Toast;
 
 import com.bramble.kickback.R;
 import com.bramble.kickback.adapters.MainActivityPageAdapter;
@@ -30,7 +22,6 @@ import com.bramble.kickback.fragments.FriendsFragment;
 import com.bramble.kickback.fragments.GalleryFragment;
 import com.bramble.kickback.fragments.HomeFragment;
 import com.bramble.kickback.models.Friend;
-import com.bramble.kickback.service.KickbackService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,9 +39,6 @@ public class Main extends Activity {
     private HomeFragment homeFragment;
     private CameraFragment cameraFragment;
     private GridView friendGrid;
-
-    private KickbackService mService;
-    private boolean mBound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,32 +88,13 @@ public class Main extends Activity {
         selectedFriends = new ArrayList<Friend>();
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        Intent intent = new Intent(this, KickbackService.class);
-        intent.putExtra("messenger",  new Messenger(mHandler));
-        bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        if (mBound) {
-            unbindService(mConnection);
-            mBound = false;
-        }
-    }
-
     // home functionality
     public void goOnlinePressed(View view) {
         homeFragment.goOnline();
-        mService.startPolling();
     }
 
     public void goOfflinePressed(View view) {
         homeFragment.goOffline();
-        mService.stopPolling();
     }
 
     public void callSinglePressed(View view) {
@@ -238,32 +207,5 @@ public class Main extends Activity {
             viewPager.setCurrentItem(3);
         }
     }
-
-    private ServiceConnection mConnection = new ServiceConnection() {
-        @Override
-        public void onServiceConnected(ComponentName name, IBinder service) {
-            KickbackService.LocalBinder binder = (KickbackService.LocalBinder) service;
-            mService = binder.getService();
-            mBound = true;
-        }
-
-        @Override
-        public void onServiceDisconnected(ComponentName name) {
-            mBound = false;
-        }
-    };
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case KickbackService.MSG_REFRESH_HOME:
-                    homeFragment.refreshGrid();
-                    break;
-                default:
-                    Toast.makeText(Main.this, "Unknown message.", Toast.LENGTH_SHORT).show();
-            }
-        }
-    };
 
 }
