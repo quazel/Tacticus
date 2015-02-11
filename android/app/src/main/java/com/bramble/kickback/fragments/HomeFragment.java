@@ -7,14 +7,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.GridView;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bramble.kickback.R;
 import com.bramble.kickback.models.Friend;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
@@ -46,6 +43,10 @@ public class HomeFragment extends Fragment {
         homeTransaction.commit();
 
         return view;
+    }
+
+    public void refreshGrid() {
+        Toast.makeText(getActivity(), "Refresh called", Toast.LENGTH_SHORT).show();
     }
 
     public void updateMarquee(List<Friend> selectedFriends) {
@@ -112,4 +113,5 @@ public class HomeFragment extends Fragment {
         callTextFragment = new CallTextFragment();
         goOfflineFragment = new GoOfflineFragment();
     }
+
 }

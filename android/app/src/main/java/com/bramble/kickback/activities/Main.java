@@ -12,10 +12,14 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.IBinder;
+import android.os.Message;
+import android.os.Messenger;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.GridView;
+import android.widget.Toast;
 
 import com.bramble.kickback.R;
 import com.bramble.kickback.adapters.MainActivityPageAdapter;
@@ -100,6 +104,7 @@ public class Main extends Activity {
     public void onStart() {
         super.onStart();
         Intent intent = new Intent(this, KickbackService.class);
+        intent.putExtra("messenger",  new Messenger(mHandler));
         bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
     }
 
@@ -245,6 +250,19 @@ public class Main extends Activity {
         @Override
         public void onServiceDisconnected(ComponentName name) {
             mBound = false;
+        }
+    };
+
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case KickbackService.MSG_REFRESH_HOME:
+                    homeFragment.refreshGrid();
+                    break;
+                default:
+                    Toast.makeText(Main.this, "Unknown message.", Toast.LENGTH_SHORT).show();
+            }
         }
     };
 
