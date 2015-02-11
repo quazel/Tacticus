@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -80,6 +81,13 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
 
         holder.name.setText(filteredList.get(position).getName());
         holder.username.setText(filteredList.get(position).getNickname());
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+
+            }
+        });
 
         return convertView;
     }
