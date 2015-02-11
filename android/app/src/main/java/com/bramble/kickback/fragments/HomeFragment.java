@@ -13,17 +13,18 @@ import com.bramble.kickback.R;
 import com.bramble.kickback.models.Friend;
 
 import java.util.List;
+import java.util.Timer;
 
 public class HomeFragment extends Fragment {
 
-    public FragmentManager homeManager;
-    public FragmentTransaction homeTransaction;
-    public OfflineFragment offlineFragment;
-    public OnlineFragment onlineFragment;
-    public GoOfflineFragment goOfflineFragment;
-    public CallTextFragment callTextFragment;
-    public TextCancelFragment textCancelFragment;
-    public MarqueeFragment marqueeFragment;
+    private FragmentManager homeManager;
+    private FragmentTransaction homeTransaction;
+    private OfflineFragment offlineFragment;
+    private OnlineFragment onlineFragment;
+    private GoOfflineFragment goOfflineFragment;
+    private CallTextFragment callTextFragment;
+    private TextCancelFragment textCancelFragment;
+    private MarqueeFragment marqueeFragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
