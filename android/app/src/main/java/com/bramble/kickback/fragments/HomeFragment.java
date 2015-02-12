@@ -5,6 +5,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -85,6 +86,7 @@ public class HomeFragment extends Fragment {
         homeTransaction.add(R.id.online_button_container, goOfflineFragment);
         homeTransaction.commit();
         offlineFragment = new OfflineFragment();
+        new PollTask().execute();
     }
 
     public void goOffline() {
@@ -121,6 +123,14 @@ public class HomeFragment extends Fragment {
         goOfflineFragment = new GoOfflineFragment();
     }
 
+    private class UpdateStatusTask extends AsyncTask<String, Void, Boolean> {
+
+        @Override
+        protected Boolean doInBackground(String... params) {
+            return true;
+        }
+    }
+
     private class PollTask extends AsyncTask<Void, Void, Boolean> {
 
         @Override
@@ -138,9 +148,10 @@ public class HomeFragment extends Fragment {
         @Override
         protected void onPostExecute(Boolean result) {
             if (result) {
-                Toast.makeText(HomeFragment.this.getActivity(), "Success!", Toast.LENGTH_SHORT);
+                Toast.makeText(HomeFragment.this.getActivity(), "Success!", Toast.LENGTH_SHORT).show();
+                refreshGrid();
             } else {
-                Toast.makeText(HomeFragment.this.getActivity(), "Success!", Toast.LENGTH_SHORT);
+                Toast.makeText(HomeFragment.this.getActivity(), "Failure!", Toast.LENGTH_SHORT).show();
             }
         }
 
