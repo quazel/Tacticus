@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bramble.kickback.R;
@@ -63,7 +64,7 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
         holder = new ViewHolder();
         convertView = inflater.inflate(R.layout.sticky_item, parent, false);
 
-        LinearLayout body = (LinearLayout)convertView.findViewById(R.id.body);
+        RelativeLayout body = (RelativeLayout)convertView.findViewById(R.id.sticky_item_body);
 
         if(filteredList.size()-1 == position){ //Is the last element of filteredList
             body.setBackgroundResource(R.drawable.full_width_selector_nobottom); //NO line on bottom
