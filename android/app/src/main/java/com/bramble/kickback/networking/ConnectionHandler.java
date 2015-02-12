@@ -206,7 +206,7 @@ public class ConnectionHandler {
             return responseCode + ":" + response.toString().trim();
         }
         else {
-            throw new IOException("Received bad response from server. " + responseCode);
+            throw new IOException("Received bad response from server.");
         }
     }
 
