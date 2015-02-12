@@ -54,7 +54,7 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
 
     public class ViewHolder {
         TextView name;
-        TextView username;
+        TextView nickname;
     }
 
     @Override
@@ -77,11 +77,11 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
         }
 
         holder.name = (TextView)convertView.findViewById(R.id.name_thing);
-        holder.username = (TextView)convertView.findViewById(R.id.username_thing);
+        holder.nickname = (TextView)convertView.findViewById(R.id.nickname_thing);
         convertView.setTag(holder);
 
         holder.name.setText(filteredList.get(position).getName());
-        holder.username.setText(filteredList.get(position).getNickname());
+        holder.nickname.setText(filteredList.get(position).getNickname());
 
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
