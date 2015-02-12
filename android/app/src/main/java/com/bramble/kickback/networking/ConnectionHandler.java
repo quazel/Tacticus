@@ -32,7 +32,7 @@ public class ConnectionHandler {
     }
 
     public HttpsURLConnection buildPostRequest(String url, HashMap<String, String> params) throws IOException {
-        URL requestURL = new URL(loginURL);
+        URL requestURL = new URL(url);
         HttpsURLConnection connection = (HttpsURLConnection) requestURL.openConnection();
         connection.setDoInput(true);
         connection.setRequestMethod("POST");
@@ -206,7 +206,7 @@ public class ConnectionHandler {
             return responseCode + ":" + response.toString().trim();
         }
         else {
-            throw new IOException("Received bad response from server.");
+            throw new IOException("Received bad response from server. " + responseCode);
         }
     }
 
