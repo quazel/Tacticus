@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bramble.kickback.R;
@@ -53,7 +54,7 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
 
     public class ViewHolder {
         TextView name;
-        TextView username;
+        TextView nickname;
     }
 
     @Override
@@ -63,7 +64,7 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
         holder = new ViewHolder();
         convertView = inflater.inflate(R.layout.sticky_item, parent, false);
 
-        LinearLayout body = (LinearLayout)convertView.findViewById(R.id.body);
+        RelativeLayout body = (RelativeLayout)convertView.findViewById(R.id.sticky_item_body);
 
         if(filteredList.size()-1 == position){ //Is the last element of filteredList
             body.setBackgroundResource(R.drawable.full_width_selector_nobottom); //NO line on bottom
@@ -76,11 +77,11 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
         }
 
         holder.name = (TextView)convertView.findViewById(R.id.name_thing);
-        holder.username = (TextView)convertView.findViewById(R.id.username_thing);
+        holder.nickname = (TextView)convertView.findViewById(R.id.nickname_thing);
         convertView.setTag(holder);
 
         holder.name.setText(filteredList.get(position).getName());
-        holder.username.setText(filteredList.get(position).getNickname());
+        holder.nickname.setText(filteredList.get(position).getNickname());
 
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
