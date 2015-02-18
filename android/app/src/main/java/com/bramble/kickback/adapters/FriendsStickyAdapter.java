@@ -11,6 +11,7 @@ import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bramble.kickback.R;
 import com.bramble.kickback.animations.ExpandAnimation;
@@ -24,11 +25,13 @@ import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
 
 public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeadersAdapter {
 
+    private Context mContext;
     private List<Friend> filteredList = null;
     private ArrayList<Friend> arrayList;
     private LayoutInflater inflater;
 
     public FriendsStickyAdapter(Context context, ArrayList<Friend> inputArrayList) {
+        mContext = context;
         inflater = LayoutInflater.from(context);
 
         this.arrayList = inputArrayList;
@@ -67,12 +70,14 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
 
         RelativeLayout body = (RelativeLayout)convertView.findViewById(R.id.sticky_item_body);
 
-        if(filteredList.size()-1 == position){ //Is the last element of filteredList
+        if (filteredList.size()-1 == position) { //Is the last element of filteredList
             body.setBackgroundResource(R.drawable.full_width_selector_nobottom); //NO line on bottom
-        }else{
+        }
+        else {
             if(filteredList.get(position).isFavorite() != filteredList.get(position+1).isFavorite()){
                 body.setBackgroundResource(R.drawable.full_width_selector_nobottom); //NO line on bottom
-            }else{
+            }
+            else {
                 body.setBackgroundResource(R.drawable.full_width_selector); //line on bottom
             }
         }
@@ -90,7 +95,7 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
                 View friendsOptions = arg0.findViewById(R.id.friends_options_container);
 
                 ExpandAnimation expandAni = new ExpandAnimation(friendsOptions, 500);
-
+                Toast.makeText(mContext,"the on click happens", Toast.LENGTH_SHORT);
                 friendsOptions.startAnimation(expandAni);
             }
         });
