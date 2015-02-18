@@ -37,6 +37,7 @@ public class FriendsFragment extends Fragment {
         stickyList.setAdapter(friendsStickyAdapter);
 
         return view;
+
     }
 
 }

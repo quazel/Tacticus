@@ -50,47 +50,53 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:id="@+id/friends_options_container"
-        android:visibility="gone">
+        android:layout_margin="-70dp">
 
         <Button
             android:layout_width="fill_parent"
             android:layout_height="@dimen/list_item_height"
             android:background="@color/title_text_color"
             android:id="@+id/toggle_favorite"
+            android:text="FAVORITE"
             android:textStyle="bold"
+            android:layout_weight="1"
             android:textColor="@color/white"
-            android:textSize="25sp"/>
+            android:textSize="15sp"/>
 
         <Button
             android:layout_width="fill_parent"
             android:layout_height="@dimen/list_item_height"
             android:background="@color/primary_color"
             android:id="@+id/toggle_hidden"
+            android:text="HIDE"
             android:textStyle="bold"
+            android:layout_weight="1"
             android:textColor="@color/white"
-            android:textSize="25sp"/>
+            android:textSize="15sp"/>
 
         <Button
             android:layout_width="fill_parent"
             android:layout_height="@dimen/list_item_height"
             android:background="@color/title_text_color"
             android:id="@+id/remove_friend"
-            android:text="REMOVE FRIEND"
+            android:text="REMOVE"
             android:textStyle="bold"
+            android:layout_weight="1"
             android:textColor="@color/white"
-            android:textSize="25sp"/>
+            android:textSize="15sp"/>
 
         <Button
             android:layout_width="fill_parent"
             android:layout_height="@dimen/list_item_height"
             android:background="@color/primary_color"
             android:id="@+id/block_user"
-            android:text="BLOCK USER"
+            android:text="BLOCK"
             android:textStyle="bold"
+            android:layout_weight="1"
             android:textColor="@color/white"
-            android:textSize="25sp"/>
+            android:textSize="15sp"/>
 
         </LinearLayout>
 
