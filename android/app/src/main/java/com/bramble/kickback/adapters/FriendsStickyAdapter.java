@@ -25,19 +25,19 @@ import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
 
 public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeadersAdapter {
 
-    private Context mContext;
     private List<Friend> filteredList = null;
     private ArrayList<Friend> arrayList;
     private LayoutInflater inflater;
+    private View mSelected;
 
     public FriendsStickyAdapter(Context context, ArrayList<Friend> inputArrayList) {
-        mContext = context;
         inflater = LayoutInflater.from(context);
 
         this.arrayList = inputArrayList;
         this.filteredList = new ArrayList<Friend>();
         this.filteredList.addAll(arrayList);
 
+        mSelected = null;
     }
 
     @Override
@@ -93,10 +93,24 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
             @Override
             public void onClick(View arg0) {
                 View friendsOptions = arg0.findViewById(R.id.friends_options_container);
-
                 ExpandAnimation expandAni = new ExpandAnimation(friendsOptions, 500);
-                Toast.makeText(mContext,"the on click happens", Toast.LENGTH_SHORT);
-                friendsOptions.startAnimation(expandAni);
+                if (mSelected != null) {
+                    if (mSelected == arg0) {
+                        friendsOptions.startAnimation(expandAni);
+                        mSelected = null;
+                    }
+                    else {
+                        View friendsOptionsOld = mSelected.findViewById(R.id.friends_options_container);
+                        ExpandAnimation expandAniOld = new ExpandAnimation(friendsOptionsOld, 500);
+                        friendsOptionsOld.startAnimation(expandAniOld);
+                        friendsOptions.startAnimation(expandAni);
+                        mSelected = arg0;
+                    }
+                }
+                else {
+                    mSelected = arg0;
+                    friendsOptions.startAnimation(expandAni);
+                }
             }
         });
 
