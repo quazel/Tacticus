@@ -3,13 +3,17 @@ package com.bramble.kickback.adapters;
 //This adapter is to be used with the friends list activity
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bramble.kickback.R;
 import com.bramble.kickback.animations.ExpandAnimation;
@@ -28,6 +32,7 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
     private LayoutInflater inflater;
     private View mSelected;
     private boolean mClickEnabled;
+    private Context context;
 
     public FriendsStickyAdapter(Context context, ArrayList<Friend> inputArrayList) {
         inflater = LayoutInflater.from(context);
@@ -35,7 +40,7 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
         this.arrayList = inputArrayList;
         this.filteredList = new ArrayList<Friend>();
         this.filteredList.addAll(arrayList);
-
+        this.context = context;
         mSelected = null;
         mClickEnabled = true;
     }
@@ -59,12 +64,16 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
     public class ViewHolder {
         TextView name;
         TextView nickname;
+        Button favoriteButton;
+        Button hideButton;
+        Button removeButton;
+        Button blockButton;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
-
+        Friend friend = arrayList.get(position);
         holder = new ViewHolder();
         convertView = inflater.inflate(R.layout.friends_list_item, parent, false);
 
@@ -84,6 +93,28 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
 
         holder.name = (TextView)convertView.findViewById(R.id.name_thing);
         holder.nickname = (TextView)convertView.findViewById(R.id.nickname_thing);
+        holder.favoriteButton = (Button)convertView.findViewById(R.id.toggle_favorite);
+        holder.hideButton = (Button)convertView.findViewById(R.id.toggle_hidden);
+
+        if(friend.isFavorite()) {
+            holder.favoriteButton.setText("UNFAVORITE");
+            holder.favoriteButton.setBackgroundColor(context.getResources().getColor(R.color.primary_color));
+            holder.hideButton.setVisibility(View.GONE);
+        }
+
+        if(friend.isHidden()) {
+            holder.hideButton.setText("UNHIDE");
+            holder.favoriteButton.setVisibility(View.GONE);
+        }
+        if(!friend.isFavorite()&&!friend.isHidden()) {
+            holder.favoriteButton.setVisibility(View.VISIBLE);
+            holder.hideButton.setVisibility(View.VISIBLE);
+            holder.favoriteButton.setBackgroundColor(context.getResources().getColor(R.color.title_text_color));
+            holder.favoriteButton.setText("FAVORITE");
+            holder.hideButton.setText("HIDE");
+        }
+        holder.removeButton = (Button)convertView.findViewById(R.id.remove_friend);
+        holder.blockButton = (Button)convertView.findViewById(R.id.block_user);
         convertView.setTag(holder);
 
         holder.name.setText(filteredList.get(position).getName());
@@ -146,6 +177,34 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
                     mSelected = arg0;
                     friendsOptions.startAnimation(expandAni);
                 }
+            }
+        });
+
+        holder.favoriteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                Toast.makeText(context,"favorite button pressed", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        holder.hideButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                Toast.makeText(context,"hide button pressed", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        holder.removeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                Toast.makeText(context,"remove button pressed", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        holder.blockButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                Toast.makeText(context,"block button pressed", Toast.LENGTH_SHORT).show();
             }
         });
 

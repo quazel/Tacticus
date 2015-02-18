@@ -43,7 +43,8 @@ public class ExpandAnimation extends Animation {
             mAnimatedView.requestLayout();
 
             // Making sure we didn't run the ending before (it happens!)
-        } else if (!mWasEndedAlready) {
+        }
+        else if (!mWasEndedAlready) {
             mViewLayoutParams.bottomMargin = mMarginEnd;
             mAnimatedView.requestLayout();
 

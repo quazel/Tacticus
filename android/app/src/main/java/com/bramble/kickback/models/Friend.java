@@ -13,6 +13,7 @@ public class Friend {
     private String phoneNumber;
     private String nickname;
     private boolean isFavorite;
+    private boolean isHidden;
 
     public Friend(String nickname, String name, String phoneNumber) {
         this.name = name;
@@ -20,11 +21,12 @@ public class Friend {
         this.phoneNumber = phoneNumber;
     }
 
-    public Friend(String nickname, String name, String phoneNumber,  boolean fav) {
+    public Friend(String nickname, String name, String phoneNumber,  boolean favorite, boolean hidden) {
         this.name = name;
         this.nickname = nickname;
         this.phoneNumber = phoneNumber;
-        this.isFavorite = fav;
+        this.isFavorite = favorite;
+        this.isHidden = hidden;
     }
 
     public String getName() {
@@ -41,6 +43,10 @@ public class Friend {
 
     public boolean isFavorite(){
         return isFavorite;
+    }
+
+    public boolean isHidden() {
+        return isHidden;
     }
 
     /*public void makeContact(Context context, String phoneNumber) {
