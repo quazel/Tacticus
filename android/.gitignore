@@ -1,6 +1,17 @@
+# Default ignored files
 .gradle
 /local.properties
 /.idea/workspace.xml
 /.idea/libraries
 .DS_Store
 /build
+.idea/
+app/app.iml
+*.iml
+
+# Windows
+Thumbs.db
+
+# Crashlytics
+app/src/main/assets/crashlytics-build.properties
+app/src/main/res/values/com_crashlytics_export_strings.xml

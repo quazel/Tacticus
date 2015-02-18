@@ -84,6 +84,7 @@ public class Main extends Activity {
             }
         });
         viewPager.setCurrentItem(2);
+        viewPager.setOffscreenPageLimit(5);
 
         selectedFriends = new ArrayList<Friend>();
     }
