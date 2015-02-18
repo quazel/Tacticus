@@ -6,12 +6,10 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.widget.BaseAdapter;
-import android.widget.GridView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bramble.kickback.R;
 import com.bramble.kickback.animations.ExpandAnimation;
@@ -29,6 +27,7 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
     private ArrayList<Friend> arrayList;
     private LayoutInflater inflater;
     private View mSelected;
+    private boolean mClickEnabled;
 
     public FriendsStickyAdapter(Context context, ArrayList<Friend> inputArrayList) {
         inflater = LayoutInflater.from(context);
@@ -38,6 +37,7 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
         this.filteredList.addAll(arrayList);
 
         mSelected = null;
+        mClickEnabled = true;
     }
 
     @Override
@@ -92,8 +92,27 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
+                if (!mClickEnabled) {
+                    return;
+                }
                 View friendsOptions = arg0.findViewById(R.id.friends_options_container);
                 ExpandAnimation expandAni = new ExpandAnimation(friendsOptions, 500);
+                expandAni.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+                        mClickEnabled = false;
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        mClickEnabled = true;
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
                 if (mSelected != null) {
                     if (mSelected == arg0) {
                         friendsOptions.startAnimation(expandAni);
@@ -102,6 +121,22 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
                     else {
                         View friendsOptionsOld = mSelected.findViewById(R.id.friends_options_container);
                         ExpandAnimation expandAniOld = new ExpandAnimation(friendsOptionsOld, 500);
+                        expandAniOld.setAnimationListener(new Animation.AnimationListener() {
+                            @Override
+                            public void onAnimationStart(Animation animation) {
+                                mClickEnabled = false;
+                            }
+
+                            @Override
+                            public void onAnimationEnd(Animation animation) {
+                                mClickEnabled = true;
+                            }
+
+                            @Override
+                            public void onAnimationRepeat(Animation animation) {
+
+                            }
+                        });
                         friendsOptionsOld.startAnimation(expandAniOld);
                         friendsOptions.startAnimation(expandAni);
                         mSelected = arg0;
@@ -129,7 +164,7 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
             holder = (HeaderViewHolder) convertView.getTag();
         }
         String headerText;
-        if(filteredList.get(position).isFavorite() == true){
+        if(filteredList.get(position).isFavorite()){
             headerText = "FAVORITES";
         }else{
             headerText = "FRIENDS";

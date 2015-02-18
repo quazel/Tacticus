@@ -53,4 +53,9 @@ public class ExpandAnimation extends Animation {
             mWasEndedAlready = true;
         }
     }
+
+    public View getView() {
+        return mAnimatedView;
+    }
+
 }
