@@ -66,7 +66,7 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
         ViewHolder holder;
 
         holder = new ViewHolder();
-        convertView = inflater.inflate(R.layout.sticky_item, parent, false);
+        convertView = inflater.inflate(R.layout.friends_list_item, parent, false);
 
         RelativeLayout body = (RelativeLayout)convertView.findViewById(R.id.sticky_item_body);
 
@@ -160,13 +160,15 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
             convertView = inflater.inflate(R.layout.header_sticky, parent, false);
             holder.text = (TextView) convertView.findViewById(R.id.text);
             convertView.setTag(holder);
-        } else {
+        }
+        else {
             holder = (HeaderViewHolder) convertView.getTag();
         }
         String headerText;
-        if(filteredList.get(position).isFavorite()){
+        if(filteredList.get(position).isFavorite()) {
             headerText = "FAVORITES";
-        }else{
+        }
+        else {
             headerText = "FRIENDS";
         }
         holder.text.setText(headerText);
@@ -175,9 +177,10 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
 
     @Override
     public long getHeaderId(int position) {
-        if(filteredList.get(position).isFavorite()){
+        if(filteredList.get(position).isFavorite()) {
             return 0;
-        }else{
+        }
+        else {
             return 1;
         }
     }
@@ -193,18 +196,13 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
         if (charText.length() == 0) {
             filteredList.addAll(arrayList);
         }
-        else
-        {
-            for (Friend fl : arrayList)
-            {
-                if (fl.getName().toLowerCase(Locale.getDefault()).contains(charText)||fl.getNickname().toLowerCase(Locale.getDefault()).contains(charText))
-                {
+        else {
+            for (Friend fl : arrayList){
+                if (fl.getName().toLowerCase(Locale.getDefault()).contains(charText)||fl.getNickname().toLowerCase(Locale.getDefault()).contains(charText)){
                     filteredList.add(fl);
                 }
             }
         }
         notifyDataSetChanged();
     }
-
-
 }
