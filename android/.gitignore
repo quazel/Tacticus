@@ -13,5 +13,5 @@ app/app.iml
 Thumbs.db
 
 # Crashlytics
-android/app/src/main/assets/crashlytics-build.properties
-android/app/src/main/res/values/com_crashlytics_export_strings.xml
+app/src/main/assets/crashlytics-build.properties
+app/src/main/res/values/com_crashlytics_export_strings.xml
