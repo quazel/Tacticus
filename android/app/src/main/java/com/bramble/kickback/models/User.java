@@ -39,7 +39,7 @@ public class User {
         sessionId = "";
         temp = false;
         online = false;
-
+        // Favorites
         friends = new ArrayList<Friend>();
         friends.add(new Friend("starfox29","Bob", "1-911-911-9119", true, false));
         friends.add(new Friend("TheDude","Jim", "1-802-457-9834", true, false));
@@ -49,14 +49,15 @@ public class User {
         friends.add(new Friend("parsePro","JSON", "1-452-735-9384", true, false));
         friends.add(new Friend("hamBurgle","Burgle", "1-746-412-9001", true, false));
         friends.add(new Friend("gay","Jeremy Adams", "1-480-390-7762", true, false));
-
-        friends.add(new Friend("starfox29","Bob", "1-911-911-9119", false, true));
-        friends.add(new Friend("TheDude","Jim", "1-802-457-9834", false, true));
+        // Friends
         friends.add(new Friend("punther","Nathan Fegard", "1-603-667-7830"));
         friends.add(new Friend("stevex86","Steve King", "1-602-752-0045"));
         friends.add(new Friend("bitch_face","Kelly", "1-420-420-Blaze'em"));
         friends.add(new Friend("parsePro","JSON", "1-452-735-9384"));
         friends.add(new Friend("hamBurgle","Burgle", "1-746-412-9001"));
+        // Hidden
+        friends.add(new Friend("starfox29","Bob", "1-911-911-9119", false, true));
+        friends.add(new Friend("TheDude","Jim", "1-802-457-9834", false, true));
         friends.add(new Friend("gay","Jeremy Adams", "1-480-390-7762", false, true));
 
         onlineFriends = friends;

@@ -62,6 +62,7 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
     }
 
     public class ViewHolder {
+        RelativeLayout body;
         TextView name;
         TextView nickname;
         Button favoriteButton;
@@ -77,18 +78,19 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
         holder = new ViewHolder();
         convertView = inflater.inflate(R.layout.friends_list_item, parent, false);
 
-        RelativeLayout body = (RelativeLayout)convertView.findViewById(R.id.sticky_item_body);
+        holder.body = (RelativeLayout)convertView.findViewById(R.id.friends_item_background);
 
         if (filteredList.size()-1 == position) { //Is the last element of filteredList
-            body.setBackgroundResource(R.drawable.full_width_selector_nobottom); //NO line on bottom
+            holder.body.setBackgroundResource(R.drawable.full_width_selector_nobottom); //NO line on bottom
+        }
+        else if(filteredList.get(position).isFavorite() && !filteredList.get(position+1).isFavorite()){
+            holder.body.setBackgroundResource(R.drawable.full_width_selector_nobottom); //NO line on bottom
+        }
+        else if(!filteredList.get(position).isHidden() && filteredList.get(position+1).isHidden()) {
+            holder.body.setBackgroundResource(R.drawable.full_width_selector_nobottom); //NO line on bottom
         }
         else {
-            if(filteredList.get(position).isFavorite() != filteredList.get(position+1).isFavorite()){
-                body.setBackgroundResource(R.drawable.full_width_selector_nobottom); //NO line on bottom
-            }
-            else {
-                body.setBackgroundResource(R.drawable.full_width_selector); //line on bottom
-            }
+            holder.body.setBackgroundResource(R.drawable.full_width_selector); //line on bottom
         }
 
         holder.name = (TextView)convertView.findViewById(R.id.name_thing);
@@ -127,7 +129,7 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
                     return;
                 }
                 View friendsOptions = arg0.findViewById(R.id.friends_options_container);
-                ExpandAnimation expandAni = new ExpandAnimation(friendsOptions, 500);
+                ExpandAnimation expandAni = new ExpandAnimation(friendsOptions, 250);
                 expandAni.setAnimationListener(new Animation.AnimationListener() {
                     @Override
                     public void onAnimationStart(Animation animation) {
@@ -151,7 +153,7 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
                     }
                     else {
                         View friendsOptionsOld = mSelected.findViewById(R.id.friends_options_container);
-                        ExpandAnimation expandAniOld = new ExpandAnimation(friendsOptionsOld, 500);
+                        ExpandAnimation expandAniOld = new ExpandAnimation(friendsOptionsOld, 250);
                         expandAniOld.setAnimationListener(new Animation.AnimationListener() {
                             @Override
                             public void onAnimationStart(Animation animation) {
@@ -227,8 +229,11 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
         if(filteredList.get(position).isFavorite()) {
             headerText = "FAVORITES";
         }
-        else {
+        else if (!filteredList.get(position).isFavorite() && !filteredList.get(position).isHidden()){
             headerText = "FRIENDS";
+        }
+        else {
+            headerText = "HIDDEN";
         }
         holder.text.setText(headerText);
         return convertView;
@@ -239,8 +244,11 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
         if(filteredList.get(position).isFavorite()) {
             return 0;
         }
-        else {
+        else if (!filteredList.get(position).isFavorite() && !filteredList.get(position).isHidden()) {
             return 1;
+        }
+        else {
+            return 2;
         }
     }
 

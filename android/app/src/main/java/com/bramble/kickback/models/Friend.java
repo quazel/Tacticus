@@ -19,6 +19,8 @@ public class Friend {
         this.name = name;
         this.nickname = nickname;
         this.phoneNumber = phoneNumber;
+        this.isFavorite = false;
+        this.isHidden = false;
     }
 
     public Friend(String nickname, String name, String phoneNumber,  boolean favorite, boolean hidden) {
@@ -42,11 +44,11 @@ public class Friend {
     }
 
     public boolean isFavorite(){
-        return isFavorite;
+        return this.isFavorite;
     }
 
     public boolean isHidden() {
-        return isHidden;
+        return this.isHidden;
     }
 
     /*public void makeContact(Context context, String phoneNumber) {

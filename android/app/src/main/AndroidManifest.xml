@@ -54,8 +54,6 @@
             android:theme="@style/CustomNoBar">
         </activity>
 
-        <service android:name=".service.KickbackService" />
-
         <receiver
             android:name=".receivers.BootUpReceiver"
             android:enabled="true"

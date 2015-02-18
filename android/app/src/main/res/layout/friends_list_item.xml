@@ -8,13 +8,13 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="@dimen/list_item_height"
-        android:id="@+id/sticky_item_body">
+        android:id="@+id/sticky_item_body"
+        android:background="@drawable/full_width_selector_nobottom">
         <LinearLayout
             android:id="@+id/body_text"
             android:layout_width="match_parent"
             android:layout_height="@dimen/list_item_height"
             android:orientation="vertical"
-            android:background="@drawable/full_width_selector"
             android:paddingBottom="9dp">
 
             <TextView android:id="@+id/name_thing"
@@ -91,6 +91,13 @@
             android:textColor="@color/white"
             android:textSize="15sp"/>
 
-        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:id="@+id/friends_item_background">
+
+    </RelativeLayout>
 
 </LinearLayout>
