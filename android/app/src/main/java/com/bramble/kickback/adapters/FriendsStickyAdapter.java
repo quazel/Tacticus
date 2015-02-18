@@ -13,6 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bramble.kickback.R;
+import com.bramble.kickback.animations.ExpandAnimation;
 import com.bramble.kickback.models.Friend;
 
 import java.util.ArrayList;
@@ -86,7 +87,11 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
+                View friendsOptions = arg0.findViewById(R.id.friends_options_container);
 
+                ExpandAnimation expandAni = new ExpandAnimation(friendsOptions, 500);
+
+                friendsOptions.startAnimation(expandAni);
             }
         });
 
