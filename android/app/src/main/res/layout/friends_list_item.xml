@@ -52,18 +52,9 @@
         <Button
             android:layout_width="fill_parent"
             android:layout_height="@dimen/list_item_height"
-            android:background="@color/title_text_color"
-            android:id="@+id/toggle_favorite"
-            android:textStyle="bold"
-            android:layout_weight="1"
-            android:textColor="@color/white"
-            android:textSize="15sp"/>
-
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/list_item_height"
             android:background="@color/primary_color"
-            android:id="@+id/toggle_hidden"
+            android:id="@+id/block_user"
+            android:text="BLOCK"
             android:textStyle="bold"
             android:layout_weight="1"
             android:textColor="@color/white"
@@ -84,12 +75,22 @@
             android:layout_width="fill_parent"
             android:layout_height="@dimen/list_item_height"
             android:background="@color/primary_color"
-            android:id="@+id/block_user"
-            android:text="BLOCK"
+            android:id="@+id/toggle_favorite"
             android:textStyle="bold"
             android:layout_weight="1"
             android:textColor="@color/white"
             android:textSize="15sp"/>
+        <!--
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/list_item_height"
+            android:background="@color/primary_color"
+            android:id="@+id/toggle_hidden"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:textSize="15sp"/>
+            -->
 
     </LinearLayout>
 

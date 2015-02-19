@@ -61,12 +61,12 @@ public class User {
         friends.add(new Friend("gr8est","Tom Brady", "1-019-290-3582"));
         friends.add(new Friend("fkfatkid","Fake Fatkid", "1-019-290-3582"));
         // Hidden
-        friends.add(new Friend("hellrazr","Satan", "1-911-911-9119", false, true));
-        friends.add(new Friend("liljon","Lil Jon", "1-802-457-9834", false, true));
-        friends.add(new Friend("1234mkaw","Chip Chip", "1-091-402-2958", false, true));
-        friends.add(new Friend("ireq","Simon Phillips", "1-436-402-0039", false, true));
-        friends.add(new Friend("Lexy4lyf","Lex Luthar", "1-091-231-9038", false, true));
-        friends.add(new Friend("9lives","Cat Meow", "1-091-245-2958", false, true));
+        friends.add(new Friend("hellrazr","Satan", "1-911-911-9119", false, false));
+        friends.add(new Friend("liljon","Lil Jon", "1-802-457-9834", false, false));
+        friends.add(new Friend("1234mkaw","Chip Chip", "1-091-402-2958", false, false));
+        friends.add(new Friend("ireq","Simon Phillips", "1-436-402-0039", false, false));
+        friends.add(new Friend("Lexy4lyf","Lex Luthar", "1-091-231-9038", false, false));
+        friends.add(new Friend("9lives","Cat Meow", "1-091-245-2958", false, false));
 
         onlineFriends = friends;
     }

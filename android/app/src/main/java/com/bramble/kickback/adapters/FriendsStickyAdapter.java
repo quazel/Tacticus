@@ -66,7 +66,7 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
         TextView name;
         TextView nickname;
         Button favoriteButton;
-        Button hideButton;
+        //Button hideButton;
         Button removeButton;
         Button blockButton;
     }
@@ -96,24 +96,25 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
         holder.name = (TextView)convertView.findViewById(R.id.name_thing);
         holder.nickname = (TextView)convertView.findViewById(R.id.nickname_thing);
         holder.favoriteButton = (Button)convertView.findViewById(R.id.toggle_favorite);
-        holder.hideButton = (Button)convertView.findViewById(R.id.toggle_hidden);
+        //holder.hideButton = (Button)convertView.findViewById(R.id.toggle_hidden);
 
         if(friend.isFavorite()) {
             holder.favoriteButton.setText("UNFAVORITE");
-            holder.favoriteButton.setBackgroundColor(context.getResources().getColor(R.color.primary_color));
-            holder.hideButton.setVisibility(View.GONE);
+            //holder.hideButton.setVisibility(View.GONE);
         }
-
+        /*
         if(friend.isHidden()) {
             holder.hideButton.setText("UNHIDE");
             holder.favoriteButton.setVisibility(View.GONE);
-        }
+        }*/
+
         if(!friend.isFavorite()&&!friend.isHidden()) {
             holder.favoriteButton.setVisibility(View.VISIBLE);
-            holder.hideButton.setVisibility(View.VISIBLE);
+            //holder.hideButton.setVisibility(View.VISIBLE);
             holder.favoriteButton.setBackgroundColor(context.getResources().getColor(R.color.title_text_color));
             holder.favoriteButton.setText("FAVORITE");
-            holder.hideButton.setText("HIDE");
+            //holder.hideButton.setText("HIDE");
+            //holder.hideButton.setVisibility(View.GONE);
         }
         holder.removeButton = (Button)convertView.findViewById(R.id.remove_friend);
         holder.blockButton = (Button)convertView.findViewById(R.id.block_user);
@@ -189,12 +190,14 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
             }
         });
 
+        /*
         holder.hideButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
                 Toast.makeText(context,"hide button pressed", Toast.LENGTH_SHORT).show();
             }
         });
+        */
 
         holder.removeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -229,12 +232,16 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
         if(filteredList.get(position).isFavorite()) {
             headerText = "FAVORITES";
         }
+        else {
+            headerText = "FRIENDS";
+        }
+        /*
         else if (!filteredList.get(position).isFavorite() && !filteredList.get(position).isHidden()){
             headerText = "FRIENDS";
         }
         else {
             headerText = "HIDDEN";
-        }
+        } */
         holder.text.setText(headerText);
         return convertView;
     }
@@ -244,12 +251,17 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
         if(filteredList.get(position).isFavorite()) {
             return 0;
         }
+        else {
+            return 1;
+        }
+        /*
         else if (!filteredList.get(position).isFavorite() && !filteredList.get(position).isHidden()) {
             return 1;
         }
         else {
             return 2;
         }
+        */
     }
 
     class HeaderViewHolder {
