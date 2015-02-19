@@ -40,16 +40,17 @@ public class OnlineTileAdapter extends ArrayAdapter<Friend> {
             int swatch = position % 2;
             switch (swatch) {
                 case 0:
-                    if (friend.isFavorite())
-                        view = mInflator.inflate(R.layout.online_tile_item_orange, parent, false);
-                    else
+                    if (!friend.isFavorite())
                         view = mInflator.inflate(R.layout.online_tile_item_blue, parent, false);
+
+                    else
+                        view = mInflator.inflate(R.layout.online_tile_item_orange, parent, false);
                     break;
                 case 1:
-                    if (friend.isFavorite())
-                        view = mInflator.inflate(R.layout.online_tile_item_magenta, parent, false);
-                    else
+                    if (!friend.isFavorite())
                         view = mInflator.inflate(R.layout.online_tile_item_green, parent, false);
+                    else
+                        view = mInflator.inflate(R.layout.online_tile_item_magenta, parent, false);
                     break;
             }
             viewHolder = new ViewHolder();

@@ -50,15 +50,23 @@ public class User {
         friends.add(new Friend("hamBurgle","Burgle", "1-746-412-9001", true, false));
         friends.add(new Friend("gay","Jeremy Adams", "1-480-390-7762", true, false));
         // Friends
-        friends.add(new Friend("punther","Nathan Fegard", "1-603-667-7830"));
-        friends.add(new Friend("stevex86","Steve King", "1-602-752-0045"));
-        friends.add(new Friend("bitch_face","Kelly", "1-420-420-Blaze'em"));
-        friends.add(new Friend("parsePro","JSON", "1-452-735-9384"));
-        friends.add(new Friend("hamBurgle","Burgle", "1-746-412-9001"));
+        friends.add(new Friend("crunkjuz","Fred Smitt", "1-902-667-7830"));
+        friends.add(new Friend("Mainerox","Stephen King", "1-602-402-0045"));
+        friends.add(new Friend("bagntag","Greg Little", "1-420-900-3222"));
+        friends.add(new Friend("wterwlkr","Jesus of Nazerith", "1-452-735-0000"));
+        friends.add(new Friend("NotMyPbm","Smith Williams", "1-746-290-9001"));
+        friends.add(new Friend("gglmfao","Kirk Captain", "1-524-290-9001"));
+        friends.add(new Friend("lowIQ","Naz Rapper", "1-901-325-9001"));
+        friends.add(new Friend("stillivn","Tupac Shakur", "1-563-009-9001"));
+        friends.add(new Friend("gr8est","Tom Brady", "1-019-290-3582"));
+        friends.add(new Friend("fkfatkid","Fake Fatkid", "1-019-290-3582"));
         // Hidden
-        friends.add(new Friend("starfox29","Bob", "1-911-911-9119", false, true));
-        friends.add(new Friend("TheDude","Jim", "1-802-457-9834", false, true));
-        friends.add(new Friend("gay","Jeremy Adams", "1-480-390-7762", false, true));
+        friends.add(new Friend("hellrazr","Satan", "1-911-911-9119", false, true));
+        friends.add(new Friend("liljon","Lil Jon", "1-802-457-9834", false, true));
+        friends.add(new Friend("1234mkaw","Chip Chip", "1-091-402-2958", false, true));
+        friends.add(new Friend("ireq","Simon Phillips", "1-436-402-0039", false, true));
+        friends.add(new Friend("Lexy4lyf","Lex Luthar", "1-091-231-9038", false, true));
+        friends.add(new Friend("9lives","Cat Meow", "1-091-245-2958", false, true));
 
         onlineFriends = friends;
     }
