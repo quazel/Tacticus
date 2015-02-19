@@ -51,6 +51,14 @@ public class Friend {
         return this.isHidden;
     }
 
+    public void toggleFavorite() {
+        isFavorite = !isFavorite;
+    }
+
+    public void toggleHide() {
+        isHidden = !isHidden;
+    }
+
     /*public void makeContact(Context context, String phoneNumber) {
         if(contactExists(context, phoneNumber)) {
             ContentValues values = new ContentValues();
