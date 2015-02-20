@@ -19,6 +19,7 @@ public class OnlineFragment extends Fragment {
 
     private ArrayList<Friend> onlineFriends;
     private GridView gridView;
+    private OnlineTileAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -26,7 +27,8 @@ public class OnlineFragment extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_online, container, false);
 
         gridView = (GridView) view.findViewById(R.id.friendGrid);
-        gridView.setAdapter(new OnlineTileAdapter(view.getContext(), R.layout.online_tile_item_blue, User.getUser().getOnlineFriends(), getActivity()));
+        adapter = new OnlineTileAdapter(view.getContext(), R.layout.online_tile_item_blue, User.getUser().getOnlineFriends(), getActivity());
+        gridView.setAdapter(adapter);
 
         /*
         onlineFriends = User.getUser().getOnlineFriends();
@@ -39,4 +41,11 @@ public class OnlineFragment extends Fragment {
         */
         return view;
     }
+
+    public void refreshGrid() {
+        adapter.notifyDataSetChanged();
+        gridView.invalidateViews();
+        gridView.setAdapter(adapter);
+    }
+
 }
