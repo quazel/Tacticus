@@ -111,7 +111,6 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
         if(!friend.isFavorite()&&!friend.isHidden()) {
             holder.favoriteButton.setVisibility(View.VISIBLE);
             //holder.hideButton.setVisibility(View.VISIBLE);
-            holder.favoriteButton.setBackgroundColor(context.getResources().getColor(R.color.title_text_color));
             holder.favoriteButton.setText("FAVORITE");
             //holder.hideButton.setText("HIDE");
             //holder.hideButton.setVisibility(View.GONE);

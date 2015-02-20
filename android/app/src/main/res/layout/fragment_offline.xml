@@ -35,8 +35,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:onClick="goOnlinePressed"
-        android:layout_above="@+id/bottomPictures"/>
+        android:onClick="goOnlinePressed" />
 
     <LinearLayout
         android:layout_width="fill_parent"
