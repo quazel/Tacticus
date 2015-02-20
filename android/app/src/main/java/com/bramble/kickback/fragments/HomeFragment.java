@@ -105,6 +105,7 @@ public class HomeFragment extends Fragment {
         onlineFragment = new OnlineFragment();
         goOfflineFragment = new GoOfflineFragment();
         timer.cancel();
+        timer.purge();
         timer = new Timer();
     }
 
