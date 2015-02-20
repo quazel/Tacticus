@@ -7,12 +7,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 public class ResponseDeserializer {
 
     public static void deserializePoll(String response) throws JSONException {
         User theUser = User.getUser();
         theUser.getFriends().clear();
 
+        ArrayList<Friend> friends = new ArrayList<Friend>();
         JSONObject jsonObject = new JSONObject(response);
         String sessionID = jsonObject.getString("session_id");
         int callMe = jsonObject.getInt("call_me");
@@ -28,8 +31,12 @@ public class ResponseDeserializer {
 
             Friend friend = new Friend(nickname, name, phoneNumber);
             friend.setOnline(online);
-            theUser.addFriend(friend);
+            friends.add(friend);
         }
+
+        theUser.setSessionId(sessionID);
+        theUser.getFriends().clear();
+        theUser.getFriends().addAll(friends);
     }
 
 }
