@@ -16,6 +16,7 @@ public class ResponseDeserializer {
         theUser.getFriends().clear();
 
         ArrayList<Friend> friends = new ArrayList<Friend>();
+        ArrayList<Friend> onlineFriends = new ArrayList<Friend>();
         JSONObject jsonObject = new JSONObject(response);
         String sessionID = jsonObject.getString("session_id");
         int callMe = jsonObject.getInt("call_me");
@@ -32,11 +33,16 @@ public class ResponseDeserializer {
             Friend friend = new Friend(nickname, name, phoneNumber);
             friend.setOnline(online);
             friends.add(friend);
+            if (online) {
+                onlineFriends.add(friend);
+            }
         }
 
         theUser.setSessionId(sessionID);
         theUser.getFriends().clear();
         theUser.getFriends().addAll(friends);
+        theUser.getOnlineFriends().clear();
+        theUser.getOnlineFriends().addAll(onlineFriends);
     }
 
 }
