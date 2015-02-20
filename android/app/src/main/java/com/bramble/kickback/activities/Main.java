@@ -5,12 +5,16 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridView;
 
 import com.bramble.kickback.R;
@@ -38,6 +42,7 @@ public class Main extends Activity {
     private List<Friend> selectedFriends;
     private HomeFragment homeFragment;
     private CameraFragment cameraFragment;
+    private AddFriendsFragment addFriendsFragment;
     private GridView friendGrid;
 
     @Override
@@ -47,8 +52,9 @@ public class Main extends Activity {
         // Initialization
         homeFragment = new HomeFragment();
         cameraFragment = new CameraFragment();
+        addFriendsFragment = new AddFriendsFragment();
         fragments = new ArrayList<Fragment>();
-        fragments.add(new AddFriendsFragment());
+        fragments.add(addFriendsFragment);
         fragments.add(new FriendsFragment());
         fragments.add(homeFragment);
         fragments.add(cameraFragment);
@@ -147,11 +153,23 @@ public class Main extends Activity {
     public void lowerFeedPressed(View view) {
         // feed directory
     }
+    // end of home functionality
 
+    // camera functionality
     public void takePicturePressed(View view) {
         cameraFragment.capturePicture();
     }
 
+    // add friends functionality
+    public void toAddFriendsPressed(View view) {
+
+    }
+
+    public void toFriendRequestsPressed(View view) {
+
+    }
+
+    // back buttons
     public void friendsBackButtonPressed(View view) {
         viewPager.setCurrentItem(2);
     }

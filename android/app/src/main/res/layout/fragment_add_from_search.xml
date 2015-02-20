@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="search"/>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:id="@+id/search_bar"
+        android:background="@drawable/purple_bottom_line_thin"
+        android:layout_alignParentTop="true">
+
+        <Space
+            android:layout_width="12dp"
+            android:layout_height="fill_parent"
+            android:id="@+id/add_friends_search_padding"
+            android:layout_alignParentLeft="true"/>
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:background="@color/transparent"
+            android:text="Search"
+            android:textColor="@color/primary_color"
+            android:id="@+id/add_friends_search_button"/>
+
+        <EditText
+            android:layout_width="@dimen/edittext_width"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit_text_basic"
+            android:layout_centerVertical="true"
+            android:hint="Phone Number"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:inputType="phone"
+            android:layout_toLeftOf="@+id/add_friends_search_button"
+            android:layout_toRightOf="@+id/add_friends_search_padding"
+            android:id="@+id/add_friends_search_edittext"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
