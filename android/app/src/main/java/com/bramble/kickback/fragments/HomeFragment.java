@@ -36,6 +36,9 @@ public class HomeFragment extends Fragment {
     private MarqueeFragment marqueeFragment;
     private Timer timer;
 
+    // Keeps you from pressing the Kickback button twice
+    private boolean lock;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -54,6 +57,8 @@ public class HomeFragment extends Fragment {
         homeTransaction.commit();
 
         timer = new Timer();
+
+        lock = false;
 
         return view;
     }
@@ -85,7 +90,10 @@ public class HomeFragment extends Fragment {
     }
 
     public void goOnline() {
-        new InitialPollTask().execute();
+        if (!lock) {
+            lock = true;
+            new InitialPollTask().execute();
+        }
     }
 
     public void goOffline() {
@@ -97,6 +105,7 @@ public class HomeFragment extends Fragment {
         onlineFragment = new OnlineFragment();
         goOfflineFragment = new GoOfflineFragment();
         timer.cancel();
+        timer = new Timer();
     }
 
     public void replaceWithGoOffline() {
@@ -163,6 +172,7 @@ public class HomeFragment extends Fragment {
                 homeTransaction.add(R.id.online_button_container, goOfflineFragment);
                 homeTransaction.commit();
                 offlineFragment = new OfflineFragment();
+                lock = false;
             } else {
                 Toast.makeText(HomeFragment.this.getActivity(), "Could not connect to server!", Toast.LENGTH_SHORT).show();
             }
