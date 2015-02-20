@@ -3,29 +3,115 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
+    <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="75dp"
-        android:text="Add Friends"
-        android:textColor="@color/white"
-        android:background="@color/primary_color"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_above="@+id/toFriendRequests"
-        android:id="@+id/toAddFriends"
-        android:onClick="toAddFriendsPressed"/>
+        android:layout_height="@dimen/list_item_height"
+        android:id="@+id/addFriendsSearchLayout"
+        android:layout_alignParentTop="true">
 
-    <Button
+        <Space
+            android:layout_width="@dimen/add_friends_icon_padding"
+            android:layout_height="fill_parent"
+            android:id="@+id/add_friend_search_space"/>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@drawable/full_width_selector"
+            android:id="@+id/toAddFriendsSearch"
+            android:onClick="toAddFriendsSearchPressed"/>
+
+        <ImageView
+            android:layout_width="@dimen/add_friends_icon_dimensions"
+            android:layout_height="@dimen/add_friends_icon_dimensions"
+            android:background="@drawable/purple_search"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/add_friend_search_space"
+            android:id="@+id/add_friends_search_icon"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Search"
+            android:textSize="@dimen/add_friends_options_text_size"
+            android:layout_toRightOf="@+id/add_friends_search_icon"
+            android:layout_centerVertical="true"
+            android:paddingLeft="@dimen/add_friends_icon_padding"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="75dp"
-        android:text="Friend Requests"
-        android:textColor="@color/white"
-        android:background="@color/title_text_color"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/toFriendRequests"
-        android:onClick="toFriendRequestsPressed"
-        />
+        android:layout_height="@dimen/list_item_height"
+        android:id="@+id/addFriendsContactsLayout"
+        android:layout_below="@+id/addFriendsSearchLayout">
+
+        <Space
+            android:layout_width="@dimen/add_friends_icon_padding"
+            android:layout_height="fill_parent"
+            android:id="@+id/add_friend_contact_space"/>
+
+        <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/full_width_selector"
+                android:id="@+id/toAddFriendsContacts"
+                android:onClick="toAddFriendsContactsPressed"/>
+
+        <ImageView
+            android:layout_width="@dimen/add_friends_icon_dimensions"
+            android:layout_height="@dimen/add_friends_icon_dimensions"
+            android:background="@drawable/purple_contacts"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/add_friend_contact_space"
+            android:id="@+id/add_friends_contact_icon"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My Contacts"
+            android:textSize="@dimen/add_friends_options_text_size"
+            android:layout_toRightOf="@+id/add_friends_contact_icon"
+            android:layout_centerVertical="true"
+            android:paddingLeft="@dimen/add_friends_icon_padding"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/list_item_height"
+        android:id="@+id/addFriendsRequestsLayout"
+        android:layout_below="@+id/addFriendsContactsLayout">
+
+        <Space
+            android:layout_width="@dimen/add_friends_icon_padding"
+            android:layout_height="fill_parent"
+            android:id="@+id/add_friend_request_space"/>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@drawable/full_width_selector"
+            android:id="@+id/toFriendRequests"
+            android:onClick="toFriendRequestsPressed"/>
+
+        <ImageView
+            android:layout_width="@dimen/add_friends_icon_dimensions"
+            android:layout_height="@dimen/add_friends_icon_dimensions"
+            android:background="@drawable/purple_friends_add"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/add_friend_request_space"
+            android:id="@+id/add_friends_request_icon"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Friend Requests"
+            android:textSize="@dimen/add_friends_options_text_size"
+            android:layout_toRightOf="@+id/add_friends_request_icon"
+            android:layout_centerVertical="true"
+            android:paddingLeft="@dimen/add_friends_icon_padding"/>
+
+    </RelativeLayout>
 
 </RelativeLayout>

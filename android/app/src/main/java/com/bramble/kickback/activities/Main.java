@@ -161,7 +161,11 @@ public class Main extends Activity {
     }
 
     // add friends functionality
-    public void toAddFriendsPressed(View view) {
+    public void toAddFriendsSearchPressed(View view) {
+        
+    }
+
+    public void toAddFriendsContactsPressed(View view) {
 
     }
 

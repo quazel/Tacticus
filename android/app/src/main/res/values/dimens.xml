@@ -30,7 +30,12 @@
     <dimen name="edittext_width">240dp</dimen>
 
     <!-- fake actionbar dimensions-->
-    <dimen name="action_bar_text_size">18sp</dimen>
-    <dimen name="up_button_side_lengths">18dp</dimen>
+    <dimen name="action_bar_text_size">16sp</dimen>
+    <dimen name="up_button_side_lengths">16dp</dimen>
     <dimen name="up_button_width">100dp</dimen>
+
+    <!-- add friends options dimensions -->
+    <dimen name="add_friends_icon_dimensions">34dp</dimen>
+    <dimen name="add_friends_icon_padding">18dp</dimen>
+    <dimen name="add_friends_options_text_size">20sp</dimen>
 </resources>
