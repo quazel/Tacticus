@@ -14,6 +14,7 @@ public class Friend {
     private String nickname;
     private boolean isFavorite;
     private boolean isHidden;
+    private boolean isOnline;
 
     public Friend(String nickname, String name, String phoneNumber) {
         this.name = name;
@@ -21,6 +22,7 @@ public class Friend {
         this.phoneNumber = phoneNumber;
         this.isFavorite = false;
         this.isHidden = false;
+        this.isOnline = false;
     }
 
     public Friend(String nickname, String name, String phoneNumber,  boolean favorite, boolean hidden) {
@@ -29,6 +31,7 @@ public class Friend {
         this.phoneNumber = phoneNumber;
         this.isFavorite = favorite;
         this.isHidden = hidden;
+        this.isOnline = false;
     }
 
     public String getName() {
@@ -44,11 +47,15 @@ public class Friend {
     }
 
     public boolean isFavorite(){
-        return this.isFavorite;
+        return isFavorite;
     }
 
     public boolean isHidden() {
-        return this.isHidden;
+        return isHidden;
+    }
+
+    public boolean isOnline() {
+        return isOnline;
     }
 
     public void toggleFavorite() {
@@ -57,6 +64,10 @@ public class Friend {
 
     public void toggleHide() {
         isHidden = !isHidden;
+    }
+
+    public void setOnline(boolean isOnline) {
+        this.isOnline = isOnline;
     }
 
     /*public void makeContact(Context context, String phoneNumber) {

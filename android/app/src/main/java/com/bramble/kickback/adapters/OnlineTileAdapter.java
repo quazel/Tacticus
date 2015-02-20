@@ -2,6 +2,7 @@ package com.bramble.kickback.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,36 +37,35 @@ public class OnlineTileAdapter extends ArrayAdapter<Friend> {
         View view = null;
         ViewHolder viewHolder;
         Friend friend = mFriends.get(position);
-        if (convertView == null) {
-            int swatch = position % 2;
-            switch (swatch) {
-                case 0:
-                    if (!friend.isFavorite())
-                        view = mInflator.inflate(R.layout.online_tile_item_blue, parent, false);
-                    else
-                        view = mInflator.inflate(R.layout.online_tile_item_orange, parent, false);
-                    break;
-                case 1:
-                    if (!friend.isFavorite())
-                        view = mInflator.inflate(R.layout.online_tile_item_green, parent, false);
-                    else
-                        view = mInflator.inflate(R.layout.online_tile_item_magenta, parent, false);
-                    break;
-            }
-            viewHolder = new ViewHolder();
-            viewHolder.nicknameView = (TextView) view.findViewById(R.id.nickname_place);
-            view.setTag(viewHolder);
+
+        int swatch = position % 2;
+        switch (swatch) {
+            case 0:
+                if (friend.isFavorite()) {
+                    Log.d("Burgle", friend.getNickname() + ": " + friend.isFavorite());
+                    view = mInflator.inflate(R.layout.online_tile_item_orange, parent, false);
+                }
+                else
+                    view = mInflator.inflate(R.layout.online_tile_item_blue, parent, false);
+                break;
+            case 1:
+                if (friend.isFavorite()) {
+                    Log.d("Burgle", friend.getNickname() + ": " + friend.isFavorite());
+                    view = mInflator.inflate(R.layout.online_tile_item_magenta, parent, false);
+                }
+                else
+                    view = mInflator.inflate(R.layout.online_tile_item_green, parent, false);
+                break;
         }
-        else {
-            view = convertView;
-            viewHolder = (ViewHolder) view.getTag();
-        }
+
+        viewHolder = new ViewHolder();
+        viewHolder.nicknameView = (TextView) view.findViewById(R.id.nickname_place);
+        view.setTag(viewHolder);
 
         viewHolder.nicknameView.setText(friend.getNickname());
         viewHolder.index = position;
 
         view.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View arg0) {
                 GridView parentGridView = (GridView) parent;

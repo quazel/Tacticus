@@ -22,6 +22,9 @@ public class User {
     private ArrayList<Friend> friends;
     private ArrayList<Friend> onlineFriends;
 
+    // Next appropriate time
+    private int callMe;
+
     // Lazy initialization and getting of User instance. Synchronized so that we can ensure that
     // user is not created by two concurrent threads.
     public static synchronized User getUser() {
@@ -95,6 +98,10 @@ public class User {
         return temp;
     }
 
+    public synchronized int getCallMe() {
+        return callMe;
+    }
+
     public synchronized void setNickname(String nickname) {
         this.nickname = nickname;
     }
@@ -121,6 +128,10 @@ public class User {
 
     public synchronized void setOnline(boolean online) {
         this.online = online;
+    }
+
+    public synchronized void setCallMe(int callMe) {
+        this.callMe = callMe;
     }
 
     public synchronized ArrayList<Friend> getFriends() {
