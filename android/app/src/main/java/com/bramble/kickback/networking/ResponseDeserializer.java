@@ -39,6 +39,7 @@ public class ResponseDeserializer {
         }
 
         theUser.setSessionId(sessionID);
+        theUser.setCallMe(callMe);
         theUser.getFriends().clear();
         theUser.getFriends().addAll(friends);
         theUser.getOnlineFriends().clear();
