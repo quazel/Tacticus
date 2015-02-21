@@ -193,7 +193,8 @@ public class SignUpBiographical extends Activity {
                 String result = new ConnectionHandler().register(params[0], params[1], params[2],
                                                                  params[3], params[4], params[5],
                                                                  params[6]);
-                if (result != null) {
+                if (result.startsWith("200:")) {
+                    result = result.replace("200:", "");
                     JSONObject json = new JSONObject(result);
                     User user = User.getUser();
                     user.setName(json.getString("name"));

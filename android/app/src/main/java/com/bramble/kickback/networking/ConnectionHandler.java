@@ -92,6 +92,8 @@ public class ConnectionHandler {
             BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             String inputLine;
             StringBuilder response = new StringBuilder();
+            response.append(responseCode);
+            response.append(":");
 
             while((inputLine = in.readLine()) != null) {
                 response.append(inputLine);

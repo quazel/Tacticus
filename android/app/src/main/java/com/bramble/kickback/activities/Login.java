@@ -103,7 +103,8 @@ public class Login extends Activity {
         protected User doInBackground(String... params) {
             try {
                 String result = new ConnectionHandler().login(params[0], params[1]);
-                if (result != null) {
+                if (result.startsWith("200:")) {
+                    result = result.replace("200:", "");
                     JSONObject json = new JSONObject(result);
                     User user = User.getUser();
                     user.setName(json.getString("name"));
