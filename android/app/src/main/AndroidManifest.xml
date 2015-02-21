@@ -32,17 +32,20 @@
             android:label="@string/title_activity_account_portal"
             android:theme="@style/CustomNoBar"/>
 
-        <activity android:name=".activities.Login"
+        <activity
+            android:name=".activities.Login"
             android:label="Login"
             android:theme="@style/CustomNoBar"
             android:windowSoftInputMode="stateVisible"/>
 
-        <activity android:name=".activities.SignUpCredentials"
+        <activity
+            android:name=".activities.SignUpCredentials"
             android:label="SignUpCredentials"
             android:theme="@style/CustomNoBar"
             android:windowSoftInputMode="stateVisible"/>
 
-        <activity android:name=".activities.SignUpBiographical"
+        <activity
+            android:name=".activities.SignUpBiographical"
             android:label="SignUpBiographical"
             android:theme="@style/CustomNoBar"
             android:windowSoftInputMode="stateVisible"/>
@@ -55,7 +58,8 @@
         <activity
             android:name=".activities.AddFriendsSearch"
             android:label="Search"
-            android:theme="@style/CustomNoBar"/>
+            android:theme="@style/CustomNoBar"
+            android:windowSoftInputMode="stateVisible"/>
 
         <receiver
             android:name=".receivers.BootUpReceiver"
