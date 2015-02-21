@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bramble.kickback.R;
+import com.bramble.kickback.activities.AddFriendsSearch;
 import com.bramble.kickback.models.RemoteUser;
 
 import java.util.ArrayList;
@@ -54,7 +55,7 @@ public class AddFriendSearchResultsAdapter extends BaseAdapter implements Sticky
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = new ViewHolder();
-        RemoteUser remoteUser = remoteUsers.get(position);
+        final RemoteUser remoteUser = remoteUsers.get(position);
         if(remoteUsers.get(position).isFriend()) {
             convertView = layoutInflater.inflate(R.layout.remove_search_result_item, parent, false);
             holder.removeButton = (Button) convertView.findViewById(R.id.search_remove_button);
@@ -77,7 +78,7 @@ public class AddFriendSearchResultsAdapter extends BaseAdapter implements Sticky
             holder.addButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View arg0) {
-                    Toast.makeText(context,"add button pressed", Toast.LENGTH_SHORT).show();
+                    ((AddFriendsSearch) context).addFriend(remoteUser);
                 }
             });
         }
