@@ -29,6 +29,7 @@
             android:text="Camera"
             android:textColor="@color/white"
             android:textSize="@dimen/action_bar_text_size"
+            android:paddingLeft="@dimen/up_button_padding"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/camera_up_button"
             android:layout_toEndOf="@+id/camera_up_button"

@@ -162,15 +162,18 @@ public class Main extends Activity {
 
     // add friends functionality
     public void toAddFriendsSearchPressed(View view) {
-        
+        Intent intent = new Intent(Main.this, AddFriendsSearch.class);
+        startActivity(intent);
     }
 
     public void toAddFriendsContactsPressed(View view) {
-
+        //Intent intent = new Intent(Main.this, AddFriendsContacts.class);
+        //startActivity(intent);
     }
 
     public void toFriendRequestsPressed(View view) {
-
+        //Intent intent = new Intent(Main.this, AddFriendsRequests.class);
+        //startActivity(intent);
     }
 
     // back buttons
