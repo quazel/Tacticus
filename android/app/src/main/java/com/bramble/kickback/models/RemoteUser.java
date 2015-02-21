@@ -48,4 +48,8 @@ public class RemoteUser {
         // Do nothing for now. Will implement later.
     }
 
+    public void setFriend(boolean isFriend) {
+        this.isFriend = isFriend;
+    }
+
 }
