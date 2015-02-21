@@ -24,11 +24,34 @@ public class ConnectionHandler {
     private final String checkCredentialsURL = baseURL + "verify_credential_uniqueness";
     private final String pingURL = baseURL + "ping";
     private final String pollURL = baseURL + "poll";
+    private final String searchURL = baseURL + "search/";
     private final String kickbackURL = baseURL + "kickback/";
     private final String analyticsURL = baseURL + "analytics/";
 
     public HttpsURLConnection buildGetRequest(String url, HashMap<String, String> params) throws IOException {
-        throw new RuntimeException("NYI");
+        int count = 0;
+        StringBuilder urlParametersBuilder = new StringBuilder();
+
+        for (Map.Entry<String, String> entry : params.entrySet()) {
+            String key = entry.getKey();
+            String value = entry.getValue();
+            if (count > 0) {
+                urlParametersBuilder.append("&");
+            }
+            urlParametersBuilder.append(key).append("=").append(value);
+            count++;
+        }
+
+        url = url + urlParametersBuilder.toString();
+        URL requestURL = new URL(url);
+        HttpsURLConnection connection = (HttpsURLConnection) requestURL.openConnection();
+        connection.setDoInput(true);
+        connection.setRequestMethod("GET");
+        connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+        connection.setRequestProperty("charset", "utf-8");
+        connection.setUseCaches(false);
+
+        return connection;
     }
 
     public HttpsURLConnection buildPostRequest(String url, HashMap<String, String> params) throws IOException {
@@ -48,7 +71,7 @@ public class ConnectionHandler {
             if (count > 0) {
                 urlParametersBuilder.append("&");
             }
-            urlParametersBuilder.append(key + "=" + value);
+            urlParametersBuilder.append(key).append("=").append(value);
             count++;
         }
 
