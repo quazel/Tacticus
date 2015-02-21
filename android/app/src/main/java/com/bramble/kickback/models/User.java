@@ -43,6 +43,8 @@ public class User {
         temp = false;
         online = false;
 
+        friends = new ArrayList<Friend>();
+
         /*
         // Favorites
         friends = new ArrayList<Friend>();
