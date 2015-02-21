@@ -117,7 +117,7 @@ public class SignUpBiographical extends Activity {
             ft.commit();
             continueButton.setText("SIGNING UP");
             new SignUpTask().execute(signUpContainer.getDesiredUsername(), signUpContainer.getPassword(),
-                    signUpContainer.getDesiredEmail(), signUpContainer.getDesiredPhoneNumber(),
+                    signUpContainer.getDesiredEmail(), signUpContainer.getCountryCode() + signUpContainer.getDesiredPhoneNumber(),
                     signUpContainer.getFirstName() + " " + signUpContainer.getLastName(),
                     signUpContainer.getBirthdate(), signUpContainer.getSex());
             disableButtons();
@@ -200,7 +200,8 @@ public class SignUpBiographical extends Activity {
                     user.setNickname(json.getString("nickname"));
                     user.setEmail(json.getString("email"));
                     user.setPhoneNumber(json.getString("phone_number"));
-                    user.setTemp(true);
+                    user.setSessionId(json.getString("session_id"));
+                    user.setTemp(false);
                     return user;
                 }
                 else {
