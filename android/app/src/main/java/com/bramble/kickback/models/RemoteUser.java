@@ -8,6 +8,7 @@ public class RemoteUser {
     private String phoneNumber;
     private String sex;
     private boolean isFriend;
+    private boolean isContact;
 
     public RemoteUser(String nickname, String name, String email, String phoneNumber, String sex, boolean isFriend) {
         this.nickname = nickname;
@@ -16,6 +17,7 @@ public class RemoteUser {
         this.phoneNumber = phoneNumber;
         this.sex = sex;
         this.isFriend = isFriend;
+        isContact = false;
     }
 
     public String getNickname() {
@@ -40,6 +42,10 @@ public class RemoteUser {
 
     public boolean isFriend() {
         return isFriend;
+    }
+
+    public void verifyIsContact() {
+        // Do nothing for now. Will implement later.
     }
 
 }
