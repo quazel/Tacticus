@@ -155,8 +155,9 @@ public class ConnectionHandler {
         return buildResponse(connection);
     }
 
-    public String searchForPerson(String phoneNumber) throws IOException {
+    public String searchForPerson(String sessionId, String phoneNumber) throws IOException {
         HashMap<String, String> params = new HashMap<String, String>();
+        params.put("session_id", sessionId);
         params.put("phone_number", phoneNumber);
 
         HttpsURLConnection connection = buildGetRequest(searchURL, params);
