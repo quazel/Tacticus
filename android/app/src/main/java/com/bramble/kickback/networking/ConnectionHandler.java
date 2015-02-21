@@ -233,5 +233,35 @@ public class ConnectionHandler {
         }
     }
 
+    public String searchForPerson(String phoneNumber) throws IOException {
+        HashMap<String, String> params = new HashMap<String, String>();
+        params.put("phone_number", phoneNumber);
+
+        HttpsURLConnection connection = buildGetRequest(searchURL, params);
+        int responseCode = connection.getResponseCode();
+        if (responseCode == 200 || responseCode == 401) {
+            BufferedReader in;
+            if (responseCode == 200) {
+                in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            }
+            else {
+                in = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
+            }
+            String inputLine;
+            StringBuilder response = new StringBuilder();
+
+            while((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+                response.append("\n");
+            }
+            in.close();
+            Log.d("ConnectionHandler", response.toString());
+            return responseCode + ":" + response.toString().trim();
+        }
+        else {
+            throw new IOException("Received bad response from server.");
+        }
+    }
+
 }
 
