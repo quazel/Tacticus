@@ -1,6 +1,7 @@
 package com.bramble.kickback.networking;
 
 import com.bramble.kickback.models.Friend;
+import com.bramble.kickback.models.RemoteUser;
 import com.bramble.kickback.models.User;
 
 import org.json.JSONArray;
@@ -44,6 +45,19 @@ public class ResponseDeserializer {
         theUser.getFriends().addAll(friends);
         theUser.getOnlineFriends().clear();
         theUser.getOnlineFriends().addAll(onlineFriends);
+    }
+
+    public static RemoteUser deserializeSearchResults(String result) throws JSONException {
+        JSONObject jsonObject = new JSONObject(result);
+
+        String nickname = jsonObject.getString("nickname");
+        String name = jsonObject.getString("name");
+        String email = jsonObject.getString("email");
+        String phoneNumber = jsonObject.getString("phone_number");
+        String sex = jsonObject.getString("sex");
+        boolean isFriend = jsonObject.getBoolean("friends_with");
+
+        return new RemoteUser(nickname, name, email, phoneNumber, sex, isFriend);
     }
 
 }
