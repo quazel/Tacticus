@@ -57,7 +57,9 @@ public class ResponseDeserializer {
         String sex = jsonObject.getString("sex");
         boolean isFriend = jsonObject.getBoolean("friends_with");
 
-        return new RemoteUser(nickname, name, email, phoneNumber, sex, isFriend);
+        RemoteUser remoteUser = new RemoteUser(nickname, name, email, phoneNumber, sex, isFriend);
+        remoteUser.verifyIsContact();
+        return remoteUser;
     }
 
 }
