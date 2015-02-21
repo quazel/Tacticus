@@ -7,13 +7,15 @@ public class RemoteUser {
     private String email;
     private String phoneNumber;
     private String sex;
+    private boolean isFriend;
 
-    public RemoteUser(String nickname, String name, String email, String phoneNumber, String sex) {
+    public RemoteUser(String nickname, String name, String email, String phoneNumber, String sex, boolean isFriend) {
         this.nickname = nickname;
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.sex = sex;
+        this.isFriend = isFriend;
     }
 
     public String getNickname() {
@@ -34,6 +36,10 @@ public class RemoteUser {
 
     public String getSex() {
         return sex;
+    }
+
+    public boolean isFriend() {
+        return isFriend;
     }
 
 }

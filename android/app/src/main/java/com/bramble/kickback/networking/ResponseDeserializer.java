@@ -55,8 +55,9 @@ public class ResponseDeserializer {
         String email = jsonObject.getString("email");
         String phoneNumber = jsonObject.getString("phone_number");
         String sex = jsonObject.getString("sex");
+        boolean isFriend = jsonObject.getBoolean("friends_with");
 
-        return new RemoteUser(nickname, name, email, phoneNumber, sex);
+        return new RemoteUser(nickname, name, email, phoneNumber, sex, isFriend);
     }
 
 }
