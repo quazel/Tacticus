@@ -6,26 +6,76 @@
     android:layout_height="match_parent"
     android:weightSum="2">
 
-    <Button
+    <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:text="Text"
-        android:background="@drawable/outlined_selector"
-        android:textColor="@color/title_text_color"
-        android:textSize="30sp"
-        android:id="@+id/text_several"
-        android:onClick="textSeveralPressed"
-        android:layout_weight="1"/>
+        android:layout_weight="1">
 
-    <Button
+        <Space
+            android:layout_width="@dimen/add_friends_icon_padding"
+            android:layout_height="fill_parent"
+            android:id="@+id/text_several_space"/>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@drawable/full_width_selector"
+            android:id="@+id/text_several"
+            android:onClick="textSeveralPressed"/>
+
+        <ImageView
+            android:layout_width="@dimen/add_friends_icon_dimensions"
+            android:layout_height="@dimen/add_friends_icon_dimensions"
+            android:background="@drawable/purple_txt"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/text_several_space"
+            android:id="@+id/text_several_icon"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Text"
+            android:textSize="@dimen/add_friends_options_text_size"
+            android:layout_toRightOf="@+id/text_several_icon"
+            android:layout_centerVertical="true"
+            android:paddingLeft="@dimen/add_friends_icon_padding"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:text="Cancel"
-        android:background="@drawable/outlined_selector"
-        android:textColor="@color/title_text_color"
-        android:textSize="30sp"
-        android:id="@+id/cancel_several"
-        android:onClick="cancelSeveralPressed"
-        android:layout_weight="1"/>
+        android:layout_weight="1">
+
+        <Space
+            android:layout_width="@dimen/add_friends_icon_padding"
+            android:layout_height="fill_parent"
+            android:id="@+id/cancel_several_space"/>
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@drawable/full_width_selector"
+            android:id="@+id/cancel_several"
+            android:onClick="cancelSeveralPressed"/>
+
+        <ImageView
+            android:layout_width="@dimen/add_friends_icon_dimensions"
+            android:layout_height="@dimen/add_friends_icon_dimensions"
+            android:background="@drawable/purple_cancel"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/cancel_several_space"
+            android:id="@+id/cancel_several_icon"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            android:textSize="@dimen/add_friends_options_text_size"
+            android:layout_toRightOf="@+id/cancel_several_icon"
+            android:layout_centerVertical="true"
+            android:paddingLeft="@dimen/add_friends_icon_padding"/>
+
+    </RelativeLayout>
 
 </LinearLayout>

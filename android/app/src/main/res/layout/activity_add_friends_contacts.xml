@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:id="@+id/contacts_actionbar"
+        android:background="@drawable/purple_bottom_line_thin">
+
+        <Button
+            android:layout_width="@dimen/up_button_width"
+            android:layout_height="fill_parent"
+            android:background="@color/transparent"
+            android:id="@+id/contacts_back_button"
+            android:onClick="contactsBackButtonPressed"/>
+        <ImageView
+            android:layout_width="@dimen/up_button_side_lengths"
+            android:layout_height="@dimen/up_button_side_lengths"
+            android:background="@drawable/custom_purple_up_button"
+            android:layout_centerVertical="true"
+            android:id="@+id/contacts_up_button"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My Contacts"
+            android:textColor="@color/primary_color"
+            android:textSize="@dimen/action_bar_text_size"
+            android:paddingLeft="@dimen/up_button_padding"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/contacts_up_button"
+            android:layout_toEndOf="@+id/contacts_up_button"
+            android:id="@+id/contacts_textview"/>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

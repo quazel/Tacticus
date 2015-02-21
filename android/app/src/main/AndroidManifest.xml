@@ -61,6 +61,16 @@
             android:theme="@style/CustomNoBar"
             android:windowSoftInputMode="stateVisible"/>
 
+        <activity
+            android:name=".activities.AddFriendsContacts"
+            android:label="Main"
+            android:theme="@style/CustomNoBar"/>
+
+        <activity
+            android:name=".activities.AddFriendsRequests"
+            android:label="Main"
+            android:theme="@style/CustomNoBar"/>
+
         <receiver
             android:name=".receivers.BootUpReceiver"
             android:enabled="true"
