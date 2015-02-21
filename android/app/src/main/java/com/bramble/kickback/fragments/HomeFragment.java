@@ -150,7 +150,10 @@ public class HomeFragment extends Fragment {
                     return false;
                 }
 
-            } catch (JSONException | IOException e) {
+            } catch (JSONException e) {
+                e.printStackTrace();
+                return false;
+            } catch (IOException e) {
                 e.printStackTrace();
                 return false;
             }
@@ -198,7 +201,10 @@ public class HomeFragment extends Fragment {
                     return false;
                 }
 
-            } catch (JSONException | IOException e) {
+            } catch (JSONException e) {
+                e.printStackTrace();
+                return false;
+            } catch (IOException e) {
                 e.printStackTrace();
                 return false;
             }
