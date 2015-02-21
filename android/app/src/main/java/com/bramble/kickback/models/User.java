@@ -42,6 +42,8 @@ public class User {
         sessionId = "";
         temp = false;
         online = false;
+
+        /*
         // Favorites
         friends = new ArrayList<Friend>();
         friends.add(new Friend("starfox29","Bob", "1-911-911-9119", true, false));
@@ -70,7 +72,8 @@ public class User {
         friends.add(new Friend("ireq","Simon Phillips", "1-436-402-0039", false, false));
         friends.add(new Friend("Lexy4lyf","Lex Luthar", "1-091-231-9038", false, false));
         friends.add(new Friend("9lives","Cat Meow", "1-091-245-2958", false, false));
-
+        */
+        
         onlineFriends = friends;
     }
 
