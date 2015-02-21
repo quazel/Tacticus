@@ -64,7 +64,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:background="@color/transparent"
-            android:id="@+id/search_add_button"/>
+            android:id="@+id/search_remove_button"/>
 
     </RelativeLayout>
 
