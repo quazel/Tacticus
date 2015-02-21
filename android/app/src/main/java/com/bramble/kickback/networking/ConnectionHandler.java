@@ -28,7 +28,7 @@ public class ConnectionHandler {
     private final String kickbackURL = baseURL + "kickback/";
     private final String analyticsURL = baseURL + "analytics/";
 
-    public HttpsURLConnection buildGetRequest(String url, HashMap<String, String> params) throws IOException {
+    private HttpsURLConnection buildGetRequest(String url, HashMap<String, String> params) throws IOException {
         int count = 0;
         StringBuilder urlParametersBuilder = new StringBuilder();
 
@@ -54,7 +54,7 @@ public class ConnectionHandler {
         return connection;
     }
 
-    public HttpsURLConnection buildPostRequest(String url, HashMap<String, String> params) throws IOException {
+    private HttpsURLConnection buildPostRequest(String url, HashMap<String, String> params) throws IOException {
         URL requestURL = new URL(url);
         HttpsURLConnection connection = (HttpsURLConnection) requestURL.openConnection();
         connection.setDoInput(true);
@@ -86,7 +86,7 @@ public class ConnectionHandler {
         return connection;
     }
 
-    public String buildResponse(HttpsURLConnection connection) throws IOException {
+    private String buildResponse(HttpsURLConnection connection) throws IOException {
         int responseCode = connection.getResponseCode();
         if (responseCode == 200 || responseCode == 401) {
             BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
