@@ -7,8 +7,7 @@
         android:layout_width="fill_parent"
         android:layout_height="@dimen/list_item_height"
         android:id="@+id/sticky_item_body"
-        android:background="@drawable/full_width_button_nobottom"
-        android:layout_toLeftOf="@+id/search_add_button_container">
+        android:background="@drawable/full_width_button_nobottom">
         <LinearLayout
             android:id="@+id/body_text"
             android:layout_width="match_parent"
@@ -51,19 +50,19 @@
         android:layout_width="@dimen/list_item_height"
         android:layout_height="@dimen/list_item_height"
         android:layout_alignParentRight="true"
-        android:background="@color/primary_color"
         android:id="@+id/search_add_button_container">
 
         <ImageView
-            android:layout_width="38dp"
-            android:layout_height="38dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:layout_centerInParent="true"
-            android:background="@drawable/white_cancel"/>
+            android:background="@drawable/purple_remove"/>
 
          <Button
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:background="@color/transparent"
+            android:layout_centerInParent="true"
             android:id="@+id/search_remove_button"/>
 
     </RelativeLayout>
