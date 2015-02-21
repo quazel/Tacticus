@@ -26,7 +26,7 @@ import java.util.ArrayList;
 
 public class AddFriendsSearch extends Activity {
 
-    private EditText phoneNumberEdittext;
+    private EditText phoneNumberEditText;
     private ListView resultsList;
     private AddFriendSearchResultsAdapter resultsAdapter;
     private ArrayList<RemoteUser> remoteUsers;
@@ -41,12 +41,12 @@ public class AddFriendsSearch extends Activity {
         resultsAdapter = new AddFriendSearchResultsAdapter(this, remoteUsers);
         resultsList.setAdapter(resultsAdapter);
 
-        phoneNumberEdittext = (EditText) findViewById(R.id.search_edittext);
-        phoneNumberEdittext.requestFocus();
-        phoneNumberEdittext.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        phoneNumberEditText = (EditText) findViewById(R.id.search_edittext);
+        phoneNumberEditText.requestFocus();
+        phoneNumberEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
-                    new SearchUserTask().execute(phoneNumberEdittext.getText().toString());
+                    new SearchUserTask().execute(phoneNumberEditText.getText().toString());
                 }
                 return false;
             }
@@ -58,7 +58,7 @@ public class AddFriendsSearch extends Activity {
     }
 
     public void searchPhoneNumberPressed(View view) {
-        new SearchUserTask().execute(phoneNumberEdittext.getText().toString());
+        new SearchUserTask().execute(phoneNumberEditText.getText().toString());
     }
 
 
