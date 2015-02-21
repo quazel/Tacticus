@@ -5,9 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.bramble.kickback.R;
 import com.bramble.kickback.models.RemoteUser;
@@ -50,7 +47,7 @@ public class AddFriendSearchResultsAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = new ViewHolder();
         RemoteUser remoteUser = remoteUsers.get(position);
-        convertView = layoutInflater.inflate(R.layout.search_result_phone_number_item, parent, false);
+        convertView = layoutInflater.inflate(R.layout.add_search_result_item, parent, false);
 
         return convertView;
     }
