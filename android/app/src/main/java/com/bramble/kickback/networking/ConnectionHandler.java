@@ -86,14 +86,9 @@ public class ConnectionHandler {
         return connection;
     }
 
-    public String login(String email, String password) throws IOException {
-        HashMap<String, String> params = new HashMap<String, String>();
-        params.put("email", email);
-        params.put("password", password);
-
-        HttpsURLConnection connection = buildPostRequest(loginURL, params);
+    public String buildResponse(HttpsURLConnection connection) throws IOException {
         int responseCode = connection.getResponseCode();
-        if (responseCode == 200) {
+        if (responseCode == 200 || responseCode == 401) {
             BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             String inputLine;
             StringBuilder response = new StringBuilder();
@@ -106,9 +101,17 @@ public class ConnectionHandler {
             return response.toString();
         }
         else {
-            Log.d("ConnectionHandler", "Received bad response from server.");
             throw new IOException("Received bad response from server.");
         }
+    }
+
+    public String login(String email, String password) throws IOException {
+        HashMap<String, String> params = new HashMap<String, String>();
+        params.put("email", email);
+        params.put("password", password);
+
+        HttpsURLConnection connection = buildPostRequest(loginURL, params);
+        return buildResponse(connection);
     }
 
     public String register(String nickname, String password, String email, String phoneNumber,
@@ -124,22 +127,7 @@ public class ConnectionHandler {
         params.put("sex", sex);
 
         HttpsURLConnection connection = buildPostRequest(registerURL, params);
-        int responseCode = connection.getResponseCode();
-        if (responseCode == 200 || responseCode == 401) {
-            BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-            String inputLine;
-            StringBuilder response = new StringBuilder();
-
-            while((inputLine = in.readLine()) != null) {
-                response.append(inputLine);
-            }
-            in.close();
-            Log.d("ConnectionHandler", response.toString());
-            return response.toString();
-        }
-        else {
-            throw new IOException("Received bad response from server.");
-        }
+        return buildResponse(connection);
     }
 
     public String checkCredentials(String email, String phoneNumber) throws IOException {
@@ -148,29 +136,7 @@ public class ConnectionHandler {
         params.put("phone_number", phoneNumber);
 
         HttpsURLConnection connection = buildPostRequest(checkCredentialsURL, params);
-        int responseCode = connection.getResponseCode();
-        if (responseCode == 200 || responseCode == 401) {
-            BufferedReader in;
-            if (responseCode == 200) {
-                in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-            }
-            else {
-                in = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
-            }
-            String inputLine;
-            StringBuilder response = new StringBuilder();
-
-            while((inputLine = in.readLine()) != null) {
-                response.append(inputLine);
-                response.append("\n");
-            }
-            in.close();
-            Log.d("ConnectionHandler", response.toString());
-            return responseCode + ":" + response.toString().trim();
-        }
-        else {
-            throw new IOException("Received bad response from server.");
-        }
+        return buildResponse(connection);
     }
 
     public String ping(String sessionId) throws IOException {
@@ -178,29 +144,7 @@ public class ConnectionHandler {
         params.put("session_id", sessionId);
 
         HttpsURLConnection connection = buildPostRequest(pingURL, params);
-        int responseCode = connection.getResponseCode();
-        if (responseCode == 200 || responseCode == 401) {
-            BufferedReader in;
-            if (responseCode == 200) {
-                in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-            }
-            else {
-                in = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
-            }
-            String inputLine;
-            StringBuilder response = new StringBuilder();
-
-            while((inputLine = in.readLine()) != null) {
-                response.append(inputLine);
-                response.append("\n");
-            }
-            in.close();
-            Log.d("ConnectionHandler", response.toString());
-            return responseCode + ":" + response.toString().trim();
-        }
-        else {
-            throw new IOException("Received bad response from server.");
-        }
+        return buildResponse(connection);
     }
 
     public String poll(String sessionId) throws IOException {
@@ -208,29 +152,7 @@ public class ConnectionHandler {
         params.put("session_id", sessionId);
 
         HttpsURLConnection connection = buildPostRequest(pollURL, params);
-        int responseCode = connection.getResponseCode();
-        if (responseCode == 200 || responseCode == 401) {
-            BufferedReader in;
-            if (responseCode == 200) {
-                in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-            }
-            else {
-                in = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
-            }
-            String inputLine;
-            StringBuilder response = new StringBuilder();
-
-            while((inputLine = in.readLine()) != null) {
-                response.append(inputLine);
-                response.append("\n");
-            }
-            in.close();
-            Log.d("ConnectionHandler", response.toString());
-            return responseCode + ":" + response.toString().trim();
-        }
-        else {
-            throw new IOException("Received bad response from server.");
-        }
+        return buildResponse(connection);
     }
 
     public String searchForPerson(String phoneNumber) throws IOException {
@@ -238,29 +160,7 @@ public class ConnectionHandler {
         params.put("phone_number", phoneNumber);
 
         HttpsURLConnection connection = buildGetRequest(searchURL, params);
-        int responseCode = connection.getResponseCode();
-        if (responseCode == 200 || responseCode == 401) {
-            BufferedReader in;
-            if (responseCode == 200) {
-                in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-            }
-            else {
-                in = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
-            }
-            String inputLine;
-            StringBuilder response = new StringBuilder();
-
-            while((inputLine = in.readLine()) != null) {
-                response.append(inputLine);
-                response.append("\n");
-            }
-            in.close();
-            Log.d("ConnectionHandler", response.toString());
-            return responseCode + ":" + response.toString().trim();
-        }
-        else {
-            throw new IOException("Received bad response from server.");
-        }
+        return buildResponse(connection);
     }
 
 }
