@@ -42,6 +42,7 @@ public class Main extends Activity {
     private List<Friend> selectedFriends;
     private HomeFragment homeFragment;
     private CameraFragment cameraFragment;
+    private FriendsFragment friendsFragment;
     private AddFriendsFragment addFriendsFragment;
     private GridView friendGrid;
 
@@ -52,10 +53,11 @@ public class Main extends Activity {
         // Initialization
         homeFragment = new HomeFragment();
         cameraFragment = new CameraFragment();
+        friendsFragment = new FriendsFragment();
         addFriendsFragment = new AddFriendsFragment();
         fragments = new ArrayList<Fragment>();
         fragments.add(addFriendsFragment);
-        fragments.add(new FriendsFragment());
+        fragments.add(friendsFragment);
         fragments.add(homeFragment);
         fragments.add(cameraFragment);
         fragments.add(new GalleryFragment());
