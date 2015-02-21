@@ -50,7 +50,7 @@ public class AddFriendSearchResultsAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = new ViewHolder();
         RemoteUser remoteUser = remoteUsers.get(position);
-        convertView = layoutInflater.inflate(R.layout.friends_list_item, parent, false);
+        convertView = layoutInflater.inflate(R.layout.search_result_phone_number_item, parent, false);
 
         return convertView;
     }
