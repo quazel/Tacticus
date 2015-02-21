@@ -160,7 +160,7 @@ public class ConnectionHandler {
         params.put("session_id", sessionId);
         params.put("phone_number", phoneNumber);
 
-        HttpsURLConnection connection = buildGetRequest(searchURL, params);
+        HttpsURLConnection connection = buildPostRequest(searchURL, params);
         return buildResponse(connection);
     }
 
