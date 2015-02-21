@@ -16,7 +16,7 @@
             android:orientation="vertical"
             android:paddingBottom="9dp">
 
-            <TextView android:id="@+id/search_nickname_thing"
+            <TextView android:id="@+id/search_remove_nickname_thing"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="17dp"
@@ -26,7 +26,7 @@
                 android:paddingLeft="12dp"
                 android:paddingRight="12dp"/>
 
-            <TextView android:id="@+id/search_phone_number_thing"
+            <TextView android:id="@+id/search_remove_phone_number_thing"
                 android:layout_width="fill_parent"
                 android:textColor="@color/secondary_body_text_color"
                 android:gravity="left|top"
