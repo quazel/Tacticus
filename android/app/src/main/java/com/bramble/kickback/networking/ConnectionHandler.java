@@ -25,6 +25,7 @@ public class ConnectionHandler {
     private final String pingURL = baseURL + "ping";
     private final String pollURL = baseURL + "poll";
     private final String searchURL = baseURL + "search";
+    private final String addFriendURL = baseURL + "add_friend";
     private final String kickbackURL = baseURL + "kickback/";
     private final String analyticsURL = baseURL + "analytics/";
 
@@ -163,6 +164,15 @@ public class ConnectionHandler {
         params.put("phone_number", phoneNumber);
 
         HttpsURLConnection connection = buildPostRequest(searchURL, params);
+        return buildResponse(connection);
+    }
+
+    public String addFriend(String sessionId, String phoneNumber) throws IOException {
+        HashMap<String, String> params = new HashMap<String, String>();
+        params.put("session_id", sessionId);
+        params.put("phone_number", phoneNumber);
+
+        HttpsURLConnection connection = buildPostRequest(addFriendURL, params);
         return buildResponse(connection);
     }
 
