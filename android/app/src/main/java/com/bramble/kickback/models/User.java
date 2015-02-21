@@ -73,7 +73,7 @@ public class User {
         friends.add(new Friend("Lexy4lyf","Lex Luthar", "1-091-231-9038", false, false));
         friends.add(new Friend("9lives","Cat Meow", "1-091-245-2958", false, false));
         */
-        
+
         onlineFriends = friends;
     }
 
