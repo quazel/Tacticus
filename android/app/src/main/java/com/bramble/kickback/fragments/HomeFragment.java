@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.bramble.kickback.R;
+import com.bramble.kickback.activities.Main;
 import com.bramble.kickback.models.Friend;
 import com.bramble.kickback.models.User;
 import com.bramble.kickback.networking.ConnectionHandler;
@@ -65,6 +66,10 @@ public class HomeFragment extends Fragment {
 
     public void refreshGrid() {
         onlineFragment.refreshGrid();
+    }
+
+    public void refreshFriendsList() {
+        ((Main) getActivity()).refreshFriendsList();
     }
 
     public void updateMarquee(List<Friend> selectedFriends) {
@@ -162,6 +167,7 @@ public class HomeFragment extends Fragment {
         @Override
         protected void onPostExecute(Boolean result) {
             if (result) {
+                refreshFriendsList();
                 TimerTask timerTask = new TimerTask() {
                     @Override
                     public void run() {
@@ -214,6 +220,7 @@ public class HomeFragment extends Fragment {
         protected void onPostExecute(Boolean result) {
             if (result) {
                 refreshGrid();
+                refreshFriendsList();
                 TimerTask timerTask = new TimerTask() {
                     @Override
                     public void run() {
