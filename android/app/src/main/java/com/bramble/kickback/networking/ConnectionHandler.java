@@ -27,7 +27,7 @@ public class ConnectionHandler {
     private final String goOfflineURL = baseURL + "go_offline";
     private final String searchURL = baseURL + "search";
     private final String addFriendURL = baseURL + "add_friend";
-    private final String removeFriendURL = baseURL + "add_friend";
+    private final String removeFriendURL = baseURL + "remove_friend";
     private final String kickbackURL = baseURL + "kickback/";
     private final String analyticsURL = baseURL + "analytics/";
 
