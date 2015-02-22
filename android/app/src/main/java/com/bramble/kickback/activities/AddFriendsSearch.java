@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +35,8 @@ public class AddFriendsSearch extends Activity {
     private StickyListHeadersListView resultsList;
     private AddFriendSearchResultsAdapter resultsAdapter;
     private ArrayList<RemoteUser> remoteUsers;
+    private Button addSearchButton;
+    private boolean lock;
 
     private FragmentManager fm;
     private FragmentTransaction ft;
@@ -43,9 +46,9 @@ public class AddFriendsSearch extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_friends_search);
-
         remoteUsers = new ArrayList<RemoteUser>();
         resultsList = (StickyListHeadersListView) findViewById(R.id.search_results_list);
+        addSearchButton = (Button) findViewById(R.id.add_friend_search_button);
         resultsAdapter = new AddFriendSearchResultsAdapter(this, remoteUsers);
         resultsList.setAdapter(resultsAdapter);
 
@@ -76,6 +79,7 @@ public class AddFriendsSearch extends Activity {
             ft = fm.beginTransaction();
             ft.add(R.id.add_friends_search_loading_space, loadingBar);
             ft.commit();
+            addSearchButton.setEnabled(false);
             new SearchUserTask().execute(phoneNumberEditText.getText().toString());
         }
         else {
@@ -126,6 +130,7 @@ public class AddFriendsSearch extends Activity {
             ft = fm.beginTransaction();
             ft.remove(loadingBar);
             ft.commit();
+            addSearchButton.setEnabled(true);
         }
     }
 
