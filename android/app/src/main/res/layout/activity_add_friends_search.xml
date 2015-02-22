@@ -53,13 +53,13 @@
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:background="@color/primary_color"
+                android:background="@color/transparent"
                 android:onClick="searchPhoneNumberPressed"/>
 
             <ImageView
                 android:layout_width="34dp"
                 android:layout_height="34dp"
-                android:background="@drawable/search"
+                android:background="@drawable/purple_search"
                 android:layout_centerInParent="true"/>
 
         </RelativeLayout>
@@ -88,5 +88,11 @@
         android:divider="@null"
         android:dividerHeight="0dp"
         android:layout_below="@id/search_actionbar"/>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/add_friends_search_loading_space"
+        android:layout_centerInParent="true"/>
 
 </RelativeLayout>
