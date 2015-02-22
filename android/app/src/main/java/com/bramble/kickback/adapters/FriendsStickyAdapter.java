@@ -285,4 +285,9 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
         }
         notifyDataSetChanged();
     }
+
+    public Context getContext() {
+        return context;
+    }
+
 }

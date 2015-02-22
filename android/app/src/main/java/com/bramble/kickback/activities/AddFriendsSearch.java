@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.bramble.kickback.R;
 import com.bramble.kickback.adapters.AddFriendSearchResultsAdapter;
 import com.bramble.kickback.fragments.LoadingBar;
+import com.bramble.kickback.models.Friend;
 import com.bramble.kickback.models.RemoteUser;
 import com.bramble.kickback.models.User;
 import com.bramble.kickback.networking.ConnectionHandler;
@@ -146,6 +147,8 @@ public class AddFriendsSearch extends Activity {
             try {
                 String response = new ConnectionHandler().addFriend(sessionId, phoneNumber);
                 boolean flag = response.startsWith("200:");
+                Friend friend = new Friend(params[0].getNickname(), params[0].getName(), params[0].getPhoneNumber());
+                User.getUser().getFriends().add(friend);
                 params[0].setFriend(flag);
                 return flag;
             } catch (IOException e) {
@@ -172,10 +175,17 @@ public class AddFriendsSearch extends Activity {
             try {
                 String response = new ConnectionHandler().removeFriend(sessionId, phoneNumber);
                 boolean flag = response.startsWith("200:");
+                ArrayList<Friend> friends = User.getUser().getFriends();
+                for (Friend friend : friends) {
+                    if (friend.getPhoneNumber().equals(params[0].getPhoneNumber())) {
+                        friends.remove(friend);
+                        break;
+                    }
+                }
                 params[0].setFriend(!flag);
                 return flag;
             } catch (IOException e) {
-                return null;
+                return false;
             }
         }
         @Override

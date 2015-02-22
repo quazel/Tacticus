@@ -159,7 +159,6 @@ public class HomeFragment extends Fragment {
         @Override
         protected void onPostExecute(Boolean result) {
             if (result) {
-                refreshFriendsList();
                 TimerTask timerTask = new TimerTask() {
                     @Override
                     public void run() {
@@ -209,7 +208,6 @@ public class HomeFragment extends Fragment {
         protected void onPostExecute(Boolean result) {
             if (result) {
                 refreshGrid();
-                refreshFriendsList();
                 TimerTask timerTask = new TimerTask() {
                     @Override
                     public void run() {

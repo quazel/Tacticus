@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -81,15 +82,21 @@ public class Main extends Activity {
 
             @Override
             public void onPageSelected(int position) {
+                Log.d("Burgle", position + "");
+                if (position == 1) {
+                    friendsFragment.refreshFriendsList();
+                }
             }
 
             @Override
             public void onPageScrolled(int arg0, float arg1, int arg2) {
+
             }
 
             @Override
             public void onPageScrollStateChanged(int arg0) {
             }
+
         });
         viewPager.setCurrentItem(2);
         viewPager.setOffscreenPageLimit(5);
