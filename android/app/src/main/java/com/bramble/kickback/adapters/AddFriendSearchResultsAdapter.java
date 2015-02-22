@@ -65,7 +65,7 @@ public class AddFriendSearchResultsAdapter extends BaseAdapter implements Sticky
             holder.removeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View arg0) {
-                    Toast.makeText(context, "remove button pressed", Toast.LENGTH_SHORT).show();
+                    ((AddFriendsSearch) context).removeFriend(remoteUser);
                 }
             });
         }

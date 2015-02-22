@@ -27,6 +27,7 @@ public class ConnectionHandler {
     private final String goOfflineURL = baseURL + "go_offline";
     private final String searchURL = baseURL + "search";
     private final String addFriendURL = baseURL + "add_friend";
+    private final String removeFriendURL = baseURL + "add_friend";
     private final String kickbackURL = baseURL + "kickback/";
     private final String analyticsURL = baseURL + "analytics/";
 
@@ -182,6 +183,15 @@ public class ConnectionHandler {
         params.put("phone_number", phoneNumber);
 
         HttpsURLConnection connection = buildPostRequest(addFriendURL, params);
+        return buildResponse(connection);
+    }
+
+    public String removeFriend(String sessionId, String phoneNumber) throws IOException {
+        HashMap<String, String> params = new HashMap<String, String>();
+        params.put("session_id", sessionId);
+        params.put("phone_number", phoneNumber);
+
+        HttpsURLConnection connection = buildPostRequest(removeFriendURL, params);
         return buildResponse(connection);
     }
 
