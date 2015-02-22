@@ -43,7 +43,6 @@ public class FriendsFragment extends Fragment {
     public void refreshFriendsList() {
         friendsStickyAdapter.notifyDataSetChanged();
         stickyList.invalidateViews();
-        stickyList.setAdapter(friendsStickyAdapter);
     }
 
 }

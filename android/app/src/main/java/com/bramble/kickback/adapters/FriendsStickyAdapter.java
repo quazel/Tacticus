@@ -5,6 +5,7 @@ package com.bramble.kickback.adapters;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 import com.bramble.kickback.R;
 import com.bramble.kickback.animations.ExpandAnimation;
 import com.bramble.kickback.models.Friend;
+import com.bramble.kickback.models.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,6 +76,8 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
+        Log.d("Burgle", User.getUser().getFriends().toString());
+        Log.d("Burgle", arrayList.toString());
         Friend friend = arrayList.get(position);
         holder = new ViewHolder();
         convertView = inflater.inflate(R.layout.friends_list_item, parent, false);

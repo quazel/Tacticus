@@ -1,5 +1,7 @@
 package com.bramble.kickback.networking;
 
+import android.util.Log;
+
 import com.bramble.kickback.models.Friend;
 import com.bramble.kickback.models.RemoteUser;
 import com.bramble.kickback.models.User;
@@ -74,10 +76,22 @@ public class ResponseDeserializer {
 
         theUser.setSessionId(sessionID);
         theUser.setCallMe(callMe);
-        theUser.getFriends().clear();
-        theUser.getFriends().addAll(friends);
-        theUser.getOnlineFriends().clear();
-        theUser.getOnlineFriends().addAll(onlineFriends);
+        ArrayList<Friend> userFriends = theUser.getFriends();
+        for (Friend friend : userFriends) {
+            userFriends.remove(friend);
+        }
+        for (Friend friend : friends) {
+            userFriends.add(friend);
+        }
+        ArrayList<Friend> userOnlineFriends = theUser.getOnlineFriends();
+        for (Friend friend : userOnlineFriends) {
+            userFriends.remove(friend);
+        }
+        for (Friend friend : onlineFriends) {
+            userOnlineFriends.add(friend);
+        }
+        Log.d("Burgle1", userFriends.toString());
+        Log.d("Burgle1", friends.toString());
     }
 
     public static RemoteUser deserializeSearchResults(String result) throws JSONException {
