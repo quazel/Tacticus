@@ -16,6 +16,7 @@
 
     <!-- technical colors for items -->
     <color name="white">#FFFFFF</color>
+    <color name="offwhite">#EDEDED</color>
     <color name="transparent">#00000000</color>
     <color name="black">#000000</color>
     <color name="darkerGray">#777777</color>
