@@ -10,7 +10,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,10 +26,12 @@ import org.json.JSONException;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
+
 public class AddFriendsSearch extends Activity {
 
     private EditText phoneNumberEditText;
-    private ListView resultsList;
+    private StickyListHeadersListView resultsList;
     private AddFriendSearchResultsAdapter resultsAdapter;
     private ArrayList<RemoteUser> remoteUsers;
 
@@ -44,7 +45,7 @@ public class AddFriendsSearch extends Activity {
         setContentView(R.layout.activity_add_friends_search);
 
         remoteUsers = new ArrayList<RemoteUser>();
-        resultsList = (ListView) findViewById(R.id.search_results_list);
+        resultsList = (StickyListHeadersListView) findViewById(R.id.search_results_list);
         resultsAdapter = new AddFriendSearchResultsAdapter(this, remoteUsers);
         resultsList.setAdapter(resultsAdapter);
 
@@ -71,10 +72,15 @@ public class AddFriendsSearch extends Activity {
     }
 
     public void searchPhoneNumberPressed(View view) {
-        ft = fm.beginTransaction();
-        ft.add(R.id.add_friends_search_loading_space, loadingBar);
-        ft.commit();
-        new SearchUserTask().execute(phoneNumberEditText.getText().toString());
+        if(phoneNumberEditText.getText().length()>=10) {
+            ft = fm.beginTransaction();
+            ft.add(R.id.add_friends_search_loading_space, loadingBar);
+            ft.commit();
+            new SearchUserTask().execute(phoneNumberEditText.getText().toString());
+        }
+        else {
+            Toast.makeText(AddFriendsSearch.this, "Please enter a full phone number.", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void addFriend(RemoteUser remoteUser) {
@@ -112,7 +118,10 @@ public class AddFriendsSearch extends Activity {
                 resultsList.invalidateViews();
             }
             else {
-                Toast.makeText(AddFriendsSearch.this, "Nothing found", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddFriendsSearch.this, "The phone number entered does not match any users.", Toast.LENGTH_SHORT).show();
+                remoteUsers.clear();
+                resultsAdapter.notifyDataSetChanged();
+                resultsList.invalidateViews();
             }
             ft = fm.beginTransaction();
             ft.remove(loadingBar);
