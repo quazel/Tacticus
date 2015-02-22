@@ -12,6 +12,42 @@ import java.util.ArrayList;
 
 public class ResponseDeserializer {
 
+    public static void deserializeLogin(String response) throws JSONException {
+        JSONObject json = new JSONObject(response);
+        User user = User.getUser();
+        String name = json.getString("name");
+        String nickname = json.getString("nickname");
+        String email = json.getString("email");
+        String phoneNumber = json.getString("phone_number");
+        String sessionId = json.getString("session_id");
+
+        JSONObject jsonObject = json.getJSONObject("friends");
+        JSONArray friendsJSON = jsonObject.getJSONArray("friends");
+
+        ArrayList<Friend> friends = new ArrayList<Friend>();
+        for (int i = 0; i < friendsJSON.length(); i++) {
+            JSONObject friendJSON = friendsJSON.getJSONObject(i);
+            String friendEmail = friendJSON.getString("email");
+            String friendNickname = friendJSON.getString("nickname");
+            String friendName = friendJSON.getString("name");
+            String friendPhoneNumber = friendJSON.getString("phone_number");
+
+            Friend friend = new Friend(friendNickname, friendName, friendPhoneNumber);
+            friend.setOnline(false);
+            friends.add(friend);
+        }
+
+
+        user.setName(name);
+        user.setNickname(nickname);
+        user.setEmail(email);
+        user.setPhoneNumber(json.getString(phoneNumber));
+        user.setSessionId(sessionId);
+        user.setTemp(false);
+        user.getFriends().clear();
+        user.getFriends().addAll(friends);
+    }
+
     public static void deserializePoll(String response) throws JSONException {
         User theUser = User.getUser();
         theUser.getFriends().clear();

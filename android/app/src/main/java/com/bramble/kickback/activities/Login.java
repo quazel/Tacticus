@@ -3,6 +3,7 @@ import com.bramble.kickback.R;
 import com.bramble.kickback.fragments.LoadingBar;
 import com.bramble.kickback.models.User;
 import com.bramble.kickback.networking.ConnectionHandler;
+import com.bramble.kickback.networking.ResponseDeserializer;
 
 import android.app.Activity;
 import android.app.FragmentManager;
@@ -105,20 +106,13 @@ public class Login extends Activity {
                 String result = new ConnectionHandler().login(params[0], params[1]);
                 if (result.startsWith("200:")) {
                     result = result.replace("200:", "");
-                    JSONObject json = new JSONObject(result);
-                    User user = User.getUser();
-                    user.setName(json.getString("name"));
-                    user.setNickname(json.getString("nickname"));
-                    user.setEmail(json.getString("email"));
-                    user.setPhoneNumber(json.getString("phone_number"));
-                    user.setSessionId(json.getString("session_id"));
-                    user.setTemp(false);
+                    ResponseDeserializer.deserializeLogin(result);
                     SharedPreferences prefs = getSharedPreferences("prefs", Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = prefs.edit();
                     editor.putString("email", params[0]);
                     editor.putString("password", params[1]);
                     editor.apply();
-                    return user;
+                    return User.getUser();
                 }
                 else {
                     return null;
