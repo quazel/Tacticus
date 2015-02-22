@@ -46,6 +46,7 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'joda-time:joda-time:2.7'
     compile 'com.android.support:support-v13:20.0.0'
     compile 'se.emilsjolander:stickylistheaders:2.5.2'
     compile('com.crashlytics.sdk.android:crashlytics:2.2.1@aar') {
