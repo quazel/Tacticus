@@ -32,7 +32,7 @@ public class FriendsFragment extends Fragment {
 
         stickyList = (StickyListHeadersListView) view.findViewById(R.id.all_friends_list);
 
-        friendsStickyAdapter = new FriendsStickyAdapter(view.getContext(), friends);
+        friendsStickyAdapter = new FriendsStickyAdapter(view.getContext(), friends, this);
 
         stickyList.setAdapter(friendsStickyAdapter);
 
@@ -41,7 +41,7 @@ public class FriendsFragment extends Fragment {
     }
 
     public void refreshFriendsList() {
-        friendsStickyAdapter = new FriendsStickyAdapter(friendsStickyAdapter.getContext(), friends);
+        friendsStickyAdapter = new FriendsStickyAdapter(friendsStickyAdapter.getContext(), friends, this);
         stickyList.setAdapter(friendsStickyAdapter);
         stickyList.invalidateViews();
     }

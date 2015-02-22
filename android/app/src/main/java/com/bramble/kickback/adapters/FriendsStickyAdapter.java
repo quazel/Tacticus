@@ -3,9 +3,7 @@ package com.bramble.kickback.adapters;
 //This adapter is to be used with the friends list activity
 
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.util.Log;
+import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,9 +17,12 @@ import android.widget.Toast;
 
 import com.bramble.kickback.R;
 import com.bramble.kickback.animations.ExpandAnimation;
+import com.bramble.kickback.fragments.FriendsFragment;
 import com.bramble.kickback.models.Friend;
 import com.bramble.kickback.models.User;
+import com.bramble.kickback.networking.ConnectionHandler;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -36,16 +37,17 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
     private View mSelected;
     private boolean mClickEnabled;
     private Context context;
+    private FriendsFragment friendsFragment;
 
-    public FriendsStickyAdapter(Context context, ArrayList<Friend> inputArrayList) {
+    public FriendsStickyAdapter(Context context, ArrayList<Friend> inputArrayList, FriendsFragment friendsFragment) {
         inflater = LayoutInflater.from(context);
-
         this.arrayList = inputArrayList;
         this.filteredList = new ArrayList<Friend>();
         this.filteredList.addAll(arrayList);
         this.context = context;
         mSelected = null;
         mClickEnabled = true;
+        this.friendsFragment = friendsFragment;
     }
 
     @Override
@@ -77,9 +79,9 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
-        Friend friend = arrayList.get(position);
+        final Friend friend = arrayList.get(position);
         holder = new ViewHolder();
         convertView = inflater.inflate(R.layout.friends_list_item, parent, false);
 
@@ -210,7 +212,7 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
         holder.removeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                Toast.makeText(context,"remove button pressed", Toast.LENGTH_SHORT).show();
+                new RemoveFriendTask().execute(friend);
             }
         });
 
@@ -295,6 +297,37 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
 
     public Context getContext() {
         return context;
+    }
+
+    private class RemoveFriendTask extends AsyncTask<Friend, Void, Boolean> {
+        @Override
+        protected Boolean doInBackground(Friend... params) {
+            String sessionId = User.getUser().getSessionId();
+            String phoneNumber = params[0].getPhoneNumber();
+            try {
+                String response = new ConnectionHandler().removeFriend(sessionId, phoneNumber);
+                boolean flag = response.startsWith("200:");
+                ArrayList<Friend> friends = User.getUser().getFriends();
+                for (Friend friend : friends) {
+                    if (friend.getPhoneNumber().equals(params[0].getPhoneNumber())) {
+                        friends.remove(friend);
+                        break;
+                    }
+                }
+                return flag;
+            } catch (IOException e) {
+                return false;
+            }
+        }
+        @Override
+        protected void onPostExecute(Boolean result) {
+            if (result) {
+                friendsFragment.refreshFriendsList();
+            }
+            else {
+                Toast.makeText(context, "An error occurred", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
 }
