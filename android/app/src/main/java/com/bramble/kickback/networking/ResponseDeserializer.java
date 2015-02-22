@@ -21,9 +21,7 @@ public class ResponseDeserializer {
         String phoneNumber = json.getString("phone_number");
         String sessionId = json.getString("session_id");
 
-        JSONObject jsonObject = json.getJSONObject("friends");
-        JSONArray friendsJSON = jsonObject.getJSONArray("friends");
-
+        JSONArray friendsJSON = json.getJSONArray("friends");
         ArrayList<Friend> friends = new ArrayList<Friend>();
         for (int i = 0; i < friendsJSON.length(); i++) {
             JSONObject friendJSON = friendsJSON.getJSONObject(i);
@@ -37,11 +35,10 @@ public class ResponseDeserializer {
             friends.add(friend);
         }
 
-
         user.setName(name);
         user.setNickname(nickname);
         user.setEmail(email);
-        user.setPhoneNumber(json.getString(phoneNumber));
+        user.setPhoneNumber(phoneNumber);
         user.setSessionId(sessionId);
         user.setTemp(false);
         user.getFriends().clear();
