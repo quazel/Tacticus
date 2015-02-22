@@ -87,6 +87,10 @@ public class AddFriendsSearch extends Activity {
         new AddFriendTask().execute(remoteUser);
     }
 
+    public void removeFriend(RemoteUser remoteUser) {
+        new RemoveFriendTask().execute(remoteUser);
+    }
+
     private class SearchUserTask extends AsyncTask<String, Void, RemoteUser> {
         @Override
         protected RemoteUser doInBackground(String... params) {
