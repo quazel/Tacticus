@@ -49,37 +49,111 @@
         android:visibility="gone"
         android:layout_marginBottom="-70dp">
 
-        <Button
+        <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="@dimen/list_item_height"
-            android:background="@color/primary_color"
-            android:id="@+id/block_user"
-            android:text="BLOCK"
-            android:textStyle="bold"
-            android:layout_weight="1"
-            android:textColor="@color/white"
-            android:textSize="15sp"/>
+            android:layout_weight="1">
 
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/list_item_height"
-            android:background="@color/title_text_color"
-            android:id="@+id/remove_friend"
-            android:text="REMOVE"
-            android:textStyle="bold"
-            android:layout_weight="1"
-            android:textColor="@color/white"
-            android:textSize="15sp"/>
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/full_width_selector_nobottom"
+                android:id="@+id/block_user"/>
 
-        <Button
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Block"
+                    android:textSize="15sp"
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/block_textview"/>
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/block"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/block_textview"/>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="@dimen/list_item_height"
-            android:background="@color/primary_color"
-            android:id="@+id/toggle_favorite"
-            android:textStyle="bold"
-            android:layout_weight="1"
-            android:textColor="@color/white"
-            android:textSize="15sp"/>
+            android:layout_weight="1">
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/full_width_selector_nobottom"
+                android:id="@+id/remove_friend"/>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Remove"
+                    android:textSize="15sp"
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/remove_textview"/>
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/purple_cancel"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/remove_textview"/>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/list_item_height"
+            android:layout_weight="1">
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/full_width_selector_nobottom"
+                android:id="@+id/toggle_favorite"/>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Favorite"
+                    android:textSize="15sp"
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/favorite_textview"/>
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:id="@+id/favorite_icon"
+                    android:background="@drawable/not_favorite"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/favorite_textview"/>
+
+            </RelativeLayout>
+
+        </RelativeLayout>
         <!--
         <Button
             android:layout_width="fill_parent"
@@ -94,11 +168,10 @@
 
     </LinearLayout>
 
+
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="1dp"
-        android:id="@+id/friends_item_background">
-
-    </RelativeLayout>
+        android:id="@+id/friends_item_background"/>
 
 </LinearLayout>
