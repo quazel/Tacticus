@@ -155,4 +155,30 @@ public class AddFriendsSearch extends Activity {
         }
     }
 
+    private class RemoveFriendTask extends AsyncTask<RemoteUser, Void, Boolean> {
+        @Override
+        protected Boolean doInBackground(RemoteUser... params) {
+            String sessionId = User.getUser().getSessionId();
+            String phoneNumber = params[0].getPhoneNumber();
+            try {
+                String response = new ConnectionHandler().removeFriend(sessionId, phoneNumber);
+                boolean flag = response.startsWith("200:");
+                params[0].setFriend(!flag);
+                return flag;
+            } catch (IOException e) {
+                return null;
+            }
+        }
+        @Override
+        protected void onPostExecute(Boolean result) {
+            if (result) {
+                resultsAdapter.notifyDataSetChanged();
+                resultsList.invalidateViews();
+            }
+            else {
+                Toast.makeText(AddFriendsSearch.this, "An error occurred", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
 }
