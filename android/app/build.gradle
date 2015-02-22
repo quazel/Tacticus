@@ -16,26 +16,36 @@ repositories {
 
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'Testing'
+            keyPassword 'burgle'
+            storeFile file('keystore.jks')
+            storePassword 'burgle'
+        }
+    }
     compileSdkVersion 21
     buildToolsVersion "21.1.2"
-
     defaultConfig {
         applicationId "com.bramble.kickback"
         minSdkVersion 15
         targetSdkVersion 21
         versionCode 1
-        versionName "1.0"
+        versionName '.1'
+        signingConfig signingConfigs.config
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    productFlavors {
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile files('libs/joda-time-2.5.jar')
     compile 'com.android.support:support-v13:20.0.0'
     compile 'se.emilsjolander:stickylistheaders:2.5.2'
