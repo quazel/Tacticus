@@ -102,16 +102,10 @@ public class HomeFragment extends Fragment {
     }
 
     public void goOffline() {
-        homeTransaction = homeManager.beginTransaction();
-        homeTransaction.remove(onlineFragment);
-        homeTransaction.remove(goOfflineFragment);
-        homeTransaction.add(R.id.offline_container, offlineFragment);
-        homeTransaction.commit();
-        onlineFragment = new OnlineFragment();
-        goOfflineFragment = new GoOfflineFragment();
-        timer.cancel();
-        timer.purge();
-        timer = new Timer();
+        if (!lock) {
+            lock = true;
+            new GoOfflineTask().execute();
+        }
     }
 
     public void replaceWithGoOffline() {
@@ -139,7 +133,6 @@ public class HomeFragment extends Fragment {
     }
 
     private class InitialPollTask extends AsyncTask<Void, Void, Boolean> {
-
         @Override
         protected Boolean doInBackground(Void... params) {
             String sessionId = User.getUser().getSessionId();
@@ -163,7 +156,6 @@ public class HomeFragment extends Fragment {
                 return false;
             }
         }
-
         @Override
         protected void onPostExecute(Boolean result) {
             if (result) {
@@ -187,11 +179,9 @@ public class HomeFragment extends Fragment {
                 Toast.makeText(HomeFragment.this.getActivity(), "Could not connect to server!", Toast.LENGTH_SHORT).show();
             }
         }
-
     }
 
     private class PollTask extends AsyncTask<Void, Void, Boolean> {
-
         @Override
         protected Boolean doInBackground(Void... params) {
             String sessionId = User.getUser().getSessionId();
@@ -215,7 +205,6 @@ public class HomeFragment extends Fragment {
                 return false;
             }
         }
-
         @Override
         protected void onPostExecute(Boolean result) {
             if (result) {
@@ -234,7 +223,45 @@ public class HomeFragment extends Fragment {
                 Toast.makeText(HomeFragment.this.getActivity(), "Could not connect to server!", Toast.LENGTH_SHORT).show();
             }
         }
+    }
 
+    private class GoOfflineTask extends AsyncTask<Void, Void, Boolean> {
+        @Override
+        protected Boolean doInBackground(Void... params) {
+            try {
+                String result = new ConnectionHandler().goOffline(User.getUser().getSessionId());
+                if (result.startsWith("200:")) {
+                    result = result.replace("200:", "");
+                    User.getUser().setSessionId(result);
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            } catch (IOException e) {
+                return false;
+            }
+        }
+        @Override
+        protected void onPostExecute(Boolean result) {
+            if (result) {
+                homeTransaction = homeManager.beginTransaction();
+                homeTransaction.remove(onlineFragment);
+                homeTransaction.remove(goOfflineFragment);
+                homeTransaction.add(R.id.offline_container, offlineFragment);
+                homeTransaction.commit();
+                onlineFragment = new OnlineFragment();
+                goOfflineFragment = new GoOfflineFragment();
+                timer.cancel();
+                timer.purge();
+                timer = new Timer();
+                lock = false;
+            }
+            else {
+                lock = false;
+                Toast.makeText(HomeFragment.this.getActivity(), "Could not connect to server!", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
 }
