@@ -82,7 +82,6 @@ public class Main extends Activity {
 
             @Override
             public void onPageSelected(int position) {
-                Log.d("Burgle", position + "");
                 if (position == 1) {
                     friendsFragment.refreshFriendsList();
                 }
