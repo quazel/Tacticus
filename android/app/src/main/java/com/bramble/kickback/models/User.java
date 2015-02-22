@@ -76,7 +76,7 @@ public class User {
         friends.add(new Friend("9lives","Cat Meow", "1-091-245-2958", false, false));
         */
 
-        onlineFriends = friends;
+        onlineFriends = new ArrayList<Friend>();
     }
 
     public synchronized String getNickname() {

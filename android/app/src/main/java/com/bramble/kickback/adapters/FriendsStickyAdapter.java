@@ -76,8 +76,6 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
-        Log.d("Burgle", User.getUser().getFriends().toString());
-        Log.d("Burgle", arrayList.toString());
         Friend friend = arrayList.get(position);
         holder = new ViewHolder();
         convertView = inflater.inflate(R.layout.friends_list_item, parent, false);

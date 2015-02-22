@@ -49,7 +49,6 @@ public class ResponseDeserializer {
 
     public static void deserializePoll(String response) throws JSONException {
         User theUser = User.getUser();
-        theUser.getFriends().clear();
 
         ArrayList<Friend> friends = new ArrayList<Friend>();
         ArrayList<Friend> onlineFriends = new ArrayList<Friend>();
@@ -77,21 +76,11 @@ public class ResponseDeserializer {
         theUser.setSessionId(sessionID);
         theUser.setCallMe(callMe);
         ArrayList<Friend> userFriends = theUser.getFriends();
-        for (Friend friend : userFriends) {
-            userFriends.remove(friend);
-        }
-        for (Friend friend : friends) {
-            userFriends.add(friend);
-        }
         ArrayList<Friend> userOnlineFriends = theUser.getOnlineFriends();
-        for (Friend friend : userOnlineFriends) {
-            userFriends.remove(friend);
-        }
-        for (Friend friend : onlineFriends) {
-            userOnlineFriends.add(friend);
-        }
-        Log.d("Burgle1", userFriends.toString());
-        Log.d("Burgle1", friends.toString());
+        userFriends.clear();
+        userFriends.addAll(friends);
+        userOnlineFriends.clear();
+        userOnlineFriends.addAll(onlineFriends);
     }
 
     public static RemoteUser deserializeSearchResults(String result) throws JSONException {
