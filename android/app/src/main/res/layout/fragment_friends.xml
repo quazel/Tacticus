@@ -37,7 +37,63 @@
             android:layout_toEndOf="@+id/friends_up_button"
             android:id="@+id/friends_textview"/>
 
+        <RelativeLayout
+            android:layout_width="54dp"
+            android:layout_height="?android:attr/actionBarSize"
+            android:layout_toLeftOf="@+id/friend_fragment_settings_layout">
+
+            <Button
+                android:layout_width="@dimen/icon_medium_dimensions"
+                android:layout_height="?android:attr/actionBarSize"
+                android:background="@color/transparent"
+                android:id="@+id/friend_search_button"
+                android:onClick="searchFriendFragmentPressed"
+                android:layout_toLeftOf="@+id/friend_fragment_search_space"/>
+
+            <ImageView
+                android:layout_width="@dimen/icon_medium_dimensions"
+                android:layout_height="@dimen/icon_medium_dimensions"
+                android:background="@drawable/search"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/friend_fragment_search_space"/>
+
+            <Space
+                android:layout_width="24dp"
+                android:layout_height="?android:attr/actionBarSize"
+                android:layout_alignParentRight="true"
+                android:id="@+id/friend_fragment_search_space"/>
         </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="42dp"
+            android:layout_height="?android:attr/actionBarSize"
+            android:layout_alignParentRight="true"
+            android:id="@+id/friend_fragment_settings_layout">
+
+            <Button
+                android:layout_width="@dimen/icon_medium_dimensions"
+                android:layout_height="?android:attr/actionBarSize"
+                android:background="@color/transparent"
+                android:id="@+id/friend_settings_button"
+                android:onClick="settingsFriendFragmentPressed"
+                android:layout_toLeftOf="@+id/friend_fragment_settings_space"/>
+
+            <ImageView
+                android:layout_width="@dimen/icon_medium_dimensions"
+                android:layout_height="@dimen/icon_medium_dimensions"
+                android:background="@drawable/settings"
+                android:layout_centerInParent="true"
+                android:layout_toLeftOf="@+id/friend_fragment_settings_space"/>
+
+            <Space
+                android:layout_width="12dp"
+                android:layout_height="?android:attr/actionBarSize"
+                android:layout_alignParentRight="true"
+                android:id="@+id/friend_fragment_settings_space"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
 
     <se.emilsjolander.stickylistheaders.StickyListHeadersListView
         android:id="@+id/all_friends_list"

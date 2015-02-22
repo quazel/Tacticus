@@ -19,8 +19,8 @@
             android:onClick="textSeveralPressed"/>
 
         <ImageView
-            android:layout_width="@dimen/add_friends_icon_dimensions"
-            android:layout_height="@dimen/add_friends_icon_dimensions"
+            android:layout_width="@dimen/icon_medium_dimensions"
+            android:layout_height="@dimen/icon_medium_dimensions"
             android:background="@drawable/purple_txt"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/text_several_textview"
@@ -50,8 +50,8 @@
             android:onClick="cancelSeveralPressed"/>
 
         <ImageView
-            android:layout_width="@dimen/add_friends_icon_dimensions"
-            android:layout_height="@dimen/add_friends_icon_dimensions"
+            android:layout_width="@dimen/icon_medium_dimensions"
+            android:layout_height="@dimen/icon_medium_dimensions"
             android:background="@drawable/purple_cancel"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/cancel_several_textview"

@@ -63,12 +63,17 @@
 
         <activity
             android:name=".activities.AddFriendsContacts"
-            android:label="Main"
+            android:label="Add From Contacts"
             android:theme="@style/CustomNoBar"/>
 
         <activity
             android:name=".activities.AddFriendsRequests"
-            android:label="Main"
+            android:label="Friend Requests"
+            android:theme="@style/CustomNoBar"/>
+
+        <activity
+            android:name=".activities.Settings"
+            android:label="Settings"
             android:theme="@style/CustomNoBar"/>
 
         <receiver

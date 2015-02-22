@@ -22,8 +22,8 @@
             android:onClick="toAddFriendsSearchPressed"/>
 
         <ImageView
-            android:layout_width="@dimen/add_friends_icon_dimensions"
-            android:layout_height="@dimen/add_friends_icon_dimensions"
+            android:layout_width="@dimen/icon_medium_dimensions"
+            android:layout_height="@dimen/icon_medium_dimensions"
             android:background="@drawable/purple_search"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/add_friend_search_space"
@@ -32,7 +32,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Search"
+            android:text="Add By Phone Number"
             android:textSize="@dimen/add_friends_options_text_size"
             android:layout_toRightOf="@+id/add_friends_search_icon"
             android:layout_centerVertical="true"
@@ -59,8 +59,8 @@
                 android:onClick="toAddFriendsContactsPressed"/>
 
         <ImageView
-            android:layout_width="@dimen/add_friends_icon_dimensions"
-            android:layout_height="@dimen/add_friends_icon_dimensions"
+            android:layout_width="@dimen/icon_medium_dimensions"
+            android:layout_height="@dimen/icon_medium_dimensions"
             android:background="@drawable/purple_contacts"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/add_friend_contact_space"
@@ -69,7 +69,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="My Contacts"
+            android:text="Add From Contacts"
             android:textSize="@dimen/add_friends_options_text_size"
             android:layout_toRightOf="@+id/add_friends_contact_icon"
             android:layout_centerVertical="true"
@@ -96,8 +96,8 @@
             android:onClick="toFriendRequestsPressed"/>
 
         <ImageView
-            android:layout_width="@dimen/add_friends_icon_dimensions"
-            android:layout_height="@dimen/add_friends_icon_dimensions"
+            android:layout_width="@dimen/icon_medium_dimensions"
+            android:layout_height="@dimen/icon_medium_dimensions"
             android:background="@drawable/purple_friends_add"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/add_friend_request_space"
