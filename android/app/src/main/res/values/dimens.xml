@@ -37,7 +37,9 @@
 
 
     <!-- add friends options dimensions -->
-    <dimen name="add_friends_icon_dimensions">34dp</dimen>
     <dimen name="add_friends_icon_padding">18dp</dimen>
     <dimen name="add_friends_options_text_size">20sp</dimen>
+
+    <!-- default icon dimension -->
+    <dimen name="icon_medium_dimensions">30dp</dimen>
 </resources>

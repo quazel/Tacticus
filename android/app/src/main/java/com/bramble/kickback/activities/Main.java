@@ -168,6 +168,16 @@ public class Main extends Activity {
         cameraFragment.capturePicture();
     }
 
+    // friends functionality
+    public void searchFriendFragmentPressed(View view) {
+
+    }
+
+    public void settingsFriendFragmentPressed(View view) {
+        Intent intent = new Intent(Main.this, Settings.class);
+        startActivity(intent);
+    }
+
     // add friends functionality
     public void toAddFriendsSearchPressed(View view) {
         Intent intent = new Intent(Main.this, AddFriendsSearch.class);
