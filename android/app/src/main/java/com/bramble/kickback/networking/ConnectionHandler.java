@@ -24,6 +24,7 @@ public class ConnectionHandler {
     private final String checkCredentialsURL = baseURL + "verify_credential_uniqueness";
     private final String pingURL = baseURL + "ping";
     private final String pollURL = baseURL + "poll";
+    private final String goOfflineURL = baseURL + "go_offline";
     private final String searchURL = baseURL + "search";
     private final String addFriendURL = baseURL + "add_friend";
     private final String kickbackURL = baseURL + "kickback/";
@@ -155,6 +156,14 @@ public class ConnectionHandler {
         params.put("session_id", sessionId);
 
         HttpsURLConnection connection = buildPostRequest(pollURL, params);
+        return buildResponse(connection);
+    }
+
+    public String goOffline(String sessionId) throws IOException {
+        HashMap<String, String> params = new HashMap<String, String>();
+        params.put("session_id", sessionId);
+
+        HttpsURLConnection connection = buildPostRequest(goOfflineURL, params);
         return buildResponse(connection);
     }
 
