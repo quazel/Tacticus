@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -67,6 +68,8 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
         RelativeLayout body;
         TextView name;
         TextView nickname;
+        ImageView favoriteIcon;
+        TextView favoriteText;
         Button favoriteButton;
         //Button hideButton;
         Button removeButton;
@@ -98,10 +101,14 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
         holder.name = (TextView)convertView.findViewById(R.id.name_thing);
         holder.nickname = (TextView)convertView.findViewById(R.id.nickname_thing);
         holder.favoriteButton = (Button)convertView.findViewById(R.id.toggle_favorite);
+        holder.favoriteText = (TextView) convertView.findViewById(R.id.favorite_textview);
+        holder.favoriteIcon = (ImageView) convertView.findViewById(R.id.favorite_icon);
         //holder.hideButton = (Button)convertView.findViewById(R.id.toggle_hidden);
 
         if(friend.isFavorite()) {
-            holder.favoriteButton.setText("UNFAVORITE");
+            holder.favoriteText.setText("Unfavorite");
+            holder.favoriteIcon.setBackgroundResource(R.drawable.favorite_white);
+
             //holder.hideButton.setVisibility(View.GONE);
         }
         /*
@@ -113,7 +120,7 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
         if(!friend.isFavorite()&&!friend.isHidden()) {
             holder.favoriteButton.setVisibility(View.VISIBLE);
             //holder.hideButton.setVisibility(View.VISIBLE);
-            holder.favoriteButton.setText("FAVORITE");
+            holder.favoriteText.setText("Favorite");
             //holder.hideButton.setText("HIDE");
             //holder.hideButton.setVisibility(View.GONE);
         }
