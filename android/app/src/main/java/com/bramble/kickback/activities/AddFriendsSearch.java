@@ -3,6 +3,7 @@ package com.bramble.kickback.activities;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -69,6 +70,7 @@ public class AddFriendsSearch extends Activity {
 
         fm = getFragmentManager();
         loadingBar = new LoadingBar();
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
     public void searchBackButtonPressed(View view) {

@@ -5,6 +5,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -87,6 +88,7 @@ public class SignUpCredentials extends Activity {
         countryCodeArray = CountryCode.getAllCanonicalNames();
         countryNumber = "1";
         selected = "United States";
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
     public void disableButtons() {

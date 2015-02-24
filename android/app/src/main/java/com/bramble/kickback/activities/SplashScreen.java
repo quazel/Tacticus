@@ -2,6 +2,7 @@ package com.bramble.kickback.activities;
 
 import android.app.Activity;;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
@@ -22,6 +23,7 @@ public class SplashScreen extends Activity {
         super.onCreate(savedInstanceState);
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_splash_screen);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         Globals.readContacts(getContentResolver());
         if (!User.getUser().getNickname().equals("")) {
             new Handler().postDelayed(new Runnable() {
