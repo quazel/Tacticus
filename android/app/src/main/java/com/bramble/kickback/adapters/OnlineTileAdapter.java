@@ -42,7 +42,6 @@ public class OnlineTileAdapter extends ArrayAdapter<Friend> {
         switch (swatch) {
             case 0:
                 if (friend.isFavorite()) {
-                    Log.d("Burgle", friend.getNickname() + ": " + friend.isFavorite());
                     view = mInflator.inflate(R.layout.online_tile_item_orange, parent, false);
                 }
                 else
@@ -50,7 +49,6 @@ public class OnlineTileAdapter extends ArrayAdapter<Friend> {
                 break;
             case 1:
                 if (friend.isFavorite()) {
-                    Log.d("Burgle", friend.getNickname() + ": " + friend.isFavorite());
                     view = mInflator.inflate(R.layout.online_tile_item_magenta, parent, false);
                 }
                 else
