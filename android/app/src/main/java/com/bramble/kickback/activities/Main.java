@@ -61,8 +61,8 @@ public class Main extends Activity {
         fragments.add(addFriendsFragment);
         fragments.add(friendsFragment);
         fragments.add(homeFragment);
-        fragments.add(cameraFragment);
-        fragments.add(new GalleryFragment());
+        //fragments.add(cameraFragment);
+        //fragments.add(new GalleryFragment());
         // insert personal gallery here maybe something like this
         /*
         for(int i = 0; i < gallery.size(); i ++) {
