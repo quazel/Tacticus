@@ -51,6 +51,15 @@ public class Main extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(null);
+
+        // for logout
+        boolean finish = getIntent().getBooleanExtra("finish", false);
+        if (finish) {
+            startActivity(new Intent(this, AccountPortal.class));
+            finish();
+            return;
+        }
+
         setContentView(R.layout.activity_main);
         // Initialization
         homeFragment = new HomeFragment();
