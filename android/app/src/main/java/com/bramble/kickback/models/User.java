@@ -160,4 +160,18 @@ public class User {
         }
     }
 
+    public synchronized void clearUser() {
+        nickname = "";
+        name = "";
+        email = "";
+        phoneNumber = "";
+        sessionId = "";
+        temp = false;
+        online = false;
+        callMe = 0;
+
+        friends.clear();
+        onlineFriends.clear();
+    }
+
 }
