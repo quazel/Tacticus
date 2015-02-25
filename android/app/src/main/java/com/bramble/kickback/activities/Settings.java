@@ -69,6 +69,16 @@ public class Settings extends Activity {
         @Override
         protected void onPostExecute(Boolean result) {
             if (result) {
+                User.getUser().setSessionId("");
+                User.getUser().setName("");
+                User.getUser().setNickname("");
+                User.getUser().setEmail("");
+                User.getUser().setPhoneNumber("");
+                User.getUser().setOnline(false);
+                User.getUser().setTemp(false);
+                User.getUser().getFriends().clear();
+                User.getUser().getOnlineFriends().clear();
+                User.getUser().setCallMe(0);
                 Intent intent = new Intent(Settings.this, Main.class);
                 intent.putExtra("finish", true);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // To clean up all activities
