@@ -39,7 +39,7 @@ public class Settings extends Activity {
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog,
                                         int whichButton) {
-
+                        new LogoutTask().execute();
                     }
 
                 });
