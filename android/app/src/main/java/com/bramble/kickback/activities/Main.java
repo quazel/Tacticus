@@ -215,6 +215,12 @@ public class Main extends Activity {
 
     public void updateSelectedFriends(List<Friend> selectedFriends) {
         this.selectedFriends = selectedFriends;
+        for(int i = 0; i < this.selectedFriends.size()-1; i++) {
+            if (this.selectedFriends.get(i).equals(this.selectedFriends.get(i+1))) {
+                this.selectedFriends.remove(i+1);
+                i--;
+            }
+        }
         if(selectedFriends.size() == 0){
             homeFragment.replaceWithGoOffline();
         }

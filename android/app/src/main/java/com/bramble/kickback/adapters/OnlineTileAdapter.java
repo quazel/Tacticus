@@ -66,6 +66,7 @@ public class OnlineTileAdapter extends ArrayAdapter<Friend> {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
+                arg0.setClickable(false);
                 GridView parentGridView = (GridView) parent;
                 ViewHolder holder = (ViewHolder) arg0.getTag();
                 parentGridView.setItemChecked(holder.index, !arg0.isActivated());
@@ -81,6 +82,7 @@ public class OnlineTileAdapter extends ArrayAdapter<Friend> {
                     }
                 }
                 mMainFragment.updateSelectedFriends(mSelected);
+                arg0.setClickable(true);
             }
         });
 
