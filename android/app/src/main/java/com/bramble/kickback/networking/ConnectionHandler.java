@@ -20,6 +20,7 @@ public class ConnectionHandler {
     private final String baseURL = serverAddress + (port != 443 ? ":" + port : "");
     private final String userURL = baseURL + "user/";
     private final String loginURL = baseURL + "login";
+    private final String logoutURL = baseURL + "logout";
     private final String registerURL = baseURL + "register";
     private final String checkCredentialsURL = baseURL + "verify_credential_uniqueness";
     private final String pingURL = baseURL + "ping";
@@ -116,6 +117,14 @@ public class ConnectionHandler {
         params.put("password", password);
 
         HttpsURLConnection connection = buildPostRequest(loginURL, params);
+        return buildResponse(connection);
+    }
+
+    public String logout(String sessionId) throws IOException {
+        HashMap<String, String> params = new HashMap<String, String>();
+        params.put("session_id", sessionId);
+
+        HttpsURLConnection connection = buildPostRequest(logoutURL, params);
         return buildResponse(connection);
     }
 

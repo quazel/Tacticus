@@ -5,10 +5,16 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.bramble.kickback.R;
+import com.bramble.kickback.models.User;
+import com.bramble.kickback.networking.ConnectionHandler;
+
+import java.io.IOException;
 
 public class Settings extends Activity {
 
@@ -33,11 +39,7 @@ public class Settings extends Activity {
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog,
                                         int whichButton) {
-                        Intent intent = new Intent(Settings.this, Main.class);
-                        intent.putExtra("finish", true);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // To clean up all activities
-                        startActivity(intent);
-                        finish();
+
                     }
 
                 });
@@ -50,5 +52,35 @@ public class Settings extends Activity {
                 });
         alertDialog.show();
     }
+
+    private class LogoutTask extends AsyncTask<Void, Void, Boolean> {
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+            try {
+                String response = new ConnectionHandler().logout(User.getUser().getSessionId());
+                return response.startsWith("200:") || response.startsWith("400:");
+            }
+            catch (IOException e) {
+                return false;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result) {
+            if (result) {
+                Intent intent = new Intent(Settings.this, Main.class);
+                intent.putExtra("finish", true);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // To clean up all activities
+                startActivity(intent);
+                finish();
+            }
+            else {
+                Toast.makeText(Settings.this, "An error occurred", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+    }
+
 }
 
