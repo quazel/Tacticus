@@ -163,7 +163,6 @@ public class User {
     public synchronized void clearUser() {
         nickname = "";
         name = "";
-        email = "";
         phoneNumber = "";
         sessionId = "";
         temp = false;

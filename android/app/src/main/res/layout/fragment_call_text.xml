@@ -11,7 +11,6 @@
         android:layout_height="fill_parent"
         android:layout_weight="1">
 
-
         <Button
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
@@ -20,22 +19,12 @@
             android:onClick="textSinglePressed"/>
 
         <ImageView
-            android:layout_width="@dimen/icon_medium_dimensions"
-            android:layout_height="@dimen/icon_medium_dimensions"
+            android:layout_width="@dimen/icon_large_dimensions"
+            android:layout_height="@dimen/icon_large_dimensions"
             android:background="@drawable/purple_txt"
             android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/text_single_textview"
-            android:id="@+id/text_single_icon"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Text"
-            android:paddingLeft="@dimen/add_friends_icon_padding"
-            android:textSize="@dimen/add_friends_options_text_size"
-            android:layout_centerInParent="true"
-            android:id="@+id/text_single_textview"/>
-
+            android:id="@+id/text_single_icon"
+            android:layout_centerInParent="true"/>
 
     </RelativeLayout>
 
@@ -52,21 +41,12 @@
             android:onClick="callSinglePressed"/>
 
         <ImageView
-            android:layout_width="@dimen/icon_medium_dimensions"
-            android:layout_height="@dimen/icon_medium_dimensions"
+            android:layout_width="@dimen/icon_large_dimensions"
+            android:layout_height="@dimen/icon_large_dimensions"
             android:background="@drawable/purple_call"
             android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/call_single_textview"
-            android:id="@+id/call_single_icon"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Call"
-            android:paddingLeft="@dimen/add_friends_icon_padding"
-            android:textSize="@dimen/add_friends_options_text_size"
-            android:layout_centerInParent="true"
-            android:id="@+id/call_single_textview"/>
+            android:id="@+id/call_single_icon"
+            android:layout_centerInParent="true"/>
 
     </RelativeLayout>
 
