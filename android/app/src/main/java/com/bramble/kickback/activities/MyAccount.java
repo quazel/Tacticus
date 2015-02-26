@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.bramble.kickback.R;
 import com.bramble.kickback.models.User;
+import com.bramble.kickback.util.Util;
 
 public class MyAccount extends Activity {
 
@@ -26,7 +27,7 @@ public class MyAccount extends Activity {
         email = (TextView) findViewById(R.id.my_account_email_textview);
 
         nickname.setText(User.getUser().getNickname());
-        phoneNumber.setText(User.getUser().getPhoneNumber());
+        phoneNumber.setText(Util.formatPhoneNumber(User.getUser().getPhoneNumber()));
         email.setText(User.getUser().getEmail());
     }
 
