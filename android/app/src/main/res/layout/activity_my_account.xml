@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/offwhite">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:id="@+id/my_account_actionbar"
+        android:background="@drawable/blue_bottom_line_thin">
+
+        <Button
+            android:layout_width="@dimen/up_button_width"
+            android:layout_height="fill_parent"
+            android:background="@color/transparent"
+            android:id="@+id/my_account_back_button"
+            android:onClick="myAccountBackButtonPressed"/>
+        <ImageView
+            android:layout_width="@dimen/up_button_side_lengths"
+            android:layout_height="@dimen/up_button_side_lengths"
+            android:background="@drawable/custom_blue_up_button"
+            android:layout_centerVertical="true"
+            android:id="@+id/my_account_up_button"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My Account"
+            android:textColor="@color/title_text_color"
+            android:textSize="@dimen/action_bar_text_size"
+            android:paddingLeft="@dimen/up_button_padding"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/my_account_up_button"
+            android:layout_toEndOf="@+id/my_account_up_button"
+            android:id="@+id/my_account_textview"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/list_item_height"
+        android:id="@+id/nickname_item"
+        android:background="@color/transparent"
+        android:layout_below="@+id/my_account_actionbar">
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@drawable/full_width_selector"
+            android:id="@+id/my_account_nickname_button"/>
+
+        <LinearLayout
+            android:id="@+id/nickname_body_text"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/list_item_height"
+            android:orientation="vertical"
+            android:paddingBottom="9dp">
+
+            <TextView
+                android:text="Nickname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="17dp"
+                android:textSize="@dimen/list_item_primary_text_size"
+                android:textColor="@color/primary_body_text_color"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"/>
+
+            <TextView android:id="@+id/my_account_nickname_textview"
+                android:layout_width="fill_parent"
+                android:textColor="@color/secondary_body_text_color"
+                android:gravity="left|top"
+                android:textSize="@dimen/list_item_secondary_text_size"
+                android:paddingLeft="13dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="4dp"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/list_item_height"
+        android:id="@+id/phone_item"
+        android:background="@color/transparent"
+        android:layout_below="@+id/nickname_item">
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@drawable/full_width_selector"
+            android:id="@+id/my_account_phone_button"/>
+
+        <LinearLayout
+            android:id="@+id/phone_body_text"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/list_item_height"
+            android:orientation="vertical"
+            android:paddingBottom="9dp">
+
+            <TextView
+                android:text="Phone Number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="17dp"
+                android:textSize="@dimen/list_item_primary_text_size"
+                android:textColor="@color/primary_body_text_color"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"/>
+
+            <TextView android:id="@+id/my_account_phone_textview"
+                android:layout_width="fill_parent"
+                android:textColor="@color/secondary_body_text_color"
+                android:gravity="left|top"
+                android:textSize="@dimen/list_item_secondary_text_size"
+                android:paddingLeft="13dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="4dp"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/list_item_height"
+        android:id="@+id/email_item"
+        android:background="@color/transparent"
+        android:layout_below="@+id/phone_item">
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@drawable/full_width_selector"
+            android:id="@+id/my_account_email_button"/>
+
+        <LinearLayout
+            android:id="@+id/email_body_text"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/list_item_height"
+            android:orientation="vertical"
+            android:paddingBottom="9dp">
+
+            <TextView
+                android:text="Email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="17dp"
+                android:textSize="@dimen/list_item_primary_text_size"
+                android:textColor="@color/primary_body_text_color"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"/>
+
+            <TextView android:id="@+id/my_account_email_textview"
+                android:layout_width="fill_parent"
+                android:textColor="@color/secondary_body_text_color"
+                android:gravity="left|top"
+                android:textSize="@dimen/list_item_secondary_text_size"
+                android:paddingLeft="13dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="4dp"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/list_item_height"
+        android:id="@+id/blocked_item"
+        android:layout_below="@+id/email_item">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/list_item_height"
+                android:background="@drawable/full_width_selector"
+                android:id="@+id/user_logout_button"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Blocked Users"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/list_item_primary_text_size"
+                android:paddingLeft="12dp"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/darkGray"
+        android:textSize="12dp"
+        android:text="Version 0.1.2 © Bramble LLC"/>
+
+</RelativeLayout>

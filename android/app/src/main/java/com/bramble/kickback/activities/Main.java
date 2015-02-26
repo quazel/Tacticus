@@ -244,16 +244,7 @@ public class Main extends Activity {
 
     public void onBackPressed() {
         if(viewPager.getCurrentItem()==2) {
-            new AlertDialog.Builder(this)
-                    .setMessage("Are you sure you wish to exit Kickback?")
-                    .setCancelable(false)
-                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            Main.this.finish();
-                        }
-                    })
-                    .setNegativeButton("No", null)
-                    .show();
+            this.finish();
         }
         else if(viewPager.getCurrentItem()==0) {
             viewPager.setCurrentItem(1);

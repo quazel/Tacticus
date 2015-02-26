@@ -46,6 +46,7 @@ public class Login extends Activity {
         loadingBar = new LoadingBar();
 
         email = (EditText) findViewById(R.id.editTextLoginEmail);
+        email.setText(User.getUser().getEmail());
         password = (EditText) findViewById(R.id.editTextPassword);
         loginButton = (Button) findViewById(R.id.buttonSignIn);
 

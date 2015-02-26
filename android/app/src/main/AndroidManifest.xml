@@ -76,6 +76,11 @@
             android:label="Settings"
             android:theme="@style/CustomNoBar"/>
 
+        <activity
+            android:name=".activities.MyAccount"
+            android:label="My Account"
+            android:theme="@style/CustomNoBar"/>
+
         <receiver
             android:name=".receivers.BootUpReceiver"
             android:enabled="true"

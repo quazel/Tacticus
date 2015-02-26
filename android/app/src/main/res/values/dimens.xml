@@ -42,4 +42,5 @@
 
     <!-- default icon dimension -->
     <dimen name="icon_medium_dimensions">30dp</dimen>
+    <dimen name="icon_large_dimensions">40dp</dimen>
 </resources>

@@ -18,13 +18,16 @@ import java.io.IOException;
 
 public class Settings extends Activity {
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+    }
+
+    public void myAccountButtonPressed(View view) {
+        Intent intent = new Intent(Settings.this, MyAccount.class);
+        startActivity(intent);
     }
 
     public void settingsBackButtonPressed(View view) {
@@ -82,6 +85,5 @@ public class Settings extends Activity {
         }
 
     }
-
 }
 
