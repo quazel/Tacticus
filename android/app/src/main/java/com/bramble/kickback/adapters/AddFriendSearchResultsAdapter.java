@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.bramble.kickback.R;
 import com.bramble.kickback.activities.AddFriendsSearch;
 import com.bramble.kickback.models.RemoteUser;
+import com.bramble.kickback.util.Util;
 
 import java.util.ArrayList;
 
@@ -83,7 +84,7 @@ public class AddFriendSearchResultsAdapter extends BaseAdapter implements Sticky
             });
         }
         holder.searchNickname.setText(remoteUsers.get(position).getNickname());
-        holder.searchPhoneNumber.setText(remoteUsers.get(position).getPhoneNumber());
+        holder.searchPhoneNumber.setText(Util.formatPhoneNumber(remoteUsers.get(position).getPhoneNumber()));
 
         return convertView;
     }
