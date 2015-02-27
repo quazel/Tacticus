@@ -30,6 +30,11 @@ public class Settings extends Activity {
         startActivity(intent);
     }
 
+    public void notificationSettingsButtonPressed(View view) {
+        Intent intent = new Intent(Settings.this, NotificationSettings.class);
+        startActivity(intent);
+    }
+
     public void settingsBackButtonPressed(View view) {
         finish();
     }

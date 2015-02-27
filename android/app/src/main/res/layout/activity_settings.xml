@@ -80,7 +80,8 @@
                 android:layout_width="fill_parent"
                 android:layout_height="@dimen/list_item_height"
                 android:background="@drawable/full_width_selector"
-                android:id="@+id/notification_settings_button"/>
+                android:id="@+id/notification_settings_button"
+                android:onClick="notificationSettingsButtonPressed"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -97,8 +98,36 @@
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="@dimen/list_item_height"
+        android:id="@+id/advanced_settings"
+        android:layout_below="@id/notification_settings">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/list_item_height"
+                android:background="@drawable/full_width_selector"
+                android:id="@+id/advanced_settings_button"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Advanced Settings"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/list_item_primary_text_size"
+                android:paddingLeft="12dp"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/list_item_height"
         android:id="@+id/additional_information"
-        android:layout_below="@+id/notification_settings">
+        android:layout_below="@+id/advanced_settings">
 
         <RelativeLayout
             android:layout_width="wrap_content"

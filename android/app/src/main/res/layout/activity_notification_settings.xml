@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/offwhite">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:id="@+id/notification_settings_actionbar"
+        android:background="@drawable/blue_bottom_line_thin">
+
+        <Button
+            android:layout_width="@dimen/up_button_width"
+            android:layout_height="fill_parent"
+            android:background="@color/transparent"
+            android:id="@+id/notification_settings_back_button"
+            android:onClick="notificationSettingsBackButtonPressed"/>
+        <ImageView
+            android:layout_width="@dimen/up_button_side_lengths"
+            android:layout_height="@dimen/up_button_side_lengths"
+            android:background="@drawable/custom_blue_up_button"
+            android:layout_centerVertical="true"
+            android:id="@+id/notification_settings_up_button"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Notification Settings"
+            android:textColor="@color/title_text_color"
+            android:textSize="@dimen/action_bar_text_size"
+            android:paddingLeft="@dimen/up_button_padding"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/notification_settings_up_button"
+            android:layout_toEndOf="@+id/notification_settings_up_button"
+            android:id="@+id/notification_settings_textview"/>
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/notification_settings_actionbar">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/header_height"
+                android:orientation="vertical"
+                android:background="@drawable/blue_bottom_line_thin"
+                android:paddingBottom="9dp"
+
+                android:id="@+id/freedom_header">
+
+                <TextView android:id="@+id/freedom_header_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="8dp"
+                    android:text="NOTIFY ME WHEN..."
+                    android:textSize="@dimen/list_header_text_size"
+                    android:textColor="@color/title_text_color"
+                    android:gravity="left|center_vertical"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/list_item_height"
+                android:id="@+id/notify_friend_requests_item"
+                android:layout_below="@+id/freedom_header"
+                android:background="@drawable/full_width_button_nobottom">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="I Receive Friend Requests"
+                        android:layout_centerVertical="true"
+                        android:textSize="@dimen/list_item_primary_text_size"
+                        android:paddingLeft="12dp"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="@dimen/list_item_height"
+                    android:layout_height="@dimen/list_item_height"
+                    android:layout_alignParentRight="true">
+
+                    <CheckBox
+                        android:layout_width="@dimen/icon_large_dimensions"
+                        android:layout_height="@dimen/icon_large_dimensions"
+                        android:button="@drawable/custom_checkbox_purple"
+                        android:layout_centerInParent="true"/>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/header_height"
+                android:orientation="vertical"
+                android:background="@drawable/blue_bottom_line_thin"
+                android:paddingBottom="9dp"
+                android:layout_below="@+id/notify_friend_requests_item"
+                android:id="@+id/online_header">
+
+                <TextView android:id="@+id/online_header_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="8dp"
+                    android:text="I AM ONLINE AND..."
+                    android:textSize="@dimen/list_header_text_size"
+                    android:textColor="@color/title_text_color"
+                    android:gravity="left|center_vertical"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/list_item_height"
+                android:id="@+id/notify_everybody_free_item"
+                android:layout_below="@+id/online_header"
+                android:background="@drawable/full_width_button">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Any Friends Kickback"
+                        android:layout_centerVertical="true"
+                        android:textSize="@dimen/list_item_primary_text_size"
+                        android:paddingLeft="12dp"/>
+
+                    <RelativeLayout
+                        android:layout_width="@dimen/list_item_height"
+                        android:layout_height="@dimen/list_item_height"
+                        android:layout_alignParentRight="true">
+
+                        <CheckBox
+                            android:layout_width="@dimen/icon_large_dimensions"
+                            android:layout_height="@dimen/icon_large_dimensions"
+                            android:button="@drawable/custom_checkbox_blue"
+                            android:layout_centerInParent="true"
+                            android:id="@+id/notify_friends_checkbox"
+                            android:onClick="notifyFriendsPressed"/>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/list_item_height"
+                android:id="@+id/notify_favorites_free_item"
+                android:layout_below="@+id/notify_everybody_free_item"
+                android:background="@drawable/full_width_button">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Favorites Kickback"
+                        android:layout_centerVertical="true"
+                        android:textSize="@dimen/list_item_primary_text_size"
+                        android:paddingLeft="12dp"/>
+
+                    <RelativeLayout
+                        android:layout_width="@dimen/list_item_height"
+                        android:layout_height="@dimen/list_item_height"
+                        android:layout_alignParentRight="true">
+
+                        <CheckBox
+                            android:layout_width="@dimen/icon_large_dimensions"
+                            android:layout_height="@dimen/icon_large_dimensions"
+                            android:id="@+id/notify_favorites_checkbox"
+                            android:button="@drawable/custom_checkbox_blue"
+                            android:layout_centerInParent="true"
+                            android:onClick="notifyFavoritesPressed"/>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/list_item_height"
+                android:id="@+id/notify_never_free_item"
+                android:layout_below="@+id/notify_favorites_free_item"
+                android:background="@drawable/full_width_button_nobottom">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Never"
+                        android:layout_centerVertical="true"
+                        android:textSize="@dimen/list_item_primary_text_size"
+                        android:paddingLeft="12dp"/>
+
+                    <RelativeLayout
+                        android:layout_width="@dimen/list_item_height"
+                        android:layout_height="@dimen/list_item_height"
+                        android:layout_alignParentRight="true">
+
+                        <CheckBox
+                            android:layout_width="@dimen/icon_large_dimensions"
+                            android:layout_height="@dimen/icon_large_dimensions"
+                            android:id="@+id/notify_never_checkbox"
+                            android:button="@drawable/custom_checkbox_blue"
+                            android:layout_centerInParent="true"
+                            android:onClick="notifyNeverPressed"/>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/header_height"
+                android:orientation="vertical"
+                android:background="@drawable/blue_bottom_line_thin"
+                android:paddingBottom="9dp"
+                android:layout_below="@id/notify_never_free_item"
+                android:id="@+id/notification_method_header">
+
+                <TextView android:id="@+id/notification_method_header_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="8dp"
+                    android:text="WITH..."
+                    android:textSize="@dimen/list_header_text_size"
+                    android:textColor="@color/title_text_color"
+                    android:gravity="left|center_vertical"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/list_item_height"
+                android:id="@+id/notify_led_item"
+                android:layout_below="@+id/notification_method_header"
+                android:background="@drawable/full_width_button">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="LED Blinking"
+                        android:layout_centerVertical="true"
+                        android:textSize="@dimen/list_item_primary_text_size"
+                        android:paddingLeft="12dp"/>
+
+                    <RelativeLayout
+                        android:layout_width="@dimen/list_item_height"
+                        android:layout_height="@dimen/list_item_height"
+                        android:layout_alignParentRight="true">
+
+                        <CheckBox
+                            android:layout_width="@dimen/icon_large_dimensions"
+                            android:layout_height="@dimen/icon_large_dimensions"
+                            android:button="@drawable/custom_checkbox_purple"
+                            android:layout_centerInParent="true"/>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/list_item_height"
+                android:id="@+id/notify_vibrate_item"
+                android:layout_below="@+id/notify_led_item"
+                android:background="@drawable/full_width_button">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Vibration"
+                        android:layout_centerVertical="true"
+                        android:textSize="@dimen/list_item_primary_text_size"
+                        android:paddingLeft="12dp"/>
+
+                    <RelativeLayout
+                        android:layout_width="@dimen/list_item_height"
+                        android:layout_height="@dimen/list_item_height"
+                        android:layout_alignParentRight="true">
+
+                        <CheckBox
+                            android:layout_width="@dimen/icon_large_dimensions"
+                            android:layout_height="@dimen/icon_large_dimensions"
+                            android:button="@drawable/custom_checkbox_purple"
+                            android:layout_centerInParent="true"/>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/list_item_height"
+                android:id="@+id/notify_sound_item"
+                android:layout_below="@+id/notify_vibrate_item"
+                android:background="@drawable/full_width_button_nobottom">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sound"
+                        android:layout_centerVertical="true"
+                        android:textSize="@dimen/list_item_primary_text_size"
+                        android:paddingLeft="12dp"/>
+
+                    <RelativeLayout
+                        android:layout_width="@dimen/list_item_height"
+                        android:layout_height="@dimen/list_item_height"
+                        android:layout_alignParentRight="true">
+
+                        <CheckBox
+                            android:layout_width="@dimen/icon_large_dimensions"
+                            android:layout_height="@dimen/icon_large_dimensions"
+                            android:button="@drawable/custom_checkbox_purple"
+                            android:layout_centerInParent="true"/>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/notify_sound_item"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/darkGray"
+                android:textSize="12dp"
+                android:text="Version 0.1.2 © Bramble LLC"/>
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
