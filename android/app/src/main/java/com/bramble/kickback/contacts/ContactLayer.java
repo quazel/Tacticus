@@ -1,7 +1,10 @@
 package com.bramble.kickback.contacts;
 
+import android.content.ContentProviderOperation;
 import android.content.ContentResolver;
+import android.content.OperationApplicationException;
 import android.database.Cursor;
+import android.os.RemoteException;
 import android.provider.ContactsContract;
 
 import com.bramble.kickback.models.Friend;
@@ -58,10 +61,41 @@ public class ContactLayer {
     }
 
     public void createContact(Friend friend) {
-
+        ArrayList <ContentProviderOperation> ops = new ArrayList <ContentProviderOperation> ();
+        ops.add(ContentProviderOperation.newInsert(
+                ContactsContract.RawContacts.CONTENT_URI)
+                .withValue(ContactsContract.RawContacts.ACCOUNT_TYPE, null)
+                .withValue(ContactsContract.RawContacts.ACCOUNT_NAME, null)
+                .build());
+        ops.add(ContentProviderOperation.newInsert(
+                ContactsContract.Data.CONTENT_URI)
+                .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
+                .withValue(ContactsContract.Data.MIMETYPE,
+                        ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE)
+                .withValue(
+                        ContactsContract.CommonDataKinds.StructuredName.DISPLAY_NAME,
+                        friend.getName()).build());
+        ops.add(ContentProviderOperation.
+                newInsert(ContactsContract.Data.CONTENT_URI)
+                .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
+                .withValue(ContactsContract.Data.MIMETYPE,
+                        ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE)
+                .withValue(ContactsContract.CommonDataKinds.Phone.NUMBER, friend.getPhoneNumber())
+                .withValue(ContactsContract.CommonDataKinds.Phone.TYPE,
+                        ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE)
+                .build());
+        try {
+            mContentResolver.applyBatch(ContactsContract.AUTHORITY, ops);
+        } catch (RemoteException | OperationApplicationException e) {
+            e.printStackTrace();
+        }
     }
 
     public void removeContact(Friend friend) {
+
+    }
+
+    public void updateContact(Friend friend) {
 
     }
 
