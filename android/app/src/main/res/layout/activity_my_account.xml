@@ -41,14 +41,8 @@
         android:layout_width="fill_parent"
         android:layout_height="@dimen/list_item_height"
         android:id="@+id/nickname_item"
-        android:background="@color/transparent"
+        android:background="@drawable/full_width_button"
         android:layout_below="@+id/my_account_actionbar">
-
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:background="@drawable/full_width_selector"
-            android:id="@+id/my_account_nickname_button"/>
 
         <LinearLayout
             android:id="@+id/nickname_body_text"
@@ -93,7 +87,8 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:background="@drawable/full_width_selector"
-            android:id="@+id/my_account_phone_button"/>
+            android:id="@+id/my_account_phone_button"
+            android:onClick="myAccountPhonePressed"/>
 
         <LinearLayout
             android:id="@+id/phone_body_text"
@@ -138,7 +133,8 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:background="@drawable/full_width_selector"
-            android:id="@+id/my_account_email_button"/>
+            android:id="@+id/my_account_email_button"
+            android:onClick="myAccountEmailPressed"/>
 
         <LinearLayout
             android:id="@+id/email_body_text"
@@ -186,7 +182,8 @@
                 android:layout_width="fill_parent"
                 android:layout_height="@dimen/list_item_height"
                 android:background="@drawable/full_width_selector"
-                android:id="@+id/user_logout_button"/>
+                android:id="@+id/user_logout_button"
+                android:onClick="myAccountBlockedPressed"/>
 
             <TextView
                 android:layout_width="wrap_content"
