@@ -1,16 +1,16 @@
 package com.bramble.kickback.activities;
 
-import android.app.Activity;;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.Menu;
-import android.view.MenuItem;
+
 import com.bramble.kickback.R;
+import com.bramble.kickback.contacts.ContactLayer;
 import com.bramble.kickback.models.User;
-import com.bramble.kickback.util.Globals;
 import com.crashlytics.android.Crashlytics;
+
 import io.fabric.sdk.android.Fabric;
 
 
@@ -24,7 +24,7 @@ public class SplashScreen extends Activity {
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_splash_screen);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        Globals.readContacts(getContentResolver());
+        ContactLayer.initialize(getContentResolver());
         if (!User.getUser().getNickname().equals("")) {
             new Handler().postDelayed(new Runnable() {
                 @Override

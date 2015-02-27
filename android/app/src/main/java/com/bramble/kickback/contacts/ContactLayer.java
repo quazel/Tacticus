@@ -12,12 +12,12 @@ import java.util.List;
 
 public class ContactLayer {
 
+    private static ContactLayer instance;
     private ContentResolver mContentResolver;
     private List<Person> contacts;
 
-
-    public ContactLayer(ContentResolver cr) {
-        mContentResolver = cr;
+    private ContactLayer(ContentResolver contentResolver) {
+        mContentResolver = contentResolver;
         contacts = new ArrayList<Person>();
         Cursor cur = mContentResolver.query(ContactsContract.Contacts.CONTENT_URI,
                 null, null, null, null);
@@ -44,5 +44,25 @@ public class ContactLayer {
         cur.close();
     }
 
+    public static void initialize(ContentResolver contentResolver) {
+        instance = new ContactLayer(contentResolver);
+    }
+
+    public static ContactLayer getInstance() {
+        if (instance == null) {
+            throw new IllegalStateException();
+        }
+        else {
+            return instance;
+        }
+    }
+
+    public void createContact(Friend friend) {
+
+    }
+
+    public void removeContact(Friend friend) {
+
+    }
 
 }
