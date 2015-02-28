@@ -1,23 +1,22 @@
 package com.bramble.kickback.models;
 
-public class RemoteUser {
+public class RemoteUser extends Person {
 
     private String nickname;
-    private String name;
     private String email;
-    private String phoneNumber;
     private String sex;
     private boolean isFriend;
     private boolean isContact;
 
-    public RemoteUser(String nickname, String name, String email, String phoneNumber, String sex, boolean isFriend) {
+    public RemoteUser(String nickname, String name, String email, String phoneNumber, String sex, boolean isFriend, boolean isContact) {
+        super(name, phoneNumber);
         this.nickname = nickname;
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.sex = sex;
         this.isFriend = isFriend;
-        isContact = false;
+        this.isContact = isContact;
     }
 
     public String getNickname() {
@@ -42,10 +41,6 @@ public class RemoteUser {
 
     public boolean isFriend() {
         return isFriend;
-    }
-
-    public void verifyIsContact() {
-        // Do nothing for now. Will implement later.
     }
 
     public void setFriend(boolean isFriend) {

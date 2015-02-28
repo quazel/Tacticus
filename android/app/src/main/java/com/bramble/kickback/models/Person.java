@@ -2,8 +2,8 @@ package com.bramble.kickback.models;
 
 public class Person {
 
-    private String name;
-    private String phoneNumber;
+    protected String name;
+    protected String phoneNumber;
 
     public Person(String name, String phoneNumber) {
         this.name = name;
