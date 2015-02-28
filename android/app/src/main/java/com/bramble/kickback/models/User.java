@@ -1,5 +1,7 @@
 package com.bramble.kickback.models;
 
+import com.bramble.kickback.contacts.ContactLayer;
+
 import java.util.ArrayList;
 
 public class User {
@@ -115,6 +117,7 @@ public class User {
     public synchronized void addFriend(Friend friend) {
         if (!friends.contains(friend)) {
             friends.add(friend);
+            ContactLayer.getInstance().createContact(friend);
         }
     }
 

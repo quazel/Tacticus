@@ -150,7 +150,7 @@ public class AddFriendsSearch extends Activity {
                 String response = new ConnectionHandler().addFriend(sessionId, phoneNumber);
                 boolean flag = response.startsWith("200:");
                 Friend friend = new Friend(params[0].getNickname(), params[0].getName(), params[0].getPhoneNumber());
-                User.getUser().getFriends().add(friend);
+                User.getUser().addFriend(friend);
                 params[0].setFriend(flag);
                 return flag;
             } catch (IOException e) {
