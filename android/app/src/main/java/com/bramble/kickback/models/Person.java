@@ -21,6 +21,10 @@ public class Person {
         return new ArrayList<String>(phoneNumbers);
     }
 
+    public String getPhoneNumber() {
+        return phoneNumbers.get(0);
+    }
+
     public String getUsername() {
         return  username;
     }
