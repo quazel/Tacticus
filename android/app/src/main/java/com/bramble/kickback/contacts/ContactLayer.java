@@ -34,13 +34,11 @@ public class ContactLayer {
                     Cursor pCur = mContentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,null,
                             ContactsContract.CommonDataKinds.Phone.CONTACT_ID +" = ?",
                             new String[]{id}, null);
-                    ArrayList<String> phoneNumbers = new ArrayList<String>();
                     while (pCur.moveToNext()) {
                         String phone = pCur.getString(
                                 pCur.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-                        phoneNumbers.add(phone);
+                        contacts.add(new Person(name, phone));
                     }
-                    contacts.add(new Person(name, phoneNumbers));
                     pCur.close();
                 }
             }
