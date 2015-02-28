@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/list_item_height">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/list_item_height"
+        android:id="@+id/sticky_item_body"
+        android:background="@drawable/full_width_button_nobottom">
+        <LinearLayout
+            android:id="@+id/body_text"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/list_item_height"
+            android:orientation="vertical"
+            android:paddingBottom="9dp">
+
+            <TextView android:id="@+id/contact_invite_name_thing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="17dp"
+                android:textSize="@dimen/list_item_primary_text_size"
+                android:textColor="@color/primary_body_text_color"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"/>
+
+            <TextView android:id="@+id/contact_invite_number_text"
+                android:layout_width="fill_parent"
+                android:textColor="@color/secondary_body_text_color"
+                android:gravity="left|top"
+                android:textSize="@dimen/list_item_secondary_text_size"
+                android:paddingLeft="13dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="4dp"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@color/darkGray"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/contact_invite_bottom_line"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="@dimen/list_item_height"
+        android:layout_height="@dimen/list_item_height"
+        android:layout_alignParentRight="true"
+        android:id="@+id/contact_invite_button_container">
+
+        <ImageView
+            android:layout_width="@dimen/icon_large_dimensions"
+            android:layout_height="@dimen/icon_large_dimensions"
+            android:layout_centerInParent="true"
+            android:background="@drawable/purple_invite"/>
+
+        <Button
+            android:layout_width="@dimen/icon_large_dimensions"
+            android:layout_height="@dimen/icon_large_dimensions"
+            android:background="@color/transparent"
+            android:layout_centerInParent="true"
+            android:id="@+id/contact_invite_button"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
+

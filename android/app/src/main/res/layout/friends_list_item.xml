@@ -58,8 +58,14 @@
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:background="@drawable/full_width_selector_nobottom"
+                android:background="@drawable/full_width_selector_nobottom_offwhite"
                 android:id="@+id/block_user"/>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/highlight_color"/>
+
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -93,8 +99,13 @@
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:background="@drawable/full_width_selector_nobottom"
+                android:background="@drawable/full_width_selector_nobottom_offwhite"
                 android:id="@+id/remove_friend"/>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/highlight_color"/>
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -128,8 +139,13 @@
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:background="@drawable/full_width_selector_nobottom"
+                android:background="@drawable/full_width_selector_nobottom_offwhite"
                 android:id="@+id/toggle_favorite"/>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/highlight_color"/>
 
             <RelativeLayout
                 android:layout_width="wrap_content"
