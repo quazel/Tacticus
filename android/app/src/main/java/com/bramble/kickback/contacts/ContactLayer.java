@@ -1,0 +1,102 @@
+package com.bramble.kickback.contacts;
+
+import android.content.ContentProviderOperation;
+import android.content.ContentResolver;
+import android.content.OperationApplicationException;
+import android.database.Cursor;
+import android.os.RemoteException;
+import android.provider.ContactsContract;
+
+import com.bramble.kickback.models.Friend;
+import com.bramble.kickback.models.Person;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ContactLayer {
+
+    private static ContactLayer instance;
+    private ContentResolver mContentResolver;
+    private List<Person> contacts;
+
+    private ContactLayer(ContentResolver contentResolver) {
+        mContentResolver = contentResolver;
+        contacts = new ArrayList<Person>();
+        Cursor cur = mContentResolver.query(ContactsContract.Contacts.CONTENT_URI,
+                null, null, null, null);
+        if (cur.getCount() > 0) {
+            while (cur.moveToNext()) {
+                String id = cur.getString(cur.getColumnIndex(ContactsContract.Contacts._ID));
+                String name = cur.getString(cur.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
+                if (Integer.parseInt(cur.getString(cur.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER))) > 0) {
+                    // get the phone number
+                    Cursor pCur = mContentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,null,
+                            ContactsContract.CommonDataKinds.Phone.CONTACT_ID +" = ?",
+                            new String[]{id}, null);
+                    ArrayList<String> phoneNumbers = new ArrayList<String>();
+                    while (pCur.moveToNext()) {
+                        String phone = pCur.getString(
+                                pCur.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+                        phoneNumbers.add(phone);
+                    }
+                    contacts.add(new Person(name, phoneNumbers));
+                    pCur.close();
+                }
+            }
+        }
+        cur.close();
+    }
+
+    public static void initialize(ContentResolver contentResolver) {
+        instance = new ContactLayer(contentResolver);
+    }
+
+    public static ContactLayer getInstance() {
+        if (instance == null) {
+            throw new IllegalStateException();
+        }
+        else {
+            return instance;
+        }
+    }
+
+    public void createContact(Friend friend) {
+        ArrayList <ContentProviderOperation> ops = new ArrayList <ContentProviderOperation> ();
+        ops.add(ContentProviderOperation.newInsert(
+                ContactsContract.RawContacts.CONTENT_URI)
+                .withValue(ContactsContract.RawContacts.ACCOUNT_TYPE, null)
+                .withValue(ContactsContract.RawContacts.ACCOUNT_NAME, null)
+                .build());
+        ops.add(ContentProviderOperation.newInsert(
+                ContactsContract.Data.CONTENT_URI)
+                .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
+                .withValue(ContactsContract.Data.MIMETYPE,
+                        ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE)
+                .withValue(
+                        ContactsContract.CommonDataKinds.StructuredName.DISPLAY_NAME,
+                        friend.getName()).build());
+        ops.add(ContentProviderOperation.
+                newInsert(ContactsContract.Data.CONTENT_URI)
+                .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
+                .withValue(ContactsContract.Data.MIMETYPE,
+                        ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE)
+                .withValue(ContactsContract.CommonDataKinds.Phone.NUMBER, friend.getPhoneNumber())
+                .withValue(ContactsContract.CommonDataKinds.Phone.TYPE,
+                        ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE)
+                .build());
+        try {
+            mContentResolver.applyBatch(ContactsContract.AUTHORITY, ops);
+        } catch (RemoteException | OperationApplicationException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void removeContact(Friend friend) {
+
+    }
+
+    public void updateContact(Friend friend) {
+
+    }
+
+}
