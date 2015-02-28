@@ -88,13 +88,13 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
         holder.body = (RelativeLayout)convertView.findViewById(R.id.friends_item_background);
 
         if (filteredList.size()-1 == position) { //Is the last element of filteredList
-            holder.body.setBackgroundResource(R.drawable.full_width_selector_nobottom); //NO line on bottom
+            holder.body.setBackgroundResource(R.color.white); //NO line on bottom
         }
         else if(filteredList.get(position).isFavorite() && !filteredList.get(position+1).isFavorite()){
-            holder.body.setBackgroundResource(R.drawable.full_width_selector_nobottom); //NO line on bottom
+            holder.body.setBackgroundResource(R.color.white); //NO line on bottom
         }
         else if(!filteredList.get(position).isHidden() && filteredList.get(position+1).isHidden()) {
-            holder.body.setBackgroundResource(R.drawable.full_width_selector_nobottom); //NO line on bottom
+            holder.body.setBackgroundResource(R.color.white); //NO line on bottom
         }
         else {
             holder.body.setBackgroundResource(R.drawable.full_width_selector); //line on bottom
