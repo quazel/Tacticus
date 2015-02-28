@@ -7,12 +7,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ContactPayloadSerializer {
 
-    private ArrayList<Person> contacts;
+    private HashMap<String, Person> contacts;
 
-    public ContactPayloadSerializer(ArrayList<Person> contacts) {
+    public ContactPayloadSerializer(HashMap<String, Person> contacts) {
         this.contacts = contacts;
     }
 
@@ -20,8 +21,8 @@ public class ContactPayloadSerializer {
         JSONObject jsonObject = new JSONObject();
         JSONArray jsonArray = new JSONArray();
 
-        for (Person contact : contacts) {
-            jsonArray.put(contact.getPhoneNumber());
+        for (String phoneNumber : contacts.keySet()) {
+            jsonArray.put(phoneNumber);
         }
 
         jsonObject.put("contacts", jsonArray);

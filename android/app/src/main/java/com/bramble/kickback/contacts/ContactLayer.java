@@ -12,17 +12,18 @@ import com.bramble.kickback.models.Friend;
 import com.bramble.kickback.models.Person;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class ContactLayer {
 
     private static ContactLayer instance;
     private ContentResolver mContentResolver;
-    private List<Person> contacts;
+    private HashMap<String, Person> contacts;
 
     private ContactLayer(ContentResolver contentResolver) {
         mContentResolver = contentResolver;
-        contacts = new ArrayList<Person>();
+        contacts = new HashMap<String, Person>();
         Cursor cur = mContentResolver.query(ContactsContract.Contacts.CONTENT_URI,
                 null, null, null, null);
         if (cur.getCount() > 0) {
@@ -37,7 +38,8 @@ public class ContactLayer {
                     while (pCur.moveToNext()) {
                         String phone = pCur.getString(
                                 pCur.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-                        contacts.add(new Person(name, phone));
+                        String phoneUnformatted = phone.replaceAll("[^\\d]", "");
+                        contacts.put(phoneUnformatted, new Person(name, phone));
                     }
                     pCur.close();
                 }
