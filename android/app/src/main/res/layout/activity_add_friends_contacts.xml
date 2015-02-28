@@ -35,6 +35,18 @@
             android:layout_toEndOf="@+id/contacts_up_button"
             android:id="@+id/contacts_textview"/>
 
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/contacts_actionbar">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:id="@+id/contacts_loading_bar_container"/>
 
     </RelativeLayout>
 
