@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.pm.ActivityInfo;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 
@@ -29,10 +30,27 @@ public class AddFriendsContacts extends Activity {
         ft = fm.beginTransaction();
         ft.add(R.id.contacts_loading_bar_container, loadingBar);
         ft.commit();
-        ContactLayer.initialize(getContentResolver());
+        new CheckContactsTask().execute();
     }
 
     public void contactsBackButtonPressed(View view) {
         finish();
+    }
+
+    private class CheckContactsTask extends AsyncTask<Void, Void, Boolean> {
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+            ContactLayer.initialize(getContentResolver());
+            return true;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean result) {
+            ft = fm.beginTransaction();
+            ft.remove(loadingBar);
+            ft.commit();
+        }
+
     }
 }
