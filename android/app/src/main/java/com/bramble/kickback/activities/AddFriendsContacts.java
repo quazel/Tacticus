@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.bramble.kickback.R;
+import com.bramble.kickback.contacts.ContactLayer;
 
 public class AddFriendsContacts extends Activity {
 
@@ -16,6 +17,7 @@ public class AddFriendsContacts extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_friends_contacts);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        ContactLayer.initialize(getContentResolver());
     }
 
     public void contactsBackButtonPressed(View view) {
