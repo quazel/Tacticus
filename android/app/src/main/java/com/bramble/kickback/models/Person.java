@@ -1,44 +1,29 @@
 package com.bramble.kickback.models;
 
-import java.util.ArrayList;
-
 public class Person {
 
     private String name;
-    private ArrayList<String> phoneNumbers;
-    private String username;
+    private String phoneNumber;
 
-    public Person(String name, ArrayList<String> phoneNumbers) {
+    public Person(String name, String phoneNumber) {
         this.name = name;
-        this.phoneNumbers = phoneNumbers;
+        this.phoneNumber = phoneNumber;
     }
 
     public String getName() {
         return name;
     }
 
-    public ArrayList<String> getPhoneNumbers() {
-        return new ArrayList<String>(phoneNumbers);
-    }
-
     public String getPhoneNumber() {
-        return phoneNumbers.get(0);
-    }
-
-    public String getUsername() {
-        return  username;
+        return phoneNumber;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setPhoneNumber(ArrayList<String> phoneNumbers) {
-        this.phoneNumbers = phoneNumbers;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
 }
