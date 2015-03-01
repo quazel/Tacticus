@@ -50,32 +50,12 @@
 
     </RelativeLayout>
 
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-
-            <se.emilsjolander.stickylistheaders.StickyListHeadersListView
-                android:id="@+id/contacts_with_accounts_list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:divider="@null"
-                android:dividerHeight="0dp"
-                android:layout_alignParentTop="true"/>
-
-            <se.emilsjolander.stickylistheaders.StickyListHeadersListView
-                android:id="@+id/contacts_without_accounts_list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:divider="@null"
-                android:dividerHeight="0dp"
-                android:layout_below="@+id/contacts_with_accounts_list"/>
-
-        </RelativeLayout>
-
-    </ScrollView>
+    <se.emilsjolander.stickylistheaders.StickyListHeadersListView
+        android:id="@+id/contacts_without_accounts_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:layout_below="@+id/contacts_actionbar"/>
 
 </RelativeLayout>

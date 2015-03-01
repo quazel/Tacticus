@@ -109,7 +109,8 @@
                 android:layout_width="fill_parent"
                 android:layout_height="@dimen/list_item_height"
                 android:background="@drawable/full_width_selector"
-                android:id="@+id/advanced_settings_button"/>
+                android:id="@+id/advanced_settings_button"
+                android:onClick="advancedSettingsPressed"/>
 
             <TextView
                 android:layout_width="wrap_content"

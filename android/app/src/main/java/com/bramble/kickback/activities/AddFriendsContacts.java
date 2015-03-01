@@ -19,6 +19,7 @@ import com.bramble.kickback.models.RemoteUser;
 import com.bramble.kickback.models.User;
 import com.bramble.kickback.networking.ConnectionHandler;
 import com.bramble.kickback.networking.ContactPayloadSerializer;
+import com.bramble.kickback.util.Util;
 
 import org.json.JSONException;
 
@@ -54,6 +55,8 @@ public class AddFriendsContacts extends Activity {
         mAddList = (StickyListHeadersListView) findViewById(R.id.contacts_with_accounts_list);
         mInviteList.setAdapter(mInviteContactsAdapter);
         mAddList.setAdapter(mAddContactsAdapter);
+        Util.setListViewHeightBasedOnChildren(mInviteList);
+        Util.setListViewHeightBasedOnChildren(mAddList);
 
         loadingBar = new LoadingBar();
 

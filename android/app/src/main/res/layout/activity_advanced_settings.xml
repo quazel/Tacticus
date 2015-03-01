@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/offwhite">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:id="@+id/advanced_settings_actionbar"
+        android:background="@drawable/blue_bottom_line_thin">
+
+        <Button
+            android:layout_width="@dimen/up_button_width"
+            android:layout_height="fill_parent"
+            android:background="@color/transparent"
+            android:id="@+id/advanced_settings_back_button"
+            android:onClick="advancedSettingsBackButtonPressed"/>
+        <ImageView
+            android:layout_width="@dimen/up_button_side_lengths"
+            android:layout_height="@dimen/up_button_side_lengths"
+            android:background="@drawable/custom_blue_up_button"
+            android:layout_centerVertical="true"
+            android:id="@+id/advanced_settings_up_button"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Advanced Settings"
+            android:textColor="@color/title_text_color"
+            android:textSize="@dimen/action_bar_text_size"
+            android:paddingLeft="@dimen/up_button_padding"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/advanced_settings_up_button"
+            android:layout_toEndOf="@+id/advanced_settings_up_button"
+            android:id="@+id/advanced_settings_textview"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/list_item_height"
+        android:id="@+id/third_party_messenger_item"
+        android:layout_below="@+id/advanced_settings_actionbar"
+        android:background="@drawable/full_width_button">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Using a third-party messenger app"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/list_item_primary_text_size"
+                android:paddingLeft="12dp"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="@dimen/list_item_height"
+            android:layout_height="@dimen/list_item_height"
+            android:layout_alignParentRight="true">
+
+            <CheckBox
+                android:layout_width="@dimen/icon_large_dimensions"
+                android:layout_height="@dimen/icon_large_dimensions"
+                android:button="@drawable/custom_checkbox_purple"
+                android:layout_centerInParent="true"
+                android:id="@+id/third_party_messenger_checkbox"
+                android:onClick="thirdPartyMessengerPressed"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/list_item_height"
+        android:id="@+id/update_contacts_item"
+        android:layout_below="@+id/third_party_messenger_item"
+        android:background="@drawable/full_width_button">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Update contacts"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/list_item_primary_text_size"
+                android:paddingLeft="12dp"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="@dimen/list_item_height"
+            android:layout_height="@dimen/list_item_height"
+            android:layout_alignParentRight="true">
+
+            <CheckBox
+                android:layout_width="@dimen/icon_large_dimensions"
+                android:layout_height="@dimen/icon_large_dimensions"
+                android:button="@drawable/custom_checkbox_purple"
+                android:layout_centerInParent="true"
+                android:id="@+id/update_contacts_checkbox"
+                android:onClick="updateContactsPressed"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/list_item_height"
+        android:id="@+id/use_default_message_item"
+        android:layout_below="@+id/update_contacts_item"
+        android:background="@drawable/full_width_button">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Use default message"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/list_item_primary_text_size"
+                android:paddingLeft="12dp"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="@dimen/list_item_height"
+            android:layout_height="@dimen/list_item_height"
+            android:layout_alignParentRight="true">
+
+            <CheckBox
+                android:layout_width="@dimen/icon_large_dimensions"
+                android:layout_height="@dimen/icon_large_dimensions"
+                android:button="@drawable/custom_checkbox_purple"
+                android:layout_centerInParent="true"
+                android:id="@+id/use_default_message_checkbox"
+                android:onClick="useDefaultMessagePressed"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/list_item_height"
+        android:id="@+id/default_message"
+        android:background="@drawable/full_width_button"
+        android:layout_below="@+id/use_default_message_item">
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@drawable/full_width_selector"
+            android:onClick="changeDefaultMessagePressed"/>
+
+        <LinearLayout
+            android:id="@+id/nickname_body_text"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/list_item_height"
+            android:orientation="vertical"
+            android:paddingBottom="9dp">
+
+            <TextView
+                android:text="Default message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="17dp"
+                android:textSize="@dimen/list_item_primary_text_size"
+                android:textColor="@color/primary_body_text_color"
+                android:gravity="left|center_vertical"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"/>
+
+            <TextView android:id="@+id/default_message_textview"
+                android:layout_width="fill_parent"
+                android:textColor="@color/secondary_body_text_color"
+                android:gravity="left|top"
+                android:textSize="@dimen/list_item_secondary_text_size"
+                android:paddingLeft="13dp"
+                android:paddingRight="12dp"
+                android:paddingBottom="4dp"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/darkGray"
+        android:textSize="12dp"
+        android:text="Version 0.1.2 © Bramble LLC"/>
+
+</RelativeLayout>

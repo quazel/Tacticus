@@ -84,7 +84,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="I Receive Friend Requests"
+                        android:text="I receive friend requests"
                         android:layout_centerVertical="true"
                         android:textSize="@dimen/list_item_primary_text_size"
                         android:paddingLeft="12dp"/>
@@ -100,7 +100,8 @@
                         android:layout_width="@dimen/icon_large_dimensions"
                         android:layout_height="@dimen/icon_large_dimensions"
                         android:button="@drawable/custom_checkbox_purple"
-                        android:layout_centerInParent="true"/>
+                        android:layout_centerInParent="true"
+                        android:id="@+id/friend_request_checkbox"/>
 
                 </RelativeLayout>
 
@@ -144,7 +145,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Any Friends Kickback"
+                        android:text="Any friends Kickback"
                         android:layout_centerVertical="true"
                         android:textSize="@dimen/list_item_primary_text_size"
                         android:paddingLeft="12dp"/>
@@ -284,7 +285,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="LED Blinking"
+                        android:text="LED blinking"
                         android:layout_centerVertical="true"
                         android:textSize="@dimen/list_item_primary_text_size"
                         android:paddingLeft="12dp"/>
@@ -298,7 +299,8 @@
                             android:layout_width="@dimen/icon_large_dimensions"
                             android:layout_height="@dimen/icon_large_dimensions"
                             android:button="@drawable/custom_checkbox_purple"
-                            android:layout_centerInParent="true"/>
+                            android:layout_centerInParent="true"
+                            android:id="@+id/notify_led_blinking_checkbox"/>
 
                     </RelativeLayout>
 
@@ -334,7 +336,8 @@
                             android:layout_width="@dimen/icon_large_dimensions"
                             android:layout_height="@dimen/icon_large_dimensions"
                             android:button="@drawable/custom_checkbox_purple"
-                            android:layout_centerInParent="true"/>
+                            android:layout_centerInParent="true"
+                            android:id="@+id/notify_vibration_checkbox"/>
 
                     </RelativeLayout>
 
@@ -371,7 +374,8 @@
                             android:layout_width="@dimen/icon_large_dimensions"
                             android:layout_height="@dimen/icon_large_dimensions"
                             android:button="@drawable/custom_checkbox_purple"
-                            android:layout_centerInParent="true"/>
+                            android:layout_centerInParent="true"
+                            android:id="@+id/notify_sound_checkbox"/>
 
                     </RelativeLayout>
 

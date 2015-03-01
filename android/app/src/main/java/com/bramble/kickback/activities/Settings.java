@@ -35,6 +35,11 @@ public class Settings extends Activity {
         startActivity(intent);
     }
 
+    public void advancedSettingsPressed(View view) {
+        Intent intent = new Intent(Settings.this, AdvancedSettings.class);
+        startActivity(intent);
+    }
+
     public void settingsBackButtonPressed(View view) {
         finish();
     }
