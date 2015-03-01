@@ -109,39 +109,8 @@ public class ContactLayer {
     }
 
     public void updateContact(Friend friend) {
-        Uri lookupUri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, Uri.encode(friend.getPhoneNumber()));
-        String[] mPhoneNumberProjection = { ContactsContract.PhoneLookup._ID, ContactsContract.PhoneLookup.NUMBER, ContactsContract.PhoneLookup.DISPLAY_NAME };
-        Cursor cur = mContentResolver.query(lookupUri, mPhoneNumberProjection, null, null, null);
-        try {
-            if (cur.moveToFirst()) {
-                ArrayList <ContentProviderOperation> ops = new ArrayList<ContentProviderOperation>();
-                ops.add(ContentProviderOperation.newUpdate(
-                        ContactsContract.RawContacts.CONTENT_URI)
-                        .withValue(ContactsContract.RawContacts.ACCOUNT_TYPE, null)
-                        .withValue(ContactsContract.RawContacts.ACCOUNT_NAME, null)
-                        .build());
-                ops.add(ContentProviderOperation.newUpdate(
-                        ContactsContract.Data.CONTENT_URI)
-                        .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
-                        .withValue(ContactsContract.Data.MIMETYPE,
-                                ContactsContract.CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE)
-                        .withValue(
-                                ContactsContract.CommonDataKinds.StructuredName.DISPLAY_NAME,
-                                friend.getName()).build());
-                ops.add(ContentProviderOperation.newUpdate(
-                        ContactsContract.Data.CONTENT_URI)
-                        .withValueBackReference(ContactsContract.Data.RAW_CONTACT_ID, 0)
-                        .withValue(ContactsContract.Data.MIMETYPE,
-                                ContactsContract.CommonDataKinds.Phone.CONTENT_ITEM_TYPE)
-                        .withValue(ContactsContract.CommonDataKinds.Phone.NUMBER, friend.getPhoneNumber())
-                        .withValue(ContactsContract.CommonDataKinds.Phone.TYPE,
-                                ContactsContract.CommonDataKinds.Phone.TYPE_MOBILE)
-                        .build());
-            }
-        } finally {
-            if (cur != null)
-                cur.close();
-        }
+        removeContact(friend);
+        createContact(friend);
     }
 
     public boolean contactExists(Friend friend) {
