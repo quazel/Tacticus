@@ -46,7 +46,7 @@ public class ContactLayer {
                         if (phoneUnformatted.length() < 11) {
                             phoneUnformatted = User.getUser().getCountryCode() + phoneUnformatted;
                         }
-                        contacts.put(phoneUnformatted, new Person(name, phone));
+                        contacts.put(phoneUnformatted, new Person(name, phoneUnformatted));
                     }
                     pCur.close();
                 }

@@ -51,7 +51,7 @@
     </RelativeLayout>
 
     <se.emilsjolander.stickylistheaders.StickyListHeadersListView
-        android:id="@+id/contacts_without_accounts_list"
+        android:id="@+id/contacts_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:divider="@null"
