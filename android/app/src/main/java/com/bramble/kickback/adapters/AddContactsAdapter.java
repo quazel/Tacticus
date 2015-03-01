@@ -98,7 +98,7 @@ public class AddContactsAdapter extends BaseAdapter implements StickyListHeaders
                     Intent smsIntent = new Intent(Intent.ACTION_VIEW);
                     smsIntent.setType("vnd.android-dir/mms-sms");
                     smsIntent.putExtra("address", person.getPhoneNumber());
-                    smsIntent.putExtra("sms_body", "Come Kickback with me. Download the app at EXAMPLE URL HERE!");
+                    smsIntent.putExtra("sms_body", "Come Kickback with me. Download the app at https://betas.to/xVw1btwL");
                     context.startActivity(smsIntent);
                 }
             });
