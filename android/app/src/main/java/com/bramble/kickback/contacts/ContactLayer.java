@@ -10,6 +10,7 @@ import android.provider.ContactsContract;
 
 import com.bramble.kickback.models.Friend;
 import com.bramble.kickback.models.Person;
+import com.bramble.kickback.models.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,6 +40,12 @@ public class ContactLayer {
                         String phone = pCur.getString(
                                 pCur.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
                         String phoneUnformatted = phone.replaceAll("[^\\d]", "");
+                        if (phoneUnformatted.length() < 10) {
+                            continue;
+                        }
+                        if (phoneUnformatted.length() < 11) {
+                            phoneUnformatted = User.getUser().getCountryCode() + phoneUnformatted;
+                        }
                         contacts.put(phoneUnformatted, new Person(name, phone));
                     }
                     pCur.close();

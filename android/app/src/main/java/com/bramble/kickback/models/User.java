@@ -143,4 +143,9 @@ public class User {
         onlineFriends.clear();
     }
 
+    public synchronized String getCountryCode() {
+        int length = phoneNumber.length();
+        return phoneNumber.substring(0, length - 10);
+    }
+
 }
