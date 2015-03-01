@@ -117,7 +117,9 @@ public class User {
     public synchronized void addFriend(Friend friend) {
         if (!friends.contains(friend)) {
             friends.add(friend);
-            ContactLayer.getInstance().createContact(friend);
+            if (!ContactLayer.getInstance().contactExists(friend)) {
+                ContactLayer.getInstance().createContact(friend);
+            }
         }
     }
 
