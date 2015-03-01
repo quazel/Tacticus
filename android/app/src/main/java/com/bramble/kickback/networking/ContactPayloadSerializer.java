@@ -29,7 +29,7 @@ public class ContactPayloadSerializer {
         return jsonObject.toString();
     }
 
-    public ArrayList<Person> deserialize() {
+    public ArrayList<Person> deserialize(String jsonString) {
         return null;
     }
 

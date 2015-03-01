@@ -210,7 +210,7 @@ public class ConnectionHandler {
         params.put("session_id", sessionId);
         params.put("contacts", payload);
 
-        HttpsURLConnection connection = buildPostRequest(checkCredentialsURL, params);
+        HttpsURLConnection connection = buildPostRequest(checkContactsURL, params);
         return buildResponse(connection);
     }
 

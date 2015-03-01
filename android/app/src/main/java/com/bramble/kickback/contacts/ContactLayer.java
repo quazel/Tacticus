@@ -108,6 +108,7 @@ public class ContactLayer {
         }
     }
 
+    // lol hack
     public void updateContact(Friend friend) {
         removeContact(friend);
         createContact(friend);
@@ -126,6 +127,10 @@ public class ContactLayer {
                 cur.close();
         }
         return false;
+    }
+
+    public HashMap<String, Person> getContacts() {
+        return contacts;
     }
 
 }
