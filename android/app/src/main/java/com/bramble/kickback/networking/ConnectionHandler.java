@@ -29,6 +29,7 @@ public class ConnectionHandler {
     private final String searchURL = baseURL + "search";
     private final String addFriendURL = baseURL + "add_friend";
     private final String removeFriendURL = baseURL + "remove_friend";
+    private final String checkContactsURL = baseURL + "check_contacts";
     private final String kickbackURL = baseURL + "kickback/";
     private final String analyticsURL = baseURL + "analytics/";
 
@@ -201,6 +202,15 @@ public class ConnectionHandler {
         params.put("phone_number", phoneNumber);
 
         HttpsURLConnection connection = buildPostRequest(removeFriendURL, params);
+        return buildResponse(connection);
+    }
+
+    public String checkContacts(String sessionId, String payload) throws IOException {
+        HashMap<String, String> params = new HashMap<String, String>();
+        params.put("session_id", sessionId);
+        params.put("contacts", payload);
+
+        HttpsURLConnection connection = buildPostRequest(checkCredentialsURL, params);
         return buildResponse(connection);
     }
 
