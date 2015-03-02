@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.bramble.kickback.R;
+import com.bramble.kickback.contacts.ContactLayer;
 import com.bramble.kickback.models.User;
 import com.crashlytics.android.Crashlytics;
 
@@ -23,6 +24,7 @@ public class SplashScreen extends Activity {
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_splash_screen);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        ContactLayer.initialize(getContentResolver());
         if (!User.getUser().getNickname().equals("")) {
             new Handler().postDelayed(new Runnable() {
                 @Override
