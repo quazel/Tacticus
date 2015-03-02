@@ -15,7 +15,7 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class ConnectionHandler {
 
-    private final String serverAddress = "https://api.kickback.stevex86.com/";
+    private final String serverAddress = "https://kickback-server.appspot.com/";
     private final int port = 443;
     private final String baseURL = serverAddress + (port != 443 ? ":" + port : "");
     private final String userURL = baseURL + "user/";

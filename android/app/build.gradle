@@ -30,8 +30,8 @@ android {
         applicationId "com.bramble.kickback"
         minSdkVersion 15
         targetSdkVersion 21
-        versionCode 3
-        versionName '.3'
+        versionCode 4
+        versionName '.31'
         signingConfig signingConfigs.config
     }
     buildTypes {
