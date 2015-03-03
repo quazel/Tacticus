@@ -92,7 +92,13 @@ public class AddFriendsContacts extends Activity {
                         if (contactsBuffer.containsKey(remoteUser.getPhoneNumber())) {
                             Person person = contactsBuffer.get(remoteUser.getPhoneNumber());
                             remoteUser.setName(person.getName());
-                            contactsBuffer.remove(remoteUser.getPhoneNumber());
+                            contactsBuffer.remove(person.getPhoneNumber());
+                        }
+                    }
+                    ArrayList<Friend> friends = User.getUser().getFriends();
+                    for (Friend friend : friends) {
+                        if (contactsBuffer.containsKey(friend.getPhoneNumber())) {
+                            contactsBuffer.remove(friend.getPhoneNumber());
                         }
                     }
                     people.addAll(contactsBuffer.values());

@@ -24,7 +24,6 @@ public class SplashScreen extends Activity {
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_splash_screen);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        ContactLayer.initialize(getContentResolver());
         if (!User.getUser().getNickname().equals("")) {
             new Handler().postDelayed(new Runnable() {
                 @Override

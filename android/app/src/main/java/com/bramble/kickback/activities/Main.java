@@ -22,6 +22,7 @@ import android.widget.GridView;
 import com.bramble.kickback.R;
 import com.bramble.kickback.adapters.MainActivityPageAdapter;
 import com.bramble.kickback.adapters.OnlineTileAdapter;
+import com.bramble.kickback.contacts.ContactLayer;
 import com.bramble.kickback.fragments.AddFriendsFragment;
 import com.bramble.kickback.fragments.CameraFragment;
 import com.bramble.kickback.fragments.FriendsFragment;
@@ -51,6 +52,8 @@ public class Main extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(null);
+
+        ContactLayer.initialize(getContentResolver());
 
         // for logout
         boolean finish = getIntent().getBooleanExtra("finish", false);
