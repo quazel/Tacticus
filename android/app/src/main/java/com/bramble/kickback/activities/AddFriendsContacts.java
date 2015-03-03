@@ -38,6 +38,7 @@ public class AddFriendsContacts extends Activity {
     private ArrayList<Person> people;
     private AddContactsAdapter mAddContactsAdapter;
     private StickyListHeadersListView mAddList;
+    private Person[] tempMergeArr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,6 +103,8 @@ public class AddFriendsContacts extends Activity {
                         }
                     }
                     people.addAll(contactsBuffer.values());
+                    tempMergeArr = new Person[people.size()];
+                    alphabetizePartitions(people);
 
                     return true;
                 }
@@ -192,5 +195,59 @@ public class AddFriendsContacts extends Activity {
                 Toast.makeText(AddFriendsContacts.this, "An error occurred", Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+
+    public void alphabetizePartitions(ArrayList<Person> listToSort) {
+        int index = 0;
+        for (Person person : listToSort) {
+            if (!(person instanceof RemoteUser)) {
+                break;
+            }
+            index++;
+        }
+        if(index != 0) {
+            mergeSort(listToSort, 0, index-1);
+            mergeSort(listToSort,index,listToSort.size()-1);
+        }
+        else {
+            mergeSort(listToSort, 0, listToSort.size() - 1);
+        }
+    }
+
+    public void mergeSort(ArrayList<Person> listToSort, int start, int stop) {
+        if (start < stop) {
+            int middle = start + (stop - start) / 2;
+            mergeSort(listToSort, start, middle);
+            mergeSort(listToSort, middle + 1, stop);
+            merge(listToSort, start, middle, stop);
+        }
+    }
+
+    public void merge(ArrayList<Person> listToSort, int start, int middle, int stop) {
+        for (int i = start; i <= stop; i++) {
+            tempMergeArr[i] = listToSort.get(i);
+        }
+        int i = start;
+        int j = middle + 1;
+        int k = start;
+
+        while (i <= middle && j <= stop) {
+            if (tempMergeArr[i].getName().compareToIgnoreCase(tempMergeArr[j].getName()) <= 0) {
+                listToSort.set(k, tempMergeArr[i]);
+                i++;
+            }
+            else {
+                listToSort.set(k, tempMergeArr[j]);
+                j++;
+            }
+            k++;
+        }
+        while (i <= middle) {
+            listToSort.set(k,tempMergeArr[i]);
+            k++;
+            i++;
+        }
+
     }
 }
