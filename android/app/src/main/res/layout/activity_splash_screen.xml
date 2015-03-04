@@ -13,6 +13,19 @@
     <ImageView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="@drawable/temp_splash_screen"/>
+        android:background="@drawable/temp_splash_screen"
+        android:layout_above="@+id/splashkickback"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kickback."
+        android:textSize="50sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/splashkickback"/>
 
 </RelativeLayout>
+
