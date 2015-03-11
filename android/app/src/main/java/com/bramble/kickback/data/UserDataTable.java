@@ -12,13 +12,15 @@ public class UserDataTable {
     public static final String COLUMN_MESSAGE = "default_message";
     public static final String COLUMN_EMAIL = "email";
     public static final String COLUMN_PASSWORD_ENCRYPTED = "password_encrypted";
+    public static final String COLUMN_SESSION_ID = "session_id";
 
     private static final String DATABASE_CREATE = "create table "
             + TABLE_USER + "("
             + COLUMN_ID + " integer primary key autoincrement, "
             + COLUMN_MESSAGE + " text not null, "
             + COLUMN_EMAIL + " text not null, "
-            + COLUMN_PASSWORD_ENCRYPTED + " text not null"
+            + COLUMN_PASSWORD_ENCRYPTED + " text not null, "
+            + COLUMN_SESSION_ID + "text not null"
             + ");";
 
     public static void onCreate(SQLiteDatabase database) {
