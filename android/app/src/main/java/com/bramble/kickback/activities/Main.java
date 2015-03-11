@@ -4,12 +4,14 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.GridView;
 
 import com.bramble.kickback.R;
@@ -177,7 +179,7 @@ public class Main extends Activity {
 
     // friends functionality
     public void searchFriendFragmentPressed(View view) {
-
+        friendsFragment.setUpSearch();
     }
 
     public void settingsFriendFragmentPressed(View view) {
@@ -203,7 +205,14 @@ public class Main extends Activity {
 
     // back buttons
     public void friendsBackButtonPressed(View view) {
-        viewPager.setCurrentItem(2);
+        if (friendsFragment.isSearching()) {
+            friendsFragment.removeSearch();
+            InputMethodManager imm = (InputMethodManager)getSystemService(
+                    Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(friendsFragment.getSearchInput().getWindowToken(), 0);
+        } else {
+            viewPager.setCurrentItem(2);
+        }
     }
 
     public void addFriendsBackButtonPressed(View view) {
@@ -246,7 +255,11 @@ public class Main extends Activity {
             viewPager.setCurrentItem(1);
         }
         else if(viewPager.getCurrentItem()==1) {
-            viewPager.setCurrentItem(2);
+            if (friendsFragment.isSearching()) {
+                friendsFragment.removeSearch();
+            } else {
+                viewPager.setCurrentItem(2);
+            }
         }
         else if(viewPager.getCurrentItem()==3) {
             viewPager.setCurrentItem(2);

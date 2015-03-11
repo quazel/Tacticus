@@ -53,24 +53,20 @@ public class AddFriendsSearch extends Activity {
         addSearchButton = (Button) findViewById(R.id.add_friend_search_button);
         resultsAdapter = new AddFriendSearchResultsAdapter(this, remoteUsers);
         resultsList.setAdapter(resultsAdapter);
+        fm = getFragmentManager();
+        loadingBar = new LoadingBar();
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         phoneNumberEditText = (EditText) findViewById(R.id.search_edittext);
         phoneNumberEditText.requestFocus();
         phoneNumberEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
-                    ft = fm.beginTransaction();
-                    ft.add(R.id.add_friends_search_loading_space, loadingBar);
-                    ft.commit();
-                    new SearchUserTask().execute(phoneNumberEditText.getText().toString());
+                    searchPhoneNumber();
                 }
                 return false;
             }
         });
-
-        fm = getFragmentManager();
-        loadingBar = new LoadingBar();
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
     public void searchBackButtonPressed(View view) {
@@ -78,6 +74,10 @@ public class AddFriendsSearch extends Activity {
     }
 
     public void searchPhoneNumberPressed(View view) {
+        searchPhoneNumber();
+    }
+
+    public void searchPhoneNumber() {
         if(phoneNumberEditText.getText().length()>=10) {
             ft = fm.beginTransaction();
             ft.add(R.id.add_friends_search_loading_space, loadingBar);
