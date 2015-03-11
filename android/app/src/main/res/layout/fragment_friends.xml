@@ -32,6 +32,7 @@
             android:textColorHint="@color/white"
             android:textColor="@color/white"
             android:paddingLeft="@dimen/edittext_padding"
+            android:inputType="textNoSuggestions"
             android:paddingRight="@dimen/edittext_padding"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/friends_up_button"
