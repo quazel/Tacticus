@@ -49,9 +49,7 @@ public class FriendsFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(s.length()>0) {
-                    friendsStickyAdapter.filter(s.toString());
-                }
+                friendsStickyAdapter.filter(s.toString());
             }
 
             @Override
