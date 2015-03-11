@@ -3,6 +3,8 @@ package com.bramble.kickback.fragments;
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +45,23 @@ public class FriendsFragment extends Fragment {
         settingsLayout = (RelativeLayout) view.findViewById(R.id.friend_fragment_settings_layout);
         friendsTitle = (TextView) view.findViewById(R.id.friends_textview);
         searchInput = (EditText) view.findViewById(R.id.friends_search_edittext);
+        searchInput.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(s.length()>0) {
+                    friendsStickyAdapter.filter(s.toString());
+                }
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+        });
         searching = false;
         return view;
     }

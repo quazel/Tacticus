@@ -329,5 +329,4 @@ public class FriendsStickyAdapter extends BaseAdapter implements StickyListHeade
             }
         }
     }
-
 }
