@@ -9,18 +9,23 @@ import android.util.Log;
 public class UserDataTable {
     public static final String TABLE_USER ="user";
     public static final String COLUMN_ID = "_id";
-    public static final String COLUMN_MESSAGE ="Let's Kickback";
+    public static final String COLUMN_MESSAGE = "default_message";
+    public static final String COLUMN_EMAIL = "email";
+    public static final String COLUMN_PASSWORD_ENCRYPTED = "password_encrypted";
 
     private static final String DATABASE_CREATE = "create table "
-            + TABLE_USER + "(" + COLUMN_ID
-            + " integer primary key autoincrement, " + COLUMN_MESSAGE
-            + " text not null);";
+            + TABLE_USER + "("
+            + COLUMN_ID + " integer primary key autoincrement, "
+            + COLUMN_MESSAGE + " text not null, "
+            + COLUMN_EMAIL + " text not null, "
+            + COLUMN_PASSWORD_ENCRYPTED + " text not null"
+            + ");";
 
-    public static void onCreate(SQLiteDatabase database){
+    public static void onCreate(SQLiteDatabase database) {
         database.execSQL(DATABASE_CREATE);
     }
 
-    public static void onUpgrade(SQLiteDatabase database, int oldVersion, int newVersion){
+    public static void onUpgrade(SQLiteDatabase database, int oldVersion, int newVersion) {
         Log.w(UserDataTable.class.getName(), "Upgrading database from version "
                 + oldVersion + " to " + newVersion
                 + ", which will destroy all old data");
