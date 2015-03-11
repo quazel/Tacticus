@@ -30,6 +30,7 @@
             android:layout_height="wrap_content"
             android:hint="Search"
             android:textColorHint="@color/white"
+            android:textColor="@color/white"
             android:paddingLeft="@dimen/edittext_padding"
             android:paddingRight="@dimen/edittext_padding"
             android:layout_centerVertical="true"
