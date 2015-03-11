@@ -83,28 +83,28 @@ public class BootUpReceiver extends BroadcastReceiver {
                     null,
                     null,
                     null);
-            c.moveToFirst();
-            int rowID = c.getInt(c.getColumnIndexOrThrow(UserDataTable.COLUMN_ID));
-            /*
-            String email = c.getString(c.getColumnIndexOrThrow(UserDataTable.COLUMN_EMAIL));
-            String password_encrypted = c.getString(c.getColumnIndexOrThrow(UserDataTable.COLUMN_PASSWORD_ENCRYPTED));
-            String session = c.getString(c.getColumnIndexOrThrow(UserDataTable.COLUMN_SESSION_ID));
-            String result = pingServer(session);
-            if (result == null) {
-                if (!login(email, password_encrypted)) {
-                    ContentValues contentValues = new ContentValues();
-                    contentValues.put(UserDataTable.COLUMN_EMAIL, "");
-                    contentValues.put(UserDataTable.COLUMN_PASSWORD_ENCRYPTED, "");
-                    contentValues.put(UserDataTable.COLUMN_SESSION_ID, "");
-                    String selection = UserDataTable.COLUMN_ID + " LIKE ?";
-                    String[] selectionArgs = { String.valueOf(rowID) };
-                    int count = db.update(UserDataTable.TABLE_USER,
-                                          contentValues,
-                                          selection,
-                                          selectionArgs);
+            if (c.getCount() > 0) {
+                c.moveToFirst();
+                int rowID = c.getInt(c.getColumnIndexOrThrow(UserDataTable.COLUMN_ID));
+                String email = c.getString(c.getColumnIndexOrThrow(UserDataTable.COLUMN_EMAIL));
+                String password_encrypted = c.getString(c.getColumnIndexOrThrow(UserDataTable.COLUMN_PASSWORD_ENCRYPTED));
+                String session = c.getString(c.getColumnIndexOrThrow(UserDataTable.COLUMN_SESSION_ID));
+                String result = pingServer(session);
+                if (result == null) {
+                    if (!login(email, password_encrypted)) {
+                        ContentValues contentValues = new ContentValues();
+                        contentValues.put(UserDataTable.COLUMN_EMAIL, "");
+                        contentValues.put(UserDataTable.COLUMN_PASSWORD_ENCRYPTED, "");
+                        contentValues.put(UserDataTable.COLUMN_SESSION_ID, "");
+                        String selection = UserDataTable.COLUMN_ID + " LIKE ?";
+                        String[] selectionArgs = { String.valueOf(rowID) };
+                        int count = db.update(UserDataTable.TABLE_USER,
+                                contentValues,
+                                selection,
+                                selectionArgs);
+                    }
                 }
             }
-            */
             c.close();
             return null;
         }
