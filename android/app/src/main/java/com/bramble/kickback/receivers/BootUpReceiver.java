@@ -72,9 +72,9 @@ public class BootUpReceiver extends BroadcastReceiver {
             SQLiteDatabase db = helper.getReadableDatabase();
             String[] projection = {
                     UserDataTable.COLUMN_ID,
-                    //UserDataTable.COLUMN_EMAIL,
-                    //UserDataTable.COLUMN_PASSWORD_ENCRYPTED,
-                    //UserDataTable.COLUMN_SESSION_ID
+                    UserDataTable.COLUMN_EMAIL,
+                    UserDataTable.COLUMN_PASSWORD_ENCRYPTED,
+                    UserDataTable.COLUMN_SESSION_ID
             };
             Cursor c = db.query(UserDataTable.TABLE_USER,
                     projection,
