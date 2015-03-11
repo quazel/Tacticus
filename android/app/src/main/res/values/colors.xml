@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+
     <!-- Used colors (current color scheme) -->
     <color name="primary_color">#8559D6</color>
-    <color name="settings_color">#ff42ab61</color>
-    <color name="friends_color">#D10082</color>
-    <color name="schedule_color">#FAA936</color>
+    <color name="settings_color">#81E253</color>
+    <color name="friends_color">#EC6057</color>
+    <color name="schedule_color">#E2B853</color>
     <color name="secondary_color">#ffffff</color>
     <color name="highlight_color">#dddddd</color>
 

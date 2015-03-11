@@ -7,7 +7,6 @@
         <item name="android:radioButtonStyle">@android:style/Widget.CompoundButton.CheckBox</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowBackground">@color/white</item>
-        <item name="android:datePickerStyle">@android:style/Widget.DatePicker</item>
     </style>
 
     <style name="MyTheme" parent="@android:style/Theme.Holo.Light">
