@@ -26,6 +26,14 @@ public class UserDataTable {
     }
 
     public static void onUpgrade(SQLiteDatabase database, int oldVersion, int newVersion) {
+        //Conceptual work on a consecutive upgrade system
+        /*
+            if (newVersion - oldVersion > 1) {
+                onUpgrade(SQLiteDatabase database, oldVersion, newVersion - 1)
+            }
+            // continue with upgrade progress once recursive updates have been resolved
+         */
+
         Log.w(UserDataTable.class.getName(), "Upgrading database from version "
                 + oldVersion + " to " + newVersion
                 + ", which will destroy all old data");
