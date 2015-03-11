@@ -20,7 +20,7 @@ public class UserDataTable {
             + COLUMN_MESSAGE + " text not null, "
             + COLUMN_EMAIL + " text not null, "
             + COLUMN_PASSWORD_ENCRYPTED + " text not null, "
-            + COLUMN_SESSION_ID + "text not null"
+            + COLUMN_SESSION_ID + " text not null"
             + ");";
 
     public static void onCreate(SQLiteDatabase database) {
