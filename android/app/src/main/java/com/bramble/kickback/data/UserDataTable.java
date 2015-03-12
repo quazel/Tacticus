@@ -16,15 +16,17 @@ public class UserDataTable {
     public static final String COLUMN_PASSWORD_ENCRYPTED = "password_encrypted";
     public static final String COLUMN_SESSION_ID = "session_id";
     public static final String COLUMN_NOTIFY_FRIEND_REQUEST = "notify_friend_request";
+    public static final String COLUMN_NOTIFY_FRIEND_ACTIVITY = "notify_friend_activity";
 
     private static final String DATABASE_CREATE = "create table "
             + TABLE_USER + "("
             + COLUMN_ID + " integer primary key autoincrement, "
             + COLUMN_MESSAGE + " text not null, "
-            + COLUMN_EMAIL + " text not null, "
-            + COLUMN_PASSWORD_ENCRYPTED + " text not null, "
-            + COLUMN_SESSION_ID + " text not null, "
+            + COLUMN_EMAIL + " text, "
+            + COLUMN_PASSWORD_ENCRYPTED + " text, "
+            + COLUMN_SESSION_ID + " text, "
             + COLUMN_NOTIFY_FRIEND_REQUEST + " boolean, "
+            + COLUMN_NOTIFY_FRIEND_ACTIVITY + " integer, "
             + ");";
 
     public static void onCreate(SQLiteDatabase database) {
@@ -70,6 +72,36 @@ public class UserDataTable {
                     selection,
                     selectionArgs);
         }
+        c.close();
+    }
+
+    // 0: Any friends Kickback
+    // 1: Favorites Kickback
+    // 2: Never
+    public static void setNotificationOnFriendActivity(SQLiteDatabase database, int flag) {
+        String[] projection = {
+                UserDataTable.COLUMN_ID,
+        };
+        Cursor c = database.query(UserDataTable.TABLE_USER,
+                projection,
+                null,
+                null,
+                null,
+                null,
+                null);
+        c.moveToFirst();
+        if (c.getCount() > 0) {
+            int rowID = c.getInt(c.getColumnIndexOrThrow(UserDataTable.COLUMN_ID));
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(UserDataTable.COLUMN_NOTIFY_FRIEND_ACTIVITY, flag);
+            String selection = UserDataTable.COLUMN_ID + " LIKE ?";
+            String[] selectionArgs = { String.valueOf(rowID) };
+            int count = database.update(UserDataTable.TABLE_USER,
+                    contentValues,
+                    selection,
+                    selectionArgs);
+        }
+        c.close();
     }
 
 }
