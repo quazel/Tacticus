@@ -1,5 +1,7 @@
 package com.bramble.kickback.data;
 
+import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
@@ -13,6 +15,7 @@ public class UserDataTable {
     public static final String COLUMN_EMAIL = "email";
     public static final String COLUMN_PASSWORD_ENCRYPTED = "password_encrypted";
     public static final String COLUMN_SESSION_ID = "session_id";
+    public static final String COLUMN_NOTIFY_FRIEND_REQUEST = "notify_friend_request";
 
     private static final String DATABASE_CREATE = "create table "
             + TABLE_USER + "("
@@ -20,7 +23,8 @@ public class UserDataTable {
             + COLUMN_MESSAGE + " text not null, "
             + COLUMN_EMAIL + " text not null, "
             + COLUMN_PASSWORD_ENCRYPTED + " text not null, "
-            + COLUMN_SESSION_ID + " text not null"
+            + COLUMN_SESSION_ID + " text not null, "
+            + COLUMN_NOTIFY_FRIEND_REQUEST + " boolean, "
             + ");";
 
     public static void onCreate(SQLiteDatabase database) {
@@ -42,4 +46,30 @@ public class UserDataTable {
         database.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
         onCreate(database);
     }
+
+    public static void setNotificationOnFriendRequest(SQLiteDatabase database, boolean flag) {
+        String[] projection = {
+                UserDataTable.COLUMN_ID,
+        };
+        Cursor c = database.query(UserDataTable.TABLE_USER,
+                projection,
+                null,
+                null,
+                null,
+                null,
+                null);
+        c.moveToFirst();
+        if (c.getCount() > 0) {
+            int rowID = c.getInt(c.getColumnIndexOrThrow(UserDataTable.COLUMN_ID));
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(UserDataTable.COLUMN_NOTIFY_FRIEND_REQUEST, flag);
+            String selection = UserDataTable.COLUMN_ID + " LIKE ?";
+            String[] selectionArgs = { String.valueOf(rowID) };
+            int count = database.update(UserDataTable.TABLE_USER,
+                    contentValues,
+                    selection,
+                    selectionArgs);
+        }
+    }
+
 }
