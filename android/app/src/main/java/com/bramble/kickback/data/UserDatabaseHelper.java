@@ -85,4 +85,34 @@ public class UserDatabaseHelper extends SQLiteOpenHelper {
         c.close();
     }
 
+    // Flag values:
+    // 0b1: LED blinking
+    // 0b10: Vibration
+    // 0b100: Sound
+    public void setNotifiers(SQLiteDatabase database, int flags) {
+        String[] projection = {
+                UserDataTable.COLUMN_ID,
+        };
+        Cursor c = database.query(UserDataTable.TABLE_USER,
+                projection,
+                null,
+                null,
+                null,
+                null,
+                null);
+        c.moveToFirst();
+        if (c.getCount() > 0) {
+            int rowID = c.getInt(c.getColumnIndexOrThrow(UserDataTable.COLUMN_ID));
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(UserDataTable.COLUMN_NOTIFIERS, flags);
+            String selection = UserDataTable.COLUMN_ID + " LIKE ?";
+            String[] selectionArgs = { String.valueOf(rowID) };
+            int count = database.update(UserDataTable.TABLE_USER,
+                    contentValues,
+                    selection,
+                    selectionArgs);
+        }
+        c.close();
+    }
+
 }

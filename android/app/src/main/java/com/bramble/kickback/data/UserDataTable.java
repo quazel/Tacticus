@@ -17,6 +17,7 @@ public class UserDataTable {
     public static final String COLUMN_SESSION_ID = "session_id";
     public static final String COLUMN_NOTIFY_FRIEND_REQUEST = "notify_friend_request";
     public static final String COLUMN_NOTIFY_FRIEND_ACTIVITY = "notify_friend_activity";
+    public static final String COLUMN_NOTIFIERS = "notifiers";
 
     private static final String DATABASE_CREATE = "create table "
             + TABLE_USER + "("
@@ -27,6 +28,7 @@ public class UserDataTable {
             + COLUMN_SESSION_ID + " text, "
             + COLUMN_NOTIFY_FRIEND_REQUEST + " boolean, "
             + COLUMN_NOTIFY_FRIEND_ACTIVITY + " integer, "
+            + COLUMN_NOTIFIERS + " integer"
             + ");";
 
     public static void onCreate(SQLiteDatabase database) {
