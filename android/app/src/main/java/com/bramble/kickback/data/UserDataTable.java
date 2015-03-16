@@ -1,7 +1,5 @@
 package com.bramble.kickback.data;
 
-import android.content.ContentValues;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
@@ -9,7 +7,7 @@ import android.util.Log;
  * Created by Griffin on 3/8/2015.
  */
 public class UserDataTable {
-    public static final String TABLE_USER ="user";
+    public static final String TABLE_USER = "user";
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_MESSAGE = "default_message";
     public static final String COLUMN_EMAIL = "email";
@@ -26,13 +24,26 @@ public class UserDataTable {
             + COLUMN_EMAIL + " text, "
             + COLUMN_PASSWORD_ENCRYPTED + " text, "
             + COLUMN_SESSION_ID + " text, "
-            + COLUMN_NOTIFY_FRIEND_REQUEST + " boolean, "
+            + COLUMN_NOTIFY_FRIEND_REQUEST + " integer, "
             + COLUMN_NOTIFY_FRIEND_ACTIVITY + " integer, "
             + COLUMN_NOTIFIERS + " integer"
             + ");";
 
+    private static final String DATABASE_INSERT_DEFAULT_ROW = "insert into "
+            + TABLE_USER + "("
+            + COLUMN_MESSAGE + ", "
+            + COLUMN_EMAIL + ", "
+            + COLUMN_PASSWORD_ENCRYPTED + ", "
+            + COLUMN_SESSION_ID + ", "
+            + COLUMN_NOTIFY_FRIEND_REQUEST + ", "
+            + COLUMN_NOTIFY_FRIEND_ACTIVITY + ", "
+            + COLUMN_NOTIFIERS
+            + ")"
+            + " values (\"\", \"\", \"\", \"\", 1, 1, 5)";
+
     public static void onCreate(SQLiteDatabase database) {
         database.execSQL(DATABASE_CREATE);
+        database.execSQL(DATABASE_INSERT_DEFAULT_ROW);
     }
 
     public static void onUpgrade(SQLiteDatabase database, int oldVersion, int newVersion) {
