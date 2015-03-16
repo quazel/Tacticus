@@ -3,11 +3,13 @@ package com.bramble.kickback.receivers;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 
+import com.bramble.kickback.data.UserDatabaseHelper;
 import com.bramble.kickback.models.User;
 import com.bramble.kickback.networking.ConnectionHandler;
+import com.bramble.kickback.networking.ResponseDeserializer;
 import com.crashlytics.android.Crashlytics;
 
 import org.json.JSONException;
@@ -25,17 +27,18 @@ public class BootUpReceiver extends BroadcastReceiver {
         new PingTask().execute(context);
     }
 
-    public boolean pingServer(SharedPreferences prefs) {
+    public boolean pingServer(UserDatabaseHelper databaseHelper) {
         try {
-            String session = prefs.getString("session", "");
+            SQLiteDatabase database = databaseHelper.getReadableDatabase();
+            String session = databaseHelper.getSessionID(database);
             String result = new ConnectionHandler().ping(session);
             if (result.startsWith("200:")) {
-                SharedPreferences.Editor editor = prefs.edit();
-                editor.putString("session", result.replace("200:", ""));
-                editor.apply();
+                result = result.replace("200:", "");
+                User.getUser().setSessionId(result);
                 return true;
             }
             else {
+                User.getUser().setSessionId("");
                 return false;
             }
         } catch(IOException e) {
@@ -43,22 +46,21 @@ public class BootUpReceiver extends BroadcastReceiver {
         }
     }
 
-    public boolean login(SharedPreferences prefs) {
+    public boolean login(UserDatabaseHelper databaseHelper) {
         try {
-            String email = prefs.getString("email", "");
-            String password = prefs.getString("password", "");
+            SQLiteDatabase database = databaseHelper.getReadableDatabase();
+            String email = databaseHelper.getEmail(database);
+            String password = databaseHelper.getPasswordEncrypted(database);
             String result = new ConnectionHandler().login(email, password);
-            JSONObject resultJSON = new JSONObject(result);
-            User user = User.getUser();
-            user.setEmail(resultJSON.getString("email"));
-            user.setName(resultJSON.getString("name"));
-            user.setNickname(resultJSON.getString("nickname"));
-            user.setPhoneNumber("phone_number");
-            user.setSessionId(resultJSON.getString("session_id"));
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.putString("session", resultJSON.getString("session_id"));
-            editor.apply();
-            return true;
+            if (result.startsWith("200:")) {
+                result = result.replace("200:", "");
+                JSONObject resultJSON = new JSONObject(result);
+                ResponseDeserializer.deserializeLogin(result);
+                return true;
+            }
+            else {
+                return false;
+            }
         } catch (IOException e) {
             return false;
         } catch (JSONException e) {
@@ -70,12 +72,13 @@ public class BootUpReceiver extends BroadcastReceiver {
 
         @Override
         protected Void doInBackground(Context... params) {
-            SharedPreferences prefs = params[0].getSharedPreferences("prefs", Context.MODE_PRIVATE);
-            if (!pingServer(prefs)) {
-                if(!login(prefs)) {
-                    SharedPreferences.Editor editor = prefs.edit();
-                    editor.clear();
-                    editor.apply();
+            UserDatabaseHelper databaseHelper = new UserDatabaseHelper(params[0]);
+            if (!pingServer(databaseHelper)) {
+                if(!login(databaseHelper)) {
+                    SQLiteDatabase database = databaseHelper.getWritableDatabase();
+                    databaseHelper.setEmail(database, "");
+                    databaseHelper.setPasswordEncrypted(database, "");
+                    databaseHelper.setSessionID(database, "");
                 }
             }
             return null;
