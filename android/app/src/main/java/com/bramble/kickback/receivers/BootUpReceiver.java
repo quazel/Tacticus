@@ -8,16 +8,20 @@ import android.os.AsyncTask;
 
 import com.bramble.kickback.models.User;
 import com.bramble.kickback.networking.ConnectionHandler;
+import com.crashlytics.android.Crashlytics;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
 
+import io.fabric.sdk.android.Fabric;
+
 public class BootUpReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
+        Fabric.with(context, new Crashlytics());
         new PingTask().execute(context);
     }
 
