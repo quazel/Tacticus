@@ -1,7 +1,6 @@
 package com.bramble.kickback.activities;
 
 import android.app.Activity;
-import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;

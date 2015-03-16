@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.bramble.kickback.R;
-import com.bramble.kickback.contacts.ContactLayer;
 import com.bramble.kickback.models.User;
 import com.crashlytics.android.Crashlytics;
 
