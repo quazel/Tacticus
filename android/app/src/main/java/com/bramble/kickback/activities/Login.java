@@ -1,8 +1,16 @@
 package com.bramble.kickback.activities;
+import com.bramble.kickback.R;
+import com.bramble.kickback.fragments.LoadingBar;
+import com.bramble.kickback.models.User;
+import com.bramble.kickback.networking.ConnectionHandler;
+import com.bramble.kickback.networking.ResponseDeserializer;
+
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -14,13 +22,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bramble.kickback.R;
-import com.bramble.kickback.fragments.LoadingBar;
-import com.bramble.kickback.models.User;
-import com.bramble.kickback.networking.ConnectionHandler;
-import com.bramble.kickback.networking.ResponseDeserializer;
-
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 
@@ -107,6 +110,11 @@ public class Login extends Activity {
                 if (result.startsWith("200:")) {
                     result = result.replace("200:", "");
                     ResponseDeserializer.deserializeLogin(result);
+                    SharedPreferences prefs = getSharedPreferences("prefs", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putString("email", params[0]);
+                    editor.putString("password", params[1]);
+                    editor.apply();
                     return User.getUser();
                 }
                 else {
