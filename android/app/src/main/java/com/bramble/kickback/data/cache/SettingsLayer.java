@@ -1,4 +1,4 @@
-package com.bramble.kickback.data;
+package com.bramble.kickback.data.cache;
 
 /*
  * Conceptual work on a cache for settings
@@ -6,6 +6,6 @@ package com.bramble.kickback.data;
  */
 public class SettingsLayer {
 
-    
+
 
 }

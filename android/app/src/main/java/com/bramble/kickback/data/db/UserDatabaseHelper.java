@@ -1,4 +1,4 @@
-package com.bramble.kickback.data;
+package com.bramble.kickback.data.db;
 
 import android.content.ContentValues;
 import android.content.Context;

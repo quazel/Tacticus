@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 
-import com.bramble.kickback.data.UserDatabaseHelper;
+import com.bramble.kickback.data.db.UserDatabaseHelper;
 import com.bramble.kickback.models.User;
 import com.bramble.kickback.networking.ConnectionHandler;
 import com.bramble.kickback.networking.ResponseDeserializer;
