@@ -1,14 +1,24 @@
 package com.bramble.kickback.receivers;
 
 import android.content.BroadcastReceiver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
+import android.util.Log;
 
+import com.bramble.kickback.data.UserDataTable;
+import com.bramble.kickback.data.UserDatabaseHelper;
+import com.bramble.kickback.models.User;
 import com.bramble.kickback.networking.ConnectionHandler;
 import com.bramble.kickback.networking.ResponseDeserializer;
 import com.crashlytics.android.Crashlytics;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 
@@ -19,7 +29,7 @@ public class BootUpReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         Fabric.with(context, new Crashlytics());
-        //new PingTask().execute(context);
+        new PingTask().execute(context);
     }
 
     public String pingServer(String session) {
@@ -54,8 +64,8 @@ public class BootUpReceiver extends BroadcastReceiver {
         }
     }
 
-    /*
     private class PingTask extends AsyncTask<Context, Void, Void> {
+
         @Override
         protected Void doInBackground(Context... params) {
             UserDatabaseHelper helper = new UserDatabaseHelper(params[0]);
@@ -98,6 +108,7 @@ public class BootUpReceiver extends BroadcastReceiver {
             c.close();
             return null;
         }
+
     }
-*/
+
 }
