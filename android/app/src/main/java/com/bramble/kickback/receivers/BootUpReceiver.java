@@ -3,10 +3,9 @@ package com.bramble.kickback.receivers;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 
-import com.bramble.kickback.data.db.UserDataLayer;
+import com.bramble.kickback.data.UserDataLayer;
 import com.bramble.kickback.models.User;
 import com.bramble.kickback.networking.ConnectionHandler;
 import com.bramble.kickback.networking.ResponseDeserializer;
