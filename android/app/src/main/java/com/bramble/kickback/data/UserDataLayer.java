@@ -1,4 +1,4 @@
-package com.bramble.kickback.data.db;
+package com.bramble.kickback.data;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
