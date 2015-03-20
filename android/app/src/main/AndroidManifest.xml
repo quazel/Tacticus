@@ -15,7 +15,8 @@
         android:allowBackup="true"
         android:icon="@drawable/temp_icon"
         android:label="@string/title_activity_home"
-        android:theme="@style/MyTheme" >
+        android:theme="@style/MyTheme"
+        android:name=".KickbackApplication" >
 
         <activity
             android:name=".activities.SplashScreen"
