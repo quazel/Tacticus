@@ -3,6 +3,7 @@ package com.bramble.kickback.receivers;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 
 import com.bramble.kickback.data.db.UserDataLayer;
@@ -67,14 +68,16 @@ public class BootUpReceiver extends BroadcastReceiver {
         @Override
         protected Void doInBackground(Context... params) {
             UserDataLayer dataLayer = UserDataLayer.getInstance();
-            String sessionID = ""; // TODO: Make method for retrieving sessionID from layer
-            String email = ""; // TODO: Make method for retrieving email from layer
-            String password = ""; // TODO: Make method for retrieving password from layer
+            String sessionID = dataLayer.getSessionID();
             if (!pingServer(sessionID)) {
+                String email = dataLayer.getEmail();
+                String password = dataLayer.getPassword();
                 if(!login(email, password)) {
-                    /*
-                    Set saved username and password to empty
-                     */
+                    dataLayer.startWriting();
+                    dataLayer.writeEmail("");
+                    dataLayer.writePassword("");
+                    dataLayer.writeSessionID("");
+                    dataLayer.writeChanges();
                 }
             }
             return null;
