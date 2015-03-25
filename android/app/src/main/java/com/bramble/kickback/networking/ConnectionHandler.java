@@ -24,13 +24,13 @@ public class ConnectionHandler {
     private final String registerURL = baseURL + "register";
     private final String checkCredentialsURL = baseURL + "verify_credential_uniqueness";
     private final String pingURL = baseURL + "ping";
+    private final String startKickbackURL = baseURL + "kickback";
     private final String pollURL = baseURL + "poll";
     private final String goOfflineURL = baseURL + "go_offline";
     private final String searchURL = baseURL + "search";
     private final String addFriendURL = baseURL + "add_friend";
     private final String removeFriendURL = baseURL + "remove_friend";
     private final String checkContactsURL = baseURL + "check_contacts";
-    private final String kickbackURL = baseURL + "kickback/";
     private final String analyticsURL = baseURL + "analytics/";
 
     private HttpsURLConnection buildGetRequest(String url, HashMap<String, String> params) throws IOException {
@@ -159,6 +159,14 @@ public class ConnectionHandler {
         params.put("session_id", sessionId);
 
         HttpsURLConnection connection = buildPostRequest(pingURL, params);
+        return buildResponse(connection);
+    }
+
+    public String startKickingBack(String sessionId) throws IOException {
+        HashMap<String, String> params = new HashMap<String, String>();
+        params.put("session_id", sessionId);
+
+        HttpsURLConnection connection = buildPostRequest(startKickbackURL, params);
         return buildResponse(connection);
     }
 
