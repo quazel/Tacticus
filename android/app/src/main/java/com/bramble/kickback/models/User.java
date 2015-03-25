@@ -150,4 +150,13 @@ public class User {
         return phoneNumber.substring(0, length - 10);
     }
 
+    public synchronized Friend getFriend(String phoneNumber) {
+        for (Friend friend : friends) {
+            if (friend.getPhoneNumber().equals(phoneNumber)) {
+                return friend;
+            }
+        }
+        return null;
+    }
+
 }
