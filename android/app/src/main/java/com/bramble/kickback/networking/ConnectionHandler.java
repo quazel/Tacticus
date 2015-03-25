@@ -94,7 +94,13 @@ public class ConnectionHandler {
     private String buildResponse(HttpsURLConnection connection) throws IOException {
         int responseCode = connection.getResponseCode();
         if (responseCode == 200 || responseCode == 401) {
-            BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            BufferedReader in;
+            if (responseCode > 400) {
+                in = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
+            }
+            else {
+                in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            }
             String inputLine;
             StringBuilder response = new StringBuilder();
             response.append(responseCode);
