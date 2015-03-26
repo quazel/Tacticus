@@ -95,11 +95,16 @@ public class ResponseDeserializer {
                 case 0:
                     Friend friend = User.getUser().getFriend(phoneNumber);
                     friend.setOnline(true);
-                    User.getUser().getOnlineFriends().add(friend);
+                    if (!theUser.getOnlineFriends().contains(friend)) {
+                        theUser.getOnlineFriends().add(friend);
+                    }
                     break;
                 case 1:
                     Friend friend1 = User.getUser().getFriend(phoneNumber);
-                    User.getUser().getOnlineFriends().remove(friend1);
+                    friend1.setOnline(false);
+                    if (theUser.getOnlineFriends().contains(friend1)) {
+                        theUser.getOnlineFriends().remove(friend1);
+                    }
                     break;
                 case 2:
                     break;
