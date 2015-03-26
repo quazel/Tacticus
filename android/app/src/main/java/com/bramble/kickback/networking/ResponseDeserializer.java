@@ -27,7 +27,6 @@ public class ResponseDeserializer {
         ArrayList<Friend> friends = new ArrayList<Friend>();
         for (int i = 0; i < friendsJSON.length(); i++) {
             JSONObject friendJSON = friendsJSON.getJSONObject(i);
-            String friendEmail = friendJSON.getString("email");
             String friendNickname = friendJSON.getString("nickname");
             String friendName = friendJSON.getString("name");
             String friendPhoneNumber = friendJSON.getString("phone_number");
@@ -47,11 +46,9 @@ public class ResponseDeserializer {
         user.getFriends().addAll(friends);
     }
 
-    public static void deserializePoll(String response) throws JSONException {
+    public static void deserializeStartKickback(String response) throws JSONException {
         User theUser = User.getUser();
-
-        ArrayList<Friend> friends = new ArrayList<Friend>();
-        ArrayList<Friend> onlineFriends = new ArrayList<Friend>();
+        theUser.getOnlineFriends().clear();
         JSONObject jsonObject = new JSONObject(response);
         String sessionID = jsonObject.getString("session_id");
         int callMe = jsonObject.getInt("call_me");
@@ -59,28 +56,63 @@ public class ResponseDeserializer {
 
         for (int i = 0; i < friendsJSON.length(); i++) {
             JSONObject friendJSON = friendsJSON.getJSONObject(i);
-            String email = friendJSON.getString("email");
-            String nickname = friendJSON.getString("nickname");
-            String name = friendJSON.getString("name");
             String phoneNumber = friendJSON.getString("phone_number");
             boolean online = friendJSON.getBoolean("online");
-
-            Friend friend = new Friend(nickname, name, phoneNumber);
-            friend.setOnline(online);
-            friends.add(friend);
-            if (online) {
-                onlineFriends.add(friend);
+            Friend friend = theUser.getFriend(phoneNumber);
+            if (friend != null) {
+                friend.setOnline(online);
+                if (friend.isOnline()) {
+                    theUser.getOnlineFriends().add(friend);
+                }
+            }
+            else {
+                Log.d("Kickback", "MISSING FRIEND!!!!!");
             }
         }
 
         theUser.setSessionId(sessionID);
         theUser.setCallMe(callMe);
-        ArrayList<Friend> userFriends = theUser.getFriends();
-        ArrayList<Friend> userOnlineFriends = theUser.getOnlineFriends();
-        userFriends.clear();
-        userFriends.addAll(friends);
-        userOnlineFriends.clear();
-        userOnlineFriends.addAll(onlineFriends);
+    }
+
+    public static void deserializePoll(String result) throws JSONException {
+        JSONObject jsonObject = new JSONObject(result);
+        User theUser = User.getUser();
+        String session_id = jsonObject.getString("session_id");
+        int call_me = jsonObject.getInt("call_me");
+        theUser.setSessionId(session_id);
+        theUser.setCallMe(call_me);
+        JSONArray notifications = jsonObject.getJSONArray("notifications");
+        for (int i = 0; i < notifications.length(); i++) {
+            JSONObject notification = notifications.getJSONObject(i);
+            int action = notification.getInt("action");
+            JSONObject instigator = notification.getJSONObject("instigator");
+            String name = instigator.getString("name");
+            String nickname = instigator.getString("nickname");
+            String phoneNumber = instigator.getString("phone_number");
+            String online = instigator.getString("online");
+
+            switch (action) {
+                case 0:
+                    Friend friend = User.getUser().getFriend(phoneNumber);
+                    friend.setOnline(true);
+                    User.getUser().getOnlineFriends().add(friend);
+                    break;
+                case 1:
+                    Friend friend1 = User.getUser().getFriend(phoneNumber);
+                    User.getUser().getOnlineFriends().remove(friend1);
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                default:
+                    Log.d("Kickback", "Unknown notification encountered.");
+            }
+        }
     }
 
     public static RemoteUser deserializeSearchResults(String result) throws JSONException {

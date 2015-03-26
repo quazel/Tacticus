@@ -137,10 +137,10 @@ public class HomeFragment extends Fragment {
         protected Boolean doInBackground(Void... params) {
             String sessionId = User.getUser().getSessionId();
             try {
-                String result = new ConnectionHandler().poll(sessionId);
+                String result = new ConnectionHandler().startKickingBack(sessionId);
                 if (result.startsWith("200:")) {
                     result = result.replace("200:", "");
-                    ResponseDeserializer.deserializePoll(result);
+                    ResponseDeserializer.deserializeStartKickback(result);
                     User.getUser().setOnline(true);
                     return true;
                 }
